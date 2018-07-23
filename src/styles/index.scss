@@ -7,6 +7,11 @@
   }
   @return ($px / $base-font-size) * 1rem;
 }
+
+html{
+  height: 100vh;
+}
+
 a {
   color: #fff;
 }

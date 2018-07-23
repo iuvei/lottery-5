@@ -3,7 +3,29 @@
     <Navbar slot="navbar">
       <span class="head-title" slot="headtitle"><img src="./images/mobile_logo.png" alt=""></span>
     </Navbar>
-    <div class="content">12222222222222222222222222</div>
+    <div class="content">
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+      <h1>123</h1>
+    </div>
   </div>
 </template>
 

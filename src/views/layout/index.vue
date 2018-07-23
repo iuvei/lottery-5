@@ -27,5 +27,9 @@
 </script>
 
 <style lang="scss" scoped>
-
+  @import "../../styles/index";
+.app-wrapper {
+  /*height: calc(100vh - 1.5rem);*/
+  /*background: #efeef4;*/
+}
 </style>
