@@ -29,5 +29,6 @@
   }
   .content {
     margin-top: px2rem(100px);
+    margin-bottom: px2rem(100px);
   }
 </style>
