@@ -1,18 +1,14 @@
 <template>
   <div class="app-wrapper">
-    <!--<Navbar></Navbar>-->
-    <AppMain></AppMain>
+    <Navbar></Navbar>
+    <AppMain class="app-main"></AppMain>
     <Footerbar></Footerbar>
   </div>
 </template>
 
 <script>
-  import { Headbar, AppMain, Footerbar } from "./components";
-  import Navbar from '@/components/Navbar'
-
-  module.export = {
-    Navbar
-  }
+  import {Headbar, Navbar, AppMain, Footerbar} from "./components";
+  // import Navbar from '@/components/Navbar'
 
   export default {
     name: 'layout',
@@ -28,8 +24,11 @@
 
 <style lang="scss" scoped>
   @import "../../styles/index";
-.app-wrapper {
-  /*height: calc(100vh - 1.5rem);*/
-  /*background: #efeef4;*/
-}
+
+  .app-main {
+    margin-top: px2rem(100px);
+    margin-bottom: px2rem(100px);
+    min-height: calc(100vh - 2.6667rem);
+    background: #efeef4;
+  }
 </style>

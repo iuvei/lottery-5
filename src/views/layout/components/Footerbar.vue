@@ -1,7 +1,7 @@
 <template>
   <div class="footerbar">
     <van-tabbar v-model="active">
-      <van-tabbar-item icon="shop" to="/lotteryHall">购彩大厅</van-tabbar-item>
+      <van-tabbar-item icon="shop" to="/lotteryHall">大厅</van-tabbar-item>
       <van-tabbar-item icon="records">活动</van-tabbar-item>
       <van-tabbar-item icon="chat">发现</van-tabbar-item>
       <van-tabbar-item icon="gold-coin" to="/home">我的</van-tabbar-item>
