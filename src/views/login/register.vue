@@ -1,10 +1,10 @@
 <template>
-  <div class="login">
+  <div class="register">
     <HeaderLogin>
       <router-link slot="headleft" to="lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>
-      <span slot="headtitle">用户登陆</span>
+      <span slot="headtitle">用户注册</span>
     </HeaderLogin>
     <div class="head-img">
       <img src="./images/defaultHead.png" alt="">

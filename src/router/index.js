@@ -20,6 +20,11 @@ export default new Router({
       component: _import('login/Login')
     },
     {
+      path: '/register',
+      name: 'register',
+      component: _import('login/register')
+    },
+    {
       path: '/lotteryHall',
       component: Layout,
       redirect: '/lotteryHall/index',

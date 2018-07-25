@@ -82,7 +82,7 @@
   }
 }
 
-@mixin onetoppx($selector, $position: 'top',$pseudo: 'before', $color: #666) {
+@mixin onetoppx($selector, $position: 'bottom',$pseudo: 'before', $color: #666) {
   #{$selector}:#{$pseudo} {
     content: ' ';
     display: block;
@@ -104,7 +104,30 @@
   @include _prefixDpr($selector, $position, $pseudo, '1.5');
   @include _prefixDpr($selector, $position, $pseudo, '2');
   @include _prefixDpr($selector, $position, $pseudo, '3');
+}
 
+@mixin onebottompx($selector, $position: 'bottom',$pseudo: 'after', $color: #666) {
+  #{$selector}:#{$pseudo} {
+    content: ' ';
+    display: block;
+    border-top: 1px solid $color;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  #{$selector} {
+    position: relative;
+    &:#{$pseudo} {
+      @if #{$position} == 'bottom' {
+        bottom: 0;
+      } @else if #{$position} == 'top' {
+        top: 0;
+      }
+    }
+  }
+  @include _prefixDpr($selector, $position, $pseudo, '1.5');
+  @include _prefixDpr($selector, $position, $pseudo, '2');
+  @include _prefixDpr($selector, $position, $pseudo, '3');
 }
 
 @mixin oneleftpx($selector, $position: 'left',$pseudo: 'after', $color: #666) {
@@ -129,5 +152,4 @@
   @include _prefixDpr($selector, $position, $pseudo, '1.5');
   @include _prefixDpr($selector, $position, $pseudo, '2');
   @include _prefixDpr($selector, $position, $pseudo, '3');
-
 }

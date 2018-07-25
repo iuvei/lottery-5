@@ -10,11 +10,12 @@
 
 html{
   height: 100vh;
+  background: #efeef4;
 }
-//
-//a {
-//  color: #fff;
-//}
+
+a {
+  color: #fff;
+}
 
 /* 2倍屏 */
 @media only screen and (-webkit-min-device-pixel-ratio: 2.0) {

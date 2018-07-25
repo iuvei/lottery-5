@@ -22,7 +22,7 @@
         <div class="lottery-number">{{item.number}}</div>
       </div>
       <div class="hot-lottery-item">
-        <div class="lottery-icon"><i class="iconfont icon-gengduo"></i></div>
+        <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
         <div class="lottery-name">更多彩种</div>
       </div>
     </div>
@@ -40,7 +40,7 @@
     data() {
       return {
         hotLottery: [{
-          type: 1,
+          type: 2,
           name: 'test',
           number: 222
         }, {
@@ -48,6 +48,7 @@
           name: 'test',
           number: 222
         }, {
+          type: 3,
           name: 'test',
           number: 222
         }, {
@@ -64,6 +65,14 @@
           number: 222
         }, {
           type: 3,
+          name: 'test',
+          number: 222
+        }, {
+          type: 2,
+          name: 'test',
+          number: 222
+        }, {
+          type: 2,
           name: 'test',
           number: 222
         }, {
