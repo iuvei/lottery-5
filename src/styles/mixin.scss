@@ -15,3 +15,119 @@
     #{$property}: $rem-values;
   }
 }
+
+@mixin _prefixDpr($selector, $position: 'top', $pseudo: 'before', $dpr: '2') {
+  @media only screen and (-webkit-min-device-pixel-ratio: $dpr) {
+    @if $dpr == '1.5' {
+      #{$selector}:#{$pseudo} {
+        @if $position == 'top' {
+          transform: scaleY(.7);
+          -webkit-transform: scaleY(.7);
+          -webkit-transform-origin: left top;
+        } @else if $position == 'bottom' {
+          transform: scaleY(.7);
+          -webkit-transform: scaleY(.7);
+          -webkit-transform-origin: left bottom;
+        } @else if $position == 'left' {
+          transform: scaleX(.7);
+          -webkit-transform: scaleX(.7);
+          -webkit-transform-origin: left top;
+        } @else if $position == 'right' {
+          transform: scaleX(.7);
+          -webkit-transform: scaleX(.7);
+          -webkit-transform-origin: right bottom;
+        }
+      }
+    } @else if $dpr == '2' {
+      #{$selector}:#{$pseudo} {
+        @if $position == 'top' {
+          transform: scaleY(.5);
+          -webkit-transform: scaleY(.5);
+          -webkit-transform-origin: left top;
+        } @else if $position == 'bottom' {
+          transform: scaleY(.5);
+          -webkit-transform: scaleY(.5);
+          -webkit-transform-origin: left bottom;
+        } @else if $position == 'left' {
+          transform: scaleX(.5);
+          -webkit-transform: scaleX(.5);
+          -webkit-transform-origin: left top;
+        } @else if $position == 'right' {
+          transform: scaleX(.5);
+          -webkit-transform: scaleX(.5);
+          -webkit-transform-origin: right bottom;
+        }
+      }
+    } @else if $dpr == '3' {
+      #{$selector}:#{$pseudo} {
+        @if $position == 'top' {
+          transform: scaleY(.3);
+          -webkit-transform: scaleY(.3);
+          -webkit-transform-origin: left top;
+        } @else if $position == 'bottom' {
+          transform: scaleY(.3);
+          -webkit-transform: scaleY(.3);
+          -webkit-transform-origin: left bottom;
+        } @else if $position == 'left' {
+          transform: scaleX(.3);
+          -webkit-transform: scaleX(.3);
+          -webkit-transform-origin: left top;
+        } @else if $position == 'right' {
+          transform: scaleX(.3);
+          -webkit-transform: scaleX(.3);
+          -webkit-transform-origin: right bottom;
+        }
+      }
+    }
+  }
+}
+
+@mixin onetoppx($selector, $position: 'top',$pseudo: 'before', $color: #666) {
+  #{$selector}:#{$pseudo} {
+    content: ' ';
+    display: block;
+    border-top: 1px solid $color;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  #{$selector} {
+    position: relative;
+    &:#{$pseudo} {
+      @if #{$position} == 'top' {
+        top: 0;
+      } @else if #{$position} == 'bottom' {
+        bottom: 0;
+      }
+    }
+  }
+  @include _prefixDpr($selector, $position, $pseudo, '1.5');
+  @include _prefixDpr($selector, $position, $pseudo, '2');
+  @include _prefixDpr($selector, $position, $pseudo, '3');
+
+}
+
+@mixin oneleftpx($selector, $position: 'left',$pseudo: 'after', $color: #666) {
+  #{$selector}:#{$pseudo} {
+    content: ' ';
+    display: block;
+    border-left: 1px solid $color;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+  #{$selector} {
+    position: relative;
+    &:#{$pseudo} {
+      @if #{$position} == 'right' {
+        right: 0;
+      } @else if #{$position} == 'left' {
+        left: 0;
+      }
+    }
+  }
+  @include _prefixDpr($selector, $position, $pseudo, '1.5');
+  @include _prefixDpr($selector, $position, $pseudo, '2');
+  @include _prefixDpr($selector, $position, $pseudo, '3');
+
+}

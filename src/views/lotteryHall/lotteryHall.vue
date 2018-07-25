@@ -14,7 +14,16 @@
     </div>
     <div class="hot-lottery">
       <div class="hot-lottery-item" v-for="(item, index) in hotLottery">
-        {{index}}
+        <div class="lottery-icon">
+          <i v-if="item.type == 1" class="iconfont icon-pk"></i>
+          <i v-if="item.type == 2" class="iconfont icon-shishicai"></i>
+          <i v-if="item.type == 3" class="iconfont icon-kuai3"></i></div>
+        <div class="lottery-name">{{item.name}}</div>
+        <div class="lottery-number">{{item.number}}</div>
+      </div>
+      <div class="hot-lottery-item">
+        <div class="lottery-icon"><i class="iconfont icon-gengduo"></i></div>
+        <div class="lottery-name">更多彩种</div>
       </div>
     </div>
   </div>
@@ -31,27 +40,34 @@
     data() {
       return {
         hotLottery: [{
+          type: 1,
           name: 'test',
           number: 222
-        },{
+        }, {
+          type: 1,
           name: 'test',
           number: 222
-        },{
+        }, {
           name: 'test',
           number: 222
-        },{
+        }, {
+          type: 1,
           name: 'test',
           number: 222
-        },{
+        }, {
+          type: 1,
           name: 'test',
           number: 222
-        },{
+        }, {
+          type: 1,
           name: 'test',
           number: 222
-        },{
+        }, {
+          type: 3,
           name: 'test',
           number: 222
-        },{
+        }, {
+          type: 2,
           name: 'test',
           number: 222
         }]
@@ -62,6 +78,7 @@
 
 <style lang="scss" scoped>
   @import "../../styles/index";
+  @import "../../styles/mixin";
 
   /*margin-top: px2rem(100px);*/
   /*margin-bottom: px2rem(100px);*/
@@ -87,19 +104,63 @@
     }
   }
 
-  .hot-lottery{
+  @include onetoppx('.hot-lottery-item', 'bottom');
+  @include oneleftpx('.hot-lottery-item');
+
+  .hot-lottery {
     background: red;
     margin-top: px2rem(20px);
-    display: flex;
+    text-align: center;
     .hot-lottery-item {
-      margin-left: px2rem(1px);
-      margin-bottom: px2rem(1px);
       float: left;
       box-sizing: border-box;
       width: px2rem(249px);
       height: px2rem(249px);
       background: #fff;
+      .lottery-icon {
+        i {
+          display: inline-block;
+          color: #e41404;
+          font-size: px2rem(75px);
+          margin-top: px2rem(30px);
+        }
+      }
+      .lottery-name {
+        font-size: px2rem(35px);
+        margin-top: px2rem(5px);
+        color: #333;
+      }
+      .lottery-number {
+        font-size: px2rem(25px);
+        color: #989898;
+        margin-top: px2rem(5px);
+      }
     }
-    .first-item {}
   }
+  .hot-lottery-item:nth-child(1)::before {
+    border: 0;
+  }
+  .hot-lottery-item:nth-child(2)::before {
+    border: 0;
+  }
+  .hot-lottery-item:nth-child(3)::before {
+    border: 0;
+  }
+  .hot-lottery-item:nth-child(3)::after {
+    border: 0;
+  }
+  .hot-lottery-item:nth-child(6)::after {
+    border: 0;
+  }
+  .hot-lottery-item:nth-child(9)::after {
+    border: 0;
+  }
+  .hot-lottery-item:nth-child(12)::after {
+    border: 0;
+  }
+  /*.hot-lottery-item:last-child::after {*/
+    /*border: 0;*/
+  /*}*/
+
+
 </style>
