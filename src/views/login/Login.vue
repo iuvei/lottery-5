@@ -27,7 +27,7 @@
       <div class="otherBtn">
         <router-link to="register"><span class="reg">立即注册</span></router-link>
         <span style="color: #aaa">|</span>
-        <span class="forget">忘记密码</span>
+        <router-link to="forgetpwd"><span class="forget">忘记密码</span></router-link>
       </div>
     </div>
   </div>
@@ -110,6 +110,7 @@
       .reg, .forget {
         font-size: px2rem(30px);
         padding: 0 5px;
+        color: #bbb;
       }
       .reg {
         color: #dc3b40;

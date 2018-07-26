@@ -2,7 +2,7 @@
   <div class="footerbar">
     <van-tabbar v-model="active">
       <van-tabbar-item icon="shop" to="/lotteryHall">大厅</van-tabbar-item>
-      <van-tabbar-item icon="records">活动</van-tabbar-item>
+      <van-tabbar-item icon="records" to="/activity">活动</van-tabbar-item>
       <van-tabbar-item icon="chat">发现</van-tabbar-item>
       <van-tabbar-item icon="gold-coin" to="/home">我的</van-tabbar-item>
     </van-tabbar>
@@ -10,11 +10,13 @@
 </template>
 
 <script>
+  import { getActivePage } from "../../../utils/auth";
+
   export default {
     name: 'footerbar',
     data() {
       return {
-        active: 0
+        active: parseInt(getActivePage())
       }
     }
   }

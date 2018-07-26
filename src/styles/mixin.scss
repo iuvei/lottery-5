@@ -82,7 +82,7 @@
   }
 }
 
-@mixin onetoppx($selector, $position: 'bottom',$pseudo: 'before', $color: #666) {
+@mixin onetoppx($selector, $position: 'bottom',$pseudo: 'before', $color: #bbb) {
   #{$selector}:#{$pseudo} {
     content: ' ';
     display: block;
@@ -106,7 +106,7 @@
   @include _prefixDpr($selector, $position, $pseudo, '3');
 }
 
-@mixin onebottompx($selector, $position: 'bottom',$pseudo: 'after', $color: #666) {
+@mixin onebottompx($selector, $position: 'bottom',$pseudo: 'after', $color: #bbb) {
   #{$selector}:#{$pseudo} {
     content: ' ';
     display: block;
@@ -130,7 +130,7 @@
   @include _prefixDpr($selector, $position, $pseudo, '3');
 }
 
-@mixin oneleftpx($selector, $position: 'left',$pseudo: 'after', $color: #666) {
+@mixin oneleftpx($selector, $position: 'left',$pseudo: 'after', $color: #bbb) {
   #{$selector}:#{$pseudo} {
     content: ' ';
     display: block;

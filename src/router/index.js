@@ -25,6 +25,11 @@ export default new Router({
       component: _import('login/register')
     },
     {
+      path: '/forgetPwd',
+      name: 'forgetPwd',
+      component: _import('login/forgetPwd')
+    },
+    {
       path: '/lotteryHall',
       component: Layout,
       redirect: '/lotteryHall/index',
@@ -32,6 +37,16 @@ export default new Router({
         path: 'index',
         component: _import('lotteryHall/lotteryHall'),
         name: 'lotteryHall'
+      }]
+    },
+    {
+      path: '/activity',
+      component: Layout,
+      redirect: '/activity/index',
+      children: [{
+        path: 'index',
+        component: _import('activity/activity'),
+        name: 'activity'
       }]
     },
     {

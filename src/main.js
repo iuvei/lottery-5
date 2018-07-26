@@ -10,6 +10,8 @@ import './icons/iconfont.css'
 
 import './utils/flexible.js'
 
+import './permission'
+
 Vue.use(Vant)
 
 Vue.config.productionTip = false

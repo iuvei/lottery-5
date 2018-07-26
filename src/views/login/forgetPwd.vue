@@ -1,46 +1,41 @@
 <template>
   <div class="register">
-    <HeaderReg>
+    <HeaderForget>
       <router-link slot="headleft" to="lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>
-      <span slot="headtitle">用户注册</span>
-    </HeaderReg>
+      <span slot="headtitle">忘记密码</span>
+    </HeaderForget>
     <div class="content">
       <div class="info">
         <div class="invite-code">
-          <span class="front">邀请码</span>
-          <input type="text" placeholder="请输入8位数字邀请码">
-          <span class="end"></span>
-        </div>
-        <div class="invite-code">
           <span class="front">账号</span>
-          <input type="text" placeholder="请输入您要注册的账号">
+          <input type="text" placeholder="请输入账号">
           <span class="end"></span>
         </div>
         <div class="invite-code">
-          <span class="front">设置密码</span>
-          <input type="text" placeholder="请输入您要设置的密码">
+          <span class="front">验证码</span>
+          <input type="text" placeholder="请输入验证码">
           <span class="end"></span>
         </div>
       </div>
-      <div class="login">
-        <router-link to="/login">已有账号？立即登录</router-link>
-      </div>
+      <!--<div class="login">-->
+        <!--<router-link to="/login">已有账号？立即登录</router-link>-->
+      <!--</div>-->
       <div class="registe-btn">
-        <button>立即注册</button>
+        <button>确定</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import HeaderReg from '@/components/Navbar.vue'
+  import HeaderForget from '@/components/Navbar.vue'
 
   export default {
-    name: 'register',
+    name: 'forgetpwd',
     components: {
-      HeaderReg
+      HeaderForget
     }
   }
 </script>
@@ -100,6 +95,7 @@
     }
   }
   .registe-btn {
+    margin-top: px2rem(30px);
     text-align: center;
     button {
       border: 0;

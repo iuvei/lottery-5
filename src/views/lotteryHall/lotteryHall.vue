@@ -87,7 +87,6 @@
 
 <style lang="scss" scoped>
   @import "../../styles/index";
-  @import "../../styles/mixin";
 
   /*margin-top: px2rem(100px);*/
   /*margin-bottom: px2rem(100px);*/
@@ -113,13 +112,13 @@
     }
   }
 
-  @include onetoppx('.hot-lottery-item', 'bottom');
+  @include onetoppx('.hot-lottery-item');
   @include oneleftpx('.hot-lottery-item');
 
   .hot-lottery {
-    background: red;
     margin-top: px2rem(20px);
     text-align: center;
+    overflow: hidden;
     .hot-lottery-item {
       float: left;
       box-sizing: border-box;

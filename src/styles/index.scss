@@ -1,3 +1,5 @@
+@import "./mixin.scss";
+
 @function px2rem($px, $base-font-size: 75px) {
   @if (unitless($px)) {
     @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
@@ -10,7 +12,8 @@
 
 html{
   height: 100vh;
-  background: #efeef4;
+  //background: #efeef4;
+  background: #fafafa;
 }
 
 a {
