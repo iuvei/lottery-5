@@ -21,7 +21,7 @@
         <div class="lottery-name">{{item.name}}</div>
         <div class="lottery-number">{{item.number}}</div>
       </div>
-      <div class="hot-lottery-item">
+      <div class="hot-lottery-item" @click="toAllLottery">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
         <div class="lottery-name">更多彩种</div>
       </div>
@@ -80,6 +80,11 @@
           name: 'test',
           number: 222
         }]
+      }
+    },
+    methods: {
+      toAllLottery() {
+        this.$router.push('/allLottery')
       }
     }
   }

@@ -30,6 +30,11 @@ export default new Router({
       component: _import('login/forgetPwd')
     },
     {
+      path: '/allLottery',
+      name: 'allLottery',
+      component: _import('lotteryHall/allLottery')
+    },
+    {
       path: '/lotteryHall',
       component: Layout,
       redirect: '/lotteryHall/index',
