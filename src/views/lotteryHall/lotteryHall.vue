@@ -13,7 +13,7 @@
       </router-link>
     </div>
     <div class="hot-lottery">
-      <div class="hot-lottery-item" v-for="(item, index) in hotLottery">
+      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/k3/${index}`)">
         <div class="lottery-icon">
           <i v-if="item.type == 1" class="iconfont icon-pk"></i>
           <i v-if="item.type == 2" class="iconfont icon-shishicai"></i>
@@ -85,6 +85,10 @@
     methods: {
       toAllLottery() {
         this.$router.push('/allLottery')
+      },
+      toPage(link) {
+        this.$router.push(link)
+
       }
     }
   }

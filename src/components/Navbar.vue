@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <header class="head">
+    <header class="head" :style="`background:${bgcolor}`">
       <span class="head-left"><slot name="headleft"></slot></span>
       <span class="head-title"><slot name="headtitle"></slot></span>
       <span class="head-right"><slot name="headright"></slot></span>
@@ -10,7 +10,14 @@
 
 <script>
   export default {
-    name: 'navbar'
+    name: 'navbar',
+    data() {
+    	return {
+      }
+    },
+    props: [
+    	'bgcolor'
+    ]
   }
 </script>
 

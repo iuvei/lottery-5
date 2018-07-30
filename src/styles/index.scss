@@ -16,6 +16,18 @@ html{
   background: #fafafa;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100vh;
+}
+
+.clearfix {
+  overflow: hidden;
+}
+
 a {
   color: #fff;
 }

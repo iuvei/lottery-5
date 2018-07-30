@@ -35,6 +35,11 @@ export default new Router({
       component: _import('lotteryHall/allLottery')
     },
     {
+      path: '/k3/:id',
+      name: 'k3',
+      component: _import('lotteryHall/K3')
+    },
+    {
       path: '/lotteryHall',
       component: Layout,
       redirect: '/lotteryHall/index',
