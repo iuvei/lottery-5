@@ -10,7 +10,7 @@
       <div class="state">
         <div>
           <span>0730080期开奖号码</span>
-          <div>k3-timebar</div>
+          <div>1 2 3</div>
         </div>
         <div>
           <span>0730081期投注截止</span>
@@ -18,15 +18,38 @@
         </div>
       </div>
       <div class="chose-wrap">
-        <div class="chose-mag">
+        <div class="chose-msg">
           猜3个开奖号相加的和，3-10为小，11-18为大。
         </div>
         <ul class="chose-list">
-          <li class="chose-list-item">
-
+          <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
+              @click="choseItem(item)">
+            <span>{{item.name}}</span>
+            <span>{{item.odds}}</span>
           </li>
         </ul>
       </div>
+    </div>
+
+    <div class="chose-info" v-show="checkedList.length > 0">
+      <div>
+        <span>当前选号</span>
+        <div>
+          <span v-for="item in checkedList" style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>
+        </div>
+      </div>
+      <div>
+        <span>每注金额</span>
+        <div>
+          <input type="text">
+          <span>请输入要投注的金额</span>
+        </div>
+      </div>
+    </div>
+    <div class="footerbar">
+      <span class="fl">清空</span>
+      <span class="fm">共{{checkedList.length}}注</span>
+      <span class="fr">马上投注</span>
     </div>
   </div>
 </template>
@@ -38,6 +61,41 @@
     name: 'k3',
     components: {
       HeaderReg
+    },
+    data() {
+      return {
+        choseList: [
+          {name: '大', odds: 1.95, checked: false},
+          {name: '小', odds: 1.95, checked: false},
+          {name: '单', odds: 1.95, checked: false},
+          {name: '双', odds: 1.95, checked: false},
+          {name: '3', odds: 1.95, checked: false},
+          {name: '4', odds: 1.95, checked: false},
+          {name: '5', odds: 1.95, checked: false},
+          {name: '6', odds: 1.95, checked: false},
+          {name: '7', odds: 1.95, checked: false},
+          {name: '8', odds: 1.95, checked: false},
+          {name: '9', odds: 1.95, checked: false},
+          {name: '10', odds: 1.95, checked: false},
+          {name: '11', odds: 1.95, checked: false},
+          {name: '12', odds: 1.95, checked: false},
+          {name: '13', odds: 1.95, checked: false},
+          {name: '14', odds: 1.95, checked: false},
+          {name: '15', odds: 1.95, checked: false},
+          {name: '16', odds: 1.95, checked: false},
+          {name: '17', odds: 1.95, checked: false},
+          {name: '18', odds: 1.95, checked: false},
+        ],
+        checkedList: []
+      }
+    },
+    methods: {
+      choseItem(item) {
+        item.checked = !item.checked
+        this.checkedList = this.choseList.filter(item => {
+          return item.checked == true
+        })
+      }
     }
   }
 </script>
@@ -46,40 +104,159 @@
   @import "@/styles/index.scss";
 
   .k3 {
+    position: relative;
     background: #317455;
     height: 100%;
     width: 100%;
   }
+
   .content {
     margin-top: px2rem(100px);
     margin-bottom: px2rem(100px);
     overflow: hidden;
   }
-.state {
-  color: #caebda;
-  width: 100%;
-  height: px2rem(130px);
-  background-color: #22563f;
-  border-top: 1px solid #426d5a;
-  z-index: 102;
-  box-sizing: border-box;
-  overflow: hidden;
-  &>div {
-    float: left;
-    width: 50%;
-    height: 100%;
-    border-right: 1px solid #164630;
-    text-align: center;
+
+  .state {
+    color: #caebda;
+    width: 100%;
+    height: px2rem(130px);
+    background-color: #22563f;
+    border-top: 1px solid #426d5a;
+    z-index: 102;
+    box-sizing: border-box;
     overflow: hidden;
-    padding: px2rem(10px) 0;
-    &>span {
-      font-size: px2rem(32px);
-    }
-    &>div {
-      height: px2rem(68px);
-      line-height: px2rem(68px);
-      font-size: px2rem(50px);
+    & > div {
+      float: left;
+      width: 50%;
+      height: 100%;
+      border-right: 1px solid #164630;
+      text-align: center;
+      overflow: hidden;
+      padding: px2rem(10px) 0;
+      & > span {
+        font-size: px2rem(32px);
+      }
+      & > div {
+        height: px2rem(68px);
+        line-height: px2rem(68px);
+        font-size: px2rem(50px);
+      }
     }
   }
-}
+
+  .chose-wrap {
+    margin-top: px2rem(30px);
+    padding: px2rem(20px);
+    .chose-msg {
+      text-align: center;
+      font-size: px2rem(25px);
+      line-height: px2rem(30px);
+      margin: px2rem(10px) auto;
+      color: #caebda;
+    }
+    .chose-list {
+      width: px2rem(700px);
+      margin: 0 auto;
+      text-align: center;
+
+      .chose-list-item {
+        vertical-align: top;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid hsla(0, 0%, 100%, .3);
+        width: px2rem(140px);
+        height: px2rem(90px);
+        padding-top: .1em;
+        overflow: hidden;
+        margin: .1rem;
+        line-height: 1.22em;
+        font-size: .9em;
+      }
+    }
+  }
+
+  .checked {
+    color: #f4c829;
+    border-color: #f4c829 !important;
+  }
+  .chose-info {
+    position: fixed;
+    bottom: px2rem(100px);
+    width: 100%;
+  }
+  .chose-info > div {
+    display: flex;
+    height: px2rem(70px);
+    line-height: px2rem(70px);
+    border-bottom: 1px solid #456166;
+    background: #22563f;
+    &>span {
+      flex: 2;
+      text-align: center;
+      color: #caebda;
+      font-size: px2rem(30px);
+    }
+    &>div {
+      flex: 8;
+      &>input {
+        height: px2rem(40px);
+        line-height: px2rem(70px);
+        width: 5em;
+        background-color: #cbeedc;
+        color: #19593c;
+        border-radius: .2em;
+        text-align: center;
+        margin-left: 0.2rem;
+        outline: none;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+      }
+      &>span {
+        color: #caebda;
+        display: inline-block;
+        font-size: px2rem(25px);
+      }
+    }
+  }
+
+  .footerbar {
+    position: fixed;
+    z-index: 500;
+    bottom: 0;
+    height: px2rem(100px);
+    width: 100%;
+    line-height: px2rem(100px);
+    background: #000;
+    span {
+      line-height: px2rem(100px);
+    }
+    .fl {
+      float: left;
+      font-size: px2rem(40px);
+      margin: 0 px2rem(20px);
+      color: #ffaf36;
+    }
+    .fm {
+      float: left;
+      color: #fff;
+      padding: 0;
+      font-size: px2rem(30px);
+    }
+    .fr {
+      float: right;
+      color: #4e0904;
+      height: px2rem(70px);
+      line-height: px2rem(70px);
+      font-size: px2rem(50px);
+      padding: 0 .3rem;
+      margin: .2rem .3rem;
+      border-radius: .2rem;
+      background: #feab03;
+      background: linear-gradient(180deg,#ffdb01 0,#e07a06);
+      background: -webkit-linear-gradient(bottom,#ffdb01,#e07a06);
+    }
+  }
 </style>
