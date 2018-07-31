@@ -26,6 +26,7 @@
   .head {
     position: fixed;
     top: 0;
+    z-index: 500;
     width: 100%;
     height: px2rem(100px);
     text-align: center;
@@ -38,7 +39,6 @@
     }
     .head-left, .head-right {
       flex: 1;
-      margin-top: 3px;
       display: inline-block;
       width: px2rem(100px);
       height: px2rem(100px);

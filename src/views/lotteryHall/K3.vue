@@ -4,19 +4,38 @@
       <router-link slot="headleft" to="lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>
-      <span slot="headtitle">用户注册</span>
+      <span slot="headtitle">
+        <span>
+          <span>玩法</span>
+          <span @click="betTopDetailShow = !betTopDetailShow">点击</span>
+        </span>
+        <div class="betTopDetail" v-show="betTopDetailShow">
+          <div @click="selectedDetTopDetail(item)" class="betTopDetailItem" :class="{'betTopDetailSelected': item.value == betTopDetailSelected}"
+               v-for="item in betTopDetailList">
+            <div class="betTopDetailItemName">{{item.name}}</div>
+            <div class="betTopDetailItemOdds">{{item.odds}}</div>
+            <div class="betTopDetailItemNumber">{{item.number}}</div>
+          </div>
+        </div>
+      </span>
+      <span slot="headright">
+        <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
+        <div class="area-list" v-show="areaShow">
+          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}快3</span>
+        </div>
+      </span>
     </HeaderReg>
-    <div class="content">
-      <div class="state">
-        <div>
-          <span>0730080期开奖号码</span>
-          <div>1 2 3</div>
-        </div>
-        <div>
-          <span>0730081期投注截止</span>
-          <div>k3-timebar</div>
-        </div>
+    <div class="state">
+      <div>
+        <span>0730080期开奖号码</span>
+        <div>1 2 3</div>
       </div>
+      <div>
+        <span>0730081期投注截止</span>
+        <div>k3-timebar</div>
+      </div>
+    </div>
+    <div class="content">
       <div class="chose-wrap">
         <div class="chose-msg">
           猜3个开奖号相加的和，3-10为小，11-18为大。
@@ -35,7 +54,8 @@
       <div>
         <span>当前选号</span>
         <div>
-          <span v-for="item in checkedList" style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>
+          <span v-for="item in checkedList"
+                style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>
         </div>
       </div>
       <div>
@@ -86,7 +106,36 @@
           {name: '17', odds: 1.95, checked: false},
           {name: '18', odds: 1.95, checked: false},
         ],
-        checkedList: []
+        checkedList: [],
+        betTopDetailList: [
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 1},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 2},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 3},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 4},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 5},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 6},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 7},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 8},
+          {name: '和值', odds: '赔率31.5倍', number: 123, value: 9},
+        ],
+        betTopDetailShow: false,
+        betTopDetailSelected: '',
+        arae: [
+          {value: 1, label: '江苏'},
+          {value: 2, label: '安徽'},
+          {value: 3, label: '广西'},
+          {value: 4, label: '湖北'},
+          {value: 5, label: '北京'},
+          {value: 6, label: '江苏'},
+          {value: 7, label: '河北'},
+          {value: 8, label: '甘肃'},
+          {value: 9, label: '上海'},
+          {value: 10, label: '贵州'},
+          {value: 11, label: '吉林'},
+          {value: 12, label: '大众'}
+        ],
+        areaShow: false,
+        araeSelected: {value: 1, label: '江苏'},
       }
     },
     methods: {
@@ -95,6 +144,13 @@
         this.checkedList = this.choseList.filter(item => {
           return item.checked == true
         })
+      },
+      selectArea(item) {
+        this.araeSelected = item
+        this.areaShow = false
+      },
+      selectedDetTopDetail(item) {
+        this.betTopDetailSelected = item.value
       }
     }
   }
@@ -110,19 +166,76 @@
     width: 100%;
   }
 
+  .betTopDetail {
+    position: absolute;
+    top: px2rem(100px);
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: .5em;
+    background: #317455;
+    text-align: center;
+    .betTopDetailItem {
+      display: inline-block;
+      width: px2rem(200px);
+      height: px2rem(200px);
+      margin: px2rem(10px);
+      border: 1px solid hsla(0, 0%, 100%, .3);
+      vertical-align: top;
+      .betTopDetailItemName {
+        font-size: px2rem(32px);
+        line-height: px2rem(32px);
+        margin: px2rem(10px) 0;
+      }
+      .betTopDetailItemOdds {
+        font-size: px2rem(25px);
+        line-height: px2rem(25px);
+        color: #caebda;
+        margin: px2rem(25px) 0;
+      }
+      .betTopDetailItemNumber {
+        font-size: px2rem(40px);
+        line-height: px2rem(40px);
+        margin: px2rem(35px) 0;
+      }
+    }
+  }
+  .betTopDetailSelected {
+    border-color: #f4c829 !important;
+  }
+
+  .area-list {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    position: absolute;
+    top: px2rem(100px);
+    right: 0;
+    width: px2rem(400px);
+    z-index: 50;
+    span {
+      float: left;
+      width: px2rem(200px);
+      border: 0.5px solid rgba(108, 108, 108, 0.14);
+      color: #333;
+      font-size: px2rem(35px);
+    }
+  }
+
   .content {
-    margin-top: px2rem(100px);
+    margin-top: px2rem(230px);
     margin-bottom: px2rem(100px);
     overflow: hidden;
   }
 
   .state {
+    position: fixed;
+    top: px2rem(100px);
     color: #caebda;
     width: 100%;
     height: px2rem(130px);
     background-color: #22563f;
     border-top: 1px solid #426d5a;
-    z-index: 102;
     box-sizing: border-box;
     overflow: hidden;
     & > div {
@@ -179,26 +292,28 @@
     color: #f4c829;
     border-color: #f4c829 !important;
   }
+
   .chose-info {
     position: fixed;
     bottom: px2rem(100px);
     width: 100%;
   }
+
   .chose-info > div {
     display: flex;
     height: px2rem(70px);
     line-height: px2rem(70px);
     border-bottom: 1px solid #456166;
     background: #22563f;
-    &>span {
+    & > span {
       flex: 2;
       text-align: center;
       color: #caebda;
       font-size: px2rem(30px);
     }
-    &>div {
+    & > div {
       flex: 8;
-      &>input {
+      & > input {
         height: px2rem(40px);
         line-height: px2rem(70px);
         width: 5em;
@@ -214,7 +329,7 @@
         -webkit-transform: translateY(1px);
         transform: translateY(1px);
       }
-      &>span {
+      & > span {
         color: #caebda;
         display: inline-block;
         font-size: px2rem(25px);
@@ -255,8 +370,8 @@
       margin: .2rem .3rem;
       border-radius: .2rem;
       background: #feab03;
-      background: linear-gradient(180deg,#ffdb01 0,#e07a06);
-      background: -webkit-linear-gradient(bottom,#ffdb01,#e07a06);
+      background: linear-gradient(180deg, #ffdb01 0, #e07a06);
+      background: -webkit-linear-gradient(bottom, #ffdb01, #e07a06);
     }
   }
 </style>
