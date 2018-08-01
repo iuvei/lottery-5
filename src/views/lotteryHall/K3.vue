@@ -12,7 +12,6 @@
         <div class="betTopDetail" v-show="betTopDetailShow">
           <div @click="selectedDetTopDetail(item)" class="betTopDetailItem"
                :class="{'betTopDetailSelected': item.value == betTopDetailSelected}"
-               :style="{'display: none': item.value == 9}"
                v-for="item in betTopDetailList">
             <div class="betTopDetailItemName">{{item.name}}</div>
             <div class="betTopDetailItemOdds">{{item.odds}}</div>

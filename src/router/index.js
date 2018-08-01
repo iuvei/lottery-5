@@ -39,6 +39,11 @@ export default new Router({
       name: 'k3',
       component: _import('lotteryHall/K3')
     },
+	  {
+		  path: '/SSC/:id',
+		  name: 'SSC',
+		  component: _import('lotteryHall/SSC')
+	  },
     {
       path: '/lotteryHall',
       component: Layout,
