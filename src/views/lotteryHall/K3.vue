@@ -12,6 +12,7 @@
         <div class="betTopDetail" v-show="betTopDetailShow">
           <div @click="selectedDetTopDetail(item)" class="betTopDetailItem"
                :class="{'betTopDetailSelected': item.value == betTopDetailSelected}"
+               :style="{'display: none': item.value == 9}"
                v-for="item in betTopDetailList">
             <div class="betTopDetailItemName">{{item.name}}</div>
             <div class="betTopDetailItemOdds">{{item.odds}}</div>
@@ -52,11 +53,11 @@
         </div>
         <div class="chose-type" v-if="betTopDetailSelected == 2">
           <div class="chose-msg">
-            对所有相同的三个号码111、222、333、444、555、666进行投注，任意号码开出，即为中奖。赔率
+            对所有相同的三个号码(111、222、333、444、555、666)进行投注，任意号码开出，即为中奖。赔率31.50倍。
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 8rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -64,11 +65,11 @@
         </div>
         <div class="chose-type" v-if="betTopDetailSelected == 3">
           <div class="chose-msg">
-            猜3个开奖号相加的和，3-10为小，11-18为大。
+            对相同的三个号码(111、222、333、444、555、666)中的任意一个或多个进行投注，所选号码开出，即为中奖。赔率189.00倍。
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 1.3rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -80,7 +81,7 @@
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 1.3rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -92,7 +93,7 @@
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 8rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -104,7 +105,7 @@
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 1.3rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -116,7 +117,7 @@
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 1.3rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -128,7 +129,7 @@
           </div>
           <ul class="chose-list">
             <li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-                @click="choseItem(item)">
+                @click="choseItem(item)" style="width: 1.3rem">
               <span>{{item.name}}</span>
               <span>{{item.odds}}</span>
             </li>
@@ -171,7 +172,8 @@
     },
     data() {
       return {
-        choseList: [
+	      choseList: [],
+        choseList1: [
           {name: '大', odds: 1.95, checked: false},
           {name: '小', odds: 1.95, checked: false},
           {name: '单', odds: 1.95, checked: false},
@@ -193,6 +195,58 @@
           {name: '17', odds: 1.95, checked: false},
           {name: '18', odds: 1.95, checked: false},
         ],
+	      choseList2: [
+		      {name: '三同号通选', odds: 1.95, checked: false}
+	      ],
+	      choseList3: [
+		      {name: '111', odds: 1.95, checked: false},
+		      {name: '222', odds: 1.95, checked: false},
+		      {name: '333', odds: 1.95, checked: false},
+		      {name: '444', odds: 1.95, checked: false},
+		      {name: '555', odds: 1.95, checked: false},
+		      {name: '666', odds: 1.95, checked: false},
+	      ],
+	      choseList4: [
+		      {name: '1', odds: 1.95, checked: false},
+		      {name: '2', odds: 1.95, checked: false},
+		      {name: '3', odds: 1.95, checked: false},
+		      {name: '4', odds: 1.95, checked: false},
+		      {name: '5', odds: 1.95, checked: false},
+		      {name: '6', odds: 1.95, checked: false},
+	      ],
+	      choseList5: [
+		      {name: '三连号通选', odds: 1.95, checked: false}
+	      ],
+	      choseList6: [
+		      {name: '1', odds: 1.95, checked: false},
+		      {name: '2', odds: 1.95, checked: false},
+		      {name: '3', odds: 1.95, checked: false},
+		      {name: '4', odds: 1.95, checked: false},
+		      {name: '5', odds: 1.95, checked: false},
+		      {name: '6', odds: 1.95, checked: false},
+	      ],
+	      choseList7: [
+		      {name: '11', odds: 1.95, checked: false},
+		      {name: '22', odds: 1.95, checked: false},
+		      {name: '33', odds: 1.95, checked: false},
+		      {name: '44', odds: 1.95, checked: false},
+		      {name: '55', odds: 1.95, checked: false},
+		      {name: '66', odds: 1.95, checked: false},
+		      {name: '1', odds: 1.95, checked: false},
+		      {name: '2', odds: 1.95, checked: false},
+		      {name: '3', odds: 1.95, checked: false},
+		      {name: '4', odds: 1.95, checked: false},
+		      {name: '5', odds: 1.95, checked: false},
+		      {name: '6', odds: 1.95, checked: false},
+	      ],
+	      choseList8: [
+		      {name: '1', odds: 1.95, checked: false},
+		      {name: '2', odds: 1.95, checked: false},
+		      {name: '3', odds: 1.95, checked: false},
+		      {name: '4', odds: 1.95, checked: false},
+		      {name: '5', odds: 1.95, checked: false},
+		      {name: '6', odds: 1.95, checked: false},
+	      ],
         choseType: 1,
         checkedList: [],
         betTopDetailList: [
@@ -227,7 +281,7 @@
       }
     },
     methods: {
-      choseItem(item) {
+      choseItem(item, index) {
         item.checked = !item.checked
         this.checkedList = this.choseList.filter(item => {
           return item.checked == true
@@ -239,8 +293,12 @@
       },
       selectedDetTopDetail(item) {
         this.betTopDetailSelected = item.value
-        alert(this.betTopDetailSelected)
+        this.choseList = eval(`this.choseList${item.value}`)
+        this.betTopDetailShow = false
       }
+    },
+    mounted() {
+	    this.choseList = eval(`this.choseList1`)
     }
   }
 </script>
