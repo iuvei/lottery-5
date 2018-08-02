@@ -38,6 +38,7 @@
 		</div>
 		<div class="content">
 			<div class="chose-wrap">
+        <selectNumber></selectNumber>
 				<div class="chose-type" v-if="betTopDetailSelected == 1">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
@@ -136,7 +137,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="chose-info" v-show="checkedList.length > 0">
 			<div>
 				<span>当前选号</span>
@@ -163,11 +164,13 @@
 
 <script>
 	import HeaderReg from '@/components/Navbar.vue'
-	
+	import selectNumber from './components/selectNumber'
+
 	export default {
 		name: 'k3',
 		components: {
-			HeaderReg
+			HeaderReg,
+      selectNumber
 		},
 		data() {
 			return {
@@ -304,14 +307,14 @@
 
 <style lang="scss" scoped>
 	@import "@/styles/index.scss";
-	
+
 	.ssc {
 		position: relative;
 		background: #f5f1e4;
 		height: 100%;
 		width: 100%;
 	}
-	
+
 	.betTopDetail {
 		position: absolute;
 		top: px2rem(100px);
@@ -346,11 +349,11 @@
 			}
 		}
 	}
-	
+
 	.betTopDetailSelected {
 		border-color: #f4c829 !important;
 	}
-	
+
 	.area-list {
 		margin: 0;
 		padding: 0;
@@ -368,13 +371,13 @@
 			font-size: px2rem(35px);
 		}
 	}
-	
+
 	.content {
 		margin-top: px2rem(230px);
 		margin-bottom: px2rem(100px);
 		overflow: hidden;
 	}
-	
+
 	.state {
 		position: fixed;
 		top: px2rem(100px);
@@ -402,7 +405,7 @@
 			}
 		}
 	}
-	
+
 	.chose-wrap {
 		margin-top: px2rem(30px);
 		padding: px2rem(20px);
@@ -417,7 +420,7 @@
 			width: px2rem(700px);
 			margin: 0 auto;
 			text-align: center;
-			
+
 			.chose-list-item {
 				vertical-align: top;
 				display: inline-block;
@@ -433,18 +436,18 @@
 			}
 		}
 	}
-	
+
 	.checked {
 		color: #f4c829;
 		border-color: #f4c829 !important;
 	}
-	
+
 	.chose-info {
 		position: fixed;
 		bottom: px2rem(100px);
 		width: 100%;
 	}
-	
+
 	.chose-info > div {
 		display: flex;
 		height: px2rem(70px);
@@ -482,7 +485,7 @@
 			}
 		}
 	}
-	
+
 	.footerbar {
 		position: fixed;
 		z-index: 500;
