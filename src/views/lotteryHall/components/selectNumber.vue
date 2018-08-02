@@ -1,16 +1,39 @@
 <template>
   <div class="selectNumber clearfix">
     <div class="title">
-      <span>万位</span>
+      <span>{{titleName}}</span>
     </div>
-    <dvi class="numberContent">
-      <div class="number" v-for="item in 10" :class="{'number-active': item.active == true}">{{item}}</div>
-    </dvi>
+    <div class="numberContent">
+      <div class="number" v-for="item in numberData" :class="{'number-active': item.checked == true}" @click="checkItem(item)">{{item.label}}</div>
+    </div>
   </div>
 </template>
 
 <script>
-
+export default {
+	data(){
+		return {
+			
+    }
+  },
+	props: {
+		titleName: {
+			default: '万位'
+    },
+		numberData: {
+			type: Array
+    }
+  },
+  methods: {
+	  checkItem(item) {
+	  	item.checked = !item.checked
+      let checkedData = this.numberData.filter(item => {
+      	return item.checked == true
+      })
+      this.$emit('input', checkedData)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -57,8 +80,8 @@
     }
   }
   .number-active {
-    background: #dc3b40;
-    color: #fff;
-    border: 1px solid #dc3b40;
+    background: #dc3b40 !important;
+    color: #fff !important;
+    border: 1px solid #dc3b40 !important;
   }
 </style>

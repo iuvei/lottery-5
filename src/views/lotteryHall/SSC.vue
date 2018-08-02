@@ -38,103 +38,7 @@
 		</div>
 		<div class="content">
 			<div class="chose-wrap">
-        <selectNumber></selectNumber>
-				<div class="chose-type" v-if="betTopDetailSelected == 1">
-					<div class="chose-msg">
-						猜3个开奖号相加的和，3-10为小，11-18为大。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 2">
-					<div class="chose-msg">
-						对所有相同的三个号码(111、222、333、444、555、666)进行投注，任意号码开出，即为中奖。赔率31.50倍。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 8rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 3">
-					<div class="chose-msg">
-						对相同的三个号码(111、222、333、444、555、666)中的任意一个或多个进行投注，所选号码开出，即为中奖。赔率189.00倍。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 1.3rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 4">
-					<div class="chose-msg">
-						猜3个开奖号相加的和，3-10为小，11-18为大。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 1.3rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 5">
-					<div class="chose-msg">
-						猜3个开奖号相加的和，3-10为小，11-18为大。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 8rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 6">
-					<div class="chose-msg">
-						猜3个开奖号相加的和，3-10为小，11-18为大。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 1.3rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 7">
-					<div class="chose-msg">
-						猜3个开奖号相加的和，3-10为小，11-18为大。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 1.3rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="chose-type" v-if="betTopDetailSelected == 8">
-					<div class="chose-msg">
-						猜3个开奖号相加的和，3-10为小，11-18为大。
-					</div>
-					<ul class="chose-list">
-						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
-						    @click="choseItem(item)" style="width: 1.3rem">
-							<span>{{item.name}}</span>
-							<span>{{item.odds}}</span>
-						</li>
-					</ul>
-				</div>
+        <selectNumber titleName="前位" :numberData="oneStarNumber" v-model="oneStarNumberCheckedData"></selectNumber>
 			</div>
 		</div>
 
@@ -174,7 +78,19 @@
 		},
 		data() {
 			return {
-				choseList: [],
+				oneStarNumber: [
+					{value: 1,label:1,checked: false},
+					{value: 2,label:1,checked: false},
+					{value: 3,label:1,checked: false},
+					{value: 4,label:1,checked: false},
+					{value: 5,label:1,checked: false},
+					{value: 6,label:1,checked: false},
+					{value: 1,label:1,checked: false},
+					{value: 1,label:1,checked: false},
+					{value: 1,label:1,checked: false},
+					{value: 1,label:1,checked: false}
+				],
+				oneStarNumberCheckedData: [],
 				choseList1: [
 					{name: '大', odds: 1.95, checked: false},
 					{name: '小', odds: 1.95, checked: false},
