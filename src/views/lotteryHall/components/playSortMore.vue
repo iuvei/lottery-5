@@ -1,7 +1,7 @@
 <template>
   <div class="playSortMore">
     <betFilter :tag-main-data="tagMainData" v-model="tagMainDataChecked"></betFilter>
-    <betFilterAnd :followPlaylistData="followPlaylistData"></betFilterAnd>
+    <betFilterAnd :followPlaylistData="followPlaylistData" v-model="followPlaylistDataChecked"></betFilterAnd>
   </div>
 </template>
 <script>
@@ -33,8 +33,16 @@
               {value: 1, label: 'test', checked: false},
               {value: 1, label: 'test', checked: false},
               {value: 1, label: 'test', checked: false},
+            ]},
+          {titleName: 'aedf', data: [
+              {value: 1, label: 'tessda tqw', checked: false},
+              {value: 1, label: 'test', checked: false},
+              {value: 1, label: 'test', checked: false},
+              {value: 1, label: 'test', checked: false},
+              {value: 1, label: 'test', checked: false},
             ]}
-        ]
+        ],
+        followPlaylistDataChecked: []
       }
     }
   }

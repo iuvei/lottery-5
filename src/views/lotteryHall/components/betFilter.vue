@@ -31,6 +31,8 @@
   .betFilter {
     padding: px2rem(10px) px2rem(30px);
     box-shadow: 0 2px 10px rgba(41,41,41,.08);
+    position: relative;
+    z-index: 2;
     background: #fff;
     overflow: hidden;
     .tag_mainplay_item {

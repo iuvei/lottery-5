@@ -25,12 +25,13 @@
     },
     methods: {
       checkItem(item, itemChild) {
-        itemChild.checked = !item.checked
-        // item.checked = !item.checked
-        // let checkedData = this.numberData.filter(item => {
-        //   return item.checked == true
-        // })
-        console.log(item)
+        itemChild.checked = !itemChild.checked
+        let checkedData = item.data.filter(i => {
+          return i.checked == true
+        })
+        checkedData.push(item.titleName)
+        console.log(checkedData)
+        this.$emit('input', checkedData)
       }
     }
   }
@@ -40,9 +41,11 @@
   @import "@/styles/index.scss";
 
   .followPlaylist {
-    padding: px2rem(30px) px2rem(50px);
+    padding: px2rem(10px) px2rem(50px);
     background: #fff;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    z-index: 1;
   }
 
   .title {
@@ -54,8 +57,6 @@
       text-align: center;
       line-height: 1.3em;
       color: #666;
-      position: relative;
-      z-index: 2;
       margin-top: px2rem(10px);
       padding: .2em .5em;
     }
