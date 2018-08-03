@@ -1,13 +1,16 @@
 <template>
   <div class="playSortMore">
     <betFilter :tag-main-data="tagMainData" v-model="tagMainDataChecked"></betFilter>
+    <betFilterAnd :followPlaylistData="followPlaylistData"></betFilterAnd>
   </div>
 </template>
 <script>
   import betFilter from './betFilter'
+  import betFilterAnd from './betFilterAnd'
   export default {
     components: {
-      betFilter
+      betFilter,
+      betFilterAnd
     },
     data() {
       return {
@@ -22,7 +25,16 @@
           {value: 8, label: 'test', checked: false},
           {value: 9, label: 'test', checked: false},
         ],
-        tagMainDataChecked: []
+        tagMainDataChecked: [],
+        followPlaylistData: [
+          {titleName: '直选', data: [
+              {value: 1, label: 'tessda tqw', checked: false},
+              {value: 1, label: 'test', checked: false},
+              {value: 1, label: 'test', checked: false},
+              {value: 1, label: 'test', checked: false},
+              {value: 1, label: 'test', checked: false},
+            ]}
+        ]
       }
     }
   }
