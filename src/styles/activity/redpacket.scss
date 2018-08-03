@@ -1,0 +1,20 @@
+.redpacket{
+	.banner{		
+	margin:px2rem(100px) 0 0 0;
+	text-align:center;
+    img{
+        max-width: 100%;
+        vertical-align: top;
+	}
+	a{
+		span{
+			margin-top:px2rem(20px);
+			display:inline-block;
+			font-size:px2rem(38px);
+			background:#ff0;
+			color:#f00;
+			font-weight:bold;
+		}
+	}
+	}
+}
