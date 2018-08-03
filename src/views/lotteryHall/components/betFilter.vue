@@ -15,12 +15,23 @@
     },
     methods: {
       checkedData(item) {
+        this.tagMainData.forEach(item => {
+          item.checked = false
+        })
         item.checked = !item.checked
         let emitData = this.tagMainData.filter( item => {
           return item.checked == true
         })
         this.$emit('input', emitData)
       }
+    },
+    watch: {
+      'tagMainData': function (n) {
+        alert(11)
+      }
+    },
+    mounted() {
+      // this.checkedData()
     }
   }
 </script>

@@ -9,7 +9,7 @@
           <span>玩法</span>
           <span @click="betTopDetailShow = !betTopDetailShow">点击</span>
         </span>
-      <playSortMore></playSortMore>
+      <playSortMore v-show="betTopDetailShow"></playSortMore>
       </span>
       <span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>

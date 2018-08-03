@@ -29,7 +29,9 @@
         let checkedData = item.data.filter(i => {
           return i.checked == true
         })
-        checkedData.push(item.titleName)
+        if(checkedData) {
+          checkedData.push(item.titleName)
+        }
         console.log(checkedData)
         this.$emit('input', checkedData)
       }

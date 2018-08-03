@@ -1,5 +1,6 @@
 <template>
   <div class="playSortMore">
+    {{tagMainDataChecked}}
     <betFilter :tag-main-data="tagMainData" v-model="tagMainDataChecked"></betFilter>
     <betFilterAnd :followPlaylistData="followPlaylistData" v-model="followPlaylistDataChecked"></betFilterAnd>
   </div>
@@ -15,15 +16,15 @@
     data() {
       return {
         tagMainData: [
-          {value: 1, label: 'test', checked: false},
-          {value: 2, label: 'test', checked: false},
-          {value: 3, label: 'test', checked: false},
-          {value: 4, label: 'test', checked: false},
-          {value: 5, label: 'test', checked: false},
-          {value: 6, label: 'test', checked: false},
-          {value: 7, label: 'test', checked: false},
-          {value: 8, label: 'test', checked: false},
-          {value: 9, label: 'test', checked: false},
+          {value: 1, label: '一星', checked: true},
+          {value: 2, label: '前二', checked: false},
+          {value: 3, label: '后二', checked: false},
+          {value: 4, label: '前三', checked: false},
+          {value: 5, label: '中三', checked: false},
+          {value: 6, label: '后三', checked: false},
+          {value: 7, label: '四星', checked: false},
+          {value: 8, label: '五星', checked: false},
+          {value: 9, label: '大小单双', checked: false},
         ],
         tagMainDataChecked: [],
         followPlaylistData: [
