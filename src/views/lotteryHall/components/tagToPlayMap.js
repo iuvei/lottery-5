@@ -456,7 +456,7 @@ export let tagToPlayMap = [
 					{value: 6, label: 6, checked: false},
 					{value: 1, label: 7, checked: false},
 					{value: 1, label: 8, checked: false},
-					{value: 1, label: 9, checked: false}
+					{value: 1, label: 9, checked: false},
 				]}
 			]},
 		]},
