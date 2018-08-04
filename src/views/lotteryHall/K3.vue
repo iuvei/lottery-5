@@ -1,7 +1,7 @@
 <template>
   <div class="k3 clearfix">
     <HeaderReg bgcolor="#000">
-      <router-link slot="headleft" to="lotteryHall">
+      <router-link slot="headleft" to="/lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle">

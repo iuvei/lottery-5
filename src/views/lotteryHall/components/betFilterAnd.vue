@@ -25,15 +25,36 @@
     },
     methods: {
       checkItem(item, itemChild) {
-        itemChild.checked = !itemChild.checked
-        let checkedData = item.data.filter(i => {
-          return i.checked == true
+      	this.followPlaylistData.forEach(item => {
+      		item.data.forEach(j => {
+      			j.checked = false
+          })
         })
-        if(checkedData) {
-          checkedData.push(item.titleName)
-        }
-        console.log(checkedData)
-        this.$emit('input', checkedData)
+        itemChild.checked = !itemChild.checked
+//        let checkedData = item.data.filter(i => {
+//          return i.checked == true
+//        })
+//        if(checkedData) {
+//          checkedData.push({titleName: item.titleName})
+//        }
+//        this.$emit('input', checkedData)
+      }
+    },
+    watch: {
+	    'followPlaylistData': {
+		    handler:function(n,oldval){
+			    let checkedData = []
+			    this.followPlaylistData.forEach(i => {
+				    i.data.forEach(j => {
+					    if (j.checked == true) {
+						    checkedData = [j]
+						    checkedData.push({titleName: i.titleName})
+					    }
+				    })
+			    })
+			    this.$emit('input', checkedData)
+		    },
+		    deep:true
       }
     }
   }

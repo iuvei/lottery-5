@@ -1,6 +1,5 @@
 <template>
   <div class="playSortMore">
-    {{tagMainDataChecked}}
     <betFilter :tag-main-data="tagMainData" v-model="tagMainDataChecked"></betFilter>
     <betFilterAnd :followPlaylistData="followPlaylistData" v-model="followPlaylistDataChecked"></betFilterAnd>
   </div>
@@ -8,6 +7,8 @@
 <script>
   import betFilter from './betFilter'
   import betFilterAnd from './betFilterAnd'
+  import {tagToPlayMap} from './tagToPlayMap'
+  
   export default {
     components: {
       betFilter,
@@ -27,24 +28,49 @@
           {value: 9, label: '大小单双', checked: false},
         ],
         tagMainDataChecked: [],
-        followPlaylistData: [
-          {titleName: '直选', data: [
-              {value: 1, label: 'tessda tqw', checked: false},
-              {value: 1, label: 'test', checked: false},
-              {value: 1, label: 'test', checked: false},
-              {value: 1, label: 'test', checked: false},
-              {value: 1, label: 'test', checked: false},
-            ]},
-          {titleName: 'aedf', data: [
-              {value: 1, label: 'tessda tqw', checked: false},
-              {value: 1, label: 'test', checked: false},
-              {value: 1, label: 'test', checked: false},
-              {value: 1, label: 'test', checked: false},
-              {value: 1, label: 'test', checked: false},
-            ]}
-        ],
-        followPlaylistDataChecked: []
+        followPlaylistData: [],
+        followPlaylistDataChecked: [],
+        playBoardData: []
       }
+    },
+    methods: {
+    	tagToPlay() {
+    		const _this = this
+		    tagToPlayMap.forEach(item => {
+		    	if(item.tag == this.tagMainDataChecked[0].label){
+		    		_this.followPlaylistData = item.play
+          }
+        })
+      }
+    },
+    watch: {
+    	'tagMainDataChecked': function (n) {
+        this.tagToPlay()
+	    },
+	    'followPlaylistDataChecked': function (n) {
+		    let lv1 = this.tagMainDataChecked[0].label
+		    let lv2 = this.followPlaylistDataChecked[1].titleName
+		    let lv3 = this.followPlaylistDataChecked[0].label
+		    tagToPlayMap.forEach(i => {
+			    if(i.tag == lv1){
+			    	i.play.forEach(j => {
+			    		if (j.titleName == lv2) {
+			    			j.data.forEach(k => {
+			    				if(k.label == lv3) {
+								    this.playBoardData = k.playBoard
+                  }
+                })
+              }
+            })
+          }
+		    })
+	    },
+      'playBoardData': function (n) {
+        this.$emit('input', n)
+      }
+    },
+    mounted() {
+	    this.tagToPlay()
     }
   }
 </script>

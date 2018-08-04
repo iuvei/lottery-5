@@ -9,7 +9,8 @@
           <span>玩法</span>
           <span @click="betTopDetailShow = !betTopDetailShow">点击</span>
         </span>
-      <playSortMore v-show="betTopDetailShow"></playSortMore>
+	      {{playBoardData}}
+      <playSortMore v-show="betTopDetailShow" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
@@ -31,7 +32,6 @@
     <div class="content">
       <div class="chose-wrap">
         <selectNumber titleName="前位" :numberData="oneStarNumber" v-model="oneStarNumberCheckedData"></selectNumber>
-        <betFilter></betFilter>
       </div>
     </div>
 
@@ -72,11 +72,11 @@
       HeaderReg,
       selectNumber,
       textareaNumber,
-      betFilter,
       playSortMore
     },
     data() {
       return {
+	      playBoardData: [], //选中的面板数据
         oneStarNumber: [
           {value: 1, label: 1, checked: false},
           {value: 2, label: 1, checked: false},
