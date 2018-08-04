@@ -7,14 +7,14 @@
 			<span slot="headtitle">
         <span class="titleSelect">
           <span>玩法</span>
-          <div @click="betTopDetailShow = !betTopDetailShow">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
+          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
         </span>
-      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="betTopDetailShow" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
+      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
 			<span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
         <div class="area-list" v-show="areaShow">
-          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}时时彩</span>
+          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}11选5</span>
         </div>
       </span>
 		</HeaderReg>
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+	import {mapGetters} from 'vuex'
 	import HeaderReg from '@/components/Navbar.vue'
 	import selectNumber from './components/selectNumber'
 	import textareaNumber from './components/textareaNumber'
@@ -98,14 +99,22 @@
 				betTopDetailShow: false,
 				betTopDetailSelected: 1,
 				arae: [
-					{value: 1, label: '重庆'},
-					{value: 2, label: '新疆'},
-					{value: 3, label: '天津'},
-					{value: 4, label: '大发'}
+					{value: 1, label: '广东'},
+					{value: 2, label: '上海'},
+					{value: 3, label: '山东'},
+					{value: 4, label: '山西'}
 				],
 				areaShow: false,
-				araeSelected: {value: 1, label: '重庆'},
+				araeSelected: {value: 1, label: '广东'},
 			}
+		},
+		computed: {
+			...mapGetters([
+				'PlaySortMore'
+			])
+		},
+		watch: {
+		
 		},
 		methods: {
 			tagSelected(data) {

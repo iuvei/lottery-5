@@ -31,6 +31,7 @@
           })
         })
         itemChild.checked = !itemChild.checked
+        this.$store.commit('showPlaySortMore', false)
 //        let checkedData = item.data.filter(i => {
 //          return i.checked == true
 //        })

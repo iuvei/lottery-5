@@ -7,9 +7,9 @@
       <span slot="headtitle">
         <span class="titleSelect">
           <span>玩法</span>
-          <div @click="betTopDetailShow = !betTopDetailShow">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
+          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
         </span>
-      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="betTopDetailShow" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
+      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
@@ -59,7 +59,9 @@
 </template>
 
 <script>
-  import HeaderReg from '@/components/Navbar.vue'
+	import {mapGetters} from 'vuex'
+	
+	import HeaderReg from '@/components/Navbar.vue'
   import selectNumber from './components/selectNumber'
   import textareaNumber from './components/textareaNumber'
   import betFilter from './components/betFilter'
@@ -107,6 +109,11 @@
         araeSelected: {value: 1, label: '重庆'},
       }
     },
+	  computed: {
+		  ...mapGetters([
+			  'PlaySortMore'
+		  ])
+	  },
     methods: {
 	    tagSelected(data) {
 	    	this.tagSelectedData = data

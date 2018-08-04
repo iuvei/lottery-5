@@ -1,10 +1,10 @@
 const app = {
   state: {
-    test: 111
+	  PlaySortMore: false
   },
   mutations: {
-    SET_TEST: state => {
-      state.test = 2
+	  showPlaySortMore: (state, data) => {
+      state.PlaySortMore = data
     }
   },
   actions: {
