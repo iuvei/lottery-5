@@ -1,18 +1,13 @@
 <template>
 <div class="upgrade">
 	<div class="upgrade-top">
-	<Navbar>
-    	<span slot="headtitle">{{test}}</span>
-  	</Navbar>
-	
-	<!-- <header class="top">
-		<span>晋级奖励</span>
-		<div class="iconfont back" style="display: none;"></div> 
-		<a href="/activity" class="iconfont back" style=""></a> 
-		<a href="/service" class="right" style="display: none;">客服</a>
-	</header> -->
-
-
+	 <HeaderReg>
+      <router-link slot="headleft" to="/activity">
+        <van-icon name="arrow-left"/>
+      </router-link>
+      <span slot="headtitle">晋级奖励</span>
+      <span slot="headright"></span>
+    </HeaderReg>
 
 		<img src="./images/upgrade-banner.png" alt="">
 	<div class="upgrade-state">
@@ -48,11 +43,11 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import HeaderReg from '@/components/Navbar.vue'
 export default {
 	name:"upgrade",
 	components: {
-      Navbar
+      HeaderReg
 	},
 	data(){
 		return{

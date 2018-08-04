@@ -1,9 +1,14 @@
 <template>
 <div class="upgrade">
 	<div class="upgrade-top">
-	<Navbar>
-    <span slot="headtitle">{{test}}</span>
-  </Navbar>
+	<HeaderReg>
+      <router-link slot="headleft" to="/activity">
+        <van-icon name="arrow-left"/>
+      </router-link>
+      <span slot="headtitle">每日加奖</span>
+      <span slot="headright"></span>
+    </HeaderReg>
+
 		<img src="./images/daily.png" alt="">
 	<div class="upgrade-state">
 			<em>昨日投注：<i>0</i></em>
@@ -40,11 +45,11 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
+import HeaderReg from '@/components/Navbar.vue'
 export default {
 	name:"daily2",
 	components: {
-      Navbar
+      HeaderReg
 	},
 	data(){
 		return{
