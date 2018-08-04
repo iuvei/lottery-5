@@ -9,7 +9,6 @@
           <span>玩法</span>
           <span @click="betTopDetailShow = !betTopDetailShow">点击</span>
         </span>
-	      {{playBoardData}}
       <playSortMore v-show="betTopDetailShow" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
@@ -31,8 +30,9 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-        <selectNumber titleName="前位" :numberData="oneStarNumber" v-model="oneStarNumberCheckedData"></selectNumber>
-      </div>
+	      {{selectedNumberData}}
+	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData"></playBoard>
+			</div>
     </div>
 
     <div class="chose-info" v-show="checkedList.length > 0">
@@ -65,6 +65,7 @@
   import textareaNumber from './components/textareaNumber'
   import betFilter from './components/betFilter'
   import playSortMore from './components/playSortMore'
+  import playBoard from './components/playBoard.vue'
 
   export default {
     name: 'k3',
@@ -72,98 +73,13 @@
       HeaderReg,
       selectNumber,
       textareaNumber,
-      playSortMore
+      playSortMore,
+	    playBoard
     },
     data() {
       return {
 	      playBoardData: [], //选中的面板数据
-        oneStarNumber: [
-          {value: 1, label: 1, checked: false},
-          {value: 2, label: 1, checked: false},
-          {value: 3, label: 1, checked: false},
-          {value: 4, label: 1, checked: false},
-          {value: 5, label: 1, checked: false},
-          {value: 6, label: 1, checked: false},
-          {value: 1, label: 1, checked: false},
-          {value: 1, label: 1, checked: false},
-          {value: 1, label: 1, checked: false},
-          {value: 1, label: 1, checked: false}
-        ],
-        oneStarNumberCheckedData: [],
-        choseList1: [
-          {name: '大', odds: 1.95, checked: false},
-          {name: '小', odds: 1.95, checked: false},
-          {name: '单', odds: 1.95, checked: false},
-          {name: '双', odds: 1.95, checked: false},
-          {name: '3', odds: 1.95, checked: false},
-          {name: '4', odds: 1.95, checked: false},
-          {name: '5', odds: 1.95, checked: false},
-          {name: '6', odds: 1.95, checked: false},
-          {name: '7', odds: 1.95, checked: false},
-          {name: '8', odds: 1.95, checked: false},
-          {name: '9', odds: 1.95, checked: false},
-          {name: '10', odds: 1.95, checked: false},
-          {name: '11', odds: 1.95, checked: false},
-          {name: '12', odds: 1.95, checked: false},
-          {name: '13', odds: 1.95, checked: false},
-          {name: '14', odds: 1.95, checked: false},
-          {name: '15', odds: 1.95, checked: false},
-          {name: '16', odds: 1.95, checked: false},
-          {name: '17', odds: 1.95, checked: false},
-          {name: '18', odds: 1.95, checked: false},
-        ],
-        choseList2: [
-          {name: '三同号通选', odds: 1.95, checked: false}
-        ],
-        choseList3: [
-          {name: '111', odds: 1.95, checked: false},
-          {name: '222', odds: 1.95, checked: false},
-          {name: '333', odds: 1.95, checked: false},
-          {name: '444', odds: 1.95, checked: false},
-          {name: '555', odds: 1.95, checked: false},
-          {name: '666', odds: 1.95, checked: false},
-        ],
-        choseList4: [
-          {name: '1', odds: 1.95, checked: false},
-          {name: '2', odds: 1.95, checked: false},
-          {name: '3', odds: 1.95, checked: false},
-          {name: '4', odds: 1.95, checked: false},
-          {name: '5', odds: 1.95, checked: false},
-          {name: '6', odds: 1.95, checked: false},
-        ],
-        choseList5: [
-          {name: '三连号通选', odds: 1.95, checked: false}
-        ],
-        choseList6: [
-          {name: '1', odds: 1.95, checked: false},
-          {name: '2', odds: 1.95, checked: false},
-          {name: '3', odds: 1.95, checked: false},
-          {name: '4', odds: 1.95, checked: false},
-          {name: '5', odds: 1.95, checked: false},
-          {name: '6', odds: 1.95, checked: false},
-        ],
-        choseList7: [
-          {name: '11', odds: 1.95, checked: false},
-          {name: '22', odds: 1.95, checked: false},
-          {name: '33', odds: 1.95, checked: false},
-          {name: '44', odds: 1.95, checked: false},
-          {name: '55', odds: 1.95, checked: false},
-          {name: '66', odds: 1.95, checked: false},
-          {name: '1', odds: 1.95, checked: false},
-          {name: '2', odds: 1.95, checked: false},
-          {name: '3', odds: 1.95, checked: false},
-          {name: '4', odds: 1.95, checked: false},
-          {name: '5', odds: 1.95, checked: false},
-          {name: '6', odds: 1.95, checked: false},
-        ],
-        choseList8: [
-          {name: '1', odds: 1.95, checked: false},
-          {name: '2', odds: 1.95, checked: false},
-          {name: '3', odds: 1.95, checked: false},
-          {name: '4', odds: 1.95, checked: false},
-          {name: '5', odds: 1.95, checked: false},
-          {name: '6', odds: 1.95, checked: false},
-        ],
+	      selectedNumberData: [],
         choseType: 1,
         checkedList: [],
         betTopDetailList: [

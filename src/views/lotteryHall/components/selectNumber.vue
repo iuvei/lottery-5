@@ -30,7 +30,8 @@ export default {
       let checkedData = this.numberData.filter(item => {
       	return item.checked == true
       })
-      this.$emit('input', checkedData)
+      let emitData = {titleName: this.titleName, data: checkedData}
+      this.$emit('input', emitData)
     }
   }
 }
