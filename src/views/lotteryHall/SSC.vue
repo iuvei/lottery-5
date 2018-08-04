@@ -242,6 +242,7 @@
 
   .state {
     position: fixed;
+    z-index: 10;
     top: px2rem(100px);
     color: #333;
     width: 100%;

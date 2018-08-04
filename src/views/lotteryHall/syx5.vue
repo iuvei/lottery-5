@@ -9,6 +9,7 @@
           <span>玩法</span>
           <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
         </span>
+				
       <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
 			<span slot="headright">
@@ -52,6 +53,7 @@
 		</div>
 		<div class="footerbar">
 			<span class="fl">清空</span>
+			
 			<span class="fm">共{{checkedList.length}}注</span>
 			<span class="fr">马上投注</span>
 		</div>
@@ -79,7 +81,7 @@
 		},
 		data() {
 			return {
-				tagToPlayMap: tagToPlayMapSYX5, //映射关系
+				tagToPlayMap: JSON.parse(sessionStorage.getItem('tagToPlayMapSYX5')), //映射关系
 				playBoardData: [], //选中的面板数据
 				tagSelectedData: [],
 				selectedNumberData: [],
@@ -110,11 +112,14 @@
 		},
 		computed: {
 			...mapGetters([
-				'PlaySortMore'
+				'PlaySortMore',
+				'BetFilterDataFlag'
 			])
 		},
 		watch: {
-		
+			'BetFilterDataFlag': function (n) {
+				this.tagToPlayMap = JSON.parse(sessionStorage.getItem('tagToPlayMapSYX5'))
+			}
 		},
 		methods: {
 			tagSelected(data) {
@@ -144,6 +149,7 @@
 					this.araeSelected = i
 				}
 			})
+			sessionStorage.setItem('tagToPlayMapSYX5', JSON.stringify(tagToPlayMapSYX5))
 		}
 	}
 </script>
@@ -244,6 +250,7 @@
 	
 	.state {
 		position: fixed;
+		z-index: 10;
 		top: px2rem(100px);
 		color: #333;
 		width: 100%;

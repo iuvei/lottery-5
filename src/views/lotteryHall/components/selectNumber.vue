@@ -41,13 +41,17 @@ export default {
   @import "@/styles/index.scss";
 
   .selectNumber {
-
+    position: absolute;
+    z-index: 0;
+    padding: px2rem(20px) 0;
   }
 
+  @include onebottompx('.selectNumber')
+  
   .title {
     float: left;
     span {
-      font-size: px2rem(20px);
+      font-size: px2rem(30px);
       width: px2rem(110px);
       display: block;
       text-align: center;
@@ -76,7 +80,7 @@ export default {
       background: #faf9f6;
       border-radius: 50%;
       border: 1px solid #bfbfbf;
-      font-size: px2rem(32px);
+      font-size: px2rem(35px);
       margin: px2rem(10px) px2rem(25px);
     }
   }

@@ -21,6 +21,7 @@
 		      })
 		      item.checked = !item.checked
 	      }
+	      this.$store.commit('resetBetFilterData')
 //        let emitData = this.tagMainData.filter( item => {
 //          return item.checked == true
 //        })
