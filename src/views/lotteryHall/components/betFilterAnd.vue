@@ -64,7 +64,7 @@
   @import "@/styles/index.scss";
 
   .followPlaylist {
-    padding: px2rem(10px) px2rem(50px);
+    padding: px2rem(10px) px2rem(30px);
     background: #fff;
     border-bottom: 1px solid #eee;
     position: relative;
@@ -87,25 +87,24 @@
 
   .numberContent {
     float: left;
-    width: px2rem(500px);
+    width: px2rem(530px);
     .number {
       float: left;
       display: inline-block;
-      height: px2rem(64px);
-      line-height: px2rem(64px);
+      height: px2rem(56px);
+      line-height: px2rem(56px);
       text-align: center;
-      color: #dc3b40;
+      color: #666;
       background: #faf9f6;
-      border: 1px solid #bfbfbf;
+      border: 1px solid #ddd;
       border-radius: 3px;
-      font-size: px2rem(32px);
-      margin: px2rem(10px) px2rem(25px);
+      font-size: px2rem(28px);
+      margin: px2rem(10px) px2rem(10px);
       padding: 0 px2rem(20px);
     }
   }
   .active {
-    background: #dc3b40 !important;
-    color: #fff !important;
     border: 1px solid #dc3b40 !important;
+    color: #dc3b40 !important;
   }
 </style>

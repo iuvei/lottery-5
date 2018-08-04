@@ -40,9 +40,14 @@ export default new Router({
       component: _import('lotteryHall/K3')
     },
 	  {
-		  path: '/SSC/:id',
-		  name: 'SSC',
+		  path: '/ssc/:id',
+		  name: 'ssc',
 		  component: _import('lotteryHall/SSC')
+	  },
+	  {
+		  path: '/syx5/:id',
+		  name: 'syx5',
+		  component: _import('lotteryHall/syx5')
 	  },
     {
       path: '/lotteryHall',

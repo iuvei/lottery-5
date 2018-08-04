@@ -5,16 +5,16 @@
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle">
-        <span>
+        <span class="titleSelect">
           <span>玩法</span>
-          <span @click="betTopDetailShow = !betTopDetailShow">点击</span>
+          <div @click="betTopDetailShow = !betTopDetailShow">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
         </span>
-      <playSortMore v-show="betTopDetailShow" v-model="playBoardData"></playSortMore>
+      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="betTopDetailShow" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
         <div class="area-list" v-show="areaShow">
-          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}快3</span>
+          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}时时彩</span>
         </div>
       </span>
     </HeaderReg>
@@ -30,7 +30,6 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-	      {{selectedNumberData}}
 	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData"></playBoard>
 			</div>
     </div>
@@ -66,9 +65,10 @@
   import betFilter from './components/betFilter'
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
+  import {tagToPlayMap} from './components/tagToPlayMap'
 
   export default {
-    name: 'k3',
+    name: 'ssc',
     components: {
       HeaderReg,
       selectNumber,
@@ -78,7 +78,9 @@
     },
     data() {
       return {
+	      tagToPlayMap: tagToPlayMap, //映射关系
 	      playBoardData: [], //选中的面板数据
+	      tagSelectedData: [],
 	      selectedNumberData: [],
         choseType: 1,
         checkedList: [],
@@ -96,24 +98,19 @@
         betTopDetailShow: false,
         betTopDetailSelected: 1,
         arae: [
-          {value: 1, label: '江苏'},
-          {value: 2, label: '安徽'},
-          {value: 3, label: '广西'},
-          {value: 4, label: '湖北'},
-          {value: 5, label: '北京'},
-          {value: 6, label: '江苏'},
-          {value: 7, label: '河北'},
-          {value: 8, label: '甘肃'},
-          {value: 9, label: '上海'},
-          {value: 10, label: '贵州'},
-          {value: 11, label: '吉林'},
-          {value: 12, label: '大众'}
+          {value: 1, label: '重庆'},
+          {value: 2, label: '新疆'},
+          {value: 3, label: '天津'},
+          {value: 4, label: '大发'}
         ],
         areaShow: false,
-        araeSelected: {value: 1, label: '江苏'},
+        araeSelected: {value: 1, label: '重庆'},
       }
     },
     methods: {
+	    tagSelected(data) {
+	    	this.tagSelectedData = data
+	    },
       choseItem(item, index) {
         item.checked = !item.checked
         this.checkedList = this.choseList.filter(item => {
@@ -123,6 +120,7 @@
       selectArea(item) {
         this.araeSelected = item
         this.areaShow = false
+	      this.$router.push({params: { id: item.value}})
       },
       selectedDetTopDetail(item) {
         this.betTopDetailSelected = item.value
@@ -132,6 +130,11 @@
     },
     mounted() {
       this.choseList = eval(`this.choseList1`)
+	    this.arae.forEach(i => {
+	    	if(i.value == this.$route.params.id) {
+	    		this.araeSelected = i
+		    }
+	    })
     }
   }
 </script>
@@ -146,6 +149,27 @@
     width: 100%;
   }
 
+  .titleSelect {
+	  span {
+		  display: inline-block;
+		  width: px2rem(10px);
+		  line-height: px2rem(30px);
+		  margin: px2rem(15px);
+		  font-size: px2rem(10px);
+	  }
+	  div {
+		  display: inline-block;
+		  font-size: .8em;
+		  border-radius: .2em;
+		  border: 1px solid hsla(0,0%,100%,.5);
+		  vertical-align: top;
+		  height: 2em;
+		  margin: .45em 0;
+		  line-height: 1.9em;
+		  padding: 0 .4em;
+	  }
+  }
+  
   .betTopDetail {
     position: absolute;
     top: px2rem(100px);
@@ -192,7 +216,7 @@
     position: absolute;
     top: px2rem(100px);
     right: 0;
-    width: px2rem(400px);
+    width: px2rem(200px);
     z-index: 50;
     span {
       float: left;

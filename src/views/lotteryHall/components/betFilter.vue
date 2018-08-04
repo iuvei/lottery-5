@@ -21,17 +21,25 @@
 		      })
 		      item.checked = !item.checked
 	      }
-        let emitData = this.tagMainData.filter( item => {
-          return item.checked == true
-        })
-        this.$emit('input', emitData)
+//        let emitData = this.tagMainData.filter( item => {
+//          return item.checked == true
+//        })
+//        this.$emit('input', emitData)
       }
     },
     watch: {
-    
+	    'tagMainData': {
+		    handler:function(n,oldval){
+			    let emitData = this.tagMainData.filter( item => {
+				    return item.checked == true
+			    })
+			    this.$emit('input', emitData)
+		    },
+		    deep:true
+	    }
     },
     mounted() {
-	    this.checkedData()
+//	    this.checkedData()
     }
   }
 </script>
