@@ -308,7 +308,7 @@
   .k3 {
     position: relative;
     background: #317455;
-    height: 100%;
+    height: 100vh;
     width: 100%;
   }
 

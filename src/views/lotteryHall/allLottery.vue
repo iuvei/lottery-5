@@ -14,9 +14,9 @@
 				</div>
 				<div class="tab-item" :class="{'active': item.name == activeFlag}" v-for="item in lotteryList"
 				     @click="selectLotteryType(item)">
-					<i v-if="item.name == 'syx5'" class="iconfont icon-pk"></i>
-					<i v-if="item.name == 'ssc'" class="iconfont icon-shishicai"></i>
-					<i v-if="item.name == 'k3'" class="iconfont icon-kuai3"></i>
+					<i v-if="item.label == 'syx5'" class="iconfont icon-pk"></i>
+					<i v-if="item.label == 'ssc'" class="iconfont icon-shishicai"></i>
+					<i v-if="item.label == 'k3'" class="iconfont icon-kuai3"></i>
 					<span>{{item.name}}</span>
 				</div>
 			</div>
@@ -24,9 +24,9 @@
 				<div class="lottery-item" v-for="(item, index) in selectedLottery"
 				     @click="toPage(`/${item.type}/${item.value}`)">
 					<div class="lottery-icon">
-						<i v-if="item.type == 'syx5'" class="iconfont icon-pk"></i>
-						<i v-if="item.type == 'ssc'" class="iconfont icon-shishicai"></i>
-						<i v-if="item.type == 'k3'" class="iconfont icon-kuai3"></i></div>
+						<i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-pk"></i>
+						<i v-if="item.type == 'ssc'" style="color: #f96e00" class="iconfont icon-shishicai"></i>
+						<i v-if="item.type == 'k3'" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
 					<div class="lottery-name">{{item.name}}</div>
 					<div class="lottery-number">{{item.number}}</div>
 				</div>
@@ -48,7 +48,7 @@
 			return {
 				lotteryList: [
 					{
-						icon: '11', name: 'k3', data: [
+						icon: '11', name: '快3', label: 'k3', data: [
 						{type: 'k3', name: '江苏快3', number: '全天82期', value: 1},
 						{type: 'k3', name: '安徽快3', number: '全天82期', value: 2},
 						{type: 'k3', name: '广西快3', number: '全天82期', value: 3},
@@ -63,7 +63,7 @@
 					]
 					},
 					{
-						icon: '11', name: 'ssc', data: [
+						icon: '11', name: '时时彩', label: 'ssc',data: [
 						{type: 'ssc', name: '重庆时时彩', number: '全天82期', value: 1},
 						{type: 'ssc', name: '新疆时时彩', number: '全天82期', value: 2},
 						{type: 'ssc', name: '天津时时彩', number: '全天82期', value: 3},
@@ -71,7 +71,7 @@
 					]
 					},
 					{
-						icon: '11', name: 'syx5', data: [
+						icon: '11', name: '11选5',label: 'syx5', data: [
 						{type: 'syx5', name: '广东11选5', number: '全天82期', value: 1},
 						{type: 'syx5', name: '上海11选5', number: '全天82期', value: 2},
 						{type: 'syx5', name: '山东11选5', number: '全天82期', value: 3},

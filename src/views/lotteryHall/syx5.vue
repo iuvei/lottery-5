@@ -160,7 +160,7 @@
 	.syx5 {
 		position: relative;
 		background: #f5f1e4;
-		height: 100%;
+		height: 100vh;
 		width: 100%;
 	}
 	

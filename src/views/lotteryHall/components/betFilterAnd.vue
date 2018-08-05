@@ -64,6 +64,9 @@
 <style lang="scss" scoped>
   @import "@/styles/index.scss";
 
+  .betFilterAnd {
+    background: #fff;
+  }
   .followPlaylist {
     padding: px2rem(10px) px2rem(30px);
     background: #fff;
