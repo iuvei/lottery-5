@@ -1,15 +1,7 @@
 <template>
-
     <div class="find-content">
       <!-- 导航栏开始 -->
-      <Navbar>
-      <span slot="headtitle">
-        <ul>
-          <li>中奖信息</li>
-          <li>昨日盈利榜</li>
-        </ul>  
-      </span>
-    </Navbar>
+      
       <!-- 导航栏结束 -->
 
       <div class="act-item" v-for="(item,index) in finds" @click="toPage(`/player/${index}`)" v-bind:key="item.id">
@@ -27,7 +19,7 @@
           </div>
           //右箭头
           <div class="act-icon">
-            <i class="right-iconfont icon-youjiantou" style="color:#999"></i>
+            
           </div>
         </a>
       </div>
@@ -35,12 +27,12 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
+import HeaderReg from '@/components/Navbar.vue';
 
 export default {
-	name:"find",
+	name:"find-yesterday",
   components:{
-    Navbar
+    HeaderReg
   },
   data(){
     return{

@@ -1,0 +1,84 @@
+// 导航栏部分开始
+.head-title{
+  text-align:center;
+  font-size:px2rem(36px);
+  ul{
+    margin:0;padding:0;
+    position:absolute;
+    top:0;
+    border:1px solid #fff;
+    li{
+      float:left;
+    }
+  }
+}
+// 导航栏部分结束
+// 主体部分开始
+@include onebottompx('.act-item');
+.act-item{
+    background:#fff;
+    color:#333;
+    margin:0;
+    overflow:hidden;
+    a{
+      display:flex;
+      width:100%;
+      padding:px2rem(10px) 0;
+      background:transparent;
+      text-decoration:none;
+      overflow:hidden;
+      //左侧头像开始
+      .num{
+        position:absolute;
+        margin-left:px2rem(10px);
+        margin-top:px2rem(5px);
+        width:px2rem(150px);
+        height:px2rem(87px);
+        text-align:center;
+        line-height:1;
+        color:#333;
+        img{
+            width:px2rem(94px);
+            vertical-align:middle;
+            border-radius:100%;
+          }
+      }
+      // 左侧头像结束
+      // 中间介绍开始
+      .text{
+        width:px2rem(469px);
+        strong{
+          font-size:px2rem(34px);
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          font-weight: 400;
+          line-height:1.5em;
+          color:rgb(51, 136, 255);
+        }
+        span{
+          color:#686868;
+          font-size:px2rem(34px);
+          line-height:1.5em;
+          overflow: hidden;
+        }
+        em{
+          font-size:px2rem(34px);
+          font-style:normal;
+          color:#e80d2d;
+        }
+      }
+      // 中间介绍结束
+      // 右箭头开始
+      .act-icon{
+        // flex:1;
+        // margin-top:px2rem(27px);
+        // margin-right:px2rem(38px);
+        position:absolute;
+        right:px2rem(38px);
+        top:px2rem(35px);
+      }
+      // 右箭头结束
+    }
+  }
+// 主体部分结束

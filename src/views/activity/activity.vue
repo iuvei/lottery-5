@@ -1,9 +1,11 @@
 <template>
     <div class="activity-content">
       <div class="act-item" v-for="(item,index) in activities" @click="toPage(`/upgrade/${index}`)" v-bind:key="item.id">
-        <a href="#">
+        <a href="#"> 
           //左侧图标
-          <div class="num">{{item.id}}</div>
+          <div class="num">
+            <i>{{item.id}}</i>
+          </div>
           //中间介绍
           <div class="text">
             <strong>{{item.top1}}</strong>
@@ -51,6 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/index";
+// @include onebottompx('.personalData ul li');
 @import "../../styles/activity/main";
 </style>
 

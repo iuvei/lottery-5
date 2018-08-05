@@ -1,3 +1,5 @@
+@include onetoppx('.act-item');
+@include onebottompx('.act-item');
 .act-item{
     background:#fff;
     color:#333;
@@ -12,14 +14,17 @@
       overflow:hidden;
       .num{
         flex:2;
-        padding-top:px2rem(27px);
         margin-left:px2rem(38px);
         margin-right:px2rem(23px);
         width:px2rem(87px);
         height:px2rem(87px);
         text-align:center;
-        line-height:1;
+        line-height:5;
         color:#333;
+        i{
+          padding:px2rem(3.4px);
+          margin-top:px2rem(17px);
+        }
       }
       .text{
         width:px2rem(469px);
