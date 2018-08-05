@@ -76,20 +76,17 @@
       Navbar
     },
     methods: {
-      change() {
-        this.$store.commit(SET_TEST, 111)
-      },
       toPage (src) {
         this.$router.push(src)
       }
     },
     computed: {
       ...mapGetters([
-        'test'
+      
       ])
     },
     mounted() {
-      console.log(this.app.test)
+	    this.$store.commit('setHeaderTitle', '个人中心')
     }
   }
 </script>
@@ -168,7 +165,7 @@
 // user-options end
 .user-options {
   font-size: px2rem(34px);
-  letter-spacing: 3px;
+  margin-left: px2rem(3px);
   overflow: hidden;
   li {
     padding: px2rem(30px) 0;
