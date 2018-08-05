@@ -4,8 +4,8 @@
       <router-link slot="headleft" to="home">
         <van-icon name="arrow-left"/>
       </router-link>
-      <span slot="headtitle">
-        交易记录
+      <span slot="headtitle">交易记录</span>
+      <span slot="headright" @click="show=true">
         <span class="whichDay">今天<van-icon name="success" /></span>
       </span>
     </Navbar>
@@ -17,6 +17,17 @@
         <li :class="{'on': on===3}" @click="on=3">充值记录</li>
       </ul>
     </div>
+
+    <!-- 弹出层 -->
+    <div class="popup">
+      <van-popup v-model="show" position="bottom">
+        <li>今天</li>
+        <li>昨天</li>
+        <li>七天</li>
+        <li @click="show=false">取消</li>
+      </van-popup>
+    </div>
+    <!-- 弹出层 end -->
   </div>
 </template>
 
@@ -30,18 +41,19 @@ export default {
   },
   data () {
     return {
-      on: 1
+      on: 1,
+      show: false
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/styles/index.scss";
 
 // 哪天
 .whichDay {
-  float: right;
+  font-size: px2rem(30px);
 }
 // 哪天 end
 
@@ -64,6 +76,20 @@ export default {
         color: #da393e;
         border-bottom: 2px solid #da393e;
       }
+    }
+  }
+}
+
+@include onebottompx('.popup li', 'bottom', 'after', #ededed);
+.popup{
+  li {
+    margin: 0;
+    padding: px2rem(30px);
+    list-style: none;
+    font-size: px2rem(40px);
+    text-align: center;
+    &:last-child {
+      border-top: px2rem(30px) solid #efeef4;
     }
   }
 }

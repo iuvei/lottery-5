@@ -1,0 +1,109 @@
+.player{
+	min-height:100%;
+	background:#fff;
+	// banner开始
+    .banner{
+		position:relative;
+    	background:url(./../../../static/images/playerHomeBg.jpg) no-repeat top left;
+    	background-size:100%;
+    	height:px2rem(304px);
+    	.playerHeadImg{
+			position:absolute;
+			top:px2rem(-65px);
+			left:px2rem(280px);
+			margin-top:px2rem(261px);
+			margin-left:-px2rem(109px);
+			width:px2rem(205px);
+			height:px2rem(205px);
+			border:px2rem(6px) solid #fff;
+			border-radius:50%;
+			overflow:hidden;
+			img{
+				width:px2rem(217px);
+				vertical-align:middle;
+				border:0;
+			}
+		}
+	}
+	// banner结束
+	// 会员信息开始
+	@include onebottompx('.playerInfo');
+	.playerInfo{
+    	position: relative;
+		text-align: center;
+    	line-height: 1.6;
+		margin-top:px2rem(122px);
+		font-size:px2rem(30px);
+		letter-spacing: px2rem(3px);
+		h1{
+			font-size: px2rem(38px);
+			color: #333;
+			margin:0;
+			font-weight:400;
+		}
+		h2{
+			margin:0;
+			font-size: px2rem(30px);
+			 color: #666;
+			 font-weight:400;
+		}
+		span{
+			background:#59adf2;
+			color: #fff;
+    	padding: 0 px2rem(10px);
+			border-radius: 5%;
+			font-size:px2rem(36px);
+		}
+		p{
+			font-size:px2rem(30px);
+			color: #333;
+			margin: px2rem(12px) 0;
+			padding-bottom: px2rem(36px);
+		em{
+			margin-right:px2rem(45px);
+			font-style:normal;
+		}}
+		strong{
+			position: absolute;
+    	bottom: px2rem(250px);
+    	right: 0;
+    	background: #da3a3f;
+    	color: #fff;
+    	display: block;
+    	padding: px2rem(3px) px2rem(28px);
+    	border: px2rem(2px) solid #e2e2e2;
+    	border-right: 0;
+    	border-radius: 1em 0 0 1em;
+			font-size: px2rem(34px);
+			text-decoration:none;
+			font-weight:normal;
+		}
+
+	}
+	// 会员信息结束
+	// 喜欢的彩票开始
+	.like-lottery{
+		text-align:center;
+		p{
+			font-size:px2rem(36px);
+			color:#666;
+		}
+		.wrap{
+			padding:0 px2rem(47px);
+			div{
+				display:flex;
+				width:100%;
+				a{
+					flex:1;
+					i{
+						display: inline-block;
+        		color: #e41404;
+        		font-size: px2rem(110px);
+        		margin-top: px2rem(30px);
+					}
+				}
+			}
+		}
+	}
+	// 喜欢的彩票结束
+}
