@@ -11,7 +11,8 @@
 	
 	export default {
 		components: {
-			selectNumber
+			selectNumber,
+			textareaNumber
 		},
 		props: ['playBoardData'],
 		data() {
