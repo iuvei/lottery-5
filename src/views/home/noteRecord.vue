@@ -9,6 +9,8 @@
       </router-link>
       <span slot="headtitle" class="btn-group">
         <button :class="{'recordType': recordType==='noteRecord'}" @click="recordType='noteRecord'">投注记录</button><button :class="{'recordType': recordType==='chaseNumRecord'}" @click="recordType='chaseNumRecord'">追号记录</button>
+      </span>
+      <span slot="headright" @click="show=true">
         <span class="whichDay">今天<van-icon name="success" /></span>
       </span>
     </Navbar>
@@ -33,6 +35,16 @@
       <!-- 追号记录 end -->
     </div>
 
+    <!-- 弹出层 -->
+    <div class="popup">
+      <van-popup v-model="show" position="bottom">
+        <li>今天</li>
+        <li>昨天</li>
+        <li>七天</li>
+        <li @click="show=false">取消</li>
+      </van-popup>
+    </div>
+    <!-- 弹出层 end -->
   </div>
 </template>
 
@@ -47,7 +59,8 @@ export default {
   data () {
     return {
       recordType: 'noteRecord',
-      on: 1
+      on: 1,
+      show: false
     }
   }
 }
@@ -80,7 +93,7 @@ export default {
 
 // 哪天
 .whichDay {
-  float: right;
+  font-size: px2rem(30px);
 }
 // 哪天 end
 
@@ -109,5 +122,20 @@ export default {
   }
 }
 
+// 弹出层
+@include onebottompx('.popup li', 'bottom', 'after', #ededed);
+.popup{
+  li {
+    margin: 0;
+    padding: px2rem(30px);
+    list-style: none;
+    font-size: px2rem(40px);
+    text-align: center;
+    &:last-child {
+      border-top: px2rem(30px) solid #efeef4;
+    }
+  }
+}
+// 弹出层
 </style>
 
