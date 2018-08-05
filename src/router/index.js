@@ -140,6 +140,31 @@ export default new Router({
         component: _import('home/home'),
         name: 'home'
       }]
+    },
+    {
+      path: '/recharge',
+      component: _import('home/recharge'),
+      name: 'recharge'
+    },
+    {
+      path: '/transRecord',
+      component: _import('home/transRecord'),
+      name: 'transRecord'
+    },
+    {
+      path: '/noteRecord',
+      component: _import('home/noteRecord'),
+      name: 'noteRecord'
+    },
+    {
+      path: '/userInfo',
+      component: _import('home/userInfo'),
+      name: 'userInfo'
+    },
+    {
+      path: '/safeCenter',
+      component: _import('home/safeCenter'),
+      name: 'safeCenter'
     }
   ]
 })
