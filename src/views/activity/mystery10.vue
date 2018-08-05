@@ -39,6 +39,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
-@import "@/styles/activity/mystery.scss";
+@import "./styles/mystery.scss";
 
 </style>

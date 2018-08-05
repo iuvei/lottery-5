@@ -67,6 +67,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/index";
-@import "../../styles/find/player";
+@import "./styles/player";
 
 </style>

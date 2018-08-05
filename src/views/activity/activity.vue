@@ -53,7 +53,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/index";
-// @include onebottompx('.personalData ul li');
-@import "../../styles/activity/main";
+@import "./styles/main";
 </style>
 

@@ -31,5 +31,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
-@import "@/styles/activity/wechat.scss";
+@import "./styles/wechat.scss";
 </style>

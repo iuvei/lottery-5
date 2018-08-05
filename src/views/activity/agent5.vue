@@ -65,6 +65,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
-@import "@/styles/activity/agent.scss";
+@import "./styles/agent.scss";
 
 </style>

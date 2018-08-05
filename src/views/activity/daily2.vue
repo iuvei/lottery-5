@@ -69,6 +69,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
-@import "@/styles/activity/upgrade.scss";
+@import "./styles/upgrade.scss";
 
 </style>

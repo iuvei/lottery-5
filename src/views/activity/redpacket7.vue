@@ -27,5 +27,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
-@import "@/styles/activity/redpacket.scss";
+@import "./styles/redpacket.scss";
 </style>
