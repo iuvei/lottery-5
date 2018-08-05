@@ -88,8 +88,10 @@
       },
       toPage(link) {
         this.$router.push(link)
-
       }
+    },
+    mounted() {
+	    this.$store.commit('setHeaderTitle', 'xx彩票')
     }
   }
 </script>

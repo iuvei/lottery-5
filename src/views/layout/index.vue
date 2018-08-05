@@ -1,6 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <Navbar class="navbar"></Navbar>
+    <Navbar class="navbar">
+      <span slot="headtitle">{{headerTitle}}</span>
+    </Navbar>
     <AppMain class="app-main"></AppMain>
     <Footerbar></Footerbar>
   </div>
@@ -8,6 +10,7 @@
 
 <script>
   import { Navbar, AppMain, Footerbar} from "./components";
+  import {mapGetters} from "vuex";
   // import Navbar from '@/components/Navbar'
 
   export default {
@@ -16,8 +19,12 @@
       AppMain,
       Footerbar,
       Navbar
+    },
+    computed: {
+    	...mapGetters([
+		    'headerTitle'
+      ])
     }
-
   }
 </script>
 
