@@ -98,6 +98,21 @@ export default new Router({
       path: '/safeCenter',
       component: _import('home/safeCenter'),
       name: 'safeCenter'
+    },
+    {
+      path: '/agentCenter',
+      component: _import('home/agentCenter'),
+      name: 'agentCenter'
+    },
+    {
+      path: '/todayProfitLoss',
+      component: _import('home/todayProfitLoss'),
+      name: 'todayProfitLoss'
+    },
+    {
+      path: '/myMessage',
+      component: _import('home/myMessage'),
+      name: 'myMessage'
     }
   ]
 })

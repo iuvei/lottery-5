@@ -1,3 +1,6 @@
+<!--
+  投注记录
+-->
 <template>
   <div class="noteRecord">
     <Navbar>

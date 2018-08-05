@@ -15,19 +15,19 @@ export default {
 <style lang="scss" scoped>
 .title {
   display: flex;
-  margin: 28px auto 24px auto;
+  margin: 0 auto;
   width: 80%;
 
   .line {
     flex: 1;
     position: relative;
-    top: -6px;
+    top: -8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .text {
     padding: 0 12px;
-    font-size: 14px;
+    font-size: px2rem(28px);
   }
 }
 </style>
