@@ -24,19 +24,16 @@
         display:block;
         width:100%;
         height:100%;
-
+ 
         &.current {
           background: #fff;
-          color: #e80d2d;
-        }
+          color: #e80d2d;     
       }
+    }
     }
   }
 }
-.change{
-  background:#e80d2d;
-  color:#fff;
-}
+
 // 导航end
 
 

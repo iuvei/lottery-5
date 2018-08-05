@@ -39,47 +39,18 @@
     },
     data() {
       return {
-        hotLottery: [{
-          type: 2,
-          name: 'test',
-          number: 222
-        }, {
-          type: 1,
-          name: 'test',
-          number: 222
-        }, {
-          type: 3,
-          name: 'test',
-          number: 222
-        }, {
-          type: 1,
-          name: 'test',
-          number: 222
-        }, {
-          type: 1,
-          name: 'test',
-          number: 222
-        }, {
-          type: 1,
-          name: 'test',
-          number: 222
-        }, {
-          type: 3,
-          name: 'test',
-          number: 222
-        }, {
-          type: 2,
-          name: 'test',
-          number: 222
-        }, {
-          type: 2,
-          name: 'test',
-          number: 222
-        }, {
-          type: 2,
-          name: 'test',
-          number: 222
-        }]
+        hotLottery: [
+          {type: 2,name: 'test',number: 222}, 
+          {type: 1,name: 'test',number: 222}, 
+          {type: 3,name: 'test',number: 222}, 
+          {type: 1,name: 'test',number: 222}, 
+          {type: 1,name: 'test',number: 222}, 
+          {type: 1,name: 'test',number: 222}, 
+          {type: 3,name: 'test',number: 222}, 
+          {type: 2,name: 'test',number: 222}, 
+          {type: 2,name: 'test',number: 222}, 
+          {type: 2,name: 'test',number: 222}
+        ]
       }
     },
     methods: {
@@ -122,6 +93,8 @@
       margin-left: px2rem(20px);
     }
   }
+
+
 
   @include onetoppx('.hot-lottery-item');
   @include oneleftpx('.hot-lottery-item');

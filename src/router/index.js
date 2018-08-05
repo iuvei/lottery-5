@@ -192,15 +192,6 @@ export default new Router({
         name: 'findYesterday'
       }]
     },
-    // {
-    //   path: '/find-yesterday',
-    //   component: Layout,
-    //   children: [{
-    //     path: 'index',
-    //     component: _import('find/find-yesterday'),
-    //     name: 'find-yeste`rday'
-    //   }]
-    // },
     {
       path: '/home',
       component: Layout,

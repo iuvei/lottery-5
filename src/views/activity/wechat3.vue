@@ -1,9 +1,14 @@
 <template>
   <div class="wechat">
 		<div class="wechat-top">
-			<Navbar>
-    		<span slot="headtitle">{{test}}</span>
-  		</Navbar>
+			<HeaderReg>
+      <router-link slot="headleft" to="/activity">
+        <van-icon name="arrow-left"/>
+      </router-link>
+      <span slot="headtitle">微信解除限额</span>
+      <span slot="headright"></span>
+    </HeaderReg>
+
 		</div>
 		<div class="wechat-top">
 			<img src="./images/wechat1.png" alt="">
@@ -15,21 +20,16 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
+import HeaderReg from '@/components/Navbar.vue';
 export default {
 	name:"wechat3",
 	components: {
-      Navbar
+      HeaderReg
 	}
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
-.wechat{
-	padding:px2rem(100px) 0 px2rem(138px) 0;
-	img{
-		max-width:100%;
-	}
-}
+@import "./styles/wechat.scss";
 </style>
