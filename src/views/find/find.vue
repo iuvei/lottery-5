@@ -4,7 +4,7 @@
       <!-- 导航栏开始 -->
       <div class="top">
         <ul>
-          <li><a @click="toPage(`/find`),changeClass()">中奖信息</a></li>
+          <li><a @click="toPage(`/find`),changeClass()" class="current">中奖信息</a></li>
           <li><a @click="toPage(`/find-yesterday`),changeClass()">昨日盈利榜</a></li>
         </ul>
       </div>

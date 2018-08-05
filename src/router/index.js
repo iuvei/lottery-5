@@ -174,10 +174,11 @@ export default new Router({
     {
       path: '/find-yesterday',
       component: Layout,
+      redirect: '/find-yesterday',
       children: [{
-        path: 'index',
+        path: '',
         component: _import('find/find-yesterday'),
-        name: 'find-yesterday'
+        name: 'findYesterday'
       }]
     },
     {

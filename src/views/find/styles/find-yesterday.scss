@@ -1,0 +1,49 @@
+.text{
+    p{
+        margin:0;padding:0;
+        span:nth-child(1){
+            font-size:px2rem(32px);
+            color:#333;
+        }
+        span:nth-child(4){
+            font-size:px2rem(32px);
+            color:#333;
+        }
+        span:nth-child(2){
+            color:rgb(51, 136, 255);
+        }
+        span:nth-child(5){
+            color:#e80d2d;
+        }
+    }
+}
+.act-icon{
+    position:absolute;
+    top:px2rem(0px);
+    width:px2rem(70px);
+    height:px2rem(65px);
+    padding:px2rem(20px) px2rem(24px);
+    text-align:center;
+    border-radius:50%;
+    span{
+        width:px2rem(54px);
+        height:px2rem(40px);
+        font-size:px2rem(30px);
+    }
+    &.one{
+        color:#fff;
+        background: radial-gradient(circle at 25px 25px,#c12f33,#ca9293);
+    }
+    &.two{
+        color:#fff;
+        background: radial-gradient(circle at 25px 25px,#2b82cc,#53b0fe);
+    }
+    &.three{
+        color:#fff;
+        background: radial-gradient(circle at 25px 25px,#c57532,#f8a968);
+    }
+    &.other{
+        color:#333;
+        background: none;
+    }
+}
