@@ -1,3 +1,21 @@
+// 导航开始
+.top{
+  position:fixed;
+  top:0;
+  min-width:100%;
+  min-height:px2rem(100px);
+  z-index:1000;
+  p{
+    margin:0;
+    padding:px2rem(20px);
+    color:#fff;
+    font-size:px2rem(40px);
+    text-align:center;
+  }
+}
+// 导航end
+
+// 活动列表开始
 @include onetoppx('.act-item');
 @include onebottompx('.act-item');
 .act-item{
@@ -57,3 +75,4 @@
       }
     }
   }
+  // 活动列表结束

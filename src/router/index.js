@@ -172,6 +172,15 @@ export default new Router({
       }]
     },
     {
+      path: '/find-yesterday',
+      component: Layout,
+      children: [{
+        path: 'index',
+        component: _import('find/find-yesterday'),
+        name: 'find-yesterday'
+      }]
+    },
+    {
       path: '/home',
       component: Layout,
       redirect: '/home/index',

@@ -2,23 +2,19 @@
 
     <div class="find-content">
       <!-- 导航栏开始 -->
-      <Navbar>
-      <span slot="headtitle">
+      <div class="top">
         <ul>
-          <li>中奖信息</li>
-          <li>昨日盈利榜</li>
-        </ul>  
-      </span>
-    </Navbar>
+          <li><a @click="toPage(`/find`),changeClass()">中奖信息</a></li>
+          <li><a @click="toPage(`/find-yesterday`),changeClass()">昨日盈利榜</a></li>
+        </ul>
+      </div>
       <!-- 导航栏结束 -->
 
       <div class="act-item" v-for="(item,index) in finds" @click="toPage(`/player/${index}`)" v-bind:key="item.id">
         <a href="#">
           //左侧头像
           <div class="num">
-            <!-- 此处img遍历失败，不知道为什么 -->
 			      <img v-bind:src="item.src">
-            <!-- <img src="./images/player1.jpg" alt=""> -->
 		      </div>
           //中间介绍
           <div class="text">
@@ -55,13 +51,16 @@ export default {
         	{id:8,src:"./../../../static/images/player8.jpg",top1:"151***g",top2:"在上海",bottom1:"喜中",bottom2:"￥2.3"},
         	{id:9,src:"./../../../static/images/player9.jpg",top1:"151***g",top2:"在上海",bottom1:"喜中",bottom2:"￥2.3"},
         	{id:10,src:"./../../../static/images/player10.jpg",top1:"151***g",top2:"在上海",bottom1:"喜中",bottom2:"￥2.3"}
-		]
+    ]
 	}
   },
   methods:{
     toPage(link) {
-        this.$router.push(link)
-      }
+      this.$router.push(link)
+    },
+    changeClass(){
+      this.class="change";
+    }
   }
 }
 </script>

@@ -1,5 +1,12 @@
 <template>
     <div class="activity-content">
+      <!-- 导航栏开始 -->
+      <div class="top">
+        <p>活动中心</p>
+      </div>
+      <!-- 导航栏结束 -->
+
+
       <div class="act-item" v-for="(item,index) in activities" @click="toPage(`/upgrade/${index}`)" v-bind:key="item.id">
         <a href="#"> 
           //左侧图标

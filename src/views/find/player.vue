@@ -12,7 +12,7 @@
     <!-- banner开始 -->
 		<div class="banner">
 			<div class="playerHeadImg">
-				<img src="./images/player1.jpg" alt="">
+				<img src="./../../../static/images/player1.jpg" alt="">
 			</div>
 		</div>
     <!-- banner end -->
