@@ -46,17 +46,17 @@
         <span>安全中心</span>
         <van-icon name="arrow" />
       </li>
-      <li>
+      <li @click="toPage('/agentCenter')">
         <van-icon name="points" />
         <span>代理中心</span>
         <van-icon name="arrow" />
       </li>
-      <li>
+      <li @click="toPage('/todayProfitLoss')">
         <van-icon name="points" />
         <span>今日盈亏</span>
         <van-icon name="arrow" />
       </li>
-      <li>
+      <li @click="toPage('/myMessage')">
         <van-icon name="points" />
         <span>我的消息</span>
         <van-icon name="arrow" />
