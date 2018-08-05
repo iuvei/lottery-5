@@ -121,16 +121,16 @@ export default new Router({
         name: 'activity'
       }]
     },
-    {
-      path: '/find',
-      component: Layout,
-      redirect: '/find/index',
-      children: [{
-        path: 'index',
-        component: _import('find/find'),
-        name: 'find'
-      }]
-    },
+    // {
+    //   path: '/find',
+    //   component: Layout,
+    //   redirect: '/find/index',
+    //   children: [{
+    //     path: 'index',
+    //     component: _import('find/find'),
+    //     name: 'find'
+    //   }]
+    // },
     {
       path: '/home',
       component: Layout,

@@ -1,6 +1,6 @@
 <template>
 	<div class="playBoard">
-		<selectNumber v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
+		<selectNumber :key="Math.random()" v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
 		<textareaNumber v-else></textareaNumber>
 	</div>
 </template>
