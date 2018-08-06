@@ -7,7 +7,7 @@
       <span slot="headtitle">
         <span class="titleSelect">
           <span>玩法</span>
-          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
+          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]} ${tagSelectedData[2]}`}}</div>
         </span>
       <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
@@ -60,7 +60,7 @@
 
 <script>
 	import {mapGetters} from 'vuex'
-	
+
 	import HeaderReg from '@/components/Navbar.vue'
   import selectNumber from './components/selectNumber'
   import textareaNumber from './components/textareaNumber'
@@ -82,21 +82,10 @@
       return {
 	      tagToPlayMap: tagToPlayMap, //映射关系
 	      playBoardData: [], //选中的面板数据
-	      tagSelectedData: [],
-	      selectedNumberData: [],
+	      tagSelectedData: [], //选中的标签
+	      selectedNumberData: [], //选中的号码
         choseType: 1,
         checkedList: [],
-        betTopDetailList: [
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 1},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 2},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 3},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 4},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 5},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 6},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 7},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 8},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 9},
-        ],
         betTopDetailShow: false,
         betTopDetailSelected: 1,
         arae: [
@@ -114,6 +103,20 @@
 			  'PlaySortMore'
 		  ])
 	  },
+    watch: {
+      // 'playBoardData': function (n) {
+      //   console.log(n)
+      // },
+      'tagSelectedData': function (n) {
+        console.log(n)
+      },
+      'selectedNumberData': {
+        handler: function (n) {
+          console.log(n)
+        },
+        deep: true
+      }
+    },
     methods: {
 	    tagSelected(data) {
 	    	this.tagSelectedData = data
@@ -176,7 +179,7 @@
 		  padding: 0 .4em;
 	  }
   }
-  
+
   .betTopDetail {
     position: absolute;
     top: px2rem(100px);

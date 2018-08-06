@@ -8,7 +8,7 @@
 <script>
 	import selectNumber from './selectNumber.vue'
 	import textareaNumber from './textareaNumber.vue'
-	
+
 	export default {
 		components: {
 			selectNumber,
