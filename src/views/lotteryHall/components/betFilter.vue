@@ -34,7 +34,7 @@
 			    let emitData = this.tagMainData.filter( item => {
 				    return item.checked == true
 			    })
-			    this.$emit('input', emitData)
+			    this.$emit('change', emitData)
 		    },
 		    deep:true
 	    }

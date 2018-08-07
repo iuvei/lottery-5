@@ -101,6 +101,7 @@
     },
 	  computed: {
 		  ...mapGetters([
+		    'BetFilterDataFlag',
 			  'PlaySortMore'
 		  ])
 	  },
@@ -108,6 +109,9 @@
       // 'playBoardData': function (n) {
       //   console.log(n)
       // },
+      'BetFilterDataFlag': function () {
+        this.tagToPlayMap = JSON.parse(sessionStorage.getItem('tagToPlayMap'))
+      },
       'tagSelectedData': function (n) {
         // console.log(n)
       },
@@ -145,6 +149,7 @@
       }
     },
     mounted() {
+      sessionStorage.setItem('tagToPlayMap', JSON.stringify(tagToPlayMap))
       this.choseList = eval(`this.choseList1`)
 	    this.arae.forEach(i => {
 	    	if(i.value == this.$route.params.id) {
