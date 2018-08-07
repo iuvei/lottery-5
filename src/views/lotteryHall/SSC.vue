@@ -30,7 +30,7 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData"></playBoard>
+	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
 
@@ -60,6 +60,7 @@
 
 <script>
 	import {mapGetters} from 'vuex'
+	import playMethods from '../../utils/playMethods'
 
 	import HeaderReg from '@/components/Navbar.vue'
   import selectNumber from './components/selectNumber'
@@ -108,11 +109,11 @@
       //   console.log(n)
       // },
       'tagSelectedData': function (n) {
-        console.log(n)
+        // console.log(n)
       },
       'selectedNumberData': {
         handler: function (n) {
-          console.log(n)
+
         },
         deep: true
       }
@@ -136,6 +137,11 @@
         this.betTopDetailSelected = item.value
         this.choseList = eval(`this.choseList${item.value}`)
         this.betTopDetailShow = false
+      },
+      selectedNumberDataMethod(data) {
+        let type = this.tagSelectedData[0]
+        let details = this.tagSelectedData[2]
+        console.log(playMethods(type, details, data))
       }
     },
     mounted() {

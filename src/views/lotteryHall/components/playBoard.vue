@@ -38,7 +38,7 @@
 						i.data = n.data
 					}
 				})
-				this.$emit('input', this.emitData)
+				this.$emit('change', this.emitData)
 			}
 		},
 		mounted() {
