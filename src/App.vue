@@ -14,3 +14,4 @@ export default {
   @import "~normalize.css";
   @import "./styles/index.scss";
 </style>
+
