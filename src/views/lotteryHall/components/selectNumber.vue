@@ -13,7 +13,7 @@
 export default {
 	data(){
 		return {
-			
+
     }
   },
 	props: {
@@ -22,10 +22,18 @@ export default {
     },
 		numberData: {
 			type: Array
+    },
+    single: {
+		  default: false
     }
   },
   methods: {
 	  checkItem(item) {
+	    if (this.single) {
+        this.numberData.forEach(item => {
+          item.checked = false
+        })
+      }
 	  	item.checked = !item.checked
       let checkedData = this.numberData.filter(item => {
       	return item.checked == true
@@ -47,7 +55,7 @@ export default {
   }
 
   @include onebottompx('.selectNumber')
-  
+
   .title {
     float: left;
     span {
