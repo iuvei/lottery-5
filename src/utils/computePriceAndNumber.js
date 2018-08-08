@@ -14,6 +14,32 @@ export function addition(arr) {
   })
 }
 
+export function zhixuankuadu(n) {
+  let count = 0
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (Math.abs(i - j) == n) {
+        count++
+      }
+    }
+  }
+  return count
+}
+
+export function zhixuankuadu3(n) {
+  let count = 0
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      for (let k = 0; k < 10; k++) {
+        if (Math.abs(Math.max(i, j, k) - Math.min(i, j, k)) == n) {
+          count++
+        }
+      }
+    }
+  }
+  return count
+}
+
 export function hezhi(n) {
   let count = 0
   for (let i = 0; i < 10; i++) {
@@ -31,4 +57,48 @@ export function zuxuanfushi(n) {
     count += i
   }
   return count
+}
+
+export function zuxuanhezhi(n) {
+  let count = 0
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (i + j == n && i != j) {
+        count++
+      }
+    }
+  }
+  return count / 2
+}
+
+export function zuxuanhezhi3(n) {
+  let count = 0
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      for (let k = 0; k < 10; k++) {
+        if (i + j + k == n && !(i == j == k)) {
+          count++
+        }
+      }
+    }
+  }
+  return count/3
+}
+
+export function zhixuanhezhi3(n) {
+  let count = 0
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      for (let k = 0; k < 10; k++) {
+        if (i + j + k == n) {
+          count++
+        }
+      }
+    }
+  }
+  return count
+}
+
+export function zuxuan_zusan(n) {
+  return n * (n - 1)
 }
