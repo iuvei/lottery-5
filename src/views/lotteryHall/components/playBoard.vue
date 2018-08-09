@@ -1,7 +1,7 @@
 <template>
 	<div class="playBoard">
 		<selectNumber :key="Math.random()" :single="item.titleName == '包胆'" v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
-		<textareaNumber v-else></textareaNumber>
+		<textareaNumber :titleName="item.titleName" v-else v-model="selectedData" @input="textareaChange"></textareaNumber>
 	</div>
 </template>
 
@@ -21,7 +21,11 @@
 				emitData: []
 			}
 		},
-		methods: {},
+		methods: {
+      textareaChange() {
+        // this.$emit('change', this.selectedData)
+      }
+    },
 		watch: {
 			'playBoardData': function (n) {
 				this.emitData = []

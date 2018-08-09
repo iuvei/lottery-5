@@ -94,7 +94,7 @@ export let tagToPlayMap = [
 				]}
 			]},
 			{value: 1, label: '直选单式', checked: false, playBoard: [
-				{type: 'input', titleName: '万位', numberData: [
+				{type: 'input', titleName: '', numberData: [
 					{value: 1, label: 0, checked: false},
 					{value: 1, label: 1, checked: false},
 					{value: 2, label: 2, checked: false},
