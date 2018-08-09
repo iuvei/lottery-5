@@ -94,7 +94,7 @@ export let tagToPlayMap = [
 				]}
 			]},
 			{value: 1, label: '直选单式', checked: false, playBoard: [
-				{type: 'input', titleName: '万位', numberData: [
+				{type: 'input', titleName: '', numberData: [
 					{value: 1, label: 0, checked: false},
 					{value: 1, label: 1, checked: false},
 					{value: 2, label: 2, checked: false},
@@ -176,7 +176,6 @@ export let tagToPlayMap = [
 			]},
 			{value: 1, label: '组选和值', checked: false, playBoard: [
 				{type: 'number', titleName: '和值', numberData: [
-					{value: 1, label: 0, checked: false},
 					{value: 1, label: 1, checked: false},
 					{value: 2, label: 2, checked: false},
 					{value: 3, label: 3, checked: false},
@@ -463,7 +462,6 @@ export let tagToPlayMap = [
 		{titleName: '组选', data: [
 			{value: 1, label: '组选和值', checked: false, playBoard: [
 				{type: 'number', titleName: '和值', numberData: [
-					{value: 1, label: 0, checked: false},
 					{value: 1, label: 1, checked: false},
 					{value: 2, label: 2, checked: false},
 					{value: 3, label: 3, checked: false},
@@ -805,7 +803,7 @@ export let tagToPlayMap = [
 			]}
 		]},
 	]},
-	
+
 	{tag: '后三', checked:false, play: [
 		{titleName: '直选', data: [
 			{value: 1, label: '复式', checked: true, playBoard: [
@@ -1029,7 +1027,7 @@ export let tagToPlayMap = [
 			]}
 		]},
 	]},
-	
+
 	{tag: '四星', checked:false, play: [
 		{titleName: '直选', data: [
 			{value: 1, label: '复式', checked: true, playBoard: [
