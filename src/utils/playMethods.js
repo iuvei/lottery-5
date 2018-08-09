@@ -71,6 +71,36 @@ export default function playMethods(type, detial, selectedData) {
       price
     }
   }
+  if (type == '前二' && detial == '直选单式') {
+    // console.log(computePriceAndNumber(type, details, selectedData))
+    let YminLimit = 1
+    let XminLimit = 2
+    let counter = []
+    let numberList = []
+    // console.log(selectedData)
+
+    let cache = []
+    for (let i in selectedData) {
+      if (selectedData[i].data.length > 0) {
+        counter[i] = selectedData[i].data.length
+        cache[i] = selectedData[i].data
+      }
+    }
+    cache = [...new Set(cache[0].filter(v => {
+      return v.length == XminLimit
+    }))]
+    if (counter.length >= YminLimit) {
+      bittingNumber = cache.length
+      price = bittingNumber * 2
+    }
+    return {
+      type,
+      detial,
+      selectedNum,
+      bittingNumber,
+      price
+    }
+  }
   if (type == '前二' && detial == '直选和值') {
     // console.log(computePriceAndNumber(type, details, selectedData))
     let YminLimit = 1

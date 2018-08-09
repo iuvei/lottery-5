@@ -143,10 +143,9 @@
         this.betTopDetailShow = false
       },
       selectedNumberDataMethod(data) {
-	      console.log(data)
         let type = this.tagSelectedData[0]
         let details = this.tagSelectedData[2]
-        // console.log(playMethods(type, details, data))
+        console.log(playMethods(type, details, data))
       }
     },
     mounted() {
