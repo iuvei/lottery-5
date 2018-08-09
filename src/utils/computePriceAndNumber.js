@@ -102,3 +102,11 @@ export function zhixuanhezhi3(n) {
 export function zuxuan_zusan(n) {
   return n * (n - 1)
 }
+
+export function budingwei_erma(n) {
+  let sum = 0
+  for (let i = 0; i<n;i++) {
+    sum +=i
+  }
+  return sum
+}
