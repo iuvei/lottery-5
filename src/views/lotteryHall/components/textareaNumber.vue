@@ -27,11 +27,6 @@
         let emitData = {titleName: this.titleName, data: this.areaData.split(/[,，；; ]/)}
         this.$emit('input', emitData)
       }
-    },
-    computed: {
-      areaDataFiltrated() {
-        return this.areaData.trim().split('/[，, ；;]/')
-      }
     }
   }
 </script>
