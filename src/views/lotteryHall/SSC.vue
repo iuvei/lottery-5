@@ -33,28 +33,28 @@
 	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
-
-    <div class="chose-info" v-show="checkedList.length > 0">
-      <div>
-        <span>当前选号</span>
-        <div>
-          <span v-for="item in checkedList"
-                style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>
-        </div>
-      </div>
-      <div>
-        <span>每注金额</span>
-        <div>
-          <input type="text">
-          <span>请输入要投注的金额</span>
-        </div>
-      </div>
-    </div>
-    <div class="footerbar">
-      <span class="fl">清空</span>
-      <span class="fm">共{{checkedList.length}}注</span>
-      <span class="fr">马上投注</span>
-    </div>
+    <footerBar></footerBar>
+    <!--<div class="chose-info" v-show="checkedList.length > 0">-->
+      <!--<div>-->
+        <!--<span>当前选号</span>-->
+        <!--<div>-->
+          <!--<span v-for="item in checkedList"-->
+                <!--style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<span>每注金额</span>-->
+        <!--<div>-->
+          <!--<input type="text">-->
+          <!--<span>请输入要投注的金额</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="footerbar">-->
+      <!--<span class="fl">清空</span>-->
+      <!--<span class="fm">共{{checkedList.length}}注</span>-->
+      <!--<span class="fr">马上投注</span>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -63,9 +63,7 @@
 	import playMethods from '../../utils/playMethods'
 
 	import HeaderReg from '@/components/Navbar.vue'
-  import selectNumber from './components/selectNumber'
-  import textareaNumber from './components/textareaNumber'
-  import betFilter from './components/betFilter'
+  import footerBar from './components/footerBar'
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
   import {tagToPlayMap} from './components/tagToPlayMap'
@@ -74,8 +72,7 @@
     name: 'ssc',
     components: {
       HeaderReg,
-      selectNumber,
-      textareaNumber,
+      footerBar,
       playSortMore,
 	    playBoard
     },
