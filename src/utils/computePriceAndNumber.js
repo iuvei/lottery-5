@@ -2,6 +2,24 @@ export default function computePriceAndNumber(type, details, selectedData) {
   return type
 }
 
+export function isAllStrEqual(str){
+  let array = str.split('')
+  if(array.length>0){
+    return !array.some((value,index) => {
+      return value !== array[0]
+    })
+  }else{
+    return true
+  }
+}
+
+export function removeStrInArrRepeat(arr) {
+  let cacheArr = []
+  arr.forEach((v, i) => {
+    console.log(v)
+  })
+}
+
 export function multiply(arr) {
   return arr.reduce(function (a, b) {
     return a * b;                        //如果是相加return a + b 如果是相减return a - b
@@ -82,7 +100,7 @@ export function zuxuanhezhi3(n) {
       }
     }
   }
-  return count/3
+  return count / 3
 }
 
 export function zhixuanhezhi3(n) {
@@ -105,8 +123,8 @@ export function zuxuan_zusan(n) {
 
 export function budingwei_erma(n) {
   let sum = 0
-  for (let i = 0; i<n;i++) {
-    sum +=i
+  for (let i = 0; i < n; i++) {
+    sum += i
   }
   return sum
 }

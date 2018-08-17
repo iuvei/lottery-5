@@ -24,7 +24,12 @@
     methods: {
       emitData() {
         this.areaData = this.areaData.replace(/[^\d,，；; ]/, '')
-        let emitData = {titleName: this.titleName, data: this.areaData.split(/[,，；; ]/)}
+        let data = this.areaData.split(/[,，；;]/).map(v => {
+          return v.trim().split(' ').filter(v => {
+            return v != ''
+          })
+        })
+        let emitData = {titleName: this.titleName, data: data}
         this.$emit('input', emitData)
       }
     }
