@@ -627,6 +627,34 @@ export default function playMethods(type, detial, selectedData) {
       price
     }
   }
+  if (type == '前三' && detial == '组六') {
+    // console.log(computePriceAndNumber(type, details, selectedData))
+    let YminLimit = 1
+    let XminLimit = 2
+    let counter = []
+    let numberList = []
+    // console.log(selectedData)
+
+    let cache = []
+    for (let i in selectedData) {
+      if (selectedData[i].data.length > 0) {
+        counter[i] = selectedData[i].data
+        cache[i] = selectedData[i].data
+      }
+    }
+
+    if (counter[0].length >= XminLimit && counter.length >= YminLimit) {
+      bittingNumber = zuxuan_zusan(counter[0].length)
+      price = bittingNumber * 2
+    }
+    return {
+      type,
+      detial,
+      selectedNum,
+      bittingNumber,
+      price
+    }
+  }
   if (type == '前三' && detial == '组选包胆') {
     // console.log(computePriceAndNumber(type, details, selectedData))
     let YminLimit = 1

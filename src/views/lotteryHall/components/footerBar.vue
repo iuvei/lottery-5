@@ -4,13 +4,11 @@
       <div class="multipleConLine">
         <div class="multiple">
           <span @click="minus">-</span>
-          <input type="tel" v-model="betNum" @blur="changeInput">
+          <input type="tel" v-model="finalData.bittingNumber" @blur="changeInput">
           <span @click="add">+</span>
         </div>
         <div class="moneyUnit">
-          <span>元</span>
-          <span>角</span>
-          <span>分</span>
+          <span v-for="item in YJF" :class="{'active': item.checked}" @click="changeYJF(item)">{{item.label}}</span>
         </div>
       </div>
     </div>
@@ -33,12 +31,21 @@
   export default {
     data() {
       return {
-        betNum: 1
+        YJF: [
+          {value: 1, label:'元',checked: true},
+          {value: 10, label:'角',checked: false},
+          {value: 100, label:'分',checked: false}
+        ],
+        YJFmul: 1
       }
     },
-    props: {
-      selectedInfo: {
-        default: {}
+    props: ['selectedInfo'],
+    computed: {
+      finalData() {
+        return {
+          bittingNumber:1,
+          price:this.selectedInfo.price,
+        }
       }
     },
     methods: {
@@ -56,7 +63,18 @@
       },
       changeInput() {
         alert(1)
+      },
+      changeYJF(item) {
+        this.YJF.forEach(v => {
+          v.checked = false
+        })
+        item.checked = true
+        this.YJFmul = item.value
       }
+    },
+    mounted() {
+      console.log('selectedInfo')
+      console.log(this.selectedInfo)
     }
   }
 </script>
@@ -141,6 +159,10 @@
         }
       }
     }
+  }
+  .active {
+    background: #dc3b40;
+    color: #fff;
   }
 
   .betInfo {

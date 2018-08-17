@@ -33,7 +33,7 @@
 	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
-    <footerBar></footerBar>
+    <footerBar :selectedInfo="selectedInfo"></footerBar>
     <!--<div class="chose-info" v-show="checkedList.length > 0">-->
       <!--<div>-->
         <!--<span>当前选号</span>-->
@@ -82,6 +82,7 @@
 	      playBoardData: [], //选中的面板数据
 	      tagSelectedData: [], //选中的标签
 	      selectedNumberData: [], //选中的号码
+        selectedInfo: {},
         choseType: 1,
         checkedList: [],
         betTopDetailShow: false,
@@ -142,6 +143,7 @@
       selectedNumberDataMethod(data) {
         let type = this.tagSelectedData[0]
         let details = this.tagSelectedData[2]
+        this.selectedInfo = playMethods(type, details, data)
         console.log(playMethods(type, details, data))
       }
     },
