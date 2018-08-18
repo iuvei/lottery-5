@@ -752,8 +752,8 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
-        cache[i] = selectedData[i].data.length
+	      counter.push(selectedData[i].data.length)
+	      cache[i] = selectedData[i].data.length
       }
     }
 
@@ -896,6 +896,34 @@ export default function playMethods(type, detial, selectedData) {
       price
     }
   }
+	if (type == '中三' && detial == '组六') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let YminLimit = 1
+		let XminLimit = 3
+		let counter = []
+		let numberList = []
+		// console.log(selectedData)
+		
+		let cache = []
+		for (let i in selectedData) {
+			if (selectedData[i].data.length > 0) {
+				counter[i] = selectedData[i].data
+				cache[i] = selectedData[i].data
+			}
+		}
+		
+		if (counter[0].length >= XminLimit && counter.length >= YminLimit) {
+			bittingNumber = Cmn(counter[0].length,3)
+			price = bittingNumber * 2
+		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
   if (type == '中三' && detial == '组选包胆') {
     // console.log(computePriceAndNumber(type, details, selectedData))
     let YminLimit = 1
@@ -992,8 +1020,8 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
-        cache[i] = selectedData[i].data.length
+	      counter.push(selectedData[i].data.length)
+	      cache[i] = selectedData[i].data.length
       }
     }
 
@@ -1136,6 +1164,34 @@ export default function playMethods(type, detial, selectedData) {
       price
     }
   }
+	if (type == '后三' && detial == '组六') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let YminLimit = 1
+		let XminLimit = 3
+		let counter = []
+		let numberList = []
+		// console.log(selectedData)
+		
+		let cache = []
+		for (let i in selectedData) {
+			if (selectedData[i].data.length > 0) {
+				counter[i] = selectedData[i].data
+				cache[i] = selectedData[i].data
+			}
+		}
+		
+		if (counter[0].length >= XminLimit && counter.length >= YminLimit) {
+			bittingNumber = Cmn(counter[0].length,3)
+			price = bittingNumber * 2
+		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
   if (type == '后三' && detial == '组选包胆') {
     // console.log(computePriceAndNumber(type, details, selectedData))
     let YminLimit = 1
@@ -1232,8 +1288,8 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
-        cache[i] = selectedData[i].data.length
+	      counter.push(selectedData[i].data.length)
+	      cache[i] = selectedData[i].data.length
       }
     }
 
@@ -1249,7 +1305,36 @@ export default function playMethods(type, detial, selectedData) {
       price
     }
   }
-  if (type == '四星' && detial == '一码不定位') {
+	if (type == '四星' && detial == '组选24') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let YminLimit = 1
+		let XminLimit = 4
+		let counter = []
+		let numberList = []
+		// console.log(selectedData)
+		
+		let cache = []
+		for (let i in selectedData) {
+			if (selectedData[i].data.length > 0) {
+				counter[i] = selectedData[i].data
+				cache[i] = selectedData[i].data
+			}
+		}
+		
+		if (counter[0].length >= XminLimit && counter.length >= YminLimit) {
+			bittingNumber = Cmn(counter[0].length,XminLimit)
+			price = bittingNumber * 2
+		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	
+	if (type == '四星' && detial == '一码不定位') {
     // console.log(computePriceAndNumber(type, details, selectedData))
     let YminLimit = 1
     let counter = []
