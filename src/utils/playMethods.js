@@ -584,6 +584,41 @@ export default function playMethods(type, detial, selectedData) {
 			price
 		}
 	}
+	if (type == '前三' && detial == '单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
 	if (type == '前三' && detial == '直选和值') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let YminLimit = 1
@@ -739,6 +774,40 @@ export default function playMethods(type, detial, selectedData) {
 			price
 		}
 	}
+	if (type == '前三' && detial == '混合组选') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
 	if (type == '前三' && detial == '组选包胆') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let YminLimit = 1
@@ -759,6 +828,74 @@ export default function playMethods(type, detial, selectedData) {
 			bittingNumber = 54
 			price = bittingNumber * 2
 		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '前三' && detial == '组三单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '前三' && detial == '组六单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
 		return {
 			type,
 			detial,
@@ -844,6 +981,41 @@ export default function playMethods(type, detial, selectedData) {
 			bittingNumber = multiply(cache)
 			price = bittingNumber * 2
 		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '中三' && detial == '单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
 		return {
 			type,
 			detial,
@@ -1035,6 +1207,74 @@ export default function playMethods(type, detial, selectedData) {
 			price
 		}
 	}
+	if (type == '中三' && detial == '组三单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '中三' && detial == '组六单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
 	if (type == '中三' && detial == '一码不定位') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let YminLimit = 1
@@ -1112,6 +1352,41 @@ export default function playMethods(type, detial, selectedData) {
 			bittingNumber = multiply(cache)
 			price = bittingNumber * 2
 		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '后三' && detial == '单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
 		return {
 			type,
 			detial,
@@ -1303,6 +1578,74 @@ export default function playMethods(type, detial, selectedData) {
 			price
 		}
 	}
+	if (type == '后三' && detial == '组三单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '后三' && detial == '组六单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 3 && !isAllArrEquql(item)
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
 	if (type == '后三' && detial == '一码不定位') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let YminLimit = 1
@@ -1388,6 +1731,41 @@ export default function playMethods(type, detial, selectedData) {
 			price
 		}
 	}
+	if (type == '四星' && detial == '单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 5
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
 	if (type == '四星' && detial == '组选24') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let YminLimit = 1
@@ -1416,7 +1794,6 @@ export default function playMethods(type, detial, selectedData) {
 			price
 		}
 	}
-	
 	if (type == '四星' && detial == '一码不定位') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let YminLimit = 1
