@@ -57,7 +57,7 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = 1
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
@@ -299,7 +299,7 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = 1
+	      counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
@@ -484,7 +484,7 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }

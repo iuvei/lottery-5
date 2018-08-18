@@ -111,6 +111,7 @@
         this.tagToPlayMap = JSON.parse(sessionStorage.getItem('tagToPlayMap'))
       },
       'tagSelectedData': function (n) {
+	      this.selectedInfo = {}
         // console.log(n)
       },
       'selectedNumberData': {
