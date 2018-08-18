@@ -1734,7 +1734,7 @@ export default function playMethods(type, detial, selectedData) {
 	if (type == '四星' && detial == '单式') {
 		// console.log(computePriceAndNumber(type, details, selectedData))
 		let resultData = selectedData[0].data.filter(item => {
-			return item.length === 5
+			return item.length === 4
 		})
 		// console.log('符合条件的')
 		// console.log(resultData)
@@ -1872,6 +1872,41 @@ export default function playMethods(type, detial, selectedData) {
 			bittingNumber = multiply(cache)
 			price = bittingNumber * 2
 		}
+		return {
+			type,
+			detial,
+			selectedNum,
+			bittingNumber,
+			price
+		}
+	}
+	if (type == '五星' && detial == '单式') {
+		// console.log(computePriceAndNumber(type, details, selectedData))
+		let resultData = selectedData[0].data.filter(item => {
+			return item.length === 5
+		})
+		// console.log('符合条件的')
+		// console.log(resultData)
+		
+		// 排序
+		resultData = resultData.map(item => {
+			return item.sort((a, b) => {
+				return a - b
+			})
+		})
+		let newArr = []
+		resultData.forEach(item => {
+			newArr.push(item.join(''))
+		})
+		let result = newArr
+		result = Array.from(new Set(newArr))
+		result = result.map(item => item.split(''))
+		// console.log('结果')
+		// console.log(result)
+		bittingNumber = result.length
+		price = 2 * bittingNumber
+		// selectedNum = selectedData
+		selectedNum = result
 		return {
 			type,
 			detial,
