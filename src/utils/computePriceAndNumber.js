@@ -103,11 +103,6 @@ export function zuxuanfushi(n) {
 	return count
 }
 
-export function zuxuan120(n) { 
-  let count = 0
-  
-}
-
 export function zuxuanhezhi(n) {
 	let count = 0
 	for (let i = 0; i < 10; i++) {
