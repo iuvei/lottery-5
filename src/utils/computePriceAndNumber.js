@@ -39,6 +39,16 @@ export function isAllStrEqual(str) {
 	}
 }
 
+export function isAllArrEquql(arr) {
+	if (arr.length > 0) {
+		return !arr.some((value, index) => {
+			return value !== arr[0]
+		})
+	} else {
+		return true
+	}
+}
+
 export function removeStrInArrRepeat(arr) {
 	let cacheArr = []
 	arr.forEach((v, i) => {
