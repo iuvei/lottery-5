@@ -2,6 +2,7 @@ import computePriceAndNumber from './computePriceAndNumber'
 import {
   isAllStrEqual,
   removeStrInArrRepeat,
+	Cmn,
   multiply,
   addition,
   hezhi,
@@ -630,7 +631,7 @@ export default function playMethods(type, detial, selectedData) {
   if (type == '前三' && detial == '组六') {
     // console.log(computePriceAndNumber(type, details, selectedData))
     let YminLimit = 1
-    let XminLimit = 2
+    let XminLimit = 3
     let counter = []
     let numberList = []
     // console.log(selectedData)
@@ -644,7 +645,7 @@ export default function playMethods(type, detial, selectedData) {
     }
 
     if (counter[0].length >= XminLimit && counter.length >= YminLimit) {
-      bittingNumber = zuxuan_zusan(counter[0].length)
+      bittingNumber = Cmn(counter[0].length,3)
       price = bittingNumber * 2
     }
     return {
