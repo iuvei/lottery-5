@@ -4,7 +4,7 @@
       <div class="multipleConLine">
         <div class="multiple">
           <span @click="minus">-</span>
-          <input type="tel" v-model="finalData.bittingNumber" @blur="changeInput">
+          <input type="tel" v-model="betMul" @blur="changeInput">
           <span @click="add">+</span>
         </div>
         <div class="moneyUnit">
@@ -13,11 +13,11 @@
       </div>
     </div>
     <div class="betInfo">
-      <div class="betContent">
-        <span>加</span>
+      <div class="betContent" :class="{'betActive': finalData.bittingNumber != 0}">
+        <span>+</span>
         <div>
-          <div>测试测试测试测试</div>
-          <span>234234</span>
+          <div>共{{finalData.bittingNumber}}注，{{(finalData.price/YJFmul).toFixed(2)}}元</div>
+          <!--<span>234234</span>-->
         </div>
       </div>
       <div class="betCard">
@@ -36,6 +36,7 @@
           {value: 10, label:'角',checked: false},
           {value: 100, label:'分',checked: false}
         ],
+        betMul: 1,
         YJFmul: 1
       }
     },
@@ -43,23 +44,23 @@
     computed: {
       finalData() {
         return {
-          bittingNumber:1,
-          price:this.selectedInfo.price,
+          bittingNumber:this.selectedInfo.bittingNumber || 0,
+          price:this.selectedInfo.price || 0,
         }
       }
     },
     methods: {
       add() {
-        if (this.betNum > 9999) {
+        if (this.betMul > 9999) {
           return
         }
-        this.betNum++
+        this.betMul++
       },
       minus() {
-        if (this.betNum <= 1) {
+        if (this.betMul <= 1) {
           return
         }
-        this.betNum--
+        this.betMul--
       },
       changeInput() {
         alert(1)
@@ -192,6 +193,10 @@
           margin-top: px2rem(10px);
         }
       }
+      
+    }
+    .betActive {
+      background: #dc3b40;
     }
     .betCard {
       text-align: center;
