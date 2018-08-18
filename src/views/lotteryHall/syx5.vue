@@ -7,9 +7,9 @@
 			<span slot="headtitle">
         <span class="titleSelect">
           <span>玩法</span>
-          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
+          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[2]}`}}</div>
         </span>
-				
+
       <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
 			<span slot="headright">
@@ -31,10 +31,10 @@
 		</div>
 		<div class="content">
 			<div class="chose-wrap">
-				<playBoard :playBoardData="playBoardData" v-model="selectedNumberData"></playBoard>
+				<playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethods"></playBoard>
 			</div>
 		</div>
-		
+
 		<div class="chose-info" v-show="checkedList.length > 0">
 			<div>
 				<span>当前选号</span>
@@ -53,7 +53,7 @@
 		</div>
 		<div class="footerbar">
 			<span class="fl">清空</span>
-			
+
 			<span class="fm">共{{checkedList.length}}注</span>
 			<span class="fr">马上投注</span>
 		</div>
@@ -69,7 +69,8 @@
 	import playSortMore from './components/playSortMore'
 	import playBoard from './components/playBoard.vue'
 	import {tagToPlayMapSYX5} from './components/tagToPlayMapSYX5'
-	
+  import playMethodsSyx5 from '../../utils/playMethodsSyx5'
+
 	export default {
 		name: 'syx5',
 		components: {
@@ -122,6 +123,15 @@
 			}
 		},
 		methods: {
+      selectedNumberDataMethods(data) {
+        console.log(this.tagSelectedData)
+        let type = this.tagSelectedData[0]
+        let detial = this.tagSelectedData[2]
+        this.selectedNumberData = data
+        console.log(this.selectedNumberData)
+        console.log('----------')
+        console.log(playMethodsSyx5(type, detial, this.selectedNumberData))
+      },
 			tagSelected(data) {
 				this.tagSelectedData = data
 			},
@@ -156,14 +166,14 @@
 
 <style lang="scss" scoped>
 	@import "@/styles/index.scss";
-	
+
 	.syx5 {
 		position: relative;
 		background: #f5f1e4;
 		height: 100vh;
 		width: 100%;
 	}
-	
+
 	.titleSelect {
 		span {
 			display: inline-block;
@@ -184,7 +194,7 @@
 			padding: 0 .4em;
 		}
 	}
-	
+
 	.betTopDetail {
 		position: absolute;
 		top: px2rem(100px);
@@ -219,11 +229,11 @@
 			}
 		}
 	}
-	
+
 	.betTopDetailSelected {
 		border-color: #f4c829 !important;
 	}
-	
+
 	.area-list {
 		margin: 0;
 		padding: 0;
@@ -241,13 +251,13 @@
 			font-size: px2rem(35px);
 		}
 	}
-	
+
 	.content {
 		margin-top: px2rem(230px);
 		margin-bottom: px2rem(100px);
 		overflow: hidden;
 	}
-	
+
 	.state {
 		position: fixed;
 		z-index: 10;
@@ -276,7 +286,7 @@
 			}
 		}
 	}
-	
+
 	.chose-wrap {
 		margin-top: px2rem(30px);
 		padding: px2rem(20px);
@@ -291,7 +301,7 @@
 			width: px2rem(700px);
 			margin: 0 auto;
 			text-align: center;
-			
+
 			.chose-list-item {
 				vertical-align: top;
 				display: inline-block;
@@ -307,18 +317,18 @@
 			}
 		}
 	}
-	
+
 	.checked {
 		color: #f4c829;
 		border-color: #f4c829 !important;
 	}
-	
+
 	.chose-info {
 		position: fixed;
 		bottom: px2rem(100px);
 		width: 100%;
 	}
-	
+
 	.chose-info > div {
 		display: flex;
 		height: px2rem(70px);
@@ -356,7 +366,7 @@
 			}
 		}
 	}
-	
+
 	.footerbar {
 		position: fixed;
 		z-index: 500;

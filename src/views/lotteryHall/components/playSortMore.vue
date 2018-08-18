@@ -1,6 +1,6 @@
 <template>
   <div class="playSortMore">
-    <betFilter :tagMainData="tagMainData" v-model="tagMainDataChecked"></betFilter>
+    <betFilter :tagMainData="tagMainData" v-model="tagMainDataChecked" @change="tagMainDataCheckedMethod"></betFilter>
     <betFilterAnd :followPlaylistData="followPlaylistData" v-model="followPlaylistDataChecked"></betFilterAnd>
   </div>
 </template>
@@ -8,7 +8,7 @@
   import betFilter from './betFilter'
   import betFilterAnd from './betFilterAnd'
 //  import {tagToPlayMap} from './tagToPlayMap'
-  
+
   export default {
   	props: ['tagToPlayMap'], //传过来的映射关系
     components: {
@@ -42,12 +42,17 @@
 		    		_this.followPlaylistData = item.play
           }
         })
+      },
+      tagMainDataCheckedMethod(data) {
+    	  this.tagMainDataChecked = data
+        // alert(11231)
+        // this.$store.commit('resetBetFilterData')
       }
     },
     watch: {
 	    'tagToPlayMap': {
 		    handler:function(n,oldval){
-			   
+
 		    },
 		    deep:true
 	    },
@@ -81,7 +86,7 @@
 	    this.tagMainData = this.tagToPlayMap.map((item, index) => {
 		    return {value: index + 1, label: item.tag, checked: item.checked}
 	    })
-	
+
 //	    this.tagToPlay()
     }
   }

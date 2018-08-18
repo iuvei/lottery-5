@@ -308,8 +308,8 @@ export let tagToPlayMapSYX5 = [
 	]},
 	{tag: '趣味型', play: [
 		{titleName: '趣味型', data: [
-			{value: 1, label: '订单双', checked: true, playBoard: [
-				{type: 'number', titleName: '订单双', numberData: [
+			{value: 1, label: '定单双', checked: true, playBoard: [
+				{type: 'number', titleName: '定单双', numberData: [
 					{value: 1, label: '5单0双', checked: false},
 					{value: 2, label: '4单1双', checked: false},
 					{value: 3, label: '3单2双', checked: false},
@@ -320,6 +320,7 @@ export let tagToPlayMapSYX5 = [
 			]},
 			{value: 1, label: '猜中位', checked: false, playBoard: [
 				{type: 'number', titleName: '猜中位', numberData: [
+					{value: 3, label: '03', checked: false},
 					{value: 4, label: '04', checked: false},
 					{value: 5, label: '05', checked: false},
 					{value: 6, label: '06', checked: false},
@@ -330,7 +331,7 @@ export let tagToPlayMapSYX5 = [
 			]}
 		]}
 	]},
-	
+
 	{tag: '任选复式', play: [
 		{titleName: '任选复式', data: [
 			{value: 1, label: '一中一', checked: true, playBoard: [

@@ -1,14 +1,14 @@
 <template>
 	<div class="playBoard">
-		<selectNumber :key="Math.random()" v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
-		<textareaNumber v-else></textareaNumber>
+		<selectNumber :key="Math.random()" :single="item.titleName == '包胆'" v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
+		<textareaNumber :titleName="item.titleName" v-else v-model="selectedData" @input="textareaChange"></textareaNumber>
 	</div>
 </template>
 
 <script>
 	import selectNumber from './selectNumber.vue'
 	import textareaNumber from './textareaNumber.vue'
-	
+
 	export default {
 		components: {
 			selectNumber,
@@ -21,7 +21,11 @@
 				emitData: []
 			}
 		},
-		methods: {},
+		methods: {
+      textareaChange() {
+        // this.$emit('change', this.selectedData)
+      }
+    },
 		watch: {
 			'playBoardData': function (n) {
 				this.emitData = []
@@ -38,7 +42,7 @@
 						i.data = n.data
 					}
 				})
-				this.$emit('input', this.emitData)
+				this.$emit('change', this.emitData)
 			}
 		},
 		mounted() {

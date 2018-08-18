@@ -7,7 +7,7 @@
       <span slot="headtitle">
         <span class="titleSelect">
           <span>玩法</span>
-          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]}${tagSelectedData[1]}${tagSelectedData[2]}`}}</div>
+          <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]} ${tagSelectedData[2]}`}}</div>
         </span>
       <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
@@ -30,41 +30,40 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData"></playBoard>
+	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
-
-    <div class="chose-info" v-show="checkedList.length > 0">
-      <div>
-        <span>当前选号</span>
-        <div>
-          <span v-for="item in checkedList"
-                style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>
-        </div>
-      </div>
-      <div>
-        <span>每注金额</span>
-        <div>
-          <input type="text">
-          <span>请输入要投注的金额</span>
-        </div>
-      </div>
-    </div>
-    <div class="footerbar">
-      <span class="fl">清空</span>
-      <span class="fm">共{{checkedList.length}}注</span>
-      <span class="fr">马上投注</span>
-    </div>
+    <footerBar :selectedInfo="selectedInfo"></footerBar>
+    <!--<div class="chose-info" v-show="checkedList.length > 0">-->
+      <!--<div>-->
+        <!--<span>当前选号</span>-->
+        <!--<div>-->
+          <!--<span v-for="item in checkedList"-->
+                <!--style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<span>每注金额</span>-->
+        <!--<div>-->
+          <!--<input type="text">-->
+          <!--<span>请输入要投注的金额</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="footerbar">-->
+      <!--<span class="fl">清空</span>-->
+      <!--<span class="fm">共{{checkedList.length}}注</span>-->
+      <!--<span class="fr">马上投注</span>-->
+    <!--</div>-->
   </div>
 </template>
 
 <script>
 	import {mapGetters} from 'vuex'
-	
+	import playMethods from '../../utils/playMethods'
+
 	import HeaderReg from '@/components/Navbar.vue'
-  import selectNumber from './components/selectNumber'
-  import textareaNumber from './components/textareaNumber'
-  import betFilter from './components/betFilter'
+  import footerBar from './components/footerBar'
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
   import {tagToPlayMap} from './components/tagToPlayMap'
@@ -73,8 +72,7 @@
     name: 'ssc',
     components: {
       HeaderReg,
-      selectNumber,
-      textareaNumber,
+      footerBar,
       playSortMore,
 	    playBoard
     },
@@ -82,21 +80,11 @@
       return {
 	      tagToPlayMap: tagToPlayMap, //映射关系
 	      playBoardData: [], //选中的面板数据
-	      tagSelectedData: [],
-	      selectedNumberData: [],
+	      tagSelectedData: [], //选中的标签
+	      selectedNumberData: [], //选中的号码
+        selectedInfo: {},
         choseType: 1,
         checkedList: [],
-        betTopDetailList: [
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 1},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 2},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 3},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 4},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 5},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 6},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 7},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 8},
-          {name: '和值', odds: '赔率31.5倍', number: 123, value: 9},
-        ],
         betTopDetailShow: false,
         betTopDetailSelected: 1,
         arae: [
@@ -111,9 +99,27 @@
     },
 	  computed: {
 		  ...mapGetters([
+		    'BetFilterDataFlag',
 			  'PlaySortMore'
 		  ])
 	  },
+    watch: {
+      // 'playBoardData': function (n) {
+      //   console.log(n)
+      // },
+      'BetFilterDataFlag': function () {
+        this.tagToPlayMap = JSON.parse(sessionStorage.getItem('tagToPlayMap'))
+      },
+      'tagSelectedData': function (n) {
+        // console.log(n)
+      },
+      'selectedNumberData': {
+        handler: function (n) {
+
+        },
+        deep: true
+      }
+    },
     methods: {
 	    tagSelected(data) {
 	    	this.tagSelectedData = data
@@ -133,9 +139,16 @@
         this.betTopDetailSelected = item.value
         this.choseList = eval(`this.choseList${item.value}`)
         this.betTopDetailShow = false
+      },
+      selectedNumberDataMethod(data) {
+        let type = this.tagSelectedData[0]
+        let details = this.tagSelectedData[2]
+        this.selectedInfo = playMethods(type, details, data)
+        console.log(playMethods(type, details, data))
       }
     },
     mounted() {
+      sessionStorage.setItem('tagToPlayMap', JSON.stringify(tagToPlayMap))
       this.choseList = eval(`this.choseList1`)
 	    this.arae.forEach(i => {
 	    	if(i.value == this.$route.params.id) {
@@ -176,7 +189,7 @@
 		  padding: 0 .4em;
 	  }
   }
-  
+
   .betTopDetail {
     position: absolute;
     top: px2rem(100px);
