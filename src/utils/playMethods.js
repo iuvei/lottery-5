@@ -6,6 +6,7 @@ import {
   addition,
   hezhi,
   zuxuanfushi,
+  zuxuan120,
   zhixuankuadu,
   zuxuanhezhi,
   zhixuanhezhi3,
@@ -1317,7 +1318,32 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
+        counter.push(selectedData[i].data.length)
+        cache[i] = selectedData[i].data.length
+      }
+    }
+
+    if (counter.length >= YminLimit) {
+      bittingNumber = multiply(cache)
+      price = bittingNumber * 2
+    }
+    return {
+      type,
+      detial,
+      selectedNum,
+      bittingNumber,
+      price
+    }
+  }
+  if (type == '五星' && detial == '组选120') {
+    let YminLimit = 5
+    let counter = []
+    let numberList = []
+
+    let cache = []
+    for (let i in selectedData) {
+      if (selectedData[i].data.length > 0) {
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
@@ -1401,6 +1427,7 @@ export default function playMethods(type, detial, selectedData) {
 
     let cache = []
     for (let i in selectedData) {
+      console.log(selectedData.length)
       if (selectedData[i].data.length > 0) {
         counter[i] = 1
         cache[i] = selectedData[i].data
@@ -1507,15 +1534,15 @@ export default function playMethods(type, detial, selectedData) {
 
   if (type == '大小单双' && detial == '前二') {
     // console.log(computePriceAndNumber(type, details, selectedData))
-    let YminLimit = 2
+    let YminLimit = 2  // 上下
     let counter = []
     let numberList = []
-    // console.log(selectedData)
 
     let cache = []
     for (let i in selectedData) {
+      console.log(selectedData[i].data);
       if (selectedData[i].data.length > 0) {
-        counter[i] = 1
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
@@ -1542,7 +1569,7 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = 1
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
@@ -1568,7 +1595,7 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
@@ -1594,7 +1621,7 @@ export default function playMethods(type, detial, selectedData) {
     let cache = []
     for (let i in selectedData) {
       if (selectedData[i].data.length > 0) {
-        counter[i] = selectedData[i].data.length
+        counter.push(selectedData[i].data.length)
         cache[i] = selectedData[i].data.length
       }
     }
