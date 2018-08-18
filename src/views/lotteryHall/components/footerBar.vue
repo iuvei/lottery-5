@@ -73,8 +73,6 @@
 			}
 		},
 		mounted() {
-			console.log('selectedInfo')
-			console.log(this.selectedInfo)
 		}
 	}
 </script>
