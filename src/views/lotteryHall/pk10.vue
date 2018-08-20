@@ -69,6 +69,7 @@
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
   import {tagToPlayMapPK10} from './components/tagToPlayMapPK10'
+  import playMethodsPk10 from '../../utils/playMethodsPk10'
 
   export default {
     name: 'pk10',
@@ -143,9 +144,13 @@
         this.betTopDetailShow = false
       },
       selectedNumberDataMethod(data) {
+        console.log(this.tagSelectedData)
         let type = this.tagSelectedData[0]
-        let details = this.tagSelectedData[2]
-        console.log(playMethods(type, details, data))
+        let detial = this.tagSelectedData[2]
+        this.selectedNumberData = data
+        console.log(this.selectedNumberData)
+        console.log('----------')
+        console.log(playMethodsPk10(type, detial, this.selectedNumberData))
       }
     },
     mounted() {

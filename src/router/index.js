@@ -47,7 +47,7 @@ export default new Router({
 	  {
 		  path: '/syx5/:id',
 		  name: 'syx5',
-		  component: _import('lotteryHall/pk10')
+		  component: _import('lotteryHall/syx5')
 	  },
     {
       path: '/pk10/:id',
