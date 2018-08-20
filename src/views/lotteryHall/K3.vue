@@ -15,7 +15,8 @@
                v-for="item in betTopDetailList">
             <div class="betTopDetailItemName">{{item.name}}</div>
             <div class="betTopDetailItemOdds">{{item.odds}}</div>
-            <div class="betTopDetailItemNumber">{{item.number}}</div>
+            <!--<div class="betTopDetailItemNumber">{{item.number}}</div>-->
+            <span></span><i></i><span></span><i></i><span></span>
           </div>
         </div>
       </span>
@@ -41,7 +42,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 1">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -54,7 +55,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 2">
 					<div class="chose-msg">
 						对所有相同的三个号码(111、222、333、444、555、666)进行投注，任意号码开出，即为中奖。赔率31.50倍。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -67,7 +68,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 3">
 					<div class="chose-msg">
 						对相同的三个号码(111、222、333、444、555、666)中的任意一个或多个进行投注，所选号码开出，即为中奖。赔率189.00倍。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -80,7 +81,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 4">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -93,7 +94,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 5">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -106,7 +107,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 6">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -119,7 +120,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 7">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -132,7 +133,7 @@
 				<div class="chose-type" v-if="betTopDetailSelected == 8">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
-					
+
 					</div>
 					<ul class="chose-list">
 						<li class="chose-list-item" :class="{'checked': item.checked}" v-for="item in choseList"
@@ -144,7 +145,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="chose-info" v-show="checkedList.length > 0">
 			<div>
 				<span>当前选号</span>
@@ -171,7 +172,7 @@
 
 <script>
 	import HeaderReg from '@/components/Navbar.vue'
-	
+
 	export default {
 		name: 'k3',
 		components: {
@@ -312,18 +313,18 @@
 
 <style lang="scss" scoped>
 	@import "@/styles/index.scss";
-	
+
 	.k3 {
 		position: relative;
 		background: #317455;
 		height: 100vh;
 		width: 100%;
 	}
-	
+
 	.betTopDetailItem:last-child {
 		visibility: hidden;
 	}
-	
+
 	.betTopDetail {
 		position: absolute;
 		top: px2rem(100px);
@@ -343,26 +344,100 @@
 			.betTopDetailItemName {
 				font-size: px2rem(32px);
 				line-height: px2rem(32px);
-				margin: px2rem(10px) 0;
+				margin: px2rem(20px) 0;
 			}
 			.betTopDetailItemOdds {
+        margin-top: px2rem(30px);
 				font-size: px2rem(25px);
 				line-height: px2rem(25px);
 				color: #caebda;
-				margin: px2rem(25px) 0;
 			}
 			.betTopDetailItemNumber {
 				font-size: px2rem(40px);
 				line-height: px2rem(40px);
 				margin: px2rem(35px) 0;
 			}
+      span {
+        display: inline-block;
+        margin: 0 px2rem(10px);
+        width: px2rem(42px);
+        height: px2rem(42px);
+        background: url(http://images.app2jsknas.com/system/common/dice/diceK3.png) no-repeat;
+        background-size: px2rem(100px);
+      }
+      &:nth-child(1) {
+        span {
+          margin:0;
+        }
+        i {
+          font-style: normal;
+          &:nth-child(4)::after, &:nth-child(6)::after {
+            content: '+';
+            font-size: px2rem(18px);
+          }
+        }
+      }
+      &:nth-child(4) {
+        span {
+          &:nth-child(3) {
+            background-position: 1px px2rem(-51px);
+          }
+          &:nth-child(5) {
+            background-position: 1px px2rem(-101px);
+          }
+          &:nth-child(7) {
+            background-position: 1px px2rem(-201px);
+          }
+        }
+      }
+      &:nth-child(5) {
+        span {
+          &:nth-child(3) {
+            /*-2px -3px*/
+            background-position: 0 0;
+          }
+          &:nth-child(5) {
+            background-position: 0 px2rem(-50px);
+          }
+          &:nth-child(7) {
+            background-position: 1px px2rem(-101px);
+          }
+        }
+      }
+      &:nth-child(6), &:nth-child(7) {
+        span {
+          &:nth-child(3) {
+            background-position: 0 0;
+          }
+          &:nth-child(5) {
+            background-position: 0 0;
+          }
+          &:nth-child(7) {
+            background-position: 1px px2rem(-101px);
+          }
+        }
+      }
+      &:nth-child(8) {
+        span {
+          &:nth-child(3) {
+            /*-2px -3px*/
+            background-position: 0 0;
+          }
+          &:nth-child(5) {
+            background-position: 0 px2rem(-50px);
+          }
+          &:nth-child(7) {
+            background-position: 1px px2rem(-152px);
+          }
+        }
+      }
 		}
 	}
-	
+
 	.betTopDetailSelected {
 		border-color: #f4c829 !important;
 	}
-	
+
 	.area-list {
 		margin: 0;
 		padding: 0;
@@ -380,13 +455,13 @@
 			font-size: px2rem(35px);
 		}
 	}
-	
+
 	.content {
 		margin-top: px2rem(230px);
 		margin-bottom: px2rem(100px);
 		overflow: hidden;
 	}
-	
+
 	.state {
 		position: fixed;
 		top: px2rem(100px);
@@ -414,7 +489,7 @@
 			}
 		}
 	}
-	
+
 	.chose-wrap {
 		margin-top: px2rem(30px);
 		padding: px2rem(20px);
@@ -429,8 +504,9 @@
 			width: px2rem(700px);
 			margin: 0 auto;
 			text-align: center;
-			
+
 			.chose-list-item {
+        padding: px2rem(16px);
 				vertical-align: top;
 				display: inline-block;
 				text-align: center;
@@ -448,24 +524,24 @@
 				}
 				span:nth-child(1) {
 					display: block;
-					margin-top: px2rem(10px);
+					margin: px2rem(12px) 0;
 					font-size:px2rem(40px);
 				}
 			}
 		}
 	}
-	
+
 	.checked {
 		color: #f4c829;
 		border-color: #f4c829 !important;
 	}
-	
+
 	.chose-info {
 		position: fixed;
 		bottom: px2rem(100px);
 		width: 100%;
 	}
-	
+
 	.chose-info > div {
 		display: flex;
 		height: px2rem(70px);
@@ -503,7 +579,7 @@
 			}
 		}
 	}
-	
+
 	.footerbar {
 		position: fixed;
 		z-index: 500;
