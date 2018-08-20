@@ -3,39 +3,28 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
   let bittingNumber = 0 // 注数
   let price = '' // 金额
 
-  // 三码&前三直选复式
-  if(type === '三码' && detial === '前三直选复式') {
-    let oneTwo = [] // 符合1，2级的
-    let Three = [] // 符合1，2，3最终的有效数据
-    let firstNumArr = selectedData[0].data.map(item => item.label)
-    let secondNumArr = selectedData[1].data.map(item => item.label)
-    let thirdNumArr = selectedData[2].data.map(item => item.label)
-    // 处理1，2级的
-    for (let first = 0; first < firstNumArr.length; first++) {
-      for (let second = 0; second < secondNumArr.length; second++) {
-        if (secondNumArr[second] !== firstNumArr[first]) {
-          let item = [firstNumArr[first], secondNumArr[second]]
-          oneTwo.push(item)
-        }
-      }
-    }
-    // 处理1&2级 和 3级的
-    // console.log('1&2的')
-    // console.log(oneTwo)
-    oneTwo.forEach(item => {
-      for (let third = 0; third < thirdNumArr.length; third++) {
-        if (item.indexOf(thirdNumArr[third]) === -1) {
-          let list = [item.concat(thirdNumArr[third])]
-          Three.push(list)
-        }
+  // 定位胆&前定位胆
+  if(type === '定位胆' && detial === '定位胆') {
+    // 过滤空数组
+    let resDataArr = selectedData.filter(item => {
+      return item.data.length !== 0
+    })
+    console.log('符合条件的')
+    console.log(resDataArr)
+    // 算注数：
+    let resultNumArr = []
+    resDataArr.map(item => {
+      for (let i = 0; i < item.data.length; i++) {
+        resultNumArr.push(item.data[i].label)
       }
     })
-    // console.log('符合条件的')
-    // console.log(Three)
-    bittingNumber = Three.length
+
+    bittingNumber = resultNumArr.length
     price = 2 * bittingNumber
-    selectedNum = selectedData
+    selectedNum = resDataArr
   }
+
+
 
   // 三码&前三直选单式 [1,2,3]和[3,2,1]算两个
   if(type === '三码' && detial === '前三直选单式') {
