@@ -172,6 +172,7 @@
 
 <script>
 	import HeaderReg from '@/components/Navbar.vue'
+	import tagToPlayMapK3 from './components/tagToPlayMapK3'
 
 	export default {
 		name: 'k3',
@@ -180,6 +181,7 @@
 		},
 		data() {
 			return {
+				tagToPlayMap: tagToPlayMapK3, //映射关系
 				choseList: [],
 				choseList1: [
 					{name: '大', odds: 1.95, checked: false},
@@ -306,6 +308,7 @@
 			}
 		},
 		mounted() {
+			sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
 			this.choseList = eval(`this.choseList1`)
 		}
 	}
