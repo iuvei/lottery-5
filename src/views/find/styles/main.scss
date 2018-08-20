@@ -9,17 +9,19 @@
     display:block;
     margin:px2rem(17px) px2rem(164px);
     padding:0;
-    height:px2rem(62px);
+    height:px2rem(66px);
     color:#fff;
     font-size:px2rem(32px);
     text-align:center;
     border:px2rem(2px) solid #fff;
     line-height:1.7;
-    border-radius:5%;
+    border-radius:px2rem(8px);
+    overflow:hidden;
     li{
       list-style:none;
       float:left;
-      width:px2rem(208px);
+      width:px2rem(209px);
+      height:px2rem(65px);
       a{
         display:block;
         width:100%;

@@ -546,8 +546,34 @@ export let tagToPlayMap = [
 					{value: 1, label: 9, checked: false},
 				]}
 			]},
-			{value: 1, label: '组三单式', checked: false},
-			{value: 1, label: '组六单式', checked: false},
+			{value: 1, label: '组三单式', checked: false,playBoard: [
+				{type: 'input', titleName: '跨度', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false},
+				]}
+			]},
+			{value: 1, label: '组六单式', checked: false,playBoard: [
+				{type: 'input', titleName: '跨度', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false},
+				]}
+			]},
 		]},
 		{titleName: '不定位', data: [
 			{value: 1, label: '一码不定位', checked: false, playBoard: [
@@ -769,8 +795,34 @@ export let tagToPlayMap = [
 					{value: 1, label: 9, checked: false},
 				]}
 			]},
-			{value: 1, label: '组三单式', checked: false},
-			{value: 1, label: '组六单式', checked: false},
+			{value: 1, label: '组三单式', checked: false, playBoard: [
+				{type: 'input', titleName: '跨度', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false},
+				]}
+			]},
+			{value: 1, label: '组六单式', checked: false, playBoard: [
+				{type: 'input', titleName: '跨度', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false},
+				]}
+			]},
 		]},
 		{titleName: '不定位', data: [
 			{value: 1, label: '一码不定位', checked: false, playBoard: [
@@ -993,8 +1045,34 @@ export let tagToPlayMap = [
 					{value: 1, label: 9, checked: false},
 				]}
 			]},
-			{value: 1, label: '组三单式', checked: false},
-			{value: 1, label: '组六单式', checked: false},
+			{value: 1, label: '组三单式', checked: false, playBoard: [
+				{type: 'input', titleName: '跨度', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false},
+				]}
+			]},
+			{value: 1, label: '组六单式', checked: false, playBoard: [
+				{type: 'input', titleName: '跨度', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false},
+				]}
+			]},
 		]},
 		{titleName: '不定位', data: [
 			{value: 1, label: '一码不定位', checked: false, playBoard: [
@@ -1080,7 +1158,20 @@ export let tagToPlayMap = [
 					{value: 1, label: 9, checked: false}
 				]},
 			]},
-			{value: 1, label: '单式', checked: false}
+			{value: 1, label: '单式', checked: false, playBoard: [
+				{type: 'input', titleName: '千位', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false}
+				]}
+			]}
 		]},
 		{titleName: '组选', data: [
 			{value: 1, label: '组选24', checked: false, playBoard: [
@@ -1259,7 +1350,20 @@ export let tagToPlayMap = [
 					{value: 1, label: 9, checked: false}
 				]},
 			]},
-			{value: 1, label: '单式', checked: false}
+			{value: 1, label: '单式', checked: false, playBoard: [
+				{type: 'input', titleName: '千位', numberData: [
+					{value: 1, label: 0, checked: false},
+					{value: 1, label: 1, checked: false},
+					{value: 2, label: 2, checked: false},
+					{value: 3, label: 3, checked: false},
+					{value: 4, label: 4, checked: false},
+					{value: 5, label: 5, checked: false},
+					{value: 6, label: 6, checked: false},
+					{value: 1, label: 7, checked: false},
+					{value: 1, label: 8, checked: false},
+					{value: 1, label: 9, checked: false}
+				]}
+			]}
 		]},
 		{titleName: '组选', data: [
 			{value: 1, label: '组选120', checked: false, playBoard: [
