@@ -1,15 +1,7 @@
 <template>
 	<div class="cellK3">
-		<div class="chose-msg">
-			{{cellData.info}}
-		</div>
-		<ul class="chose-list">
-			<li class="chose-list-item" :class="{'checked': item.label == '大'}" v-for="item in cellData.playBoard"
-			    @click="choseItem(item)">
-				<span>{{item.label}}</span>
-				<span v-if="item.ratio">赔率{{item.ratio}}</span>
-			</li>
-		</ul>
+		{{cellData}}
+		<slot></slot>
 	</div>
 </template>
 

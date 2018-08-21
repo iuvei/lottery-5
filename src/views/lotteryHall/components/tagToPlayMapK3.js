@@ -1,25 +1,25 @@
 export let tagToPlayMapK3 = [
 	{titleName: '和值', ratio: '1.95-198.00', info: '猜3个开奖号相加的和，3-10为小，11-18为大。', playBoard: [
-		{label: '大', ratio: 1.95},
-		{label: '小', ratio: 1.95},
-		{label: '单', ratio: 1.95},
-		{label: '双', ratio: 1.95},
-		{label: '3', ratio: 189.00},
-		{label: '4', ratio: 63.00},
-		{label: '5', ratio: 31.50},
-		{label: '6', ratio: 18.90},
-		{label: '7', ratio: 12.60},
-		{label: '8', ratio: 9.00},
-		{label: '9', ratio: 7.65},
-		{label: '10', ratio: 7.00},
-		{label: '11', ratio: 7.00},
-		{label: '12', ratio: 7.65},
-		{label: '13', ratio: 9.00},
-		{label: '14', ratio: 12.60},
-		{label: '15', ratio: 18.90},
-		{label: '16', ratio: 31.50},
-		{label: '17', ratio: 63.00},
-		{label: '18', ratio: 189.00}
+		{label: '大', ratio: 1.95, checked: false},
+		{label: '小', ratio: 1.95, checked: false},
+		{label: '单', ratio: 1.95, checked: false},
+		{label: '双', ratio: 1.95, checked: false},
+		{label: '3', ratio: 189.00, checked: false},
+		{label: '4', ratio: 63.00, checked: false},
+		{label: '5', ratio: 31.50, checked: false},
+		{label: '6', ratio: 18.90, checked: false},
+		{label: '7', ratio: 12.60, checked: false},
+		{label: '8', ratio: 9.00, checked: false},
+		{label: '9', ratio: 7.65, checked: false},
+		{label: '10', ratio: 7.00, checked: false},
+		{label: '11', ratio: 7.00, checked: false},
+		{label: '12', ratio: 7.65, checked: false},
+		{label: '13', ratio: 9.00, checked: false},
+		{label: '14', ratio: 12.60, checked: false},
+		{label: '15', ratio: 18.90, checked: false},
+		{label: '16', ratio: 31.50, checked: false},
+		{label: '17', ratio: 63.00, checked: false},
+		{label: '18', ratio: 189.00, checked: false}
 	]},
 	{titleName: '三同号通选', ratio: '31.5', info: '对所有相同的三个号码(111、222、333、444、555、666)进行投注，任意号码开出，即为中奖。赔率31.50倍。', playBoard: [
 		{label: '三同号通选'}
@@ -72,5 +72,13 @@ export let tagToPlayMapK3 = [
 		{label: '4'},
 		{label: '5'},
 		{label: '6'}
-	]}
+	]},
+	{titleName: '二不同号', ratio: '6.30', info: '从1-6中任选2个或多个号码，所选号码与开奖号码任意2个号码相同，即为中奖。赔率6.30倍。', playBoard: [
+		{label: '1'},
+		{label: '2'},
+		{label: '3'},
+		{label: '4'},
+		{label: '5'},
+		{label: '6'}
+	]},
 ]
