@@ -3,7 +3,7 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
   let bittingNumber = 0 // 注数
   let price = '' // 金额
 
-  // 定位胆&前定位胆
+  // 定位胆&前定位胆 [12345] 和 [21345]算俩
   if(type === '定位胆' && detial === '定位胆') {
     // 过滤空数组
     let resDataArr = selectedData.filter(item => {
@@ -23,7 +23,232 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
     price = 2 * bittingNumber
     selectedNum = resDataArr
   }
+  // 猜前五&复式
+  if(type === '猜前五' && detial === '复式') {
+    let oneTwo = [] // 符合1，2级的
+    let Three = [] // 符合1，2，3的
+    let Four = [] // 符合1，2，3, 4的
+    let Five = [] // 符合1，2，3, 4, 5的最终有效数据
+    let firstNumArr = selectedData[0].data.map(item => item.label)
+    let secondNumArr = selectedData[1].data.map(item => item.label)
+    let thirdNumArr = selectedData[2].data.map(item => item.label)
+    let fourNumArr = selectedData[3].data.map(item => item.label)
+    let fiveNumArr = selectedData[4].data.map(item => item.label)
+    // 处理1，2级的
+    for (let first = 0; first < firstNumArr.length; first++) {
+      for (let second = 0; second < secondNumArr.length; second++) {
+        if (secondNumArr[second] !== firstNumArr[first]) {
+          let item = [firstNumArr[first], secondNumArr[second]]
+          oneTwo.push(item)
+        }
+      }
+    }
+    // console.log('1&2的')
+    // console.log(oneTwo)
+    // 处理1，2，3级的
+    oneTwo.forEach(item => {
+      for (let third = 0; third < thirdNumArr.length; third++) {
+        if (item.indexOf(thirdNumArr[third]) === -1) {
+          let list = item.concat(thirdNumArr[third])
+          Three.push(list)
+        }
+      }
+    })
+    // console.log('符合条件的')
+    // console.log(Three)
+    // 处理1，2，3，4级的
+    Three.forEach(item => {
+      for (let fourth = 0; fourth < fourNumArr.length; fourth++) {
+        if (item.indexOf(fourNumArr[fourth]) === -1) {
+          let list = item.concat(fourNumArr[fourth])
+          Four.push(list)
+        }
+      }
+    })
 
+    // 处理1，2，3，4, 5级的
+    Four.forEach(item => {
+      for (let fifth = 0; fifth < fiveNumArr.length; fifth++) {
+        if (item.indexOf(fiveNumArr[fifth]) === -1) {
+          let list = item.concat(fiveNumArr[fifth])
+          Five.push(list)
+        }
+      }
+    })
+
+    // console.log('符合条件的')
+    // console.log(Five)
+    bittingNumber = Five.length
+    price = 2 * bittingNumber
+    selectedNum = Five
+  }
+
+  // 猜前五&单式 [1,2,3]和[3,2,1]算两个
+  if(type === '猜前五' && detial === '单式') {
+    let resultData = selectedData[0].data.filter(item => {
+      return item.length === 5
+    })
+    // console.log('符合条件的')
+    // console.log(resultData)
+    bittingNumber = resultData.length
+    price = 2 * bittingNumber
+    // selectedNum = selectedData
+    selectedNum = resultData
+  }
+
+  // 猜前四&复式
+  if(type === '猜前四' && detial === '复式') {
+    let oneTwo = [] // 符合1，2级的
+    let Three = [] // 符合1，2，3的
+    let Four = [] // 符合1，2，3, 4的
+    let firstNumArr = selectedData[0].data.map(item => item.label)
+    let secondNumArr = selectedData[1].data.map(item => item.label)
+    let thirdNumArr = selectedData[2].data.map(item => item.label)
+    let fourNumArr = selectedData[3].data.map(item => item.label)
+    // 处理1，2级的
+    for (let first = 0; first < firstNumArr.length; first++) {
+      for (let second = 0; second < secondNumArr.length; second++) {
+        if (secondNumArr[second] !== firstNumArr[first]) {
+          let item = [firstNumArr[first], secondNumArr[second]]
+          oneTwo.push(item)
+        }
+      }
+    }
+    // console.log('1&2的')
+    // console.log(oneTwo)
+    // 处理1，2，3级的
+    oneTwo.forEach(item => {
+      for (let third = 0; third < thirdNumArr.length; third++) {
+        if (item.indexOf(thirdNumArr[third]) === -1) {
+          let list = item.concat(thirdNumArr[third])
+          Three.push(list)
+        }
+      }
+    })
+    // console.log('符合条件的')
+    // console.log(Three)
+    // 处理1，2，3，4级的
+    Three.forEach(item => {
+      for (let fourth = 0; fourth < fourNumArr.length; fourth++) {
+        if (item.indexOf(fourNumArr[fourth]) === -1) {
+          let list = item.concat(fourNumArr[fourth])
+          Four.push(list)
+        }
+      }
+    })
+
+    // console.log('符合条件的')
+    // console.log(Four)
+    bittingNumber = Four.length
+    price = 2 * bittingNumber
+    selectedNum = Four
+  }
+
+  // 猜前四&单式 [1,2,3]和[3,2,1]算两个
+  if(type === '猜前四' && detial === '单式') {
+    let resultData = selectedData[0].data.filter(item => {
+      return item.length === 4
+    })
+    // console.log('符合条件的')
+    // console.log(resultData)
+    bittingNumber = resultData.length
+    price = 2 * bittingNumber
+    // selectedNum = selectedData
+    selectedNum = resultData
+  }
+
+  // 猜前三&复式
+  if(type === '猜前三' && detial === '复式') {
+    let oneTwo = [] // 符合1，2级的
+    let Three = [] // 符合1，2，3的
+    let firstNumArr = selectedData[0].data.map(item => item.label)
+    let secondNumArr = selectedData[1].data.map(item => item.label)
+    let thirdNumArr = selectedData[2].data.map(item => item.label)
+    // 处理1，2级的
+    for (let first = 0; first < firstNumArr.length; first++) {
+      for (let second = 0; second < secondNumArr.length; second++) {
+        if (secondNumArr[second] !== firstNumArr[first]) {
+          let item = [firstNumArr[first], secondNumArr[second]]
+          oneTwo.push(item)
+        }
+      }
+    }
+    // console.log('1&2的')
+    // console.log(oneTwo)
+    // 处理1，2，3级的
+    oneTwo.forEach(item => {
+      for (let third = 0; third < thirdNumArr.length; third++) {
+        if (item.indexOf(thirdNumArr[third]) === -1) {
+          let list = item.concat(thirdNumArr[third])
+          Three.push(list)
+        }
+      }
+    })
+    // console.log('符合条件的')
+    // console.log(Three)
+
+    bittingNumber = Three.length
+    price = 2 * bittingNumber
+    selectedNum = Three
+  }
+
+  // 猜前三&单式 [1,2,3]和[3,2,1]算两个
+  if(type === '猜前三' && detial === '单式') {
+    let resultData = selectedData[0].data.filter(item => {
+      return item.length === 3
+    })
+    // console.log('符合条件的')
+    // console.log(resultData)
+    bittingNumber = resultData.length
+    price = 2 * bittingNumber
+    // selectedNum = selectedData
+    selectedNum = resultData
+  }
+
+  // 猜前二&复式
+  if(type === '猜前二' && detial === '复式') {
+    let oneTwo = [] // 符合1，2级的
+    let firstNumArr = selectedData[0].data.map(item => item.label)
+    let secondNumArr = selectedData[1].data.map(item => item.label)
+    // 处理1，2级的
+    for (let first = 0; first < firstNumArr.length; first++) {
+      for (let second = 0; second < secondNumArr.length; second++) {
+        if (secondNumArr[second] !== firstNumArr[first]) {
+          let item = [firstNumArr[first], secondNumArr[second]]
+          oneTwo.push(item)
+        }
+      }
+    }
+    // console.log('1&2的')
+    // console.log(oneTwo)
+
+    bittingNumber = oneTwo.length
+    price = 2 * bittingNumber
+    selectedNum = oneTwo
+  }
+
+  // 猜前二&单式 [1,2,3]和[3,2,1]算两个
+  if(type === '猜前二' && detial === '单式') {
+    let resultData = selectedData[0].data.filter(item => {
+      return item.length === 2
+    })
+    // console.log('符合条件的')
+    // console.log(resultData)
+    bittingNumber = resultData.length
+    price = 2 * bittingNumber
+    // selectedNum = selectedData
+    selectedNum = resultData
+  }
+
+  // 猜冠军
+  if(type === '猜冠军' && detial === '复式') {
+    let firstNumArr = selectedData[0].data.map(item => item.label)
+
+
+    bittingNumber = firstNumArr.length
+    price = 2 * bittingNumber
+    selectedNum = firstNumArr
+  }
 
 
   // 三码&前三直选单式 [1,2,3]和[3,2,1]算两个
