@@ -1,3 +1,7 @@
+<!--
+  name: agentCenter
+  desc: 个人中心 -> 代理中心
+-->
 <template>
   <div class="agentCenter">
     <Navbar>
@@ -13,7 +17,7 @@
       </div>
 
       <div class="agentOptions">
-        <li>
+        <li @click="toPage('/agentIntro')">
           <span>代理说明</span><van-icon name="arrow" />
         </li>
         <li>
@@ -46,6 +50,12 @@ export default {
   name: 'agentCenter',
   components: {
     Navbar
+  },
+  methods: {
+    toPage (src) {
+      alert(1);
+      this.$router.push(src);
+    }
   }
 }
 </script>
@@ -74,7 +84,7 @@ ul, li {
   div {
     margin-bottom: px2rem(30px);
   }
-  
+
   .agentOptions {
     background: #ffffff;
     font-size: px2rem(36px);
@@ -88,7 +98,7 @@ ul, li {
       &:last-child::after {
         content: normal;
       }
-      
+
       i {
         float: right;
         color: #cccccc;

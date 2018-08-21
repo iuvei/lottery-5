@@ -1,3 +1,7 @@
+<!--
+  name: transRecord
+  desc: 个人中心 -> 交易记录
+-->
 <template>
   <div class="transRecord">
     <Navbar>

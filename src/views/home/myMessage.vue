@@ -1,5 +1,6 @@
 <!--
-  我的消息
+  name: myMessage
+  desc: 个人中心 -> 我的消息
 -->
 <template>
   <div class="myMessage">
@@ -26,7 +27,7 @@
         </p>
       </ul>
       <!-- 公告 notice end -->
-    
+
       <!-- 私信 letter -->
       <ul class="letter" v-if="messageType==='letter'">
         <li v-for="(item, index) in letters" :key="index">

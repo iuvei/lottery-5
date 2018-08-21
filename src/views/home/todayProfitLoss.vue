@@ -1,5 +1,6 @@
 <!--
-  今日盈亏
+  name: todayProfitLoss
+  desc: 个人中心 -> 今日盈亏
 -->
 <template>
   <div class="todayProfitLoss">

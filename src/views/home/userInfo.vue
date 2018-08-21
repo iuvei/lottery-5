@@ -1,3 +1,7 @@
+<!--
+  name: userInfo
+  desc: 个人中心 -> 个人信息
+-->
 <template>
   <div class="userInfo">
     <Navbar>
@@ -29,30 +33,35 @@
           </li>
         </ul>
         <ul>
-          <li>
+          <li @click="toPage('/bindPhone')">
             <span>手机</span>
             <span>未绑定</span>
             <van-icon name="arrow" />
           </li>
-          <li>
+          <li @click="toPage('/bindEmail')">
             <span>邮箱</span>
             <span>未绑定</span>
             <van-icon name="arrow" />
           </li>
           <li>
             <span>性别</span>
-            <span>保密</span>
+            <!--<span>保密</span>-->
+            <select name="" id="" style="float: right; margin-right: 20px; border: none; outline: none;">
+              <option value="1">保密</option>
+              <option value="2">男</option>
+              <option value="3">女</option>
+            </select>
             <van-icon name="arrow" />
           </li>
           <li>
             <span>生日</span>
-            <span>1995/10/15</span>
+            <input type="date">
             <van-icon name="arrow" />
           </li>
         </ul>
       </div>
       <!-- 个人资料 end -->
-      
+
       <!-- 等级头衔 -->
       <div class="rankTitle" v-if="infoStyle==='rankTitle'">
         <div class="rankTitleHeader">
@@ -130,6 +139,11 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    toPage (src) {
+      this.$router.push(src)
+    }
   }
 }
 </script>
@@ -171,7 +185,7 @@ ul, li {
   margin-bottom: px2rem(100px);
   overflow: hidden;
   background: #efeef4;
-    
+
   // 个人资料
   .personalData,  {
     ul {
@@ -179,7 +193,7 @@ ul, li {
       margin-bottom: px2rem(34px);
       overflow: hidden;
       font-size: px2rem(36px);
-      
+
       li:last-child::after {
         content: none
       }
@@ -224,13 +238,20 @@ ul, li {
             border: none;
             text-align: right
           }
-          
+
           i {
             position: absolute;
             right: 0;
             font-size: px2rem(28px);
             color: #cccccc;
             font-weight: bold;
+          }
+        }
+      }
+      &:nth-child(2) {
+        li {
+          i {
+            top: px2rem(34px);
           }
         }
       }
