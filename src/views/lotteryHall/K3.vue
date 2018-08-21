@@ -11,10 +11,10 @@
         </span>
         <div class="betTopDetail" v-show="betTopDetailShow">
           <div @click="selectedDetTopDetail(item)" class="betTopDetailItem"
-               :class="{'betTopDetailSelected': item.value == betTopDetailSelected}"
+               :class="{'betTopDetailSelected': item.titleName == betTopDetailSelected}"
                v-for="item in betTopDetailList">
-            <div class="betTopDetailItemName">{{item.name}}</div>
-            <div class="betTopDetailItemOdds">{{item.odds}}</div>
+            <div class="betTopDetailItemName">{{item.titleName}}</div>
+            <div class="betTopDetailItemOdds">{{item.ratio}}倍</div>
             <!--<div class="betTopDetailItemNumber">{{item.number}}</div>-->
             <span></span><i></i><span></span><i></i><span></span>
           </div>
@@ -39,6 +39,7 @@
 		</div>
 		<div class="content">
 			<div class="chose-wrap">
+				<playBoardK3 :tagToPlayMapK3="tagToPlayMapK3" :betTopDetailSelected="betTopDetailSelected"></playBoardK3>
 				<div class="chose-type" v-if="betTopDetailSelected == 1">
 					<div class="chose-msg">
 						猜3个开奖号相加的和，3-10为小，11-18为大。
@@ -172,16 +173,18 @@
 
 <script>
 	import HeaderReg from '@/components/Navbar.vue'
-	import tagToPlayMapK3 from './components/tagToPlayMapK3'
+	import playBoardK3 from './components/playBoardK3.vue'
+	import {tagToPlayMapK3} from './components/tagToPlayMapK3.js'
 
 	export default {
 		name: 'k3',
 		components: {
-			HeaderReg
+			HeaderReg,
+			playBoardK3
 		},
 		data() {
 			return {
-				tagToPlayMap: tagToPlayMapK3, //映射关系
+				tagToPlayMapK3: tagToPlayMapK3, //映射关系
 				choseList: [],
 				choseList1: [
 					{name: '大', odds: 1.95, checked: false},
@@ -271,7 +274,7 @@
 					{name: '和值', odds: '赔率31.5倍', number: 123, value: 9},
 				],
 				betTopDetailShow: false,
-				betTopDetailSelected: 1,
+				betTopDetailSelected: '和值',
 				arae: [
 					{value: 1, label: '江苏'},
 					{value: 2, label: '安徽'},
@@ -302,12 +305,16 @@
 				this.areaShow = false
 			},
 			selectedDetTopDetail(item) {
-				this.betTopDetailSelected = item.value
-				this.choseList = eval(`this.choseList${item.value}`)
+				this.betTopDetailSelected = item.titleName
+//				this.choseList = eval(`this.choseList${item.value}`)
 				this.betTopDetailShow = false
+			},
+			loadBetTopDetailList() {
+				this.betTopDetailList = tagToPlayMapK3
 			}
 		},
 		mounted() {
+			this.loadBetTopDetailList()
 			sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
 			this.choseList = eval(`this.choseList1`)
 		}
@@ -534,10 +541,6 @@
 		}
 	}
 
-	.checked {
-		color: #f4c829;
-		border-color: #f4c829 !important;
-	}
 
 	.chose-info {
 		position: fixed;
