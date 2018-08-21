@@ -1,3 +1,7 @@
+<!--
+  name: home
+  desc: 个人中心
+-->
 <template>
   <div class="lottery-hall">
     <!-- 用户信息 -->
@@ -82,7 +86,7 @@
     },
     computed: {
       ...mapGetters([
-      
+
       ])
     },
     mounted() {

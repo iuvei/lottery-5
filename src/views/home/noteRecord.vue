@@ -1,5 +1,6 @@
 <!--
-  投注记录
+  name: noteRecord
+  desc: 个人中心 -> 投注记录
 -->
 <template>
   <div class="noteRecord">
@@ -105,7 +106,7 @@ export default {
   margin-bottom: px2rem(100px);
   overflow: hidden;
   background: #efeef4;
-  
+
   .isPrize, .isPend {
     display: flex;
     background: #f3f3f3;
