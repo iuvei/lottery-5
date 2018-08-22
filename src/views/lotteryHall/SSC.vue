@@ -66,7 +66,7 @@
   import footerBar from './components/footerBar'
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
-  import {tagToPlayMap} from './components/tagToPlayMapK3'
+  import {tagToPlayMap} from './components/tagToPlayMap'
 
   export default {
     name: 'ssc',
