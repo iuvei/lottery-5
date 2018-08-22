@@ -39,7 +39,6 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-        {{checkedList}}
         <playBoardK3 :tagToPlayMapK3="tagToPlayMapK3" :betTopDetailSelected="betTopDetailSelected"
                      @change="choseItem"></playBoardK3>
       </div>
