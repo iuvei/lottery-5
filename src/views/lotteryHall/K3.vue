@@ -44,11 +44,11 @@
 			</div>
 		</div>
 
-		<div class="chose-info" v-show="checkedList.length > 0">
+		<div class="chose-info" v-show="checkedList.selectedData">
 			<div>
 				<span>当前选号</span>
 				<div>
-          <span v-for="item in checkedList"
+          <span v-for="item in checkedList.selectedData"
                 style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.label}}</span>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 		</div>
 		<div class="footerbar">
 			<span class="fl">清空</span>
-			<span class="fm">共{{checkedList.length}}注</span>
+			<span class="fm">共{{checkedList.bittingNumber || 0}}注</span>
 			<span class="fr">马上投注</span>
 		</div>
 	</div>
@@ -117,6 +117,7 @@
 		},
 		methods: {
 			choseItem(data) {
+
 				this.checkedList = data
 			},
 			selectArea(item) {

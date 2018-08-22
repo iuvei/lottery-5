@@ -52,18 +52,18 @@ export let tagToPlayMapK3 = [
 		{label: '66', checked: false}
 	]},
 	{titleName: '二同号单选', ratio: '12.6', info: '选择1对相同号码和1个不同号码投注，选号与奖号相同，即为中奖。赔率63.00倍。', playBoard: [
-		{label: '11', checked: false},
-		{label: '22', checked: false},
-		{label: '33', checked: false},
-		{label: '44', checked: false},
-		{label: '55', checked: false},
-		{label: '66', checked: false},
-		{label: '1', checked: false},
-		{label: '2', checked: false},
-		{label: '3', checked: false},
-		{label: '4', checked: false},
-		{label: '5', checked: false},
-		{label: '6', checked: false}
+		{label: '11', flag: 1, checked: false},
+		{label: '22', flag: 2, checked: false},
+		{label: '33', flag: 3, checked: false},
+		{label: '44', flag: 4, checked: false},
+		{label: '55', flag: 5, checked: false},
+		{label: '66', flag: 6, checked: false},
+		{label: '1', flag: 1, checked: false},
+		{label: '2', flag: 2, checked: false},
+		{label: '3', flag: 3, checked: false},
+		{label: '4', flag: 4, checked: false},
+		{label: '5', flag: 5, checked: false},
+		{label: '6', flag: 6, checked: false}
 	]},
 	{titleName: '二不同号', ratio: '6.30', info: '从1-6中任选2个或多个号码，所选号码与开奖号码任意2个号码相同，即为中奖。赔率6.30倍。', playBoard: [
 		{label: '1', checked: false},

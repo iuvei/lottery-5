@@ -16,6 +16,7 @@
       </li>
       <li class="chose-list-item3" v-if="cellData.titleName == '三同号单选' || cellData.titleName == '三不同号' || cellData.titleName == '二同号复选' || cellData.titleName == '二同号单选' || cellData.titleName == '二不同号'" :class="{'checked': item.checked}" v-for="item in cellData.playBoard"
           @click="choseItem(item)">
+        {{item}
         <span>{{item.label}}</span>
         <span v-if="item.ratio">赔率{{item.ratio}}</span>
       </li>
@@ -25,6 +26,7 @@
 
 <script>
 	import cell from './cellK3.vue'
+  import playMethodsK3 from '../../../utils/playMethodsK3'
 
 	export default {
 		props: ['tagToPlayMapK3', 'betTopDetailSelected'],
@@ -46,9 +48,11 @@
 		methods: {
 			choseItem(item) {
 				item.checked = !item.checked
-				let emitData = this.cellData.playBoard.filter(v => {
+				let selectedData = this.cellData.playBoard.filter(v => {
 					return v.checked == true
 				})
+        let emitData = playMethodsK3(this.cellData.titleName, selectedData)
+        console.log(emitData)
 				this.$emit('change', emitData)
 			}
 		},
