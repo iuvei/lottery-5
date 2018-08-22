@@ -1,6 +1,6 @@
-export default function playMethodsK3(type, selectedData) {
+export default function playMethodsK3(type, ratio, selectedData) {
   let bittingNumber = 0
-  let maxRatio
+  let maxRatio = ratio
   bittingNumber = selectedData.length
   return {
     type,

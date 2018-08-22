@@ -51,8 +51,10 @@
 				let selectedData = this.cellData.playBoard.filter(v => {
 					return v.checked == true
 				})
-        let emitData = playMethodsK3(this.cellData.titleName, selectedData)
+        let emitData = playMethodsK3(this.cellData.titleName, this.cellData.ratio, selectedData)
         console.log(emitData)
+        console.log('----------------')
+        console.log(this.cellData.ratio)
 				this.$emit('change', emitData)
 			}
 		},
