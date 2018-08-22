@@ -4,17 +4,17 @@
 			{{cellData.info}}
 		</div>
 		<ul class="chose-list">
-			<li class="chose-list-item1" v-if="cellData.titleName == '和值'" :class="{'checked': item.checked == true}" v-for="item in cellData.playBoard"
+			<li class="chose-list-item1" v-if="cellData.titleName == '和值'" :class="{'checked': item.checked}" v-for="item in cellData.playBoard"
 			    @click="choseItem(item)">
 				<span>{{item.label}}</span>
 				<span v-if="item.ratio">赔率{{item.ratio}}</span>
 			</li>
-      <li class="chose-list-item2" v-if="cellData.titleName == '三同号通选' || cellData.titleName == '三连号通选'" :class="{'checked': item.checked == true}" v-for="item in cellData.playBoard"
+      <li class="chose-list-item2" v-if="cellData.titleName == '三同号通选' || cellData.titleName == '三连号通选'" :class="{'checked': item.checked}" v-for="item in cellData.playBoard"
           @click="choseItem(item)">
         <span>{{item.label}}</span>
         <span v-if="item.ratio">赔率{{item.ratio}}</span>
       </li>
-      <li class="chose-list-item3" v-if="cellData.titleName == '三同号单选' || cellData.titleName == '三不同号' || cellData.titleName == '二同号复选' || cellData.titleName == '二同号单选' || cellData.titleName == '二不同号'" :class="{'checked': item.checked == true}" v-for="item in cellData.playBoard"
+      <li class="chose-list-item3" v-if="cellData.titleName == '三同号单选' || cellData.titleName == '三不同号' || cellData.titleName == '二同号复选' || cellData.titleName == '二同号单选' || cellData.titleName == '二不同号'" :class="{'checked': item.checked}" v-for="item in cellData.playBoard"
           @click="choseItem(item)">
         <span>{{item.label}}</span>
         <span v-if="item.ratio">赔率{{item.ratio}}</span>
