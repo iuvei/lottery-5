@@ -17,7 +17,7 @@
 				<span>+</span>
 				<div>
 					<div>共{{finalData.bittingNumber}}注，{{(finalData.price / YJFmul).toFixed(2) * betMul}}元</div>
-					<span>{{strNumberList}}</span>
+					<span v-if="finalData.bittingNumber != 0">{{strNumberList}}</span>
 				</div>
 			</div>
 			<div class="betCard">
