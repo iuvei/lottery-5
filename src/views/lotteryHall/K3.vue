@@ -39,7 +39,7 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-        <playBoardK3 :tagToPlayMapK3="tagToPlayMapK3" :betTopDetailSelected="betTopDetailSelected"
+        <playBoardK3 ref="playBoardK3" :tagToPlayMapK3="tagToPlayMapK3" :betTopDetailSelected="betTopDetailSelected"
                      @change="choseItem"></playBoardK3>
       </div>
     </div>
@@ -120,7 +120,6 @@
     },
     methods: {
       choseItem(data) {
-
         this.checkedList = data
       },
       selectArea(item) {
@@ -128,7 +127,7 @@
         this.areaShow = false
       },
       selectedDetTopDetail(item) {
-        alert(1)
+        this.$refs.playBoardK3.resetSelected()
         this.betTopDetailSelected = item.titleName
 //				this.choseList = eval(`this.choseList${item.value}`)
         this.betTopDetailShow = false

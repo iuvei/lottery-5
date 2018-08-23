@@ -2,7 +2,6 @@
 	<div class="playBoardK3">
 		<div class="chose-msg">
 			{{cellData.info}}
-		
 		</div>
 		<ul class="chose-list">
 			<li class="chose-list-item1" v-if="cellData.titleName == '和值'" :class="{'checked': item.checked}"
@@ -31,7 +30,7 @@
 <script>
 	import cell from './cellK3.vue'
 	import playMethodsK3 from '../../../utils/playMethodsK3'
-	
+
 	export default {
 		props: ['tagToPlayMapK3', 'betTopDetailSelected'],
 		data() {
@@ -65,9 +64,13 @@
 					return v.checked == true
 				})
 				let emitData = playMethodsK3(this.cellData.titleName, this.cellData.ratio, selectedData)
-				console.log(emitData)
 				this.$emit('change', emitData)
-			}
+			},
+      resetSelected() {
+			  this.cellData.playBoard.forEach(v => {
+			    v.checked = false
+        })
+      }
 		},
 		mounted() {
 			console.log(this.betTopDetailSelected)
@@ -77,7 +80,7 @@
 
 <style scoped lang="scss">
 	@import "@/styles/index.scss";
-	
+
 	.chose-msg {
 		text-align: center;
 		font-size: px2rem(25px);
@@ -85,12 +88,12 @@
 		margin: px2rem(10px) auto;
 		color: #caebda;
 	}
-	
+
 	.chose-list {
 		width: px2rem(700px);
 		margin: 0 auto;
 		text-align: center;
-		
+
 		.chose-list-item1 {
 			padding: px2rem(16px);
 			vertical-align: top;
@@ -161,7 +164,7 @@
 			}
 		}
 	}
-	
+
 	.checked {
 		color: #f4c829;
 		border-color: #f4c829 !important;
