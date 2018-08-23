@@ -255,7 +255,7 @@
 
   .content {
     margin-top: px2rem(230px);
-    margin-bottom: px2rem(100px);
+    margin-bottom: px2rem(200px);
     overflow: hidden;
   }
 
