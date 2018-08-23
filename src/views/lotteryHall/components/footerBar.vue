@@ -17,7 +17,7 @@
 				<span>+</span>
 				<div>
 					<div>共{{finalData.bittingNumber}}注，{{(finalData.price / YJFmul).toFixed(2) * betMul}}元</div>
-					<!--<span>234234</span>-->
+					<span>{{strNumberList}}</span>
 				</div>
 			</div>
 			<div class="betCard">
@@ -28,7 +28,9 @@
 </template>
 
 <script>
-	export default {
+  import { selectedDataToStr } from "../../../utils/auth";
+
+  export default {
 		data() {
 			return {
 				YJF: [
@@ -42,6 +44,9 @@
 		},
 		props: ['selectedInfo'],
 		computed: {
+		  strNumberList() {
+        return this.selectedInfo.selectedNum ? selectedDataToStr(this.selectedInfo.selectedNum) : ''
+      },
 			finalData() {
 				return {
 					bittingNumber: this.selectedInfo.bittingNumber || 0,
@@ -79,14 +84,14 @@
 
 <style scoped lang="scss">
 	@import "@/styles/index.scss";
-	
+
 	.footerBar {
 		position: fixed;
 		z-index: 999999;
 		bottom: 0;
 		width: 100%;
 	}
-	
+
 	.multipleCon {
 		height: px2rem(105px);
 		width: 100%;
@@ -158,12 +163,12 @@
 			}
 		}
 	}
-	
+
 	.active {
 		background: #dc3b40;
 		color: #fff;
 	}
-	
+
 	.betInfo {
 		height: px2rem(105px);
 		width: 100%;
@@ -191,7 +196,7 @@
 					margin-top: px2rem(10px);
 				}
 			}
-			
+
 		}
 		.betActive {
 			background: #dc3b40;

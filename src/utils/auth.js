@@ -14,3 +14,16 @@ export function hezhi(number = 8) {
     console.log(i)
   }
 }
+
+export function selectedDataToStr(data) {
+  let str = ''
+  let arr = data.map(v => {
+    return v.data.map(v1 => {
+      return v1.label
+    })
+  })
+  str = arr.map(v => {
+    return v.join(' ')
+  }).join(',')
+  return str
+}

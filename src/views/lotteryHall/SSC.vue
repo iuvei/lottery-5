@@ -61,6 +61,7 @@
 <script>
 	import {mapGetters} from 'vuex'
 	import playMethods from '../../utils/playMethods'
+	import { selectedDataToStr } from '../../utils/auth'
 
 	import HeaderReg from '@/components/Navbar.vue'
   import footerBar from './components/footerBar'
@@ -145,7 +146,8 @@
         let type = this.tagSelectedData[0]
         let details = this.tagSelectedData[2]
         this.selectedInfo = playMethods(type, details, data)
-        console.log(playMethods(type, details, data))
+        // console.log(playMethods(type, details, data))
+        // selectedDataToStr(this.selectedInfo.selectedNum)
       }
     },
     mounted() {
