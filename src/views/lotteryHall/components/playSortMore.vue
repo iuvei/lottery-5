@@ -7,7 +7,7 @@
 <script>
   import betFilter from './betFilter'
   import betFilterAnd from './betFilterAnd'
-//  import {tagToPlayMap} from './tagToPlayMap'
+//  import {tagToPlayMapK3.js} from './tagToPlayMapK3.js'
 
   export default {
   	props: ['tagToPlayMap'], //传过来的映射关系

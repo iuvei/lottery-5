@@ -1,5 +1,5 @@
 <template>
-  <div class="ssc clearfix">
+  <div class="pk10 clearfix">
     <HeaderReg bgcolor="#000">
       <router-link slot="headleft" to="/lotteryHall">
         <van-icon name="arrow-left"/>
@@ -9,7 +9,7 @@
           <span>玩法</span>
           <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]} ${tagSelectedData[2]}`}}</div>
         </span>
-      <playSortMore @playBoardType="playBoardType" :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
+      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
@@ -30,38 +30,44 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-	      <playBoard @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
-			</div>
+        <playBoard @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
+      </div>
     </div>
+
     <footerBar :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
   </div>
 </template>
 
 <script>
-	import {mapGetters} from 'vuex'
-	import playMethods from '../../utils/playMethods'
-	import { selectedDataToStr } from '../../utils/auth'
-	import HeaderReg from '@/components/Navbar.vue'
+  import {mapGetters} from 'vuex'
+  import playMethods from '../../utils/playMethods'
+
+  import HeaderReg from '@/components/Navbar.vue'
+  import selectNumber from './components/selectNumber'
+  import textareaNumber from './components/textareaNumber'
   import footerBar from './components/footerBar'
+
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
-  import {tagToPlayMap} from './components/tagToPlayMap'
+  import {tagToPlayMapPK10} from './components/tagToPlayMapPK10'
+  import playMethodsPk10 from '../../utils/playMethodsPk10'
 
   export default {
-    name: 'ssc',
+    name: 'pk10',
     components: {
       HeaderReg,
-      footerBar,
+      selectNumber,
+      textareaNumber,
       playSortMore,
-	    playBoard
+      playBoard,
+      footerBar
     },
     data() {
       return {
-	      tagToPlayMap: tagToPlayMap, //映射关系
-	      playBoardData: [], //选中的面板数据
-	      tagSelectedData: [], //选中的标签
-	      selectedNumberData: [], //选中的号码
-        selectedInfo: {},
+        tagToPlayMap: JSON.parse(sessionStorage.getItem('tagToPlayMapPK10')), //映射关系
+        playBoardData: [], //选中的面板数据
+        tagSelectedData: [], //选中的标签
+        selectedNumberData: [], //选中的号码
         playBoardTypeValue: '',//页面是选择||输入
         choseType: 1,
         checkedList: [],
@@ -77,21 +83,20 @@
         araeSelected: {value: 1, label: '重庆'},
       }
     },
-	  computed: {
-		  ...mapGetters([
-		    'BetFilterDataFlag',
-			  'PlaySortMore'
-		  ])
-	  },
+    computed: {
+      ...mapGetters([
+        'BetFilterDataFlag',
+        'PlaySortMore'
+      ])
+    },
     watch: {
       // 'playBoardData': function (n) {
       //   console.log(n)
       // },
       'BetFilterDataFlag': function () {
-        this.tagToPlayMap = JSON.parse(sessionStorage.getItem('tagToPlayMap'))
+        this.tagToPlayMap = JSON.parse(sessionStorage.getItem('tagToPlayMapPK10'))
       },
       'tagSelectedData': function (n) {
-	      this.selectedInfo = {}
         // console.log(n)
       },
       'selectedNumberData': {
@@ -102,9 +107,9 @@
       }
     },
     methods: {
-	    tagSelected(data) {
-	    	this.tagSelectedData = data
-	    },
+      tagSelected(data) {
+        this.tagSelectedData = data
+      },
       choseItem(item, index) {
         item.checked = !item.checked
         this.checkedList = this.choseList.filter(item => {
@@ -114,7 +119,7 @@
       selectArea(item) {
         this.araeSelected = item
         this.areaShow = false
-	      this.$router.push({params: { id: item.value}})
+        this.$router.push({params: { id: item.value}})
       },
       selectedDetTopDetail(item) {
         this.betTopDetailSelected = item.value
@@ -122,24 +127,23 @@
         this.betTopDetailShow = false
       },
       selectedNumberDataMethod(data) {
+        console.log(this.tagSelectedData)
         let type = this.tagSelectedData[0]
-        let details = this.tagSelectedData[2]
-        this.selectedInfo = playMethods(type, details, data)
-        // console.log(playMethods(type, details, data))
-        selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum)
+        let detial = this.tagSelectedData[2]
+        this.selectedNumberData = data
       },
       playBoardType(data) {
-	      this.playBoardTypeValue = data
+        this.playBoardTypeValue = data
       }
     },
     mounted() {
-      sessionStorage.setItem('tagToPlayMap', JSON.stringify(tagToPlayMap))
+      sessionStorage.setItem('tagToPlayMapPK10', JSON.stringify(tagToPlayMapPK10))
       this.choseList = eval(`this.choseList1`)
-	    this.arae.forEach(i => {
-	    	if(i.value == this.$route.params.id) {
-	    		this.araeSelected = i
-		    }
-	    })
+      this.arae.forEach(i => {
+        if(i.value == this.$route.params.id) {
+          this.araeSelected = i
+        }
+      })
     }
   }
 </script>
@@ -147,7 +151,7 @@
 <style lang="scss" scoped>
   @import "@/styles/index.scss";
 
-  .ssc {
+  .pk10 {
     position: relative;
     background: #f5f1e4;
     height: 100vh;
@@ -155,24 +159,24 @@
   }
 
   .titleSelect {
-	  span {
-		  display: inline-block;
-		  width: px2rem(10px);
-		  line-height: px2rem(30px);
-		  margin: px2rem(15px);
-		  font-size: px2rem(10px);
-	  }
-	  div {
-		  display: inline-block;
-		  font-size: .8em;
-		  border-radius: .2em;
-		  border: 1px solid hsla(0,0%,100%,.5);
-		  vertical-align: top;
-		  height: 2em;
-		  margin: .45em 0;
-		  line-height: 1.9em;
-		  padding: 0 .4em;
-	  }
+    span {
+      display: inline-block;
+      width: px2rem(10px);
+      line-height: px2rem(30px);
+      margin: px2rem(15px);
+      font-size: px2rem(10px);
+    }
+    div {
+      display: inline-block;
+      font-size: .8em;
+      border-radius: .2em;
+      border: 1px solid hsla(0,0%,100%,.5);
+      vertical-align: top;
+      height: 2em;
+      margin: .45em 0;
+      line-height: 1.9em;
+      padding: 0 .4em;
+    }
   }
 
   .betTopDetail {

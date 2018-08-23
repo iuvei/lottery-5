@@ -14,6 +14,7 @@
 			selectNumber,
 			textareaNumber
 		},
+
 		props: ['playBoardData'],
 		data() {
 			return {
@@ -24,6 +25,13 @@
 		methods: {
       textareaChange() {
         // this.$emit('change', this.selectedData)
+      },
+      resetSelected() {
+        this.playBoardData.forEach(v => {
+          v.numberData.forEach(v1 => {
+            v1.checked = false
+          })
+        })
       }
     },
 		watch: {
@@ -35,6 +43,7 @@
 						data: []
 					})
 				})
+        this.$emit('playBoardType', this.playBoardData[0].type)
 			},
 			'selectedData': function (n) {
 				this.emitData.forEach(i => {
@@ -43,10 +52,11 @@
 					}
 				})
 				this.$emit('change', this.emitData)
+
 			}
 		},
-		mounted() {
-//			console.log(this.playBoardData)
-		}
+		destroyed() {
+		  this.resetSelected()
+    }
 	}
 </script>
