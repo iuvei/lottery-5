@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vant from 'vant'
+import countDown from './components/countDown.vue'
 import 'vant/lib/vant-css/index.css'
 import './icons/iconfont.css'
 
@@ -13,6 +14,7 @@ import './utils/flexible.js'
 import './permission'
 
 Vue.use(Vant)
+Vue.component('countDown', countDown)
 
 Vue.config.productionTip = false
 

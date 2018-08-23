@@ -25,7 +25,7 @@
       </div>
       <div>
         <span>0730081期投注截止</span>
-        <div>k3-timebar</div>
+        <div><countDown></countDown></div>
       </div>
     </div>
     <div class="content">
@@ -62,7 +62,6 @@
 	import {mapGetters} from 'vuex'
 	import playMethods from '../../utils/playMethods'
 	import { selectedDataToStr } from '../../utils/auth'
-
 	import HeaderReg from '@/components/Navbar.vue'
   import footerBar from './components/footerBar'
   import playSortMore from './components/playSortMore'
@@ -147,7 +146,7 @@
         let details = this.tagSelectedData[2]
         this.selectedInfo = playMethods(type, details, data)
         // console.log(playMethods(type, details, data))
-        // selectedDataToStr(this.selectedInfo.selectedNum)
+        selectedDataToStr(this.selectedInfo)
       }
     },
     mounted() {

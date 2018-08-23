@@ -45,7 +45,7 @@
 		props: ['selectedInfo'],
 		computed: {
 		  strNumberList() {
-        return this.selectedInfo.selectedNum ? selectedDataToStr(this.selectedInfo.selectedNum) : ''
+        // return this.selectedInfo.selectedNum ? selectedDataToStr(this.selectedInfo.selectedNum) : ''
       },
 			finalData() {
 				return {

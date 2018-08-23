@@ -34,7 +34,7 @@
       </div>
       <div>
         <span>0730081期投注截止</span>
-        <div>k3-timebar</div>
+        <div><countDown></countDown></div>
       </div>
     </div>
     <div class="content">

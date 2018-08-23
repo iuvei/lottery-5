@@ -17,13 +17,18 @@ export function hezhi(number = 8) {
 
 export function selectedDataToStr(data) {
   let str = ''
-  let arr = data.map(v => {
-    return v.data.map(v1 => {
-      return v1.label
-    })
-  })
-  str = arr.map(v => {
+  console.log(data)
+  str = data.selectedNum.map(v => {
     return v.join(' ')
   }).join(',')
+  console.log(str)
+  // let arr = data.map(v => {
+  //   return v.data.map(v1 => {
+  //     return v1.label
+  //   })
+  // })
+  // str = arr.map(v => {
+  //   return v.join(' ')
+  // }).join(',')
   return str
 }
