@@ -74,7 +74,10 @@
 		},
 		mounted() {
 			console.log(this.betTopDetailSelected)
-		}
+		},
+    destroyed() {
+		  this.resetSelected()
+    }
 	}
 </script>
 
