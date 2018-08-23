@@ -35,7 +35,7 @@
 			</div>
 		</div>
 
-		<footerBar :selectedInfo="selectedInfo"></footerBar>
+		<footerBar :playBoardTypeValue="playBoardTypeValue"  :selectedInfo="selectedInfo"></footerBar>
 
 	</div>
 </template>
@@ -69,7 +69,8 @@
 				tagSelectedData: [],
 				selectedNumberData: [],
 				selectedInfo: {},
-				choseType: 1,
+        playBoardTypeValue: '',//页面是选择||输入
+        choseType: 1,
 				checkedList: [],
 				betTopDetailList: [
 					{name: '和值', odds: '赔率31.5倍', number: 123, value: 1},
@@ -138,7 +139,10 @@
 				this.betTopDetailSelected = item.value
 				this.choseList = eval(`this.choseList${item.value}`)
 				this.betTopDetailShow = false
-			}
+			},
+      playBoardType(data) {
+        this.playBoardTypeValue = data
+      }
 		},
 		mounted() {
       sessionStorage.setItem('tagToPlayMapSYX5', JSON.stringify(tagToPlayMapSYX5))
