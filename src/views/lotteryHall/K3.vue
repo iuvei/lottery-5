@@ -128,12 +128,13 @@
         this.areaShow = false
       },
       selectedDetTopDetail(item) {
+        alert(1)
         this.betTopDetailSelected = item.titleName
 //				this.choseList = eval(`this.choseList${item.value}`)
         this.betTopDetailShow = false
       },
       loadBetTopDetailList() {
-        this.betTopDetailList = tagToPlayMapK3
+        this.betTopDetailList = JSON.parse(sessionStorage.getItem('tagToPlayMapK3'))
       }
     },
     mounted() {

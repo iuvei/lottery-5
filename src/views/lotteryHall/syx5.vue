@@ -34,9 +34,9 @@
 				<playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethods"></playBoard>
 			</div>
 		</div>
-		
+
 		<footerBar :selectedInfo="selectedInfo"></footerBar>
-	
+
 	</div>
 </template>
 
@@ -64,7 +64,7 @@
 		},
 		data() {
 			return {
-				tagToPlayMap: JSON.parse(sessionStorage.getItem('tagToPlayMapSYX5')), //映射关系
+				tagToPlayMap: tagToPlayMapSYX5, //映射关系
 				playBoardData: [], //选中的面板数据
 				tagSelectedData: [],
 				selectedNumberData: [],
@@ -141,13 +141,13 @@
 			}
 		},
 		mounted() {
+      sessionStorage.setItem('tagToPlayMapSYX5', JSON.stringify(tagToPlayMapSYX5))
 			this.choseList = eval(`this.choseList1`)
 			this.arae.forEach(i => {
 				if(i.value == this.$route.params.id) {
 					this.araeSelected = i
 				}
 			})
-			sessionStorage.setItem('tagToPlayMapSYX5', JSON.stringify(tagToPlayMapSYX5))
 		}
 	}
 </script>

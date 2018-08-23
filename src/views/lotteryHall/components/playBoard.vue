@@ -14,6 +14,7 @@
 			selectNumber,
 			textareaNumber
 		},
+
 		props: ['playBoardData'],
 		data() {
 			return {

@@ -24,7 +24,7 @@ export default function playMethodsK3(type, ratio, selectedData) {
 	}
 	if (type == '二同号单选') {
 		bittingNumber = 0
-		bittingNumber = selectedData.filter(v => {return v.label.length > 1}).length *selectedData.filter(v => {return v.label.length <= 1}).length
+		bittingNumber = selectedData.filter(v => {return v.label.length > 1}).length * selectedData.filter(v => {return v.label.length <= 1}).length
 	}
 	return {
 		type,
