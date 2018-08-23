@@ -25,6 +25,13 @@
 		methods: {
       textareaChange() {
         // this.$emit('change', this.selectedData)
+      },
+      resetSelected() {
+        this.playBoardData.forEach(v => {
+          v.numberData.forEach(v1 => {
+            v1.checked = false
+          })
+        })
       }
     },
 		watch: {
@@ -48,7 +55,8 @@
 
 			}
 		},
-		mounted() {
-		}
+		destroyed() {
+		  this.resetSelected()
+    }
 	}
 </script>
