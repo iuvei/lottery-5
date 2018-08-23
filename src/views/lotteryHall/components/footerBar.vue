@@ -42,10 +42,10 @@
 				YJFmul: 1
 			}
 		},
-		props: ['selectedInfo'],
+		props: ['selectedInfo','playBoardTypeValue'],
 		computed: {
 		  strNumberList() {
-        // return this.selectedInfo.selectedNum ? selectedDataToStr(this.selectedInfo.selectedNum) : ''
+        return this.selectedInfo.selectedNum ? selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum) : ''
       },
 			finalData() {
 				return {

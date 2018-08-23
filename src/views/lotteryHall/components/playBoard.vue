@@ -36,6 +36,7 @@
 						data: []
 					})
 				})
+        this.$emit('playBoardType', this.playBoardData[0].type)
 			},
 			'selectedData': function (n) {
 				this.emitData.forEach(i => {
@@ -44,10 +45,10 @@
 					}
 				})
 				this.$emit('change', this.emitData)
+
 			}
 		},
 		mounted() {
-//			console.log(this.playBoardData)
 		}
 	}
 </script>

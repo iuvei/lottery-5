@@ -9,7 +9,7 @@
           <span>玩法</span>
           <div @click="$store.commit('showPlaySortMore', !PlaySortMore)">{{`${tagSelectedData[0]} ${tagSelectedData[2]}`}}</div>
         </span>
-      <playSortMore :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
+      <playSortMore @playBoardType="playBoardType" :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
         <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
@@ -30,10 +30,10 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-	      <playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
+	      <playBoard @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
-    <footerBar :selectedInfo="selectedInfo"></footerBar>
+    <footerBar :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
     <!--<div class="chose-info" v-show="checkedList.length > 0">-->
       <!--<div>-->
         <!--<span>当前选号</span>-->
@@ -83,6 +83,7 @@
 	      tagSelectedData: [], //选中的标签
 	      selectedNumberData: [], //选中的号码
         selectedInfo: {},
+        playBoardTypeValue: '',//页面是选择||输入
         choseType: 1,
         checkedList: [],
         betTopDetailShow: false,
@@ -146,7 +147,10 @@
         let details = this.tagSelectedData[2]
         this.selectedInfo = playMethods(type, details, data)
         // console.log(playMethods(type, details, data))
-        selectedDataToStr(this.selectedInfo)
+        selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum)
+      },
+      playBoardType(data) {
+	      this.playBoardTypeValue = data
       }
     },
     mounted() {

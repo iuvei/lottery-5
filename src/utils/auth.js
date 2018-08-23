@@ -15,20 +15,21 @@ export function hezhi(number = 8) {
   }
 }
 
-export function selectedDataToStr(data) {
+export function selectedDataToStr(type, data) {
   let str = ''
-  console.log(data)
-  str = data.selectedNum.map(v => {
-    return v.join(' ')
-  }).join(',')
-  console.log(str)
-  // let arr = data.map(v => {
-  //   return v.data.map(v1 => {
-  //     return v1.label
-  //   })
-  // })
-  // str = arr.map(v => {
-  //   return v.join(' ')
-  // }).join(',')
+  if (type == 'input') {
+    str = data.map(v => {
+      return v.join(' ')
+    }).join(',')
+  } else {
+    let arr = data.map(v => {
+      return v.data.map(v1 => {
+        return v1.label
+      })
+    })
+    str = arr.map(v => {
+      return v.join(' ')
+    }).join(',')
+  }
   return str
 }
