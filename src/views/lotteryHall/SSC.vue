@@ -80,7 +80,8 @@
 	  computed: {
 		  ...mapGetters([
 		    'BetFilterDataFlag',
-			  'PlaySortMore'
+			  'PlaySortMore',
+        'lotteryList'
 		  ])
 	  },
     watch: {
