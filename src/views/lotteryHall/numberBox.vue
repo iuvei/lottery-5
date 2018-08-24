@@ -8,16 +8,23 @@
         <span class="titleSelect">
           号码篮
         </span>
-      <playSortMore @playBoardType="playBoardType" :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore"
-                    @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
-
       </span>
     </HeaderReg>
     <div class="content">
-      <div class="chose-wrap">
-
+      <div class="cardContent">
+        <ul class="numBox">
+          <li v-for="item in lotteryList">
+            <div>{{selectedDataToStr(item.playBoardTypeValue, item.selectedNum)}}</div>
+            <span>{{`${item.type}${item.detial} ${item.bittingNumber}注 x ${2 / item.YJFmul}元 x ${item.betMul}倍 = ${item.price}元`}}</span>
+          </li>
+        </ul>
+        <div class="moreOption">
+          <div class="clear">
+            清空
+          </div>
+        </div>
       </div>
     </div>
     <div class="footerBar">
@@ -68,7 +75,7 @@
         'BetFilterDataFlag',
         'PlaySortMore',
         'lotteryList'
-      ])
+      ]),
     },
     watch: {
       // 'playBoardData': function (n) {
@@ -89,6 +96,9 @@
       }
     },
     methods: {
+      selectedDataToStr(type, value) {
+        return selectedDataToStr(type, value)
+      },
       tagSelected(data) {
         this.tagSelectedData = data
       },
@@ -141,146 +151,26 @@
     width: 100%;
   }
 
-  .titleSelect {
-    span {
-      display: inline-block;
-      width: px2rem(10px);
-      line-height: px2rem(30px);
-      margin: px2rem(15px);
-      font-size: px2rem(10px);
-    }
-    div {
-      display: inline-block;
-      font-size: .8em;
-      border-radius: .2em;
-      border: 1px solid hsla(0, 0%, 100%, .5);
-      vertical-align: top;
-      height: 2em;
-      margin: .45em 0;
-      line-height: 1.9em;
-      padding: 0 .4em;
-    }
-  }
-
-  .betTopDetail {
-    position: absolute;
-    top: px2rem(100px);
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    padding: .5em;
-    background: #317455;
-    text-align: center;
-    .betTopDetailItem {
-      display: inline-block;
-      width: px2rem(200px);
-      height: px2rem(200px);
-      margin: px2rem(10px);
-      border: 1px solid hsla(0, 0%, 100%, .3);
-      vertical-align: top;
-      .betTopDetailItemName {
-        font-size: px2rem(32px);
-        line-height: px2rem(32px);
-        margin: px2rem(10px) 0;
-      }
-      .betTopDetailItemOdds {
-        font-size: px2rem(25px);
-        line-height: px2rem(25px);
-        color: #caebda;
-        margin: px2rem(25px) 0;
-      }
-      .betTopDetailItemNumber {
-        font-size: px2rem(40px);
-        line-height: px2rem(40px);
-        margin: px2rem(35px) 0;
-      }
-    }
-  }
-
-  .betTopDetailSelected {
-    border-color: #f4c829 !important;
-  }
-
-  .area-list {
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    position: absolute;
-    top: px2rem(100px);
-    right: 0;
-    width: px2rem(200px);
-    z-index: 50;
-    span {
-      float: left;
-      width: px2rem(200px);
-      border: 0.5px solid rgba(108, 108, 108, 0.14);
-      color: #333;
-      font-size: px2rem(35px);
-    }
-  }
-
   .content {
     margin-top: px2rem(230px);
     margin-bottom: px2rem(200px);
     overflow: hidden;
-  }
-
-  .state {
-    position: fixed;
-    z-index: 10;
-    top: px2rem(100px);
-    color: #333;
-    width: 100%;
-    height: px2rem(130px);
-    background-color: #e1d9ba;
-    border-top: 1px solid #e1dbc9;
-    box-sizing: border-box;
-    & > div {
-      float: left;
-      width: 50%;
-      height: 100%;
-      border-right: 1px solid #968e79;
-      text-align: center;
-      overflow: hidden;
-      padding: px2rem(10px) 0;
-      & > span {
-        font-size: px2rem(32px);
+    .cardContent {
+      box-shadow: 0 0 px2rem(20px) #ccc;
+      margin: 0 px2rem(20px);
+      background: #fff;
+      padding: px2rem(10px) px2rem(30px);
+      .numBox {
       }
-      & > div {
-        height: px2rem(68px);
-        line-height: px2rem(68px);
-        font-size: px2rem(50px);
-      }
-    }
-  }
-
-  .chose-wrap {
-    margin-top: px2rem(30px);
-    padding: px2rem(20px);
-    .chose-msg {
-      text-align: center;
-      font-size: px2rem(25px);
-      line-height: px2rem(30px);
-      margin: px2rem(10px) auto;
-      color: #caebda;
-    }
-    .chose-list {
-      width: px2rem(700px);
-      margin: 0 auto;
-      text-align: center;
-
-      .chose-list-item {
-        vertical-align: top;
-        display: inline-block;
-        text-align: center;
-        border: 1px solid hsla(0, 0%, 100%, .3);
-        width: px2rem(140px);
-        height: px2rem(90px);
-        padding-top: .1em;
-        overflow: hidden;
-        margin: .1rem;
-        line-height: 1.22em;
-        font-size: .9em;
+      .moreOption {
+        .clear {
+          width: 100%;
+          padding: 0;
+          text-align: center;
+          font-size: px2rem(30px);
+          margin: px2rem(20px) 0;
+          color: #666;
+        }
       }
     }
   }
@@ -288,50 +178,6 @@
   .checked {
     color: #f4c829;
     border-color: #f4c829 !important;
-  }
-
-  .chose-info {
-    position: fixed;
-    bottom: px2rem(100px);
-    width: 100%;
-  }
-
-  .chose-info > div {
-    display: flex;
-    height: px2rem(70px);
-    line-height: px2rem(70px);
-    border-bottom: 1px solid #456166;
-    background: #22563f;
-    & > span {
-      flex: 2;
-      text-align: center;
-      color: #caebda;
-      font-size: px2rem(30px);
-    }
-    & > div {
-      flex: 8;
-      & > input {
-        height: px2rem(40px);
-        line-height: px2rem(70px);
-        width: 5em;
-        background-color: #cbeedc;
-        color: #19593c;
-        border-radius: .2em;
-        text-align: center;
-        margin-left: 0.2rem;
-        outline: none;
-        margin: 0;
-        padding: 0;
-        vertical-align: middle;
-        -webkit-transform: translateY(1px);
-        transform: translateY(1px);
-      }
-      & > span {
-        color: #caebda;
-        display: inline-block;
-        font-size: px2rem(25px);
-      }
-    }
   }
 
   .footerbar {
