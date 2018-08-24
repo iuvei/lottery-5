@@ -55,6 +55,11 @@ export default new Router({
       component: _import('lotteryHall/pk10')
     },
     {
+      path: '/numberBox',
+      name: 'numberBox',
+      component: _import('lotteryHall/numberBox')
+    },
+    {
       path: '/lotteryHall',
       component: Layout,
       redirect: '/lotteryHall/index',

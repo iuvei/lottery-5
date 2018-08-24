@@ -13,21 +13,22 @@
 			</div>
 		</div>
 		<div class="betInfo">
-			<div class="betContent" :class="{'betActive': finalData.bittingNumber != 0}">
+			<div class="betContent" :class="{'betActive': finalData.bittingNumber != 0}" @click="addDataToBox">
 				<span>+</span>
 				<div>
 					<div>共{{finalData.bittingNumber}}注，{{(finalData.price / YJFmul).toFixed(2) * betMul}}元</div>
 					<span v-if="finalData.bittingNumber != 0">{{strNumberList}}</span>
 				</div>
 			</div>
-			<div class="betCard">
-				号码篮
+			<div class="betCard" @click="toPage('/numberBox')">
+				<span v-if="lotteryList.length > 0" style="border-radius: 50%;background: red">{{lotteryList.length}}</span>号码篮
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import { selectedDataToStr } from "../../../utils/auth";
 
   export default {
@@ -44,6 +45,9 @@
 		},
 		props: ['selectedInfo','playBoardTypeValue'],
 		computed: {
+      ...mapGetters([
+        'lotteryList'
+      ]),
 		  strNumberList() {
         return this.selectedInfo.selectedNum ? selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum) : ''
       },
@@ -75,7 +79,17 @@
 				})
 				item.checked = true
 				this.YJFmul = item.value
-			}
+			},
+      addDataToBox() {
+			  if (this.finalData.bittingNumber != 0) {
+          this.$store.commit('setLotteryList', this.selectedInfo)
+          this.finalData.bittingNumber = 0
+          this.finalData.price = 0
+        }
+      },
+      toPage(link) {
+        this.$router.push(link)
+      }
 		},
 		mounted() {
 		}
