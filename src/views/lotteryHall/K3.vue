@@ -148,8 +148,9 @@
 
   /* 玩法 */
   .playMeth {
-    display: inline-block;
-    margin-top: px2rem(20px);
+    position: absolute;
+    left: 40%;
+    margin-top: px2rem(24px);
     width: px2rem(24px);
     line-height: 1em;
     font-size: px2rem(24px);
@@ -158,6 +159,7 @@
   .click-wrapper {
     position: absolute;
     top: px2rem(20px);
+    left: 42%;
     display: inline-block;
     margin-left: px2rem(20px);
     padding: px2rem(8px);
