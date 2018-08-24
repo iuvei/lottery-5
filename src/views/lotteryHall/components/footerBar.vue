@@ -7,7 +7,7 @@
 					<input type="tel" v-model="betMul" @blur="changeInput">
 					<span @click="add">+</span>
 				</div>
-				{{selectedInfo}}
+				{{lotteryList}}
 				<div class="moneyUnit">
 					<span v-for="item in YJF" :class="{'active': item.checked}" @click="changeYJF(item)">{{item.label}}</span>
 				</div>
@@ -93,6 +93,7 @@
 			},
       addDataToBox() {
 			  if (this.finalData.bittingNumber != 0) {
+			  	console.log(this.finalData)
           this.$store.commit('setLotteryList', this.finalData)
 //          this.finalData.bittingNumber = 0
 //          this.finalData.price = 0
