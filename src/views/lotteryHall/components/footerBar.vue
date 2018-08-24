@@ -85,6 +85,7 @@
           this.$store.commit('setLotteryList', Object.assign(this.selectedInfo, {betMul: this.betMul}, {YJFmul: this.YJFmul}, {playBoardTypeValue: this.playBoardTypeValue}))
           this.finalData.bittingNumber = 0
           this.finalData.price = 0
+          this.$emit('clearNow')
         }
       },
       toPage(link) {

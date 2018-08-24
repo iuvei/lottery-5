@@ -33,7 +33,7 @@
 	      <playBoard @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
-    <footerBar :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
+    <footerBar @clearNow="clearNow" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
   </div>
 </template>
 
