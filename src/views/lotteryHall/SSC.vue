@@ -130,7 +130,7 @@
         let details = this.tagSelectedData[2]
         this.selectedInfo = playMethods(type, details, data)
         // console.log(playMethods(type, details, data))
-        selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum)
+//        selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum)
       },
       playBoardType(data) {
 	      this.playBoardTypeValue = data

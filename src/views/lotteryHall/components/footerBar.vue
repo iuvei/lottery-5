@@ -1,12 +1,13 @@
 <template>
 	<div class="footerBar">
-		<div class="multipleCon" v-show="finalData.bittingNumber != 0">
+		<div class="multipleCon">
 			<div class="multipleConLine">
 				<div class="multiple">
 					<span @click="minus">-</span>
 					<input type="tel" v-model="betMul" @blur="changeInput">
 					<span @click="add">+</span>
 				</div>
+				{{selectedInfo}}
 				<div class="moneyUnit">
 					<span v-for="item in YJF" :class="{'active': item.checked}" @click="changeYJF(item)">{{item.label}}</span>
 				</div>
@@ -49,13 +50,23 @@
         'lotteryList'
       ]),
 		  strNumberList() {
-        return this.selectedInfo.selectedNum ? selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum) : ''
+        return this.finalData.selectedNum ? selectedDataToStr(this.playBoardTypeValue, this.finalData.selectedNum) : ''
       },
 			finalData() {
 				return {
+					type: this.selectedInfo.type,
+					detial: this.selectedInfo.detial,
+					selectedNum: this.selectedInfo.selectedNum,
 					bittingNumber: this.selectedInfo.bittingNumber || 0,
 					price: this.selectedInfo.price || 0,
+					playBoardTypeValue: this.playBoardTypeValue,
+					betMul: this.betMul,
+					YJFmul: this.YJFmul
 				}
+			}
+		},
+		watch: {
+			finalData(n) {
 			}
 		},
 		methods: {
@@ -82,10 +93,11 @@
 			},
       addDataToBox() {
 			  if (this.finalData.bittingNumber != 0) {
-          this.$store.commit('setLotteryList', Object.assign(this.selectedInfo, {betMul: this.betMul}, {YJFmul: this.YJFmul}, {playBoardTypeValue: this.playBoardTypeValue}))
-          this.finalData.bittingNumber = 0
-          this.finalData.price = 0
+          this.$store.commit('setLotteryList', this.finalData)
+//          this.finalData.bittingNumber = 0
+//          this.finalData.price = 0
           this.$emit('clearNow')
+//				  this.finalData.selectedNum = ''
         }
       },
       toPage(link) {
@@ -108,7 +120,7 @@
 	}
 
 	.multipleCon {
-		height: px2rem(105px);
+		height: px2rem(500px);
 		width: 100%;
 		background: #fff;
 		.multipleConLine {

@@ -40,6 +40,14 @@ export default {
       })
       let emitData = {titleName: this.titleName, data: checkedData}
       this.$emit('input', emitData)
+    },
+    changeEmit() {
+	    let checkedData = this.numberData.filter(item => {
+		    return item.checked == true
+	    })
+	    let emitData = {titleName: this.titleName, data: checkedData}
+	    console.log(emitData)
+	    this.$emit('input', emitData)
     }
   }
 }

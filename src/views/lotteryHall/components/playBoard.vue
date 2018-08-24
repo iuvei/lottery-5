@@ -1,6 +1,6 @@
 <template>
 	<div class="playBoard">
-		<selectNumber :key="Math.random()" :single="item.titleName == '包胆'" v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
+		<selectNumber ref="selectNumber" :key="Math.random()" :single="item.titleName == '包胆'" v-for="item in playBoardData" v-if="item.type == 'number'" :titleName="item.titleName" :numberData="item.numberData" v-model="selectedData"></selectNumber>
 		<textareaNumber :titleName="item.titleName" v-else v-model="selectedData" @input="textareaChange"></textareaNumber>
 	</div>
 </template>
@@ -28,6 +28,7 @@
       },
       resetSelected() {
         this.playBoardData.forEach(v => {
+//        	console.log(v)
           v.numberData.forEach(v1 => {
             v1.checked = false
           })
@@ -49,6 +50,11 @@
 				this.emitData.forEach(i => {
 					if(i.label == n.titleName) {
 						i.data = n.data
+					}
+				})
+				this.emitData.forEach((v, i) => {
+					if(v.data.length > 0 && v.data[0].checked == false) {
+						v.data = []
 					}
 				})
 				this.$emit('change', this.emitData)

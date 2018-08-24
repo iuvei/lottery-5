@@ -4,7 +4,7 @@
       <router-link slot="headleft" to="/lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>
-      <span slot="headtitle">
+      <span slot="headtitle" style="text-align: center">
         <span class="">
           <span class="playMeth">玩法</span>
           <span @click="betTopDetailShow = !betTopDetailShow" class="click-wrapper">点击 <i class="iconfont icon-sort-down"></i></span>
