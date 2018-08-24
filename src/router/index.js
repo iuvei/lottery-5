@@ -251,6 +251,42 @@ export default new Router({
       name: 'agentIntro'
     },
     {
+      //  代理报表
+      path: '/agentReportForm',
+      component: _import('home/agentReportForm'),
+      name: 'agnetReportForm'
+    },
+    {
+      //  下级报表
+      path: '/subReportForm',
+      component: _import('home/subReportForm'),
+      name: 'subReportForm'
+    },
+    {
+      // 下级开户
+      path: '/subOpenAccount',
+      component: _import('home/subOpenAccount'),
+      name: 'subOpenAccount'
+    },
+    {
+      // 会员管理
+      path: '/memberManage',
+      component: _import('home/memberManage'),
+      name: 'memberManage'
+    },
+    {
+      // 投注记录
+      path: '/noteDetail',
+      component: _import('home/noteDetail'),
+      name: 'noteDetail'
+    },
+    {
+      // 交易记录
+      path: '/tradeDetail',
+      component: _import('home/tradeDetail'),
+      name: 'tradeDetail'
+    },
+    {
       // 今日盈亏
       path: '/todayProfitLoss',
       component: _import('home/todayProfitLoss'),

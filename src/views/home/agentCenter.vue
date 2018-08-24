@@ -20,22 +20,22 @@
         <li @click="toPage('/agentIntro')">
           <span>代理说明</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/agentReportForm')">
           <span>代理报表</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/subReportForm')">
           <span>下级报表</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/subOpenAccount')">
           <span>下级开户</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/memberManage')">
           <span>会员管理</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/noteDetail')">
           <span>投注明细</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/tradeDetail')">
           <span>交易明细</span><van-icon name="arrow" />
         </li>
       </div>
@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     toPage (src) {
-      alert(1);
       this.$router.push(src);
     }
   }
