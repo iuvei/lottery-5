@@ -51,39 +51,39 @@
 				lotteryList: [
 					{
 						icon: '11', name: '快3', label: 'k3', data: [
-						{type: 'k3', name: '江苏快3', number: '全天82期', value: 1},
-						{type: 'k3', name: '安徽快3', number: '全天82期', value: 2},
-						{type: 'k3', name: '广西快3', number: '全天82期', value: 3},
-						{type: 'k3', name: '湖北快3', number: '全天82期', value: 4},
-						{type: 'k3', name: '北京快3', number: '全天82期', value: 5},
-						{type: 'k3', name: '河北快3', number: '全天82期', value: 6},
-						{type: 'k3', name: '甘肃快3', number: '全天82期', value: 7},
-						{type: 'k3', name: '上海快3', number: '全天82期', value: 8},
-						{type: 'k3', name: '贵州快3', number: '全天82期', value: 9},
-						{type: 'k3', name: '吉林快3', number: '全天82期', value: 10},
-						{type: 'k3', name: '大众快3', number: '全天82期', value: 11},
+						{type: 'k3', name: '江苏快3', number: '全天82期', id: 1},
+						{type: 'k3', name: '安徽快3', number: '全天82期', id: 2},
+						{type: 'k3', name: '广西快3', number: '全天82期', id: 3},
+						{type: 'k3', name: '湖北快3', number: '全天82期', id: 4},
+						{type: 'k3', name: '北京快3', number: '全天82期', id: 5},
+						{type: 'k3', name: '河北快3', number: '全天82期', id: 6},
+						{type: 'k3', name: '甘肃快3', number: '全天82期', id: 7},
+						{type: 'k3', name: '上海快3', number: '全天82期', id: 8},
+						{type: 'k3', name: '贵州快3', number: '全天82期', id: 9},
+						{type: 'k3', name: '吉林快3', number: '全天82期', id: 10},
+						{type: 'k3', name: '大众快3', number: '全天82期', id: 11},
 					]
 					},
 					{
 						icon: '11', name: '时时彩', label: 'ssc',data: [
-						{type: 'ssc', name: '重庆时时彩', number: '全天82期', value: 1},
-						{type: 'ssc', name: '新疆时时彩', number: '全天82期', value: 2},
-						{type: 'ssc', name: '天津时时彩', number: '全天82期', value: 3},
-						{type: 'ssc', name: '大众时时彩', number: '全天82期', value: 4}
+						{type: 'ssc', name: '重庆时时彩', number: '全天82期', id: 1},
+						{type: 'ssc', name: '新疆时时彩', number: '全天82期', id: 2},
+						{type: 'ssc', name: '天津时时彩', number: '全天82期', id: 3},
+						{type: 'ssc', name: '大众时时彩', number: '全天82期', id: 4}
 					]
 					},
 					{
 						icon: '11', name: '11选5',label: 'syx5', data: [
-						{type: 'syx5', name: '广东11选5', number: '全天82期', value: 1},
-						{type: 'syx5', name: '上海11选5', number: '全天82期', value: 2},
-						{type: 'syx5', name: '山东11选5', number: '全天82期', value: 3},
-						{type: 'syx5', name: '江西11选5', number: '全天82期', value: 4},
-						{type: 'syx5', name: '大众11选5', number: '全天82期', value: 5}
+						{type: 'syx5', name: '广东11选5', number: '全天82期', id: 1},
+						{type: 'syx5', name: '上海11选5', number: '全天82期', id: 2},
+						{type: 'syx5', name: '山东11选5', number: '全天82期', id: 3},
+						{type: 'syx5', name: '江西11选5', number: '全天82期', id: 4},
+						{type: 'syx5', name: '大众11选5', number: '全天82期', id: 5}
 					]
 					}, {
             icon: '11', name: 'PK10',label: 'pk10', data: [
-              {type: 'pk10', name: '北京PK10', number: '全天82期', value: 1},
-              {type: 'pk10', name: '大发PK10', number: '全天82期', value: 2}
+              {type: 'pk10', name: '北京PK10', number: '全天82期', id: 1},
+              {type: 'pk10', name: '大发PK10', number: '全天82期', id: 2}
             ]
           }
 				],
