@@ -5,9 +5,9 @@
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle">
-        <span>
-          <span>玩法</span>
-          <span @click="betTopDetailShow = !betTopDetailShow">点击</span>
+        <span class="">
+          <span class="playMeth">玩法</span>
+          <span @click="betTopDetailShow = !betTopDetailShow" class="click-wrapper">点击 <i class="iconfont icon-sort-down"></i></span>
         </span>
         <div class="betTopDetail" v-show="betTopDetailShow">
           <div @click="selectedDetTopDetail(item)" class="betTopDetailItem"
@@ -145,6 +145,31 @@
 
 <style lang="scss" scoped>
   @import "@/styles/index.scss";
+
+  /* 玩法 */
+  .playMeth {
+    display: inline-block;
+    margin-top: px2rem(20px);
+    width: px2rem(24px);
+    line-height: 1em;
+    font-size: px2rem(24px);
+  }
+  /* 点击 */
+  .click-wrapper {
+    position: absolute;
+    top: px2rem(20px);
+    display: inline-block;
+    margin-left: px2rem(20px);
+    padding: px2rem(8px);
+    border-radius: 3px;
+    border: 1px solid #ffffff;
+    line-height: 1em;
+    font-size: px2rem(32px);
+    i {
+      color: #f0c930;
+      font-size: px2rem(24px);
+    }
+  }
 
   .k3 {
     position: relative;
