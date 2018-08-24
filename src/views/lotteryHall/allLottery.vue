@@ -14,7 +14,8 @@
 				</div>
 				<div class="tab-item" :class="{'active': item.name == activeFlag}" v-for="item in lotteryList"
 				     @click="selectLotteryType(item)">
-					<i v-if="item.label == 'syx5'" class="iconfont icon-pk"></i>
+					<i v-if="item.label == 'syx5'" class="iconfont icon-xuan"></i>
+					<i v-if="item.label == 'pk10'" class="iconfont icon-pk"></i>
 					<i v-if="item.label == 'ssc'" class="iconfont icon-shishicai"></i>
 					<i v-if="item.label == 'k3'" class="iconfont icon-kuai3"></i>
 					<span>{{item.name}}</span>
@@ -22,23 +23,24 @@
 			</div>
 			<div class="lottery">
 				<div class="lottery-item" v-for="(item, index) in selectedLottery"
-				     @click="toPage(`/${item.type}/${item.value}`)">
+				     @click="toPage(`/${item.type}/${item.id}`)">
 					<div class="lottery-icon">
-						<i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-pk"></i>
+						<i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-xuan"></i>
+						<i v-if="item.type == 'pk10'" style="color: #f22751" class="iconfont icon-pk"></i>
 						<i v-if="item.type == 'ssc'" style="color: #f96e00" class="iconfont icon-shishicai"></i>
 						<i v-if="item.type == 'k3'" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
 					<div class="lottery-name">{{item.name}}</div>
 					<div class="lottery-number">{{item.number}}</div>
 				</div>
 			</div>
-		
+
 		</div>
 	</div>
 </template>
 
 <script>
 	import HeaderReg from '@/components/Navbar.vue'
-	
+
 	export default {
 		name: 'register',
 		components: {
@@ -78,7 +80,12 @@
 						{type: 'syx5', name: '江西11选5', number: '全天82期', value: 4},
 						{type: 'syx5', name: '大众11选5', number: '全天82期', value: 5}
 					]
-					}
+					}, {
+            icon: '11', name: 'PK10',label: 'pk10', data: [
+              {type: 'pk10', name: '北京PK10', number: '全天82期', value: 1},
+              {type: 'pk10', name: '大发PK10', number: '全天82期', value: 2}
+            ]
+          }
 				],
 				selectedLottery: [],
 				activeFlag: 'all'
@@ -113,13 +120,13 @@
 
 <style lang="scss" scoped>
 	@import "@/styles/index.scss";
-	
+
 	.content {
 		margin-top: px2rem(100px);
 		/*margin-bottom: px2rem(100px);*/
 		overflow: hidden;
 	}
-	
+
 	.tab {
 		height: px2rem(140px);
 		display: -webkit-box;
@@ -150,7 +157,7 @@
 			color: #f2f2f2;
 		}
 	}
-	
+
 	.lottery {
 		text-align: center;
 		overflow: hidden;
@@ -160,7 +167,7 @@
 			width: px2rem(249px);
 			height: px2rem(249px);
 			background: #fff;
-			
+
 			border-right: 1px solid #ddd;
 			border-bottom: 1px solid #ddd;
 			.lottery-icon {

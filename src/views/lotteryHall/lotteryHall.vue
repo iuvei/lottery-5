@@ -41,16 +41,18 @@
     data() {
       return {
         hotLottery: [
-          {id: 1401, type: 'k3',name: '江苏',number: 222},
-          {id: 1, type: 1,name: 'test',number: 222},
-          {id: 1, type: 3,name: 'test',number: 222},
-          {id: 1, type: 1,name: 'test',number: 222},
-          {id: 1, type: 1,name: 'test',number: 222},
-          {id: 1, type: 1,name: 'test',number: 222},
-          {id: 1, type: 3,name: 'test',number: 222},
-          {id: 1, type: 2,name: 'test',number: 222},
-          {id: 1, type: 2,name: 'test',number: 222},
-          {id: 1, type: 2,name: 'test',number: 222}
+          {id: 1401, type: 'k3',name: '江苏快3',number: '全天82期'},
+          {id: 1406, type: 'k3',name: '北京快3',number: '全天89期'},
+          {id: 1405, type: 'k3',name: '湖北快3',number: '全天78期'},
+          {id: 1411, type: 'k3',name: '甘肃快3',number: '全天72期'},
+          {id: 1402, type: 'k3',name: '安徽快3',number: '全天80期'},
+          {id: 1403, type: 'k3',name: '广西快3',number: '全天78期'},
+          {id: 1408, type: 'k3',name: '河北快3',number: '全天81期'},
+          {id: 1401, type: 'k3',name: '上海快3',number: '全天82期'},
+          {id: 1401, type: 'k3',name: '大发快3',number: '1分钟1期'},
+          {id: 1401, type: 'k3',name: '贵州快3',number: '全天78期'},
+          {id: 1303, type: 'pk10',name: '北京PK10',number: '全天179期'},
+          {id: 1000, type: 'ssc',name: '重庆时时彩',number: '全天120期'}
         ]
       }
     },
@@ -63,7 +65,7 @@
       }
     },
     mounted() {
-	    this.$store.commit('setHeaderTitle', 'xx彩票')
+	    this.$store.commit('setHeaderTitle', 'xxxx')
     }
   }
 </script>
