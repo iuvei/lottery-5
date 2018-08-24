@@ -30,17 +30,15 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-        <playBoard @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
+        <playBoard ref="playBoard" @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
       </div>
     </div>
-
-    <footerBar :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
+    <footerBar @clearNow="resetSelected" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
   </div>
 </template>
 
 <script>
   import {mapGetters} from 'vuex'
-  import playMethods from '../../utils/playMethods'
 
   import HeaderReg from '@/components/Navbar.vue'
   import selectNumber from './components/selectNumber'
@@ -64,8 +62,9 @@
     },
     data() {
       return {
-        tagToPlayMap: JSON.parse(sessionStorage.getItem('tagToPlayMapPK10')), //映射关系
+        tagToPlayMap: tagToPlayMapPK10, //映射关系
         playBoardData: [], //选中的面板数据
+	      selectedInfo:'',
         tagSelectedData: [], //选中的标签
         selectedNumberData: [], //选中的号码
         playBoardTypeValue: '',//页面是选择||输入
@@ -107,6 +106,9 @@
       }
     },
     methods: {
+	    resetSelected() {
+		    this.$refs.playBoard.resetSelected()
+	    },
       tagSelected(data) {
         this.tagSelectedData = data
       },
@@ -127,10 +129,9 @@
         this.betTopDetailShow = false
       },
       selectedNumberDataMethod(data) {
-        console.log(this.tagSelectedData)
-        let type = this.tagSelectedData[0]
-        let detial = this.tagSelectedData[2]
-        this.selectedNumberData = data
+	      let type = this.tagSelectedData[0]
+	      let details = this.tagSelectedData[2]
+	      this.selectedInfo = playMethodsPk10(type, details, data)
       },
       playBoardType(data) {
         this.playBoardTypeValue = data

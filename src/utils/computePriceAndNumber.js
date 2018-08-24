@@ -63,6 +63,9 @@ export function multiply(arr) {
 }
 
 export function addition(arr) {
+	if (arr.length ==0) {
+		return 0
+	}
 	return arr.reduce(function (a, b) {
 		return a + b;                        //如果是相加return a + b 如果是相减return a - b
 	})

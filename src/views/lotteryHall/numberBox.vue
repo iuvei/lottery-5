@@ -27,9 +27,10 @@
       </div>
     </div>
     <div class="footerBar">
-      <div class="betInfo">
-
+      <div class="left">
+        <span>方案{{allNumAndPrice.num}}注，{{allNumAndPrice.price}}元</span>
       </div>
+      <div class="right">立即投注</div>
     </div>
   </div>
 </template>
@@ -38,6 +39,7 @@
   import {mapGetters} from 'vuex'
   import playMethods from '../../utils/playMethods'
   import {selectedDataToStr} from '../../utils/auth'
+  import {addition} from '../../utils/computePriceAndNumber'
   import HeaderReg from '@/components/Navbar.vue'
   import footerBar from './components/footerBar'
   import playSortMore from './components/playSortMore'
@@ -77,6 +79,12 @@
         'PlaySortMore',
         'lotteryList'
       ]),
+      allNumAndPrice() {
+      	return {
+      		num: addition(this.lotteryList.map(v => {return v.bittingNumber})),
+      		price: addition(this.lotteryList.map(v => {return v.price}))
+        }
+      }
     },
     watch: {
       // 'playBoardData': function (n) {
@@ -231,42 +239,31 @@
     color: #f4c829;
     border-color: #f4c829 !important;
   }
-
-  .footerbar {
+  .footerBar {
     position: fixed;
-    z-index: 500;
+    z-index: 999999;
     bottom: 0;
-    height: px2rem(100px);
+    height: px2rem(105px);
     width: 100%;
-    line-height: px2rem(100px);
-    background: #000;
-    span {
-      line-height: px2rem(100px);
-    }
-    .fl {
+    .left {
+      width: 70%;
+      height: px2rem(105px);
+      line-height: px2rem(105px);
+      font-size:px2rem(30px);
+      padding: 0 px2rem(40px);
       float: left;
-      font-size: px2rem(40px);
-      margin: 0 px2rem(20px);
-      color: #ffaf36;
-    }
-    .fm {
-      float: left;
+      background: #212121;
       color: #fff;
-      padding: 0;
-      font-size: px2rem(30px);
     }
-    .fr {
-      float: right;
-      color: #4e0904;
-      height: px2rem(70px);
-      line-height: px2rem(70px);
-      font-size: px2rem(50px);
-      padding: 0 .3rem;
-      margin: .2rem .3rem;
-      border-radius: .2rem;
-      background: #feab03;
-      background: linear-gradient(180deg, #ffdb01 0, #e07a06);
-      background: -webkit-linear-gradient(bottom, #ffdb01, #e07a06);
+    .right {
+      float: left;
+      height: px2rem(105px);
+      line-height: px2rem(105px);
+      background: #dc3b40;
+      width: 30%;
+      color: #fff;
+      font-size:px2rem(40px);
+      text-align: center;
     }
   }
 </style>

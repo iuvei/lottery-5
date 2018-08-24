@@ -1,13 +1,12 @@
 <template>
 	<div class="footerBar">
-		<div class="multipleCon">
+		<div class="multipleCon" v-show="finalData.bittingNumber != 0">
 			<div class="multipleConLine">
 				<div class="multiple">
 					<span @click="minus">-</span>
 					<input type="tel" v-model="betMul" @blur="changeInput">
 					<span @click="add">+</span>
 				</div>
-				{{lotteryList}}
 				<div class="moneyUnit">
 					<span v-for="item in YJF" :class="{'active': item.checked}" @click="changeYJF(item)">{{item.label}}</span>
 				</div>
@@ -65,10 +64,6 @@
 				}
 			}
 		},
-		watch: {
-			finalData(n) {
-			}
-		},
 		methods: {
 			add() {
 				if (this.betMul > 9999) {
@@ -93,7 +88,6 @@
 			},
       addDataToBox() {
 			  if (this.finalData.bittingNumber != 0) {
-			  	console.log(this.finalData)
           this.$store.commit('setLotteryList', this.finalData)
 //          this.finalData.bittingNumber = 0
 //          this.finalData.price = 0
@@ -121,7 +115,7 @@
 	}
 
 	.multipleCon {
-		height: px2rem(500px);
+		height: px2rem(105px);
 		width: 100%;
 		background: #fff;
 		.multipleConLine {

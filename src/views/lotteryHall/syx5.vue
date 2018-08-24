@@ -31,12 +31,10 @@
 		</div>
 		<div class="content">
 			<div class="chose-wrap">
-				<playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethods"></playBoard>
+				<playBoard ref="playBoard" @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
 		</div>
-
-		<footerBar :playBoardTypeValue="playBoardTypeValue"  :selectedInfo="selectedInfo"></footerBar>
-
+		<footerBar @clearNow="resetSelected" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
 	</div>
 </template>
 
@@ -111,15 +109,14 @@
 			},
 		},
 		methods: {
-      selectedNumberDataMethods(data) {
-        console.log(this.tagSelectedData)
+			resetSelected() {
+				this.$refs.playBoard.resetSelected()
+			},
+			selectedNumberDataMethod(data) {
         let type = this.tagSelectedData[0]
         let detial = this.tagSelectedData[2]
         this.selectedNumberData = data
 	      this.selectedInfo = playMethodsSyx5(type, detial, this.selectedNumberData)
-        console.log(this.selectedNumberData)
-        console.log('----------')
-        console.log(playMethodsSyx5(type, detial, this.selectedNumberData))
       },
 			tagSelected(data) {
 				this.tagSelectedData = data
