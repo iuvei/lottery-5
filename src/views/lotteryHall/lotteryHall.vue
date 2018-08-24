@@ -13,17 +13,18 @@
       </router-link>
     </div>
     <div class="hot-lottery">
-      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/k3/${index}`)">
+      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
         <div class="lottery-icon">
-          <i v-if="item.type == 1" class="iconfont icon-pk"></i>
-          <i v-if="item.type == 2" class="iconfont icon-shishicai"></i>
-          <i v-if="item.type == 3" class="iconfont icon-kuai3"></i></div>
+          <i v-if="item.type == 'pk10'" style="color: #f22751" class="iconfont icon-pk"></i>
+          <i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-xuan"></i>
+          <i v-if="item.type == 'ssc'" style="color: #f96e00" class="iconfont icon-shishicai"></i>
+          <i v-if="item.type == 'k3'" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
         <div class="lottery-name">{{item.name}}</div>
         <div class="lottery-number">{{item.number}}</div>
       </div>
       <div class="hot-lottery-item" @click="toAllLottery">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
-        <div class="lottery-name">更多彩种</div>
+        <div class="lottery-name">更多</div>
       </div>
     </div>
   </div>
@@ -40,16 +41,16 @@
     data() {
       return {
         hotLottery: [
-          {type: 2,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 3,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 3,name: 'test',number: 222}, 
-          {type: 2,name: 'test',number: 222}, 
-          {type: 2,name: 'test',number: 222}, 
-          {type: 2,name: 'test',number: 222}
+          {id: 1401, type: 'k3',name: '江苏',number: 222},
+          {id: 1, type: 1,name: 'test',number: 222},
+          {id: 1, type: 3,name: 'test',number: 222},
+          {id: 1, type: 1,name: 'test',number: 222},
+          {id: 1, type: 1,name: 'test',number: 222},
+          {id: 1, type: 1,name: 'test',number: 222},
+          {id: 1, type: 3,name: 'test',number: 222},
+          {id: 1, type: 2,name: 'test',number: 222},
+          {id: 1, type: 2,name: 'test',number: 222},
+          {id: 1, type: 2,name: 'test',number: 222}
         ]
       }
     },
@@ -112,7 +113,6 @@
       .lottery-icon {
         i {
           display: inline-block;
-          color: #e41404;
           font-size: px2rem(75px);
           margin-top: px2rem(30px);
         }
