@@ -6,8 +6,8 @@ const lottery = {
     resetLotteryList: (state) => {
       state.lotteryList = []
     },
-    setLotteryList: (state) => {
-      state.lotteryList.push(state)
+    setLotteryList: (state, data) => {
+      state.lotteryList.push(data)
     }
   },
   actions: {

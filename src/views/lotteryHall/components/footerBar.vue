@@ -82,7 +82,7 @@
 			},
       addDataToBox() {
 			  if (this.finalData.bittingNumber != 0) {
-          this.$store.commit('setLotteryList', this.selectedInfo)
+          this.$store.commit('setLotteryList', Object.assign(this.selectedInfo, {betMul: this.betMul}, {YJFmul: this.YJFmul}))
           this.finalData.bittingNumber = 0
           this.finalData.price = 0
         }
