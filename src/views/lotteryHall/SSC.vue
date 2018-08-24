@@ -30,10 +30,10 @@
     </div>
     <div class="content">
       <div class="chose-wrap">
-	      <playBoard @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
+	      <playBoard ref="playBoard" @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
     </div>
-    <footerBar @clearNow="clearNow" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
+    <footerBar @clearNow="resetSelected" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
   </div>
 </template>
 
@@ -103,6 +103,9 @@
       }
     },
     methods: {
+      resetSelected() {
+        this.$refs.playBoard.resetSelected()
+      },
 	    tagSelected(data) {
 	    	this.tagSelectedData = data
 	    },
