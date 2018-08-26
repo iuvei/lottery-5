@@ -137,8 +137,8 @@
       }
     },
     mounted() {
+	    sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
       this.loadBetTopDetailList()
-      sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
     }
   }
 </script>
@@ -304,7 +304,7 @@
     position: absolute;
     top: px2rem(100px);
     right: 0;
-    width: px2rem(400px);
+    width: px2rem(401px);
     z-index: 50;
     span {
       float: left;
