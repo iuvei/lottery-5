@@ -1,11 +1,12 @@
 <template>
   <div class="lottery-hall">
-    <van-swipe :autoplay="3000" :show-indicators="false">
-      <van-swipe-item><img src="./images/banner1.png" alt=""></van-swipe-item>
-      <van-swipe-item><img src="./images/banner2.png" alt=""></van-swipe-item>
-      <van-swipe-item><img src="./images/banner3.png" alt=""></van-swipe-item>
-      <van-swipe-item><img src="./images/banner4.png" alt=""></van-swipe-item>
-    </van-swipe>
+    <!--<van-swipe :autoplay="3000" :show-indicators="false">-->
+      <!--<van-swipe-item><img src="./images/banner1.png" alt=""></van-swipe-item>-->
+      <!--<van-swipe-item><img src="./images/banner2.png" alt=""></van-swipe-item>-->
+      <!--<van-swipe-item><img src="./images/banner3.png" alt=""></van-swipe-item>-->
+      <!--<van-swipe-item><img src="./images/banner4.png" alt=""></van-swipe-item>-->
+    <!--</van-swipe>-->
+    <img src="./images/banner1.png" style="width: 100vw">
     <div class="nocice">
       <router-link to="">
         <van-icon style="color: #6c6c6c" name="info-o"/>
