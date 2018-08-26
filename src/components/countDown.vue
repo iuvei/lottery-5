@@ -12,7 +12,7 @@
     created() {
       const _this = this
       this.$nextTick(() => {
-        _this.countdown(480) //结束时间到开始时间的时间差，单位秒
+//        _this.countdown(480) //结束时间到开始时间的时间差，单位秒
       })
     },
     methods: {

@@ -68,7 +68,7 @@ export default {
     float: left;
     span {
       font-size: px2rem(30px);
-      width: px2rem(110px);
+      width: px2rem(100px);
       display: block;
       text-align: center;
       line-height: 1.3em;
@@ -84,7 +84,7 @@ export default {
   }
 
   .numberContent {
-    float: left;
+    float: right;
     width: px2rem(600px);
     .number {
       display: inline-block;
