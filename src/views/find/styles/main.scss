@@ -1,110 +1,112 @@
 // 导航开始
-.top{
-  position:fixed;
-  top:0;
-  min-width:100%;
-  min-height:px2rem(100px);
-  z-index:1000;
-  ul{
-    display:block;
-    margin:px2rem(17px) px2rem(164px);
-    padding:0;
-    height:px2rem(66px);
-    color:#fff;
-    font-size:px2rem(32px);
-    text-align:center;
-    border:px2rem(2px) solid #fff;
-    line-height:1.7;
-    border-radius:px2rem(8px);
-    overflow:hidden;
-    li{
-      list-style:none;
-      float:left;
-      width:px2rem(209px);
-      height:px2rem(65px);
-      a{
-        display:block;
-        width:100%;
-        height:100%;
- 
+.top {
+  position: fixed;
+  top: px2rem(20px);
+  min-width: 100%;
+  min-height: px2rem(100px);
+  z-index: 1000;
+  text-align: center;
+  ul {
+    display: block;
+    //margin:px2rem(17px) px2rem(164px);
+    margin: 0 auto;
+    padding: 0;
+    height: px2rem(66px);
+    width: px2rem(400px);
+    color: #fff;
+    font-size: px2rem(32px);
+    text-align: center;
+    border: px2rem(2px) solid #fff;
+    line-height: 1.7;
+    border-radius: px2rem(8px);
+    //overflow:hidden;
+    li {
+      list-style: none;
+      float: left;
+      width: 50%;
+      overflow: hidden;
+      height: 100%;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+
         &.current {
           background: #fff;
-          color: #e80d2d;     
+          color: #e80d2d;
+        }
       }
-    }
     }
   }
 }
 
 // 导航end
 
-
 // 主体部分开始
 @include onebottompx('.act-item');
-.act-item{
-    background:#fff;
-    color:#333;
-    margin:0;
-    overflow:hidden;
-    a{
-      display:flex;
-      width:100%;
-      padding:px2rem(10px) 0;
-      background:transparent;
-      text-decoration:none;
-      overflow:hidden;
-      //左侧头像开始
-      .num{
-        position:absolute;
-        margin-left:px2rem(10px);
-        margin-top:px2rem(5px);
-        width:px2rem(150px);
-        height:px2rem(87px);
-        text-align:center;
-        line-height:1;
-        color:#333;
-        img{
-            width:px2rem(94px);
-            vertical-align:middle;
-            border-radius:100%;
-          }
-      }
-      // 左侧头像结束
-      // 中间介绍开始
-      .text{
-        width:px2rem(469px);
-        strong{
-          font-size:px2rem(34px);
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          font-weight: 400;
-          line-height:1.5em;
-          color:rgb(51, 136, 255);
-        }
-        span{
-          color:#686868;
-          font-size:px2rem(34px);
-          line-height:1.5em;
-          overflow: hidden;
-        }
-        em{
-          font-size:px2rem(34px);
-          font-style:normal;
-          color:#e80d2d;
-        }
-      }
-      // 中间介绍结束
-      // 右箭头开始
-      .act-icon{
-        // flex:1;
-        // margin-top:px2rem(27px);
-        // margin-right:px2rem(38px);
-        position:absolute;
-        right:px2rem(38px);
-        top:px2rem(35px);
-      }
-      // 右箭头结束
+.act-item {
+  background: #fff;
+  color: #333;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  padding: px2rem(10px) 0;
+  background: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  //左侧头像开始
+  .num {
+    //position: absolute;
+    margin-left: px2rem(10px);
+    margin-top: px2rem(5px);
+    width: px2rem(150px);
+    height: px2rem(87px);
+    text-align: center;
+    line-height: 1;
+    color: #333;
+    img {
+      width: px2rem(94px);
+      vertical-align: middle;
+      border-radius: 100%;
     }
   }
+  // 左侧头像结束
+  // 中间介绍开始
+  .text {
+    width: px2rem(469px);
+    strong {
+      font-size: px2rem(34px);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-weight: 400;
+      line-height: 1.5em;
+      color: rgb(51, 136, 255);
+    }
+    span {
+      color: #686868;
+      font-size: px2rem(34px);
+      line-height: 1.5em;
+      overflow: hidden;
+    }
+    em {
+      font-size: px2rem(34px);
+      font-style: normal;
+      color: #e80d2d;
+    }
+  }
+  // 中间介绍结束
+  // 右箭头开始
+  .act-icon {
+    // flex:1;
+    // margin-top:px2rem(27px);
+    // margin-right:px2rem(38px);
+    position: absolute;
+    right: px2rem(38px);
+    top: px2rem(35px);
+  }
+  // 右箭头结束
+}
+
 // 主体部分结束
