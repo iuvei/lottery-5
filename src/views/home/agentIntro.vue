@@ -13,7 +13,7 @@
 
     <div class="content">
       <div class="agentHeader">
-        <!--<img src="./../../../static/images/agentIntro.jpg" width="100%">-->
+        <img src="./../../../static/images/agentIntro.jpg" width="100%">
       </div>
 
       <p class="illustrate">
