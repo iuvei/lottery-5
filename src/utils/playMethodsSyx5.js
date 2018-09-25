@@ -52,7 +52,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 三码&前三组选复式
   if(type === '三码' && detial === '前三组选复式') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 三个为一注，c53=10的关系
     bittingNumber = selectedNum.length < 3 ? 0 : selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) / 6
     price = 2 * bittingNumber
@@ -120,7 +125,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 二码&前二组选复式
   if(type === '二码' && detial === '前二组选复式') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 两个为一注，n*(n-1)/2的关系
     bittingNumber = selectedNum.length < 2 ? 0 : selectedNum.length * (selectedNum.length - 1) / 2
     price = 2 * bittingNumber
@@ -153,7 +163,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 不定位&前三一码不定位
   if(type === '不定位' && detial === '前三一码不定位') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 一个为一注，n的关系
     bittingNumber = selectedNum.length
     price = 2 * bittingNumber
@@ -176,28 +191,48 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 趣味型&定单双
   if(type === '趣味型' && detial === '定单双') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 一个为一注，n的关系
     bittingNumber = selectedNum.length
     price = 2 * bittingNumber
   }
   // 趣味型&猜中位
   if(type === '趣味型' && detial === '猜中位') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 一个为一注，n的关系
     bittingNumber = selectedNum.length
     price = 2 * bittingNumber
   }
   // 任选复式&一中一
   if(type === '任选复式' && detial === '一中一') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 一个为一注，n的关系
     bittingNumber = selectedNum.length
     price = 2 * bittingNumber
   }
   // 任选复式&二中二
   if(type === '任选复式' && detial === '二中二') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 两个为一注，n*(n-1)/2的关系
     bittingNumber = selectedNum.length * (selectedNum.length - 1) / 2
     price = 2 * bittingNumber
@@ -205,7 +240,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 任选复式&三中三
   if(type === '任选复式' && detial === '三中三') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 三个为一注，Cn3的关系;也就是 n*(n-1)*(n-2)/(3*2)
     bittingNumber = selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) / 6
     price = 2 * bittingNumber
@@ -213,7 +253,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 任选复式&四中四
   if(type === '任选复式' && detial === '四中四') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 四个为一注，Cn4的关系;也就是 n*(n-1)*(n-2)*(n-3)/(4*3*2)
     bittingNumber = selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) * (selectedNum.length - 3) / 24
     price = 2 * bittingNumber
@@ -221,7 +266,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 任选复式&五中五
   if(type === '任选复式' && detial === '五中五') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 五个为一注，Cn5的关系
     bittingNumber = selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) * (selectedNum.length - 3) * (selectedNum.length - 4) / 120
     price = 2 * bittingNumber
@@ -229,7 +279,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 任选复式&六中五
   if(type === '任选复式' && detial === '六中五') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 六个为一注，Cn6的关系
     bittingNumber = selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) * (selectedNum.length - 3) * (selectedNum.length - 4) * (selectedNum.length - 5) / 720
     price = 2 * bittingNumber
@@ -237,7 +292,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 任选复式&七中五
   if(type === '任选复式' && detial === '七中五') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 7个为一注，Cn7的关系
     bittingNumber = selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) * (selectedNum.length - 3) * (selectedNum.length - 4) * (selectedNum.length - 5) * (selectedNum.length - 6)/ 5040
     price = 2 * bittingNumber
@@ -245,7 +305,12 @@ export default function playMethodsSyx5 (type, detial, selectedData) {
 
   // 任选复式&八中五
   if(type === '任选复式' && detial === '八中五') {
-    selectedNum = selectedData[0].data.map(item => item.label)
+    // selectedNum = selectedData[0].data.map(item => item.label)
+    selectedNum = selectedData[0].data.map(item => {
+      return {
+        data: [{checked: true, label: item.label, value: item.value}]
+      }
+    })
     // 8个为一注，Cn8的关系
     bittingNumber = selectedNum.length * (selectedNum.length - 1) * (selectedNum.length - 2) * (selectedNum.length - 3) * (selectedNum.length - 4) * (selectedNum.length - 5) * (selectedNum.length - 6) * (selectedNum.length - 7)/ 40320
     price = 2 * bittingNumber
