@@ -1,3 +1,7 @@
+<!--
+  name: agentCenter
+  desc: 个人中心 -> 代理中心
+-->
 <template>
   <div class="agentCenter">
     <Navbar>
@@ -13,25 +17,25 @@
       </div>
 
       <div class="agentOptions">
-        <li>
+        <li @click="toPage('/agentIntro')">
           <span>代理说明</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/agentReportForm')">
           <span>代理报表</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/subReportForm')">
           <span>下级报表</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/subOpenAccount')">
           <span>下级开户</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/memberManage')">
           <span>会员管理</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/noteDetail')">
           <span>投注明细</span><van-icon name="arrow" />
         </li>
-        <li>
+        <li @click="toPage('/tradeDetail')">
           <span>交易明细</span><van-icon name="arrow" />
         </li>
       </div>
@@ -46,6 +50,11 @@ export default {
   name: 'agentCenter',
   components: {
     Navbar
+  },
+  methods: {
+    toPage (src) {
+      this.$router.push(src);
+    }
   }
 }
 </script>
@@ -74,7 +83,7 @@ ul, li {
   div {
     margin-bottom: px2rem(30px);
   }
-  
+
   .agentOptions {
     background: #ffffff;
     font-size: px2rem(36px);
@@ -88,7 +97,7 @@ ul, li {
       &:last-child::after {
         content: normal;
       }
-      
+
       i {
         float: right;
         color: #cccccc;

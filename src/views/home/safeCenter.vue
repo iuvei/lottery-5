@@ -1,3 +1,7 @@
+<!--
+  name: safeCenter
+  desc: 个人中心 -> 安全中心
+-->
 <template>
   <div class="safeCenter">
     <Navbar>
@@ -24,33 +28,33 @@
             上次登录: <span>2018-8-4 21:29</span>
           </p>
           <p>
-            <span>北京,北京</span> | <span>不是我登录?</span>
+            <span>北京,北京</span> | <span @click="toPage('/verOriPwd')">不是我登录?</span>
           </p>
         </li>
       </div>
 
       <div class="safeOptions">
-        <li>
+        <li @click="toPage('/verOriPwd')">
           <span>修改登录密码</span>
           <span>修改<van-icon name="arrow" /></span>
         </li>
-        <li>
+        <li @click="toPage('/setSafePwd')">
           <span>设置安全密码</span>
           <span>设置<van-icon name="arrow" /></span>
         </li>
-        <li>
+        <li @click="toPage('/bindPhone')">
           <span>设置密保手机</span>
           <span>设置<van-icon name="arrow" /></span>
         </li>
-        <li>
+        <li @click="toPage('/setQuestion')">
           <span>设置密保问题</span>
           <span>设置<van-icon name="arrow" /></span>
         </li>
-        <li>
+        <li @click="toPage('/bindEmail')">
           <span>设置密保邮箱</span>
           <span>设置<van-icon name="arrow" /></span>
         </li>
-        <li>
+        <li @click="toPage('/cardManage')">
           <span>银行卡管理</span>
           <span>设置<van-icon name="arrow" /></span>
         </li>
@@ -76,6 +80,11 @@ export default {
   data () {
     return {
       msg: '您的帐号安全级别为极低'
+    }
+  },
+  methods: {
+    toPage (src) {
+      this.$router.push(src)
     }
   }
 }

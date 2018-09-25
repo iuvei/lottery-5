@@ -25,47 +25,26 @@
       </div>
       <div>
         <span>0730081期投注截止</span>
-        <div>k3-timebar</div>
+        <div><countDown></countDown></div>
       </div>
     </div>
     <div class="content">
       <div class="chose-wrap">
-        <playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
+        <playBoard ref="playBoard" @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
       </div>
     </div>
-
-    <div class="chose-info" v-show="checkedList.length > 0">
-      <div>
-        <span>当前选号</span>
-        <div>
-          <span v-for="item in checkedList"
-                style="color:#f4c829;font-size: 0.5rem;margin-left: 0.2rem">{{item.name}}</span>
-        </div>
-      </div>
-      <div>
-        <span>每注金额</span>
-        <div>
-          <input type="text">
-          <span>请输入要投注的金额</span>
-        </div>
-      </div>
-    </div>
-    <div class="footerbar">
-      <span class="fl">清空</span>
-      <span class="fm">共{{checkedList.length}}注</span>
-      <span class="fr">马上投注</span>
-    </div>
+    <footerBar @clearNow="resetSelected" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
   </div>
 </template>
 
 <script>
   import {mapGetters} from 'vuex'
-  import playMethods from '../../utils/playMethods'
 
   import HeaderReg from '@/components/Navbar.vue'
   import selectNumber from './components/selectNumber'
   import textareaNumber from './components/textareaNumber'
-  import betFilter from './components/betFilter'
+  import footerBar from './components/footerBar'
+
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
   import {tagToPlayMapPK10} from './components/tagToPlayMapPK10'
@@ -78,14 +57,17 @@
       selectNumber,
       textareaNumber,
       playSortMore,
-      playBoard
+      playBoard,
+      footerBar
     },
     data() {
       return {
-        tagToPlayMap: JSON.parse(sessionStorage.getItem('tagToPlayMapPK10')), //映射关系
+        tagToPlayMap: tagToPlayMapPK10, //映射关系
         playBoardData: [], //选中的面板数据
+	      selectedInfo:'',
         tagSelectedData: [], //选中的标签
         selectedNumberData: [], //选中的号码
+        playBoardTypeValue: '',//页面是选择||输入
         choseType: 1,
         checkedList: [],
         betTopDetailShow: false,
@@ -124,6 +106,9 @@
       }
     },
     methods: {
+	    resetSelected() {
+		    this.$refs.playBoard.resetSelected()
+	    },
       tagSelected(data) {
         this.tagSelectedData = data
       },
@@ -144,13 +129,12 @@
         this.betTopDetailShow = false
       },
       selectedNumberDataMethod(data) {
-        console.log(this.tagSelectedData)
-        let type = this.tagSelectedData[0]
-        let detial = this.tagSelectedData[2]
-        this.selectedNumberData = data
-        console.log(this.selectedNumberData)
-        console.log('----------')
-        console.log(playMethodsPk10(type, detial, this.selectedNumberData))
+	      let type = this.tagSelectedData[0]
+	      let details = this.tagSelectedData[2]
+	      this.selectedInfo = playMethodsPk10(type, details, data)
+      },
+      playBoardType(data) {
+        this.playBoardTypeValue = data
       }
     },
     mounted() {
@@ -255,7 +239,7 @@
 
   .content {
     margin-top: px2rem(230px);
-    margin-bottom: px2rem(100px);
+    margin-bottom: px2rem(200px);
     overflow: hidden;
   }
 

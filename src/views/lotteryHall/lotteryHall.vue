@@ -1,11 +1,12 @@
 <template>
   <div class="lottery-hall">
-    <van-swipe :autoplay="3000" :show-indicators="false">
-      <van-swipe-item><img src="./images/banner1.png" alt=""></van-swipe-item>
-      <van-swipe-item><img src="./images/banner2.png" alt=""></van-swipe-item>
-      <van-swipe-item><img src="./images/banner3.png" alt=""></van-swipe-item>
-      <van-swipe-item><img src="./images/banner4.png" alt=""></van-swipe-item>
-    </van-swipe>
+    <!--<van-swipe :autoplay="3000" :show-indicators="false">-->
+      <!--<van-swipe-item><img src="./images/banner1.png" alt=""></van-swipe-item>-->
+      <!--<van-swipe-item><img src="./images/banner2.png" alt=""></van-swipe-item>-->
+      <!--<van-swipe-item><img src="./images/banner3.png" alt=""></van-swipe-item>-->
+      <!--<van-swipe-item><img src="./images/banner4.png" alt=""></van-swipe-item>-->
+    <!--</van-swipe>-->
+    <img src="./images/banner1.png" style="width: 100vw">
     <div class="nocice">
       <router-link to="">
         <van-icon style="color: #6c6c6c" name="info-o"/>
@@ -13,17 +14,18 @@
       </router-link>
     </div>
     <div class="hot-lottery">
-      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/k3/${index}`)">
+      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
         <div class="lottery-icon">
-          <i v-if="item.type == 1" class="iconfont icon-pk"></i>
-          <i v-if="item.type == 2" class="iconfont icon-shishicai"></i>
-          <i v-if="item.type == 3" class="iconfont icon-kuai3"></i></div>
+          <i v-if="item.type == 'pk10'" style="color: #f22751" class="iconfont icon-pk"></i>
+          <i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-xuan"></i>
+          <i v-if="item.type == 'ssc'" style="color: #f96e00" class="iconfont icon-shishicai"></i>
+          <i v-if="item.type == 'k3'" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
         <div class="lottery-name">{{item.name}}</div>
         <div class="lottery-number">{{item.number}}</div>
       </div>
       <div class="hot-lottery-item" @click="toAllLottery">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
-        <div class="lottery-name">更多彩种</div>
+        <div class="lottery-name">更多</div>
       </div>
     </div>
   </div>
@@ -40,16 +42,18 @@
     data() {
       return {
         hotLottery: [
-          {type: 2,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 3,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 1,name: 'test',number: 222}, 
-          {type: 3,name: 'test',number: 222}, 
-          {type: 2,name: 'test',number: 222}, 
-          {type: 2,name: 'test',number: 222}, 
-          {type: 2,name: 'test',number: 222}
+          {id: 1401, type: 'k3',name: '江苏快3',number: '全天82期'},
+          {id: 1406, type: 'k3',name: '北京快3',number: '全天89期'},
+          {id: 1405, type: 'k3',name: '湖北快3',number: '全天78期'},
+          {id: 1411, type: 'k3',name: '甘肃快3',number: '全天72期'},
+          {id: 1402, type: 'k3',name: '安徽快3',number: '全天80期'},
+          {id: 1403, type: 'k3',name: '广西快3',number: '全天78期'},
+          {id: 1408, type: 'k3',name: '河北快3',number: '全天81期'},
+          {id: 1401, type: 'k3',name: '上海快3',number: '全天82期'},
+          {id: 1401, type: 'k3',name: '大发快3',number: '1分钟1期'},
+          {id: 1401, type: 'k3',name: '贵州快3',number: '全天78期'},
+          {id: 1303, type: 'pk10',name: '北京PK10',number: '全天179期'},
+          {id: 1000, type: 'ssc',name: '重庆时时彩',number: '全天120期'}
         ]
       }
     },
@@ -62,7 +66,7 @@
       }
     },
     mounted() {
-	    this.$store.commit('setHeaderTitle', 'xx彩票')
+	    this.$store.commit('setHeaderTitle', 'xxxx')
     }
   }
 </script>
@@ -112,7 +116,6 @@
       .lottery-icon {
         i {
           display: inline-block;
-          color: #e41404;
           font-size: px2rem(75px);
           margin-top: px2rem(30px);
         }

@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     props: {
       titleName: {
@@ -21,6 +22,11 @@
         areaData:''
       }
     },
+    computed: {
+      ...mapGetters([
+        'PlaySortMore'
+      ])
+    },
     methods: {
       emitData() {
         this.areaData = this.areaData.replace(/[^\d,，；; ]/, '')
@@ -31,6 +37,11 @@
         })
         let emitData = {titleName: this.titleName, data: data}
         this.$emit('input', emitData)
+      }
+    },
+    watch: {
+      PlaySortMore() {
+        this.areaData = []
       }
     }
   }

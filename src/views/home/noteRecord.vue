@@ -1,5 +1,6 @@
 <!--
-  投注记录
+  name: noteRecord
+  desc: 个人中心 -> 投注记录
 -->
 <template>
   <div class="noteRecord">
@@ -11,7 +12,7 @@
         <button :class="{'recordType': recordType==='noteRecord'}" @click="recordType='noteRecord'">投注记录</button><button :class="{'recordType': recordType==='chaseNumRecord'}" @click="recordType='chaseNumRecord'">追号记录</button>
       </span>
       <span slot="headright" @click="show=true">
-        <span class="whichDay">今天<van-icon name="success" /></span>
+        <span class="whichDay">今天<i class="iconfont icon-arrow"></i></span>
       </span>
     </Navbar>
 
@@ -105,7 +106,7 @@ export default {
   margin-bottom: px2rem(100px);
   overflow: hidden;
   background: #efeef4;
-  
+
   .isPrize, .isPend {
     display: flex;
     background: #f3f3f3;

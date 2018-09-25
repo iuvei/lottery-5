@@ -55,6 +55,11 @@ export default new Router({
       component: _import('lotteryHall/pk10')
     },
     {
+      path: '/numberBox',
+      name: 'numberBox',
+      component: _import('lotteryHall/numberBox')
+    },
+    {
       path: '/lotteryHall',
       component: Layout,
       redirect: '/lotteryHall/index',
@@ -198,6 +203,7 @@ export default new Router({
       }]
     },
     {
+      // 我的
       path: '/home',
       component: Layout,
       redirect: '/home/index',
@@ -208,44 +214,160 @@ export default new Router({
       }]
     },
     {
+      // 我要充值
       path: '/recharge',
       component: _import('home/recharge'),
       name: 'recharge'
     },
     {
+      // 交易记录
       path: '/transRecord',
       component: _import('home/transRecord'),
       name: 'transRecord'
     },
     {
+      // 投注记录
       path: '/noteRecord',
       component: _import('home/noteRecord'),
       name: 'noteRecord'
     },
     {
+      // 个人信息
       path: '/userInfo',
       component: _import('home/userInfo'),
       name: 'userInfo'
     },
     {
+      // 安全中心
       path: '/safeCenter',
       component: _import('home/safeCenter'),
       name: 'safeCenter'
     },
     {
+      // 代理中心
       path: '/agentCenter',
       component: _import('home/agentCenter'),
       name: 'agentCenter'
     },
     {
+      //代理说明
+      path: '/agentIntro',
+      component: _import('home/agentIntro'),
+      name: 'agentIntro'
+    },
+    {
+      //  代理报表
+      path: '/agentReportForm',
+      component: _import('home/agentReportForm'),
+      name: 'agnetReportForm'
+    },
+    {
+      //  下级报表
+      path: '/subReportForm',
+      component: _import('home/subReportForm'),
+      name: 'subReportForm'
+    },
+    {
+      // 下级开户
+      path: '/subOpenAccount',
+      component: _import('home/subOpenAccount'),
+      name: 'subOpenAccount'
+    },
+    {
+      // 会员管理
+      path: '/memberManage',
+      component: _import('home/memberManage'),
+      name: 'memberManage'
+    },
+    {
+      // 投注记录
+      path: '/noteDetail',
+      component: _import('home/noteDetail'),
+      name: 'noteDetail'
+    },
+    {
+      // 交易记录
+      path: '/tradeDetail',
+      component: _import('home/tradeDetail'),
+      name: 'tradeDetail'
+    },
+    {
+      // 今日盈亏
       path: '/todayProfitLoss',
       component: _import('home/todayProfitLoss'),
       name: 'todayProfitLoss'
     },
     {
+      // 我的消息
       path: '/myMessage',
       component: _import('home/myMessage'),
       name: 'myMessage'
+    },
+    {
+      // 绑定密保手机
+      path: '/bindPhone',
+      component: _import('home/bindPhone'),
+      name: 'bindPhone'
+    },
+    {
+      // 绑定密保邮箱
+      path: '/bindEmail',
+      component: _import('home/bindEmail'),
+      name: 'bindEmail'
+    },
+    {
+      // 银行转帐
+      path: '/bankTransfer',
+      component: _import('home/bankTransfer'),
+      name: 'bankTransfer'
+    },
+    {
+      // 微信支付
+      path: '/weChatPay',
+      component: _import('home/weChatPay'),
+      name: 'weChatPay'
+    },
+    {
+      // 支付宝
+      path: '/alipay',
+      component: _import('home/alipay'),
+      name: 'alipay'
+    },
+    {
+      // qq支付
+      path: '/qqpay',
+      component: _import('home/qqpay'),
+      name: 'qqpay'
+    },
+    {
+      // 验证原密码
+      path: '/verOriPwd',
+      component: _import('home/verOriPwd'),
+      name: 'verOriPwd'
+    },
+    {
+      // 设置登录密码
+      path: '/setLoginPwd',
+      component: _import('home/setLoginPwd'),
+      name: 'setLoginPwd'
+    },
+    {
+      // 设置安全密码
+      path: '/setSafePwd',
+      component: _import('home/setSafePwd'),
+      name: 'setSafePwd'
+    },
+    {
+      // 设置密保问题
+      path: '/setQuestion',
+      component: _import('home/setQuestion'),
+      name: 'setQuestion'
+    },
+    {
+      // 银行卡管理
+      path: '/cardManage',
+      component: _import('home/cardManage'),
+      name: 'cardManage'
     }
   ]
 })

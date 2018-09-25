@@ -20,7 +20,7 @@ import {
 export default function playMethods(type, detial, selectedData) {
   let bittingNumber = 0
   let price = 0
-  let selectedNum = []
+  let selectedNum = selectedData
   if (type == '一星' && detial == '复式') {
     let YminLimit = 1
     let counter = []

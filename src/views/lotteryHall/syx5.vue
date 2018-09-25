@@ -26,17 +26,15 @@
 			</div>
 			<div>
 				<span>0730081期投注截止</span>
-				<div>k3-timebar</div>
+				<div><countDown></countDown></div>
 			</div>
 		</div>
 		<div class="content">
 			<div class="chose-wrap">
-				<playBoard :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethods"></playBoard>
+				<playBoard ref="playBoard" @playBoardType="playBoardType" :playBoardData="playBoardData" v-model="selectedNumberData" @change="selectedNumberDataMethod"></playBoard>
 			</div>
 		</div>
-		
-		<footerBar :selectedInfo="selectedInfo"></footerBar>
-	
+		<footerBar @clearNow="resetSelected" :playBoardTypeValue="playBoardTypeValue" :selectedInfo="selectedInfo"></footerBar>
 	</div>
 </template>
 
@@ -64,12 +62,13 @@
 		},
 		data() {
 			return {
-				tagToPlayMap: JSON.parse(sessionStorage.getItem('tagToPlayMapSYX5')), //映射关系
+				tagToPlayMap: tagToPlayMapSYX5, //映射关系
 				playBoardData: [], //选中的面板数据
 				tagSelectedData: [],
 				selectedNumberData: [],
 				selectedInfo: {},
-				choseType: 1,
+        playBoardTypeValue: '',//页面是选择||输入
+        choseType: 1,
 				checkedList: [],
 				betTopDetailList: [
 					{name: '和值', odds: '赔率31.5倍', number: 123, value: 1},
@@ -110,15 +109,14 @@
 			},
 		},
 		methods: {
-      selectedNumberDataMethods(data) {
-        console.log(this.tagSelectedData)
+			resetSelected() {
+				this.$refs.playBoard.resetSelected()
+			},
+			selectedNumberDataMethod(data) {
         let type = this.tagSelectedData[0]
         let detial = this.tagSelectedData[2]
         this.selectedNumberData = data
 	      this.selectedInfo = playMethodsSyx5(type, detial, this.selectedNumberData)
-        console.log(this.selectedNumberData)
-        console.log('----------')
-        console.log(playMethodsSyx5(type, detial, this.selectedNumberData))
       },
 			tagSelected(data) {
 				this.tagSelectedData = data
@@ -138,16 +136,19 @@
 				this.betTopDetailSelected = item.value
 				this.choseList = eval(`this.choseList${item.value}`)
 				this.betTopDetailShow = false
-			}
+			},
+      playBoardType(data) {
+        this.playBoardTypeValue = data
+      }
 		},
 		mounted() {
+      sessionStorage.setItem('tagToPlayMapSYX5', JSON.stringify(tagToPlayMapSYX5))
 			this.choseList = eval(`this.choseList1`)
 			this.arae.forEach(i => {
 				if(i.value == this.$route.params.id) {
 					this.araeSelected = i
 				}
 			})
-			sessionStorage.setItem('tagToPlayMapSYX5', JSON.stringify(tagToPlayMapSYX5))
 		}
 	}
 </script>
@@ -242,8 +243,8 @@
 
 	.content {
 		margin-top: px2rem(230px);
-		margin-bottom: px2rem(100px);
-		overflow: hidden;
+    margin-bottom: px2rem(200px);
+    overflow: hidden;
 	}
 
 	.state {

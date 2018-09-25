@@ -1,3 +1,7 @@
+<!--
+  name: recharge
+  desc: 个人中心 -> 我要充值
+-->
 <template>
   <div class="recharge">
     <HeaderRecharge>
@@ -9,7 +13,7 @@
 
     <div class="content">
       <ul class="recharge-methods">
-        <li v-for="(item, index) in rechageMethods" :key="index">
+        <li v-for="(item, index) in rechageMethods" :key="index" @click="toPage(item.src)">
           <img :src="item.imgSrc">
           <p>
             <span>{{item.meth}}</span>
@@ -36,29 +40,45 @@
           {
             imgSrc: './../../../static/images/card.png',
             meth: '银行转帐',
-            desc: '银行转帐维护中...'
+            desc: '银行转帐维护中...',
+            src: '/bankTransfer'
           },
           {
             imgSrc: './../../../static/images/weixin.png',
             meth: '微信支付',
-            desc: '单笔最低10元, 最高50000元'
+            desc: '单笔最低10元, 最高50000元',
+            src: '/weChatPay'
           },
           {
             imgSrc: './../../../static/images/alipay.png',
             meth: '支付宝',
-            desc: '单笔最低10元, 最高50000元'
+            desc: '单笔最低10元, 最高50000元',
+            src: '/alipay'
           },
           {
             imgSrc: './../../../static/images/qqpay.png',
             meth: 'qq钱包',
-            desc: '单笔最低10元, 最高50000元'
+            desc: '单笔最低10元, 最高50000元',
+            src: '/qqpay'
+          },
+          {
+            imgSrc: './../../../static/images/card.png',
+            meth: '银联支付',
+            desc: '银联支付维护中...',
+            src: '/recharge'
           },
           {
             imgSrc: './../../../static/images/fourthpay.png',
             meth: '自动到帐',
-            desc: '内含支付宝微信QQ银行等渠道'
+            desc: '内含支付宝微信QQ银行等渠道',
+            src: '/recharge'
           }
         ]
+      }
+    },
+    methods: {
+      toPage (src) {
+        this.$router.push(src)
       }
     }
   }
@@ -109,5 +129,5 @@
     }
   }
 }
-  
+
 </style>

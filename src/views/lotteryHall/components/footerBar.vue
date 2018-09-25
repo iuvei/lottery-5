@@ -13,22 +13,25 @@
 			</div>
 		</div>
 		<div class="betInfo">
-			<div class="betContent" :class="{'betActive': finalData.bittingNumber != 0}">
+			<div class="betContent" :class="{'betActive': finalData.bittingNumber != 0}" @click="addDataToBox">
 				<span>+</span>
 				<div>
 					<div>共{{finalData.bittingNumber}}注，{{(finalData.price / YJFmul).toFixed(2) * betMul}}元</div>
-					<!--<span>234234</span>-->
+					<span v-if="finalData.bittingNumber != 0">{{strNumberList}}</span>
 				</div>
 			</div>
-			<div class="betCard">
-				号码篮
+			<div class="betCard" @click="toPage('/numberBox')">
+				<span v-if="lotteryList.length > 0" style="border-radius: 50%;background: red">{{lotteryList.length}}</span>号码篮
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	export default {
+  import { mapGetters } from 'vuex'
+  import { selectedDataToStr } from "../../../utils/auth";
+
+  export default {
 		data() {
 			return {
 				YJF: [
@@ -40,12 +43,25 @@
 				YJFmul: 1
 			}
 		},
-		props: ['selectedInfo'],
+		props: ['selectedInfo','playBoardTypeValue'],
 		computed: {
+      ...mapGetters([
+        'lotteryList'
+      ]),
+		  strNumberList() {
+        return this.finalData.selectedNum ? selectedDataToStr(this.playBoardTypeValue, this.finalData.selectedNum) : ''
+      },
 			finalData() {
+        // console.log(this.selectedInfo)
 				return {
+					type: this.selectedInfo.type,
+					detial: this.selectedInfo.detial,
+					selectedNum: this.selectedInfo.selectedNum,
 					bittingNumber: this.selectedInfo.bittingNumber || 0,
 					price: this.selectedInfo.price || 0,
+					playBoardTypeValue: this.playBoardTypeValue,
+					betMul: this.betMul,
+					YJFmul: this.YJFmul
 				}
 			}
 		},
@@ -70,7 +86,19 @@
 				})
 				item.checked = true
 				this.YJFmul = item.value
-			}
+			},
+      addDataToBox() {
+			  if (this.finalData.bittingNumber != 0) {
+          this.$store.commit('setLotteryList', this.finalData)
+//          this.finalData.bittingNumber = 0
+//          this.finalData.price = 0
+          this.$emit('clearNow')
+//				  this.finalData.selectedNum = ''
+        }
+      },
+      toPage(link) {
+        this.$router.push(link)
+      }
 		},
 		mounted() {
 		}
@@ -79,14 +107,14 @@
 
 <style scoped lang="scss">
 	@import "@/styles/index.scss";
-	
+
 	.footerBar {
 		position: fixed;
 		z-index: 999999;
 		bottom: 0;
 		width: 100%;
 	}
-	
+
 	.multipleCon {
 		height: px2rem(105px);
 		width: 100%;
@@ -158,12 +186,12 @@
 			}
 		}
 	}
-	
+
 	.active {
 		background: #dc3b40;
 		color: #fff;
 	}
-	
+
 	.betInfo {
 		height: px2rem(105px);
 		width: 100%;
@@ -191,7 +219,7 @@
 					margin-top: px2rem(10px);
 				}
 			}
-			
+
 		}
 		.betActive {
 			background: #dc3b40;

@@ -1,3 +1,7 @@
+<!--
+  name: transRecord
+  desc: 个人中心 -> 交易记录
+-->
 <template>
   <div class="transRecord">
     <Navbar>
@@ -6,7 +10,7 @@
       </router-link>
       <span slot="headtitle">交易记录</span>
       <span slot="headright" @click="show=true">
-        <span class="whichDay">今天<van-icon name="success" /></span>
+        <span class="whichDay">今天<i class="iconfont icon-arrow"></i></span>
       </span>
     </Navbar>
 
