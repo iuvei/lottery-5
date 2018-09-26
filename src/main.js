@@ -8,11 +8,14 @@ import Vant from 'vant'
 import countDown from './components/countDown.vue'
 import 'vant/lib/vant-css/index.css'
 import './icons/iconfont.css'
+import axios from './utils/request'
+// import axios from 'axios'
 
 import './utils/flexible.js'
 
 import './permission'
 
+Vue.prototype.axios = axios
 Vue.use(Vant)
 Vue.component('countDown', countDown)
 

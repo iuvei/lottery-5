@@ -10,17 +10,17 @@
       <div class="info">
         <div class="invite-code">
           <span class="front">邀请码</span>
-          <input type="text" placeholder="请输入8位数字邀请码">
+          <input type="text" placeholder="请输入8位数字邀请码" v-model="code">
           <span class="end"></span>
         </div>
         <div class="invite-code">
           <span class="front">账号</span>
-          <input type="text" placeholder="请输入您要注册的账号">
+          <input type="text" placeholder="请输入您要注册的账号" v-model="username">
           <span class="end"></span>
         </div>
         <div class="invite-code">
           <span class="front">设置密码</span>
-          <input type="text" placeholder="请输入您要设置的密码">
+          <input type="text" placeholder="请输入您要设置的密码" v-model="password">
           <span class="end"></span>
         </div>
       </div>
@@ -28,7 +28,7 @@
         <router-link to="/login">已有账号？立即登录</router-link>
       </div>
       <div class="registe-btn">
-        <button>立即注册</button>
+        <button @click="reg">立即注册</button>
       </div>
     </div>
   </div>
@@ -41,6 +41,22 @@
     name: 'register',
     components: {
       HeaderReg
+    },
+    data() {
+      return {
+        username: '',
+        password: '',
+        code: ''
+      }
+    },
+    methods: {
+      async reg() {
+        let res = await this.axios.post('/v1/Regiter', {username: this.username, password: this.password, source: 1
+        })
+        console.log(res)
+      }
+    },
+    mounted() {
     }
   }
 </script>
@@ -53,6 +69,7 @@
     margin-bottom: px2rem(100px);
     overflow: hidden;
   }
+
   .info {
     background: #fff;
     margin-top: px2rem(25px);
@@ -78,7 +95,7 @@
         border: 0;
         width: calc(100vw - 2.14rem);
         font-size: px2rem(35px);
-        &::-webkit-input-placeholder{
+        &::-webkit-input-placeholder {
           color: #ccc;
         }
       }
@@ -99,6 +116,7 @@
       color: #dc2e2e;
     }
   }
+
   .registe-btn {
     text-align: center;
     button {
