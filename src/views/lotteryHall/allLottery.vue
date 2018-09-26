@@ -8,29 +8,35 @@
 		</HeaderReg>
 		<div class="content">
 			<div class="tab">
-				<div class="tab-item" :class="{'active': activeFlag == 'all'}" @click="selectLotteryType()">
+				<div class="tab-item" :class="{'active': activeFlag == 'all'}" @click="selectLotteryType('all')">
 					<i class="iconfont icon-kuai3"></i>
 					<span>全部彩种</span>
 				</div>
-				<div class="tab-item" :class="{'active': item.name == activeFlag}" v-for="item in lotteryList"
+				<div class="tab-item" :class="{'active': item == activeFlag}" v-for="item in lotteryTitle"
 				     @click="selectLotteryType(item)">
-					<i v-if="item.label == 'syx5'" class="iconfont icon-xuan"></i>
-					<i v-if="item.label == 'pk10'" class="iconfont icon-pk"></i>
-					<i v-if="item.label == 'ssc'" class="iconfont icon-shishicai"></i>
-					<i v-if="item.label == 'k3'" class="iconfont icon-kuai3"></i>
-					<span>{{item.name}}</span>
+					<i v-if="item == 'syxw'" class="iconfont icon-xuan"></i>
+          <span v-if="item == 'syxw'">十一选五</span>
+
+          <i v-if="item == 'pk10'" class="iconfont icon-pk"></i>
+          <span v-if="item == 'pk10'">pk10</span>
+
+          <i v-if="item == 'ssc'" class="iconfont icon-shishicai"></i>
+          <span v-if="item == 'ssc'">时时彩</span>
+
+          <i v-if="item == 'k3'" class="iconfont icon-kuai3"></i>
+          <span v-if="item == 'k3'">快3</span>
 				</div>
 			</div>
 			<div class="lottery">
-				<div class="lottery-item" v-for="(item, index) in selectedLottery"
+				<div class="lottery-item" v-for="(item, index) in lotteryList"
 				     @click="toPage(`/${item.type}/${item.id}`)">
 					<div class="lottery-icon">
-						<i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-xuan"></i>
-						<i v-if="item.type == 'pk10'" style="color: #f22751" class="iconfont icon-pk"></i>
-						<i v-if="item.type == 'ssc'" style="color: #f96e00" class="iconfont icon-shishicai"></i>
-						<i v-if="item.type == 'k3'" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
-					<div class="lottery-name">{{item.name}}</div>
-					<div class="lottery-number">{{item.number}}</div>
+						<i v-if="item.type.includes('syxw')" style="color: #218ddd" class="iconfont icon-xuan"></i>
+						<i v-if="item.type.includes('pk10')" style="color: #f22751" class="iconfont icon-pk"></i>
+						<i v-if="item.type.includes('ssc')" style="color: #f96e00" class="iconfont icon-shishicai"></i>
+						<i v-if="item.type.includes('k3')" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
+					<div class="lottery-name">{{item.title}}</div>
+					<div class="lottery-number">{{item.per_explain}}</div>
 				</div>
 			</div>
 
@@ -48,64 +54,36 @@
 		},
 		data() {
 			return {
-				lotteryList: [
-					{
-						icon: '11', name: '快3', label: 'k3', data: [
-						{type: 'k3', name: '江苏快3', number: '全天82期', id: 1},
-						{type: 'k3', name: '安徽快3', number: '全天82期', id: 2},
-						{type: 'k3', name: '广西快3', number: '全天82期', id: 3},
-						{type: 'k3', name: '湖北快3', number: '全天82期', id: 4},
-						{type: 'k3', name: '北京快3', number: '全天82期', id: 5},
-						{type: 'k3', name: '河北快3', number: '全天82期', id: 6},
-						{type: 'k3', name: '甘肃快3', number: '全天82期', id: 7},
-						{type: 'k3', name: '上海快3', number: '全天82期', id: 8},
-						{type: 'k3', name: '贵州快3', number: '全天82期', id: 9},
-						{type: 'k3', name: '吉林快3', number: '全天82期', id: 10},
-						{type: 'k3', name: '大众快3', number: '全天82期', id: 11},
-					]
-					},
-					{
-						icon: '11', name: '时时彩', label: 'ssc',data: [
-						{type: 'ssc', name: '重庆时时彩', number: '全天82期', id: 1},
-						{type: 'ssc', name: '新疆时时彩', number: '全天82期', id: 2},
-						{type: 'ssc', name: '天津时时彩', number: '全天82期', id: 3},
-						{type: 'ssc', name: '大众时时彩', number: '全天82期', id: 4}
-					]
-					},
-					{
-						icon: '11', name: '11选5',label: 'syx5', data: [
-						{type: 'syx5', name: '广东11选5', number: '全天82期', id: 1},
-						{type: 'syx5', name: '上海11选5', number: '全天82期', id: 2},
-						{type: 'syx5', name: '山东11选5', number: '全天82期', id: 3},
-						{type: 'syx5', name: '江西11选5', number: '全天82期', id: 4},
-						{type: 'syx5', name: '大众11选5', number: '全天82期', id: 5}
-					]
-					}, {
-            icon: '11', name: 'PK10',label: 'pk10', data: [
-              {type: 'pk10', name: '北京PK10', number: '全天82期', id: 1},
-              {type: 'pk10', name: '大发PK10', number: '全天82期', id: 2}
-            ]
-          }
-				],
+        activeFlag: 'all',
+        lotteryTitle: [],
+        lotteryList: [],
+        cache: [],
 				selectedLottery: [],
-				activeFlag: 'all'
 			}
 		},
 		methods: {
+		  async getAllLottery() {
+        let res = await this.axios.get('/v1/Lottery/lotteryHall')
+        this.lotteryList = res.data.data
+        this.cache = res.data.data
+        this.lotteryTitle = [...new Set(res.data.data.map(v => {
+          return v.type
+        }))]
+        // console.log(res.data.data)
+      },
 			selectLotteryType(item) {
-				if (!!item) {
-					this.lotteryList.forEach(v => {
-						if (v.name == item.name) {
-							this.selectedLottery = item.data
-							this.activeFlag = item.name
-						}
-					})
-				} else {
-					this.selectedLottery = []
-					this.activeFlag = 'all'
-					this.lotteryList.forEach(v => {
-						this.selectedLottery.push(...(v.data))
-					})
+        this.activeFlag = item
+		    this.lotteryList = this.cache
+				if (item != 'all') {
+				  this.lotteryList = this.lotteryList.filter(v => {
+				    return v.type == item
+          })
+					// this.lotteryList.forEach(v => {
+					// 	if (v.name == item.name) {
+					// 		this.selectedLottery = item.data
+					// 		this.activeFlag = item.name
+					// 	}
+					// })
 				}
 			},
 			toPage(link, params) {
@@ -113,6 +91,7 @@
 			}
 		},
 		mounted() {
+			this.getAllLottery()
 			this.selectLotteryType()
 		}
 	}
