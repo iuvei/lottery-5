@@ -6,19 +6,7 @@
       <swiper-slide><img style="width: 100vw;" src="./images/banner2.png" alt=""></swiper-slide>
       <swiper-slide><img style="width: 100vw;" src="./images/banner3.png" alt=""></swiper-slide>
       <swiper-slide><img style="width: 100vw;" src="./images/banner4.png" alt=""></swiper-slide>
-      <!-- Optional controls -->
-      <!--<div class="swiper-pagination"  slot="pagination"></div>-->
-      <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
-      <!--<div class="swiper-button-next" slot="button-next"></div>-->
-      <!--<div class="swiper-scrollbar"   slot="scrollbar"></div>-->
     </swiper>
-    <!--<van-swipe :autoplay="3000" :show-indicators="false">-->
-      <!--<van-swipe-item><img src="./images/banner1.png" alt=""></van-swipe-item>-->
-      <!--<van-swipe-item><img src="./images/banner2.png" alt=""></van-swipe-item>-->
-      <!--<van-swipe-item><img src="./images/banner3.png" alt=""></van-swipe-item>-->
-      <!--<van-swipe-item><img src="./images/banner4.png" alt=""></van-swipe-item>-->
-    <!--</van-swipe>-->
-    <!--<img src="./images/banner1.png" style="width: 100vw">-->
     <div class="nocice">
       <router-link to="">
         <van-icon style="color: #6c6c6c" name="info-o"/>
@@ -28,12 +16,12 @@
     <div class="hot-lottery">
       <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
         <div class="lottery-icon">
-          <i v-if="item.type == 'pk10'" style="color: #f22751" class="iconfont icon-pk"></i>
-          <i v-if="item.type == 'syx5'" style="color: #218ddd" class="iconfont icon-xuan"></i>
-          <i v-if="item.type == 'ssc'" style="color: #f96e00" class="iconfont icon-shishicai"></i>
-          <i v-if="item.type == 'k3'" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
-        <div class="lottery-name">{{item.name}}</div>
-        <div class="lottery-number">{{item.number}}</div>
+          <i v-if="item.sname.includes('pk10')" style="color: #f22751" class="iconfont icon-pk"></i>
+          <i v-if="item.sname.includes('11x5')" style="color: #218ddd" class="iconfont icon-xuan"></i>
+          <i v-if="item.sname.includes('ssc')" style="color: #f96e00" class="iconfont icon-shishicai"></i>
+          <i v-if="item.sname.includes('k3')" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
+        <div class="lottery-name">{{item.title}}</div>
+        <div class="lottery-number">{{item.per_explain}}</div>
       </div>
       <div class="hot-lottery-item" @click="toAllLottery">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
@@ -75,7 +63,8 @@
     methods: {
       async getLotteryList() {
         let res = await this.axios.get('/v1/Lottery/List')
-        console.log(res)
+        this.hotLottery = res.data.data
+        console.log(res.data.data)
       },
       toAllLottery() {
         this.$router.push('/allLottery')
