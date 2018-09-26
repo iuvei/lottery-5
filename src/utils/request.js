@@ -2,7 +2,7 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 // import store from '@/store'
 // import router from '../router/index'
-import {getToken} from "./auth";
+import {getToken, removeToken} from "./auth";
 
 // 创建axios实例
 const service = axios.create({
@@ -35,14 +35,14 @@ service.interceptors.response.use(
     if (error.response) {
       // console.log(error.response.status);
       switch (error.response.status) {
-        // case 401:
-        //   // 401 清除token信息并跳转到登录页面
-        //   // removeMenus();
-        //   // removeToken();
-        //   router.replace({
-        //     path: 'login',
-        //     // query: {redirect: router.currentRoute.fullPath}
-        //   })
+        case 401:
+          // 401 清除token信息并跳转到登录页面
+          // removeMenus();
+          removeToken();
+          router.replace({
+            path: 'login',
+            // query: {redirect: router.currentRoute.fullPath}
+          })
         // if (router.currentRoute.fullPath !== '/aboutus' && router.currentRoute.fullPath !== '/faq' && router.currentRoute.fullPath !== '/Permissions') {
         //   router.replace({
         //     path: 'login',

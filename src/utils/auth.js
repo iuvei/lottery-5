@@ -12,6 +12,9 @@ export function getToken(){
   return sessionStorage.getItem(Token)
 }
 
+export function removeToken(){
+  return sessionStorage.removeItem(Token)
+}
 export function getActivePage() {
   return sessionStorage.getItem(ActivePageIndex)
 }
