@@ -33,7 +33,7 @@ service.interceptors.response.use(
   },
   error => {
     if (error.response) {
-      console.log(error.response.status);
+      // console.log(error.response.status);
       switch (error.response.status) {
         // case 401:
         //   // 401 清除token信息并跳转到登录页面

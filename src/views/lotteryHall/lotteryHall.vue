@@ -1,12 +1,24 @@
 <template>
   <div class="lottery-hall">
+    <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="">
+      <!-- slides -->
+      <swiper-slide><img style="width: 100vw;" src="./images/banner1.png" alt=""></swiper-slide>
+      <swiper-slide><img style="width: 100vw;" src="./images/banner2.png" alt=""></swiper-slide>
+      <swiper-slide><img style="width: 100vw;" src="./images/banner3.png" alt=""></swiper-slide>
+      <swiper-slide><img style="width: 100vw;" src="./images/banner4.png" alt=""></swiper-slide>
+      <!-- Optional controls -->
+      <!--<div class="swiper-pagination"  slot="pagination"></div>-->
+      <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
+      <!--<div class="swiper-button-next" slot="button-next"></div>-->
+      <!--<div class="swiper-scrollbar"   slot="scrollbar"></div>-->
+    </swiper>
     <!--<van-swipe :autoplay="3000" :show-indicators="false">-->
       <!--<van-swipe-item><img src="./images/banner1.png" alt=""></van-swipe-item>-->
       <!--<van-swipe-item><img src="./images/banner2.png" alt=""></van-swipe-item>-->
       <!--<van-swipe-item><img src="./images/banner3.png" alt=""></van-swipe-item>-->
       <!--<van-swipe-item><img src="./images/banner4.png" alt=""></van-swipe-item>-->
     <!--</van-swipe>-->
-    <img src="./images/banner1.png" style="width: 100vw">
+    <!--<img src="./images/banner1.png" style="width: 100vw">-->
     <div class="nocice">
       <router-link to="">
         <van-icon style="color: #6c6c6c" name="info-o"/>
@@ -54,7 +66,10 @@
           {id: 1401, type: 'k3',name: '贵州快3',number: '全天78期'},
           {id: 1303, type: 'pk10',name: '北京PK10',number: '全天179期'},
           {id: 1000, type: 'ssc',name: '重庆时时彩',number: '全天120期'}
-        ]
+        ],
+        swiperOption: {
+          autoplay: true
+        }
       }
     },
     methods: {

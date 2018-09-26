@@ -13,17 +13,17 @@
     <div class="user-info">
       <div class="username">
         <i class="front-icon"></i>
-        <input placeholder="请输入账号">
+        <input placeholder="请输入账号" v-model="username">
         <i class="end-icon"></i>
       </div>
       <div class="password">
         <i class="front-icon"></i>
-        <input placeholder="请输入密码">
+        <input placeholder="请输入密码" v-model="password">
         <i class="end-icon"></i>
       </div>
     </div>
     <div class="buttons">
-      <button class="login">立即登录</button>
+      <button class="login" @click="login">立即登录</button>
       <div class="otherBtn">
         <router-link to="register"><span class="reg">立即注册</span></router-link>
         <span style="color: #aaa">|</span>
@@ -35,11 +35,40 @@
 
 <script>
   import HeaderLogin from '@/components/Navbar.vue'
+  import { Dialog } from 'vant';
 
   export default {
     name: 'Login',
     components: {
       HeaderLogin
+    },
+    data() {
+      return {
+        username: '',
+        password: ''
+      }
+    },
+    methods: {
+      async login() {
+        if(this.username == ''){
+          Dialog.alert({
+            title: '提示',
+            message: '请输入用户名'
+          })
+        } else if (this,password == '') {
+          Dialog.alert({
+            title: '提示',
+            message: '请输入用户名'
+          })
+        } else {
+          let res = await this.axios.post('/v1/login', {
+            username: this.username,
+            password: this.password,
+            timestamp: new Date().getTime()
+          })
+          console.log(res)
+        }
+      }
     }
   }
 </script>

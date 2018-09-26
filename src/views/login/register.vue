@@ -36,6 +36,7 @@
 
 <script>
   import HeaderReg from '@/components/Navbar.vue'
+  import { Dialog } from 'vant';
 
   export default {
     name: 'register',
@@ -51,9 +52,31 @@
     },
     methods: {
       async reg() {
-        let res = await this.axios.post('/v1/Regiter', {username: this.username, password: this.password, source: 1
-        })
-        console.log(res)
+        if(this.username == '') {
+          Dialog.alert({
+            title: '提示',
+            message: '请输入用户名'
+          })
+        } else if (this.password == '') {
+          Dialog.alert({
+            title: '提示',
+            message: '请输入密码'
+          })
+        } else {
+          try {
+            let res = await this.axios.post('/v1/Regiter', {username: this.username, password: this.password, source: 1
+            })
+            let data = res.data
+            console.log(data)
+            Dialog.alert({
+              title: '标题',
+              message: data.message
+            }).then(() => {
+              // on close
+            });
+          } catch (err) {
+          }
+        }
       }
     },
     mounted() {

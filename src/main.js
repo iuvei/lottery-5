@@ -14,6 +14,12 @@ import axios from './utils/request'
 import './utils/flexible.js'
 
 import './permission'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 Vue.prototype.axios = axios
 Vue.use(Vant)
