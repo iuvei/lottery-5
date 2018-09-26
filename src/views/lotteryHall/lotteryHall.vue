@@ -73,6 +73,10 @@
       }
     },
     methods: {
+      async getLotteryList() {
+        let res = await this.axios.get('/v1/Lottery/List')
+        console.log(res)
+      },
       toAllLottery() {
         this.$router.push('/allLottery')
       },
@@ -81,6 +85,7 @@
       }
     },
     mounted() {
+      this.getLotteryList()
 	    this.$store.commit('setHeaderTitle', 'xxxx')
     }
   }

@@ -36,6 +36,8 @@
 <script>
   import HeaderLogin from '@/components/Navbar.vue'
   import { Dialog } from 'vant';
+  import { Base64 } from 'js-base64';
+  import {setToken} from "../../utils/auth";
 
   export default {
     name: 'Login',
@@ -55,18 +57,19 @@
             title: '提示',
             message: '请输入用户名'
           })
-        } else if (this,password == '') {
+        } else if (this.password == '') {
           Dialog.alert({
             title: '提示',
             message: '请输入用户名'
           })
         } else {
-          let res = await this.axios.post('/v1/login', {
+          let res = await this.axios.post('/v1/Login', {
             username: this.username,
             password: this.password,
-            timestamp: new Date().getTime()
+            timestamp: parseInt(new Date().getTime() / 1000)
           })
-          console.log(res)
+          let str = `${res.data.data.client.id} ${res.data.data.access_token}`
+          setToken(Base64.encode(str))
         }
       }
     }

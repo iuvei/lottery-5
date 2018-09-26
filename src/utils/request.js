@@ -2,7 +2,7 @@ import axios from 'axios'
 // import { Message } from 'element-ui'
 // import store from '@/store'
 // import router from '../router/index'
-// import { getToken, removeToken, removeMenus } from '@/utils/auth'
+import {getToken} from "./auth";
 
 // 创建axios实例
 const service = axios.create({
@@ -15,10 +15,10 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(config => {
   // config.headers['Content-Type'] = 'charset=utf-8'
-  // if (getToken()) {
-    // config.headers['token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+  if (getToken()) {
+    config.headers['token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     // config.headers['username'] = getUsername()
-  // }
+  }
   return config
 }, error => {
   // Do something with request error

@@ -1,7 +1,15 @@
 let ActivePageIndex = 'ActivePageIndex'
-
+let Token = 'Token'
 export function setActivePage(index) {
   return sessionStorage.setItem(ActivePageIndex, index)
+}
+
+export function setToken(token){
+  return sessionStorage.setItem(Token, token)
+}
+
+export function getToken(){
+  return sessionStorage.getItem(Token)
 }
 
 export function getActivePage() {
