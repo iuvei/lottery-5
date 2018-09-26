@@ -28,6 +28,7 @@
       },
       resetSelected() {
         this.playBoardData.forEach(v => {
+//        	console.log(v)
           v.numberData.forEach(v1 => {
             v1.checked = false
           })

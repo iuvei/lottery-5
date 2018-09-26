@@ -52,6 +52,7 @@
         return this.finalData.selectedNum ? selectedDataToStr(this.playBoardTypeValue, this.finalData.selectedNum) : ''
       },
 			finalData() {
+        // console.log(this.selectedInfo)
 				return {
 					type: this.selectedInfo.type,
 					detial: this.selectedInfo.detial,
