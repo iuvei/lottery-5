@@ -66,6 +66,7 @@ export default new Router({
       children: [{
         path: 'index',
         component: _import('lotteryHall/lotteryHall'),
+        meta: {needLogin: true},
         name: 'lotteryHall'
       }]
     },
