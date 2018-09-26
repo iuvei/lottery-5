@@ -10,20 +10,20 @@
     <div class="nocice">
       <router-link to="">
         <van-icon style="color: #6c6c6c" name="info-o"/>
-        <span style="color: #6c6c6c">test</span>
+        <span style="color: #6c6c6c">{{notice}}</span>
       </router-link>
     </div>
     <div class="hot-lottery">
-      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
+      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.ename}`)">
         <div class="lottery-icon">
-          <i v-if="item.sname.includes('pk10')" style="color: #f22751" class="iconfont icon-pk"></i>
-          <i v-if="item.sname.includes('11x5')" style="color: #218ddd" class="iconfont icon-xuan"></i>
-          <i v-if="item.sname.includes('ssc')" style="color: #f96e00" class="iconfont icon-shishicai"></i>
-          <i v-if="item.sname.includes('k3')" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
+          <i v-if="item.type.includes('pk10')" style="color: #f22751" class="iconfont icon-pk"></i>
+          <i v-if="item.type.includes('syxw')" style="color: #218ddd" class="iconfont icon-xuan"></i>
+          <i v-if="item.type.includes('ssc')" style="color: #f96e00" class="iconfont icon-shishicai"></i>
+          <i v-if="item.type.includes('k3')" style="color: #e41404" class="iconfont icon-kuai3"></i></div>
         <div class="lottery-name">{{item.title}}</div>
         <div class="lottery-number">{{item.per_explain}}</div>
       </div>
-      <div class="hot-lottery-item" @click="toAllLottery">
+      <div class="hot-lottery-item" @click="toAllLottery(item)">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
         <div class="lottery-name">更多</div>
       </div>
@@ -41,26 +41,19 @@
     },
     data() {
       return {
-        hotLottery: [
-          {id: 1401, type: 'k3',name: '江苏快3',number: '全天82期'},
-          {id: 1406, type: 'k3',name: '北京快3',number: '全天89期'},
-          {id: 1405, type: 'k3',name: '湖北快3',number: '全天78期'},
-          {id: 1411, type: 'k3',name: '甘肃快3',number: '全天72期'},
-          {id: 1402, type: 'k3',name: '安徽快3',number: '全天80期'},
-          {id: 1403, type: 'k3',name: '广西快3',number: '全天78期'},
-          {id: 1408, type: 'k3',name: '河北快3',number: '全天81期'},
-          {id: 1401, type: 'k3',name: '上海快3',number: '全天82期'},
-          {id: 1401, type: 'k3',name: '大发快3',number: '1分钟1期'},
-          {id: 1401, type: 'k3',name: '贵州快3',number: '全天78期'},
-          {id: 1303, type: 'pk10',name: '北京PK10',number: '全天179期'},
-          {id: 1000, type: 'ssc',name: '重庆时时彩',number: '全天120期'}
-        ],
+        notice: '',
+        hotLottery: [],
         swiperOption: {
-          autoplay: true
+          autoplay: true,
+          loop: true
         }
       }
     },
     methods: {
+      async getNotice() {
+        let res = await this.axios.get('/v1/Notice')
+        this.notice = res.data.data.title
+      },
       async getLotteryList() {
         let res = await this.axios.get('/v1/Lottery/List')
         this.hotLottery = res.data.data
@@ -74,8 +67,9 @@
       }
     },
     mounted() {
+      this.getNotice()
       this.getLotteryList()
-	    this.$store.commit('setHeaderTitle', 'xxxx')
+      this.$store.commit('setHeaderTitle', 'xxxx')
     }
   }
 </script>
@@ -106,8 +100,6 @@
       margin-left: px2rem(20px);
     }
   }
-
-
 
   @include onetoppx('.hot-lottery-item');
   @include oneleftpx('.hot-lottery-item');
@@ -141,29 +133,37 @@
       }
     }
   }
+
   .hot-lottery-item:nth-child(1)::before {
     border: 0;
   }
+
   .hot-lottery-item:nth-child(2)::before {
     border: 0;
   }
+
   .hot-lottery-item:nth-child(3)::before {
     border: 0;
   }
+
   .hot-lottery-item:nth-child(3)::after {
     border: 0;
   }
+
   .hot-lottery-item:nth-child(6)::after {
     border: 0;
   }
+
   .hot-lottery-item:nth-child(9)::after {
     border: 0;
   }
+
   .hot-lottery-item:nth-child(12)::after {
     border: 0;
   }
+
   /*.hot-lottery-item:last-child::after {*/
-    /*border: 0;*/
+  /*border: 0;*/
   /*}*/
 
 

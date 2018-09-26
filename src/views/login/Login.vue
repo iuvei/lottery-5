@@ -70,6 +70,14 @@
           })
           let str = `${res.data.data.client.id} ${res.data.data.access_token}`
           setToken(Base64.encode(str))
+          if(res.data.message == 'success') {
+            this.$router.push('/lotteryHall')
+          } else {
+            Dialog.alert({
+              title: '提示',
+              message: res.data.message
+            })
+          }
         }
       }
     }
