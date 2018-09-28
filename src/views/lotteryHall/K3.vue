@@ -7,7 +7,8 @@
       <span slot="headtitle" style="text-align: center">
         <span class="">
           <span class="playMeth">玩法</span>
-          <span @click="betTopDetailShow = !betTopDetailShow" class="click-wrapper">点击 <i class="iconfont icon-sort-down"></i></span>
+          <span @click="betTopDetailShow = !betTopDetailShow" class="click-wrapper">点击 <i
+            class="iconfont icon-sort-down"></i></span>
         </span>
         <div class="betTopDetail" v-show="betTopDetailShow">
           <div @click="selectedDetTopDetail(item)" class="betTopDetailItem"
@@ -30,11 +31,17 @@
     <div class="state">
       <div>
         <span>0730080期开奖号码</span>
-        <div>1 2 3</div>
+        <div class="DiceImg">
+          <div class="Dice Dice0"></div>
+          <div class="Dice Dice5"></div>
+          <div class="Dice Dice6"></div>
+        </div>
       </div>
       <div>
         <span>0730081期投注截止</span>
-        <div><countDown></countDown></div>
+        <div>
+          <countDown></countDown>
+        </div>
       </div>
     </div>
     <div class="content">
@@ -137,7 +144,7 @@
       }
     },
     mounted() {
-	    sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
+      sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
       this.loadBetTopDetailList()
     }
   }
@@ -155,6 +162,7 @@
     line-height: 1em;
     font-size: px2rem(24px);
   }
+
   /* 点击 */
   .click-wrapper {
     position: absolute;
@@ -184,6 +192,36 @@
     visibility: hidden;
   }
 
+  .DiceImg .Dice {
+    background: url(http://images.app2jsknas.com/system/common/dice/diceK3.png) no-repeat;
+    background-size: px2rem(100px);
+    /*background: red;*/
+    display: inline-block;
+    vertical-align: middle;
+    width: px2rem(50px);
+    height: px2rem(50px);
+  }
+  .Dice0 {
+    background-position: px2rem(-50px) px2rem(-50px) !important;
+  }
+  .Dice1 {
+    background-position: px2rem(0px) px2rem(0px) !important;
+  }
+  .Dice2 {
+    background-position: px2rem(0px) px2rem(-50px) !important;
+  }
+  .Dice3 {
+    background-position: px2rem(0px) px2rem(-100px) !important;
+  }
+  .Dice4 {
+    background-position: px2rem(0px) px2rem(-150px) !important;
+  }
+  .Dice5 {
+    background-position: px2rem(0px) px2rem(-200px) !important;
+  }
+  .Dice6 {
+    background-position: px2rem(0px) px2rem(-250px) !important;
+  }
   .betTopDetail {
     position: absolute;
     top: px2rem(100px);
