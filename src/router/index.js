@@ -37,27 +37,32 @@ export default new Router({
     {
       path: '/k3/:id',
       name: 'k3',
-      component: _import('lotteryHall/K3')
+      component: _import('lotteryHall/K3'),
+      meta: {needLogin: true},
     },
 	  {
 		  path: '/ssc/:id',
 		  name: 'ssc',
-		  component: _import('lotteryHall/SSC')
+		  component: _import('lotteryHall/SSC'),
+      meta: {needLogin: true},
 	  },
 	  {
 		  path: '/syx5/:id',
 		  name: 'syx5',
-		  component: _import('lotteryHall/syx5')
+		  component: _import('lotteryHall/syx5'),
+      meta: {needLogin: true},
 	  },
     {
       path: '/pk10/:id',
       name: 'pk10',
-      component: _import('lotteryHall/pk10')
+      component: _import('lotteryHall/pk10'),
+      meta: {needLogin: true},
     },
     {
       path: '/numberBox',
       name: 'numberBox',
-      component: _import('lotteryHall/numberBox')
+      component: _import('lotteryHall/numberBox'),
+      meta: {needLogin: true},
     },
     {
       path: '/lotteryHall',
@@ -66,7 +71,6 @@ export default new Router({
       children: [{
         path: 'index',
         component: _import('lotteryHall/lotteryHall'),
-        meta: {needLogin: true},
         name: 'lotteryHall'
       }]
     },
@@ -211,6 +215,7 @@ export default new Router({
       children: [{
         path: 'index',
         component: _import('home/home'),
+        meta: {needLogin: true},
         name: 'home'
       }]
     },

@@ -212,10 +212,13 @@
 				padding: px2rem(10px) px2rem(20px);
 				color: #fff;
 				& > div {
-					font-size: px2rem(36px);
+					font-size: px2rem(35px);
 				}
 				& > span {
 					display: inline-block;
+          overflow: hidden;
+          width: px2rem(400px);
+          height: px2rem(30px);
 					margin-top: px2rem(10px);
 				}
 			}

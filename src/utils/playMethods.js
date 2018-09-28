@@ -639,7 +639,6 @@ export default function playMethods(type, detial, selectedData) {
         cache2.push(zhixuanhezhi3(v.label))
       })
     }
-
     if (counter.length >= YminLimit) {
       bittingNumber = addition(cache2)
       price = bittingNumber * 2

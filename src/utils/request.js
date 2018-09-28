@@ -29,6 +29,7 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
+    // console.log(response.data.code)
     return response
   },
   error => {
