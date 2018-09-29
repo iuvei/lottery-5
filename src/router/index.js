@@ -374,6 +374,12 @@ export default new Router({
       path: '/cardManage',
       component: _import('home/cardManage'),
       name: 'cardManage'
+    },
+    {
+      // 银行卡管理
+      path: '/setBankcard',
+      component: _import('home/setBankcard'),
+      name: 'setBankcard'
     }
   ]
 })

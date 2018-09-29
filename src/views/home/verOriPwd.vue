@@ -14,11 +14,11 @@
     <ul class="content">
       <li>
         <label for="oriPwd">原密码</label>
-        <input type="text" placeholder="请输入当前所使用的密码" id="oriPwd">
+        <input type="text" placeholder="请输入当前所使用的密码" id="oriPwd" v-model="password">
       </li>
     </ul>
     <div class="btn-wrapper">
-      <button @click="toPage('/setLoginPwd')">确定</button>
+      <button @click="checkPwd">确定</button>
     </div>
   </div>
 </template>
@@ -28,14 +28,32 @@
 
   export default {
     name: 'weChatPay',
+    data() {
+      return {
+        password: ''
+      }
+    },
     components: {
       HeaderRecharge
     },
     methods: {
-      toPage (src) {
+      async checkPwd() {
+        let res = await this.axios.post('/v1/User/CheckPwd', {password: this.password})
+        if (res.data.data == 0) {
+          this.$router.push('/setLoginPwd');
+        } else {
+          this.$dialog.alert({
+            message: '密码错误'
+          });
+        }
+      },
+      toPage(src) {
         alert('验证密码正确后跳转到设置登录密码');
         this.$router.push('/setLoginPwd');
       }
+    },
+    mounted() {
+
     }
   }
 </script>
@@ -64,16 +82,16 @@
         border: none;
         background: transparent;
         outline: none;
-        &::-webkit-input-placeholder{
+        &::-webkit-input-placeholder {
           color: #cccccc;
         }
-        &::-moz-placeholder{
+        &::-moz-placeholder {
           color: #cccccc;
         }
-        &:-moz-placeholder{
+        &:-moz-placeholder {
           color: #cccccc;
         }
-        &:-ms-input-placeholder{
+        &:-ms-input-placeholder {
           color: #cccccc;
         }
       }

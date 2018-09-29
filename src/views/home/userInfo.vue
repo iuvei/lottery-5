@@ -29,7 +29,7 @@
           </li>
           <li>
             <span>帐号</span>
-            <span>cds0715</span>
+            <span>{{userInfo.username}}</span>
           </li>
         </ul>
         <ul>
@@ -102,6 +102,7 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'userInfo',
@@ -139,6 +140,11 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   methods: {
     toPage (src) {

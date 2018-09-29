@@ -2,7 +2,8 @@ import {getUserInfo,setUserInfo, removeUserInfo} from '../../utils/auth'
 
 const user = {
   state: {
-    userInfo: JSON.parse(getUserInfo())
+    // userInfo: ''
+    userInfo: getUserInfo()
   },
   mutations: {
     removeUserInfo: (state) => {
@@ -11,6 +12,7 @@ const user = {
     },
     setUserInfo: (state, data) => {
       setUserInfo(data)
+      console.log(data)
       state.userInfo = data
     }
   },

@@ -13,7 +13,7 @@
 
     <div class="content">
       <div class="btn-wrapper">
-        <button>确定</button>
+        <button @click="toPage('/setBankcard')">确定</button>
       </div>
 
       <div class="explain">

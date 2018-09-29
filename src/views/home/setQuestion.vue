@@ -15,67 +15,40 @@
       <!-- 问题一/答案一 -->
       <li>
         <label for="question1">问题一</label>
-        <select id="question1">
+        <select id="question1" v-model="qAndA[0].id">
           <option value="0">点击选择密码问题</option>
-          <option value="1">您的小学班主任是谁？</option>
-          <option value="2">您的初中班主任是谁？</option>
-          <option value="3">您的高中班主任是谁？</option>
-          <option value="4">您最最喜欢的人是谁？</option>
-          <option value="5">您喜欢的宠物叫什么？</option>
-          <option value="6">您的出生地点在哪里？</option>
-          <option value="7">您配偶的姓名叫什么？</option>
-          <option value="8">您爷爷的姓名叫什么？</option>
-          <option value="8">您爸爸的姓名叫什么？</option>
-          <option value="10">您妈妈的姓名叫什么？</option>
+          <option v-for="item in quesList" :value="item.id">{{item.title}}</option>
         </select>
       </li>
       <li>
         <label for="answer1">答案</label>
-        <input type="text" id="answer1" placeholder="请输入答案">
+        <input type="text" id="answer1" placeholder="请输入答案" v-model="qAndA[0].content">
       </li>
 
       <!-- 问题二/答案二 -->
       <li>
         <label for="question2">问题二</label>
-        <select id="question2">
+        <select id="question2" v-model="qAndA[1].id">
           <option value="0">点击选择密码问题</option>
-          <option value="1">您的小学班主任是谁？</option>
-          <option value="2">您的初中班主任是谁？</option>
-          <option value="3">您的高中班主任是谁？</option>
-          <option value="4">您最最喜欢的人是谁？</option>
-          <option value="5">您喜欢的宠物叫什么？</option>
-          <option value="6">您的出生地点在哪里？</option>
-          <option value="7">您配偶的姓名叫什么？</option>
-          <option value="8">您爷爷的姓名叫什么？</option>
-          <option value="8">您爸爸的姓名叫什么？</option>
-          <option value="10">您妈妈的姓名叫什么？</option>
+          <option v-for="item in quesList" :value="item.id">{{item.title}}</option>
         </select>
       </li>
       <li>
         <label for="answer2">答案</label>
-        <input type="text" id="answer2" placeholder="请输入答案">
+        <input type="text" id="answer2" placeholder="请输入答案" v-model="qAndA[1].content">
       </li>
 
       <!-- 问题三/答案三 -->
       <li>
-        <label for="question3">问题二</label>
-        <select id="question3">
+        <label for="question3">问题三</label>
+        <select id="question3" v-model="qAndA[1].id">
           <option value="0">点击选择密码问题</option>
-          <option value="1">您的小学班主任是谁？</option>
-          <option value="2">您的初中班主任是谁？</option>
-          <option value="3">您的高中班主任是谁？</option>
-          <option value="4">您最最喜欢的人是谁？</option>
-          <option value="5">您喜欢的宠物叫什么？</option>
-          <option value="6">您的出生地点在哪里？</option>
-          <option value="7">您配偶的姓名叫什么？</option>
-          <option value="8">您爷爷的姓名叫什么？</option>
-          <option value="8">您爸爸的姓名叫什么？</option>
-          <option value="10">您妈妈的姓名叫什么？</option>
+          <option v-for="item in quesList" :value="item.id">{{item.title}}</option>
         </select>
       </li>
       <li>
         <label for="answer3">答案</label>
-        <input type="text" id="answer3" placeholder="请输入答案">
+        <input type="text" id="answer3" placeholder="请输入答案" v-model="qAndA[2].content">
       </li>
 
       <!-- 安全密码 -->
@@ -85,7 +58,7 @@
       </li>
     </ul>
     <div class="btn-wrapper">
-      <button>确定</button>
+      <button @click="setQuestion">确定</button>
     </div>
   </div>
 </template>
@@ -98,11 +71,36 @@
     components: {
       HeaderRecharge
     },
+    data() {
+      return {
+        qAndA: [
+          {id: 0, content: ''},
+          {id: 0, content: ''},
+          {id: 0, content: ''},
+        ],
+        quesList: ''
+      }
+    },
     methods: {
+      async getQuestion() {
+        let res = await this.axios.get('/v1/User/Question')
+        this.quesList = res.data.data
+      },
+      async setQuestion() {
+        let res = await this.axios.post('/v1/User/Question/Set', this.qAndA)
+        if(res.data.code == 200) {
+          this.$dialog.alert({
+            message: res.data.message
+          });
+        }
+      },
       toPage (src) {
         alert('验证密码正确后跳转到设置登录密码');
         this.$router.push('/setLoginPwd');
       }
+    },
+    mounted(){
+      this.getQuestion()
     }
   }
 </script>

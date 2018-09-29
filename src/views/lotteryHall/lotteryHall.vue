@@ -59,6 +59,10 @@
         this.hotLottery = res.data.data
         console.log(res.data.data)
       },
+      async getUserInfo() {
+        let userInfo = await this.axios.get('/v1/User/Info')
+        this.$store.commit('setUserInfo', userInfo.data.data)
+      },
       toAllLottery() {
         this.$router.push('/allLottery')
       },
@@ -67,6 +71,7 @@
       }
     },
     mounted() {
+      this.getUserInfo()
       this.getNotice()
       this.getLotteryList()
       this.$store.commit('setHeaderTitle', 'xxxx')

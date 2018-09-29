@@ -17,19 +17,19 @@
     <ul class="content">
       <li>
         <label for="email">邮箱</label>
-        <input type="text" id="email" placeholder="请输入您要绑定的邮箱地址">
+        <input type="text" id="email" placeholder="请输入您要绑定的邮箱地址" v-model="email">
       </li>
       <li>
         <label for="code">验证码</label>
-        <input type="text" id="code" placeholder="输入验证码">
+        <input type="text" id="code" placeholder="输入验证码" v-model="checkCode">
         <span>发送验证码</span>
       </li>
       <li>
         <label for="safePwd">安全密码</label>
-        <input type="password" id="safePwd" placeholder="请输入您的安全密码">
+        <input type="password" id="safePwd" placeholder="请输入您的安全密码" v-model="safePwd">
       </li>
       <li>
-        <button>确定</button>
+        <button @click="setEmail">确定</button>
       </li>
     </ul>
     <!--content end-->
@@ -45,6 +45,25 @@
     name: 'bindEmail',
     components: {
       Navbar
+    },
+    data() {
+      return {
+        email: '',
+        checkCode: '',
+        safePwd: '',
+      }
+    },
+    methods: {
+      async setEmail() {
+        let res = await this.axios.post('/v1/User/SetEmail', {
+          mobile: this.email,
+          code: this.checkCode,
+          safepwd: this.safePwd
+        })
+        this.$dialog.alert({
+          message: res.data.message
+        });
+      }
     }
   }
 </script>

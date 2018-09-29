@@ -70,8 +70,6 @@
           })
           let str = `${res.data.data.client.id} ${res.data.data.access_token}`
           setToken(Base64.encode(str))
-          let userInfo = await this.axios.get('/v1/User/Info')
-          this.$store.commit('setUserInfo', userInfo.data.data.info)
           if(res.data.message == 'success') {
             this.$router.push('/lotteryHall')
           } else {

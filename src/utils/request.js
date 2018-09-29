@@ -31,9 +31,9 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
-    if (response.data.code == '401') {
-      router.push('/login')
-    }
+    // if (response.data.code == '401') {
+    //   router.push('/login')
+    // }
     return response
   },
   error => {

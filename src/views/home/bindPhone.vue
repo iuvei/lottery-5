@@ -17,19 +17,19 @@
     <ul class="content">
       <li>
         <label for="phone">手机号</label>
-        <input type="text" id="phone" placeholder="请输入您要绑定的手机号码">
+        <input type="text" id="phone" placeholder="请输入您要绑定的手机号码" v-model="phone">
       </li>
       <li>
         <label for="code">验证码</label>
-        <input type="text" id="code" placeholder="输入验证码">
+        <input type="text" id="code" placeholder="输入验证码" v-model="checkCode">
         <span>发送验证码</span>
       </li>
       <li>
         <label for="safePwd">安全密码</label>
-        <input type="password" id="safePwd" placeholder="请输入您的安全密码">
+        <input type="password" id="safePwd" placeholder="请输入您的安全密码" v-model="safePwd">
       </li>
       <li>
-        <button>确定</button>
+        <button @click="setPhone">确定</button>
       </li>
     </ul>
     <!--content end-->
@@ -45,6 +45,25 @@ export default {
   name: 'bindPhone',
   components: {
     Navbar
+  },
+  data() {
+    return {
+      phone: '',
+      checkCode: '',
+      safePwd: '',
+    }
+  },
+  methods: {
+    async setPhone() {
+      let res = await this.axios.post('/v1/User/SetMobile', {
+        mobile: this.phone,
+        code: this.checkCode,
+        safepwd: this.safePwd
+      })
+      this.$dialog.alert({
+        message: res.data.message
+      });
+    }
   }
 }
 </script>

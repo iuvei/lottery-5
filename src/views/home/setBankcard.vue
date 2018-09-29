@@ -8,26 +8,44 @@
       <router-link slot="headleft" to="/safeCenter">
         <van-icon name="arrow-left"/>
       </router-link>
-      <span slot="headtitle">设置安全密码</span>
+      <span slot="headtitle">绑定银行卡</span>
     </HeaderRecharge>
 
     <ul class="content">
       <li>
-        <label for="safePwd">安全密码</label>
-        <input type="text" placeholder="请输入安全密码" id="safePwd" v-model="safepwd">
+        <label>选择银行</label>
+        <select name="" id="">
+          <option value="0">请选择银行</option>
+          <option value="0">请选择银行</option>
+        </select>
       </li>
       <li>
-        <label for="surePwd">确认密码</label>
-        <input type="text" placeholder="请再次输入安全密码" id="surePwd" v-model="repeatpwd">
+        <label>开户省</label>
+        <option value="0">请选择银行</option>
+      </li>
+      <li>
+        <label>开户市</label>
+        <option value="0">请选择银行</option>
+      </li>
+      <li>
+        <label for="surePwd">开户人姓名</label>
+        <input type="text" placeholder="请输入您的安全密码" id="cardName" v-model="cardName">
+      </li>
+      <li>
+        <label for="surePwd">银行卡号</label>
+        <input type="text" placeholder="请输入您的安全密码" id="bankNum" v-model="bankNum">
+      </li>
+      <li>
+        <label for="surePwd">确认卡号</label>
+        <input type="text" placeholder="请输入您的安全密码" id="repeatNum" v-model="repeatNum">
+      </li>
+      <li>
+        <label for="surePwd">安全密码</label>
+        <input type="text" placeholder="请输入您的安全密码" id="safepwd" v-model="safepwd">
       </li>
     </ul>
     <div class="btn-wrapper">
       <button @click="setSafePwd">确定</button>
-    </div>
-    <div class="explain">
-      <p>
-        安全密码用于提现、绑定银行卡等操作，可保障资金安全。
-      </p>
     </div>
   </div>
 </template>
@@ -68,7 +86,7 @@
   @import "@/styles/index.scss";
 
   @include onetoppx('.content li');
-  @include onebottompx('.content li');
+
   ul.content {
     margin-top: px2rem(100px);
     overflow: hidden;
@@ -77,15 +95,15 @@
     li {
       padding: px2rem(30px) px2rem(20px);
       background: #ffffff;
-      &:nth-child(1) {
-        margin-top: px2rem(40px);
-        &::after {
-          content: none;
-        }
-      }
-      &:nth-child(2) {
-        margin-bottom: px2rem(40px);
-      }
+      /*&:nth-child(1) {*/
+        /*margin-top: px2rem(40px);*/
+        /*&::after {*/
+          /*content: none;*/
+        /*}*/
+      /*}*/
+      /*&:nth-child(2) {*/
+        /*margin-bottom: px2rem(40px);*/
+      /*}*/
       label {
         display: inline-block;
         width: px2rem(180px);
@@ -115,6 +133,7 @@
     text-align: center;
     background: #efeef4;
     button {
+      margin-top: px2rem(20px);
       display: inline-block;
       width: px2rem(680px);
       height: px2rem(88px);

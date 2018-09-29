@@ -14,15 +14,15 @@
     <ul class="content">
       <li>
         <label for="loginPwd">登录密码</label>
-        <input type="text" placeholder="请输入登录密码" id="loginPwd">
+        <input type="text" placeholder="请输入登录密码" id="loginPwd" v-model="pwd">
       </li>
       <li>
         <label for="surePwd">确认密码</label>
-        <input type="text" placeholder="请再次输入密码" id="surePwd">
+        <input type="text" placeholder="请再次输入密码" id="surePwd" v-model="repeatpwd">
       </li>
     </ul>
     <div class="btn-wrapper">
-      <button>确定</button>
+      <button @click="setPwd">确定</button>
     </div>
   </div>
 </template>
@@ -32,8 +32,25 @@
 
   export default {
     name: 'weChatPay',
+    data() {
+      return {
+        pwd: '',
+        repeatpwd: ''
+      }
+    },
     components: {
       HeaderRecharge
+    },
+    methods: {
+      async setPwd() {
+        let res = await this.axios.post('/v1/User/SetPwd', {
+          pwd: this.pwd,
+          repeatpwd: this.repeatpwd
+        })
+        this.$dialog.alert({
+          message: res.data.message
+        });
+      }
     }
   }
 </script>

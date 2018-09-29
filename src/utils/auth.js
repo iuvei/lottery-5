@@ -7,7 +7,11 @@ export function setUserInfo(userInfo) {
 }
 export function getUserInfo() {
   // console.log(sessionStorage.getItem(UserInfo))
-  return sessionStorage.getItem(UserInfo) || {}
+  try {
+    return JSON.parse(sessionStorage.getItem(UserInfo))
+  }catch (err) {
+    return {}
+  }
 }
 
 export function removeUserInfo() {
