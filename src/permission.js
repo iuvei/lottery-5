@@ -17,11 +17,9 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     if(to.meta.needLogin) {
-      router.push('login')
+      router.replace('/login')
     } else {
       next()
     }
   }
-
-
 })

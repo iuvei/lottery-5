@@ -1,5 +1,19 @@
 let ActivePageIndex = 'ActivePageIndex'
 let Token = 'Token'
+let UserInfo = 'userInfo'
+
+export function setUserInfo(userInfo) {
+  return sessionStorage.setItem(UserInfo, JSON.stringify(userInfo))
+}
+export function getUserInfo() {
+  // console.log(sessionStorage.getItem(UserInfo))
+  return sessionStorage.getItem(UserInfo) || {}
+}
+
+export function removeUserInfo() {
+  return sessionStorage.removeItem(UserInfo)
+}
+
 export function setActivePage(index) {
   return sessionStorage.setItem(ActivePageIndex, index)
 }

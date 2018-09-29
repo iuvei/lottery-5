@@ -7,11 +7,11 @@
     <!-- 用户信息 -->
     <div class="user-info">
       <p>
-        <img src="./../../../static/images/cc75798d0ec20b32.jpg" @click="toPage('/userInfo')" >
+        <img :src="userInfo.avatar" @click="toPage('/userInfo')" >
       </p>
       <p>
-        <span>帐&nbsp;号: cds0715</span>
-        <span>余&nbsp;额: 5500000.00元</span>
+        <span>帐&nbsp;号: {{userInfo.username}}</span>
+        <span>余&nbsp;额: {{userInfo.money}}元</span>
       </p>
       <i class="iconfont icon-shuaxin"></i>
     </div>
@@ -79,17 +79,28 @@
     components: {
       Navbar
     },
+    data() {
+      return {
+        // userInfo: ''
+      }
+    },
     methods: {
+      // async getUserInfo() {
+      //   let res = await this.axios.get()
+      //   this.userInfo = res.data.data.info
+      //   console.log(this.userInfo)
+      // },
       toPage (src) {
         this.$router.push(src)
       }
     },
     computed: {
       ...mapGetters([
-
+        'userInfo'
       ])
     },
     mounted() {
+      // this.getUserInfo()
 	    this.$store.commit('setHeaderTitle', '个人中心')
     }
   }

@@ -1,8 +1,9 @@
 import axios from 'axios'
 // import { Message } from 'element-ui'
 // import store from '@/store'
-// import router from '../router/index'
+import router from '../router/index'
 import {getToken, removeToken} from "./auth";
+import {Base64} from 'js-base64'
 
 // 创建axios实例
 const service = axios.create({
@@ -16,6 +17,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
   // config.headers['Content-Type'] = 'charset=utf-8'
   if (getToken()) {
+    // console.log(Base64.decode(getToken()))
     config.headers['token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     // config.headers['username'] = getUsername()
   }
@@ -29,7 +31,9 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
-    // console.log(response.data.code)
+    if (response.data.code == '401') {
+      router.push('/login')
+    }
     return response
   },
   error => {
@@ -41,7 +45,7 @@ service.interceptors.response.use(
           // removeMenus();
           removeToken();
           router.replace({
-            path: 'login',
+            path: '/login',
             // query: {redirect: router.currentRoute.fullPath}
           })
         // if (router.currentRoute.fullPath !== '/aboutus' && router.currentRoute.fullPath !== '/faq' && router.currentRoute.fullPath !== '/Permissions') {
