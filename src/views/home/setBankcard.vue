@@ -21,26 +21,32 @@
       </li>
       <li>
         <label>开户省</label>
-        <option value="0">请选择银行</option>
+        <select name="" id="">
+          <option value="0">请选择开户省份</option>
+          <option value="0">请选择银行</option>
+        </select>
       </li>
       <li>
         <label>开户市</label>
-        <option value="0">请选择银行</option>
+        <select name="" id="">
+          <option value="0">请选择开户城市</option>
+          <option value="0">请选择银行</option>
+        </select>
       </li>
       <li>
-        <label for="surePwd">开户人姓名</label>
+        <label>开户人姓名</label>
         <input type="text" placeholder="请输入您的安全密码" id="cardName" v-model="cardName">
       </li>
       <li>
-        <label for="surePwd">银行卡号</label>
+        <label>银行卡号</label>
         <input type="text" placeholder="请输入您的安全密码" id="bankNum" v-model="bankNum">
       </li>
       <li>
-        <label for="surePwd">确认卡号</label>
+        <label>确认卡号</label>
         <input type="text" placeholder="请输入您的安全密码" id="repeatNum" v-model="repeatNum">
       </li>
       <li>
-        <label for="surePwd">安全密码</label>
+        <label>安全密码</label>
         <input type="text" placeholder="请输入您的安全密码" id="safepwd" v-model="safepwd">
       </li>
     </ul>
@@ -60,11 +66,14 @@
     },
     data() {
       return {
-        safepwd: '',
-        repeatpwd: ''
+        banks: ''
       }
     },
     methods: {
+      async getBank() {
+        let res = await this.axios.get('/v1/User/Bank')
+        console.log(res)
+      },
       async setSafePwd() {
         let res = await this.axios.post('/v1/User/SetSafePwd', {
           safepwd: this.safepwd,
@@ -78,6 +87,9 @@
         alert('验证密码正确后跳转到设置登录密码');
         this.$router.push('/setLoginPwd');
       }
+    },
+    mounted() {
+      this.getBank()
     }
   }
 </script>
@@ -107,6 +119,11 @@
       label {
         display: inline-block;
         width: px2rem(180px);
+      }
+      select {
+        width: 72%;
+        border: none;
+        outline: none;
       }
       input {
         border: none;
