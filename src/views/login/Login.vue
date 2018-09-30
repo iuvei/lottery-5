@@ -18,7 +18,7 @@
       </div>
       <div class="password">
         <i class="front-icon"></i>
-        <input placeholder="请输入密码" v-model="password">
+        <input placeholder="请输入密码" type="password" v-model="password">
         <i class="end-icon"></i>
       </div>
     </div>

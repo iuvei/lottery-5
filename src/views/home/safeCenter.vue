@@ -60,7 +60,7 @@
         </li>
       </div>
 
-      <div class="loginOut">
+      <div class="loginOut" @click="logOut">
         <span>退出登录</span><van-icon name="arrow" />
       </div>
     </div>
@@ -70,6 +70,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import DetailTitle from '@/components/detail-title'
+import {removeToken} from '../../utils/auth'
 
 export default {
   name: 'safeCenter',
@@ -83,6 +84,15 @@ export default {
     }
   },
   methods: {
+    async logOut() {
+      let res = await this.axios.get('/v1/LoginOut')
+      this.$dialog.alert({
+        message: res.data.message
+      }).then(() => {
+        removeToken()
+        this.$router.push('/login')
+      });
+    },
     toPage (src) {
       this.$router.push(src)
     }

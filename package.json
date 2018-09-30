@@ -19,6 +19,7 @@
     "vant": "^1.1.14",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue2-countdown": "^1.0.8",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
