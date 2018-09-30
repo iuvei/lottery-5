@@ -14,11 +14,11 @@ module.exports = {
       // '/v1/*': {
       //   target: 'http://pp.nicenvwang.com'
       // }
-      '/api': {
-        target: 'http://pp.nicenvwang.com/',
-        pathRewrite: {'^/api' : ''},
-        changeOrigin: true
-      }
+      // '/api': {
+      //   target: 'http://pp.nicenvwang.com/',
+      //   pathRewrite: {'^/api' : ''},
+      //   changeOrigin: true
+      // }
     },
 
     // Various Dev Server settings

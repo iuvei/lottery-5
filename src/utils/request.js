@@ -7,8 +7,9 @@ import {Base64} from 'js-base64'
 
 // 创建axios实例
 const service = axios.create({
-  // baseURL: 'http://pp.nicenvwang.com', // api的base_url
-  baseURL: '/api',  // api的base_url
+  baseURL: 'http://pp.nicenvwang.com', // api的base_url
+  // baseURL: '/api',  // api的base_url
+  // baseURL: 'http://localhost',  // api的base_url
   withCredentials: false, // 每次请求带上cookie
   timeout: 15000 // 请求超时时间
 });
