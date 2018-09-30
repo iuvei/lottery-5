@@ -32,9 +32,9 @@
       <div>
         <span>0730080期开奖号码</span>
         <div class="DiceImg">
-          <div class="Dice Dice0"></div>
-          <div class="Dice Dice5"></div>
-          <div class="Dice Dice6"></div>
+          <div class="Dice" :class="`Dice${lotteryNum1}`"></div>
+          <div class="Dice" :class="`Dice${lotteryNum2}`"></div>
+          <div class="Dice" :class="`Dice${lotteryNum3}`"></div>
         </div>
       </div>
       <div>
@@ -90,10 +90,14 @@
     },
     data() {
       return {
+        timer: '',
+        lotteryNum1: 0,
+        lotteryNum2: 0,
+        lotteryNum3: 0,
         mutiNumberValue: '',
         tagToPlayMapK3: tagToPlayMapK3, //映射关系
         choseType: 1,
-        checkedList: [],
+        checkedList: [0, 0, 0],
         betTopDetailList: [
           {name: '和值', odds: '赔率31.5倍', number: 123, value: 1},
           {name: '和值', odds: '赔率31.5倍', number: 123, value: 2},
@@ -126,6 +130,12 @@
       }
     },
     methods: {
+      randomNum() {
+        let num = Math.floor(Math.random() * 6)
+        this.lotteryNum1 = num
+        this.lotteryNum2 = num
+        this.lotteryNum3 = num
+      },
       choseItem(data) {
         this.checkedList = data
       },
@@ -146,6 +156,10 @@
     mounted() {
       sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
       this.loadBetTopDetailList()
+      this.timer = setInterval(() => {
+        this.randomNum()
+      }, 100)
+      clearInterval(this.timer)
     }
   }
 </script>
@@ -201,27 +215,35 @@
     width: px2rem(50px);
     height: px2rem(50px);
   }
+
   .Dice0 {
     background-position: px2rem(-50px) px2rem(-50px) !important;
   }
+
   .Dice1 {
     background-position: px2rem(0px) px2rem(0px) !important;
   }
+
   .Dice2 {
     background-position: px2rem(0px) px2rem(-50px) !important;
   }
+
   .Dice3 {
     background-position: px2rem(0px) px2rem(-100px) !important;
   }
+
   .Dice4 {
     background-position: px2rem(0px) px2rem(-150px) !important;
   }
+
   .Dice5 {
     background-position: px2rem(0px) px2rem(-200px) !important;
   }
+
   .Dice6 {
     background-position: px2rem(0px) px2rem(-250px) !important;
   }
+
   .betTopDetail {
     position: absolute;
     top: px2rem(100px);
