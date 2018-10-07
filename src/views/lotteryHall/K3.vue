@@ -201,9 +201,7 @@
             this.$dialog.alert({
               message: res.data.message
             });
-            this.$refs.playBoardK3.resetSelected()
-            this.checkedList = [0, 0, 0]
-            this.mutiNumberValue = ''
+            this.resetSelectData()
           }
         }).catch(() => {
 
@@ -217,6 +215,11 @@
         });
         this.getLotteryDetails()
       },
+      resetSelectData() {
+        this.$refs.playBoardK3.resetSelected()
+        this.checkedList = [0, 0, 0]
+        this.mutiNumberValue = ''
+      },
       choseItem(data) {
         this.checkedList = data
       },
@@ -225,7 +228,7 @@
         this.areaShow = false
       },
       selectedDetTopDetail(item) {
-        this.$refs.playBoardK3.resetSelected()
+        this.resetSelectData()
         this.betTopDetailSelected = item.titleName
 //				this.choseList = eval(`this.choseList${item.value}`)
         this.betTopDetailShow = false
