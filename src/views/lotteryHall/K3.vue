@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class="footerbar">
-      <span class="fl">清空</span>
+      <span class="fl" @click="resetSelectData">清空</span>
       <span class="fm">共{{checkedList.bittingNumber || 0}}注</span>
       <span class="fr" @click="lotteryOrderAdd">马上投注</span>
     </div>
