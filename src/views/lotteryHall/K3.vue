@@ -30,7 +30,7 @@
     </HeaderReg>
     <div class="state">
       <div>
-        <span>0730080期开奖号码</span>
+        <span>{{period - 1}}期开奖号码</span>
         <div class="DiceImg">
           <div class="Dice" :class="`Dice${lotteryNum1}`"></div>
           <div class="Dice" :class="`Dice${lotteryNum2}`"></div>
@@ -38,9 +38,11 @@
         </div>
       </div>
       <div>
-        <span>0730081期投注截止</span>
+        <span>{{period}}期投注截止</span>
         <div>
-          <count-down style="height: 5vh;font-size: 18px;" v-on:start_callback="" v-on:end_callback="" :currentTime="1481450106" :startTime="1481450100" :endTime="1481450115" :tipText="'距离开始文字1'" :tipTextEnd="'距离结束文字1'" :endText="'嘻嘻嘻'" :minutesTxt="':'" :secondsTxt="''"></count-down>
+          <count-down ref="countDown" style="height: 5vh;font-size: 18px;" v-on:start_callback="" v-on:end_callback="endTimeEvent"
+                      :startTime="startTime" :endTime="endTime" :tipText="''" :tipTextEnd="''" :endText="'已结束'"
+                    :dayTxt="''" :hourTxt="':'" :minutesTxt="':'" :secondsTxt="''"></count-down>
         </div>
       </div>
     </div>
@@ -72,7 +74,7 @@
     <div class="footerbar">
       <span class="fl">清空</span>
       <span class="fm">共{{checkedList.bittingNumber || 0}}注</span>
-      <span class="fr">马上投注</span>
+      <span class="fr" @click="lotteryOrderAdd">马上投注</span>
     </div>
   </div>
 </template>
@@ -81,7 +83,7 @@
   import HeaderReg from '@/components/Navbar.vue'
   import playBoardK3 from './components/playBoardK3.vue'
   import {tagToPlayMapK3} from './components/tagToPlayMapK3.js'
-  import CountDown from 'vue2-countdown'
+  import CountDown from '../../components/countDown'
 
   export default {
     name: 'k3',
@@ -96,7 +98,11 @@
         lotteryNum1: 0,
         lotteryNum2: 0,
         lotteryNum3: 0,
-        mutiNumberValue: '',
+        startTime: new Date().getTime() - 999,
+        endTime: new Date().getTime(),
+        period: 0, //当前期号
+        mutiNumberValue: '', //每注价格
+        dialogShow: false, // 投注提示
         tagToPlayMapK3: tagToPlayMapK3, //映射关系
         choseType: 1,
         checkedList: [0, 0, 0],
@@ -138,6 +144,76 @@
         this.lotteryNum2 = num
         this.lotteryNum3 = num
       },
+      async getLotteryDetails() {
+        let res = await this.axios.get(`v1/Lottery/Details?id=${this.$route.params.id}`)
+        let data = res.data.data
+        this.startTime = parseInt(data.starttime)
+        this.endTime = parseInt(data.stoptime)
+        this.period = data.period
+        // this.$refs.countDown.gogogo()
+      },
+      async lotteryOrderAdd() {
+        if(!this.checkedList.selectedData) {
+          this.$dialog.alert({
+            message: '请下注'
+          });
+          return
+        }
+        if(!this.mutiNumberValue) {
+          this.$dialog.alert({
+            message: '请输入金额'
+          });
+          return
+        }
+        let BettingData = []
+        for (let i in this.checkedList.selectedData) {
+          BettingData.push({
+            lottery_code: this.$route.params.id,
+            play_detail_code: "1-A1",
+            betting_number: this.checkedList.selectedData[i].label,
+            betting_count: this.checkedList.bittingNumber,
+            betting_money: this.mutiNumberValue * this.checkedList.bittingNumber,
+            betting_point: "18.90-7.50%",
+            betting_model: 1,
+            betting_issuseNo: this.period,
+            graduation_count: 1
+          })
+        }
+        let params = {
+          data: {
+            BettingData: BettingData
+          },
+          source: 2
+        }
+        let content = this.checkedList.selectedData.map(v => {
+          return v.label
+        })
+        this.$dialog.confirm({
+          title: '投注确认',
+          message: '<div>' +
+          '<div>投注金额：'+ this.mutiNumberValue * this.checkedList.bittingNumber +'</div>' +
+          '<div>投注内容：'+ content +'</div>' +
+          '</div>'
+        }).then( async () => {
+          let res = await this.axios.post('v1/Lottery/Order/Add', params)
+          if(res.data.code == 200) {
+            this.$dialog.alert({
+              message: res.data.message
+            });
+            this.$refs.playBoardK3.resetSelected()
+            this.checkedList = [0, 0, 0]
+            this.mutiNumberValue = ''
+          }
+        }).catch();
+
+      },
+      endTimeEvent() {
+        alert(111)
+        this.$dialog.alert({
+          message: '<div style="text-align: center">123</div>'
+        });
+        this.getLotteryDetails()
+      },
       choseItem(data) {
         this.checkedList = data
       },
@@ -161,7 +237,8 @@
       this.timer = setInterval(() => {
         this.randomNum()
       }, 100)
-      clearInterval(this.timer)
+      this.getLotteryDetails()
+      // clearInterval(this.timer)
     }
   }
 </script>
@@ -535,8 +612,8 @@
   }
 </style>
 <style>
-    p {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
+  p {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 </style>
