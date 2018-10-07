@@ -191,7 +191,8 @@
         this.$dialog.confirm({
           title: '投注确认',
           message: '<div>' +
-          '<div>投注金额：'+ this.mutiNumberValue * this.checkedList.bittingNumber +'</div>' +
+          '<div>'+ this.araeSelected.label +'快3：'+ this.period + '期</div>' +
+          '<div>投注金额：<span style="color: red">'+ this.mutiNumberValue * this.checkedList.bittingNumber +'元</span></div>' +
           '<div>投注内容：'+ content +'</div>' +
           '</div>'
         }).then( async () => {
@@ -204,7 +205,9 @@
             this.checkedList = [0, 0, 0]
             this.mutiNumberValue = ''
           }
-        }).catch();
+        }).catch(() => {
+
+        });
 
       },
       endTimeEvent() {
