@@ -40,9 +40,10 @@
       <div>
         <span>{{period}}期投注截止</span>
         <div>
-          <count-down ref="countDown" style="height: 5vh;font-size: 18px;" v-on:start_callback="" v-on:end_callback="endTimeEvent"
-                      :startTime="startTime" :endTime="endTime" :tipText="''" :tipTextEnd="''" :endText="'已结束'"
-                    :dayTxt="''" :hourTxt="':'" :minutesTxt="':'" :secondsTxt="''"></count-down>
+          <count-down ref="countDown" style="height: 5vh;font-size: 18px;" v-on:start_callback=""
+                      v-on:end_callback="endTimeEvent" :startTime="startTime"
+                      :endTime="endTime" :tipText="''" :tipTextEnd="''" :endText="'已结束'"
+                      :dayTxt="''" :hourTxt="':'" :minutesTxt="':'" :secondsTxt="''"></count-down>
         </div>
       </div>
     </div>
@@ -100,6 +101,7 @@
         lotteryNum3: 0,
         startTime: new Date().getTime() - 999,
         endTime: new Date().getTime(),
+        currentTime: new Date().getTime(),
         period: 0, //当前期号
         mutiNumberValue: '', //每注价格
         dialogShow: false, // 投注提示
@@ -134,7 +136,7 @@
           {value: 12, label: '大众'}
         ],
         areaShow: false,
-        araeSelected: {value: 1, label: '江苏'},
+        araeSelected: '',
       }
     },
     methods: {
@@ -149,17 +151,22 @@
         let data = res.data.data
         this.startTime = parseInt(data.starttime)
         this.endTime = parseInt(data.stoptime)
+        this.currentTime = parseInt(data.timestamp)
         this.period = data.period
         // this.$refs.countDown.gogogo()
       },
+      async getLotteryArea() {
+        let res = await this.axios.post('/v1/Lottery/LotteryHall', {type: 'k3'})
+        console.log(res)
+      },
       async lotteryOrderAdd() {
-        if(!this.checkedList.selectedData) {
+        if (!this.checkedList.selectedData) {
           this.$dialog.alert({
             message: '请下注'
           });
           return
         }
-        if(!this.mutiNumberValue) {
+        if (!this.mutiNumberValue) {
           this.$dialog.alert({
             message: '请输入金额'
           });
@@ -191,13 +198,13 @@
         this.$dialog.confirm({
           title: '投注确认',
           message: '<div>' +
-          '<div>'+ this.araeSelected.label +'快3：'+ this.period + '期</div>' +
-          '<div>投注金额：<span style="color: red">'+ this.mutiNumberValue * this.checkedList.bittingNumber +'元</span></div>' +
-          '<div>投注内容：'+ content +'</div>' +
+          '<div>' + this.araeSelected.label + '快3：' + this.period + '期</div>' +
+          '<div>投注金额：<span style="color: red">' + this.mutiNumberValue * this.checkedList.bittingNumber + '元</span></div>' +
+          '<div>投注内容：' + content + '</div>' +
           '</div>'
-        }).then( async () => {
+        }).then(async () => {
           let res = await this.axios.post('v1/Lottery/Order/Add', params)
-          if(res.data.code == 200) {
+          if (res.data.code == 200) {
             this.$dialog.alert({
               message: res.data.message
             });
@@ -209,7 +216,6 @@
 
       },
       endTimeEvent() {
-        alert(111)
         this.$dialog.alert({
           message: '<div style="text-align: center">123</div>'
         });
@@ -237,12 +243,24 @@
         this.betTopDetailList = JSON.parse(sessionStorage.getItem('tagToPlayMapK3'))
       }
     },
+    watch: {
+      araeSelected(n) {
+        console.log(n)
+        this.$router.push(`/k3/${n.value}`)
+      }
+    },
     mounted() {
       sessionStorage.setItem('tagToPlayMapK3', JSON.stringify(tagToPlayMapK3))
       this.loadBetTopDetailList()
       this.timer = setInterval(() => {
         this.randomNum()
       }, 100)
+      for(let i in this.arae) {
+        if(this.arae[i].value == this.$route.params.id) {
+          this.araeSelected = this.arae[i]
+        }
+      }
+      this.getLotteryArea()
       this.getLotteryDetails()
       // clearInterval(this.timer)
     }

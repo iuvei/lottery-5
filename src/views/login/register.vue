@@ -52,7 +52,12 @@
     },
     methods: {
       async reg() {
-        if(this.username == '') {
+        if (this.code == ''){
+          Dialog.alert({
+            title: '提示',
+            message: '请输入邀请码'
+          })
+        } else if(this.username == '') {
           Dialog.alert({
             title: '提示',
             message: '请输入用户名'
