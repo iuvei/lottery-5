@@ -20,7 +20,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
-
+import VueCountdownTimer from 'vuejs-countdown-timer'
+Vue.use(VueCountdownTimer)
 Vue.prototype.axios = axios
 Vue.use(Vant)
 Vue.component('countDown', countDown)

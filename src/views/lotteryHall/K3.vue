@@ -22,9 +22,9 @@
         </div>
       </span>
       <span slot="headright">
-        <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
+        <span @click="areaShow = !areaShow">{{araeSelected.title.slice(0,2)}}</span>
         <div class="area-list" v-show="areaShow">
-          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}快3</span>
+          <span v-for="item in arae" @click="selectArea(item)">{{item.title}}</span>
         </div>
       </span>
     </HeaderReg>
@@ -121,20 +121,7 @@
         ],
         betTopDetailShow: false,
         betTopDetailSelected: '和值',
-        arae: [
-          {value: 1, label: '江苏'},
-          {value: 2, label: '安徽'},
-          {value: 3, label: '广西'},
-          {value: 4, label: '湖北'},
-          {value: 5, label: '北京'},
-          {value: 6, label: '江苏'},
-          {value: 7, label: '河北'},
-          {value: 8, label: '甘肃'},
-          {value: 9, label: '上海'},
-          {value: 10, label: '贵州'},
-          {value: 11, label: '吉林'},
-          {value: 12, label: '大众'}
-        ],
+        arae: [],
         areaShow: false,
         araeSelected: '',
       }
@@ -156,8 +143,8 @@
         // this.$refs.countDown.gogogo()
       },
       async getLotteryArea() {
-        let res = await this.axios.post('/v1/Lottery/LotteryHall', {type: 'k3'})
-        console.log(res)
+        let res = await this.axios.get('/v1/Lottery/LotteryHall?type=k3')
+        this.arae = res.data.data
       },
       async lotteryOrderAdd() {
         if (!this.checkedList.selectedData) {
@@ -246,7 +233,14 @@
     watch: {
       araeSelected(n) {
         console.log(n)
-        this.$router.push(`/k3/${n.value}`)
+        this.$router.push(`/k3/${n.id}`)
+      },
+      arae() {
+        for(let i in this.arae) {
+          if(this.arae[i].id == this.$route.params.id) {
+            this.araeSelected = this.arae[i]
+          }
+        }
       }
     },
     mounted() {
@@ -255,11 +249,6 @@
       this.timer = setInterval(() => {
         this.randomNum()
       }, 100)
-      for(let i in this.arae) {
-        if(this.arae[i].value == this.$route.params.id) {
-          this.araeSelected = this.arae[i]
-        }
-      }
       this.getLotteryArea()
       this.getLotteryDetails()
       // clearInterval(this.timer)
