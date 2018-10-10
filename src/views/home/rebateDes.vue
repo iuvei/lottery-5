@@ -5,7 +5,7 @@
 <template>
   <div class="agentReportForm">
     <Navbar>
-      <router-link slot="headleft" to="/agentCenter">
+      <router-link slot="headleft" to="/subOpenAccount">
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle" class="btn-group">返点赔率表</span>

@@ -22,7 +22,7 @@
             <input type="radio" name="accountType"> 玩家类型
           </li>
           <li>
-            请先为下级设置返点，<a href="javascript:;">点击查看返点赔率表</a>
+            请先为下级设置返点，<span @click="toPage('/rebateDes')">点击查看返点赔率表</span>
           </li>
         </ul>
 
@@ -182,7 +182,7 @@
               color:#cccccc;
             }
           }
-          a {
+          span {
             color: rgb(220, 59, 64);
           }
         }
