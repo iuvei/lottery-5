@@ -268,6 +268,12 @@ export default new Router({
       name: 'agnetReportForm'
     },
     {
+      //  代理报表
+      path: '/rebateDes',
+      component: _import('home/rebateDes'),
+      name: 'rebateDes'
+    },
+    {
       //  下级报表
       path: '/subReportForm',
       component: _import('home/subReportForm'),
