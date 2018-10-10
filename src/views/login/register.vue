@@ -69,10 +69,9 @@
           })
         } else {
           try {
-            let res = await this.axios.post('/v1/Regiter', {username: this.username, password: this.password, source: 1
+            let res = await this.axios.post('/v1/Regiter', {recCode:this.code, username: this.username, password: this.password, source: 1
             })
             let data = res.data
-            console.log(data)
             Dialog.alert({
               title: '标题',
               message: data.message
