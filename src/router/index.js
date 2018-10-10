@@ -47,7 +47,7 @@ export default new Router({
       meta: {needLogin: true},
 	  },
 	  {
-		  path: '/syx5/:id',
+		  path: '/syxw/:id',
 		  name: 'syx5',
 		  component: _import('lotteryHall/syx5'),
       meta: {needLogin: true},

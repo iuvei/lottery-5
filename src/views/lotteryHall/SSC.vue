@@ -12,20 +12,23 @@
       <playSortMore @playBoardType="playBoardType" :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
-        <span @click="areaShow = !areaShow">{{araeSelected.label}}</span>
+        <span @click="areaShow = !areaShow">{{araeSelected.title.slice(0,2)}}</span>
         <div class="area-list" v-show="areaShow">
-          <span v-for="item in arae" @click="selectArea(item)">{{item.label}}时时彩</span>
+          <span v-for="item in arae" @click="selectArea(item)">{{item.title}}</span>
         </div>
       </span>
     </HeaderReg>
     <div class="state">
       <div>
-        <span>0730080期开奖号码</span>
+        <span>{{period - 1 || 0}}期开奖号码</span>
         <div>1 2 3</div>
       </div>
       <div>
-        <span>0730081期投注截止</span>
-        <div><countDown></countDown></div>
+        <span>{{period || 0}}期投注截止</span>
+        <div> <count-down ref="countDown" style="height: 5vh;font-size: 18px;" v-on:start_callback=""
+                          v-on:end_callback="endTimeEvent" :startTime="startTime"
+                          :endTime="endTime" :tipText="''" :tipTextEnd="''" :endText="'已结束'"
+                          :dayTxt="''" :hourTxt="':'" :minutesTxt="':'" :secondsTxt="''"></count-down></div>
       </div>
     </div>
     <div class="content">
@@ -46,6 +49,8 @@
   import playSortMore from './components/playSortMore'
   import playBoard from './components/playBoard.vue'
   import {tagToPlayMap} from './components/tagToPlayMap'
+  import CountDown from '../../components/countDown'
+
 
   export default {
     name: 'ssc',
@@ -53,7 +58,8 @@
       HeaderReg,
       footerBar,
       playSortMore,
-	    playBoard
+	    playBoard,
+      CountDown
     },
     data() {
       return {
@@ -64,17 +70,16 @@
         selectedInfo: {},
         playBoardTypeValue: '',//页面是选择||输入
         choseType: 1,
+        startTime: new Date().getTime() - 999,
+        endTime: new Date().getTime(),
+        currentTime: new Date().getTime(),
+        period: 1, //当前期号
         checkedList: [],
         betTopDetailShow: false,
         betTopDetailSelected: 1,
-        arae: [
-          {value: 1, label: '重庆'},
-          {value: 2, label: '新疆'},
-          {value: 3, label: '天津'},
-          {value: 4, label: '大发'}
-        ],
+        arae: [],
         areaShow: false,
-        araeSelected: {value: 1, label: '重庆'},
+        araeSelected: '',
       }
     },
 	  computed: {
@@ -85,6 +90,16 @@
 		  ])
 	  },
     watch: {
+      araeSelected(n) {
+        this.$router.push(`/ssc/${n.id}`)
+      },
+      arae() {
+        for (let i in this.arae) {
+          if (this.arae[i].id == this.$route.params.id) {
+            this.araeSelected = this.arae[i]
+          }
+        }
+      },
       // 'playBoardData': function (n) {
       //   console.log(n)
       // },
@@ -103,6 +118,31 @@
       }
     },
     methods: {
+      async getLotteryDetails() {
+        let res = await this.axios.get(`v1/Lottery/Details?id=${this.$route.params.id}`)
+        let data = res.data.data
+        this.startTime = parseInt(data.starttime)
+        this.endTime = parseInt(data.stoptime)
+        this.currentTime = parseInt(data.timestamp)
+        this.period = data.period
+        // this.$refs.countDown.gogogo()
+      },
+      async getLotteryArea() {
+        let res = await this.axios.get('/v1/Lottery/LotteryHall?type=ssc')
+        this.arae = res.data.data
+      },
+      endTimeEvent() {
+        this.$dialog.alert({
+          title: '温馨提示',
+          message: `<div style="text-align: center">
+            <div>${this.period}期已截止</div>
+            <div>当前期号<span style="color: red">${this.period + 1}</span></div>
+            <div>投注时请注意期号</div>
+          </div>`
+        }).then(() => {
+          this.getLotteryDetails()
+        });
+      },
       resetSelected() {
         this.$refs.playBoard.resetSelected()
       },
@@ -118,7 +158,7 @@
       selectArea(item) {
         this.araeSelected = item
         this.areaShow = false
-	      this.$router.push({params: { id: item.value}})
+	      // this.$router.push({params: { id: item.value}})
       },
       selectedDetTopDetail(item) {
         this.betTopDetailSelected = item.value
@@ -144,6 +184,8 @@
 	    		this.araeSelected = i
 		    }
 	    })
+      this.getLotteryArea()
+      this.getLotteryDetails()
     }
   }
 </script>

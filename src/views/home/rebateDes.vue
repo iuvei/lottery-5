@@ -28,6 +28,7 @@
     <div class="popup">
       <van-actionsheet
         v-model="show"
+        cancel-text="取消"
         :actions="actions"
         @select="onSelect"
       />
