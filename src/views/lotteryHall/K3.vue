@@ -204,9 +204,14 @@
       },
       endTimeEvent() {
         this.$dialog.alert({
-          message: '<div style="text-align: center">123</div>'
+          message: `<div style="text-align: center">
+            <div>${this.period}期已截止</div>
+            <div style="color: red">当前期号${this.period + 1}</div>
+            <div>投注时请注意期号</div>
+          </div>`
+        }).then(() => {
+          this.getLotteryDetails()
         });
-        this.getLotteryDetails()
       },
       resetSelectData() {
         this.$refs.playBoardK3.resetSelected()
@@ -236,8 +241,8 @@
         this.$router.push(`/k3/${n.id}`)
       },
       arae() {
-        for(let i in this.arae) {
-          if(this.arae[i].id == this.$route.params.id) {
+        for (let i in this.arae) {
+          if (this.arae[i].id == this.$route.params.id) {
             this.araeSelected = this.arae[i]
           }
         }

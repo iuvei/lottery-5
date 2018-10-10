@@ -37,7 +37,7 @@
         // }
       },
       currentTime: function (val, oldval) {
-        this.gogogo();
+        // this.gogogo();
       }
     },
     props: {
