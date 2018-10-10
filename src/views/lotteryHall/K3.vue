@@ -204,9 +204,10 @@
       },
       endTimeEvent() {
         this.$dialog.alert({
+          title: '温馨提示',
           message: `<div style="text-align: center">
             <div>${this.period}期已截止</div>
-            <div style="color: red">当前期号${this.period + 1}</div>
+            <div>当前期号<span style="color: red">${this.period + 1}</span></div>
             <div>投注时请注意期号</div>
           </div>`
         }).then(() => {
