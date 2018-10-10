@@ -13,7 +13,7 @@
     <div class="content">
       <div class="cardContent">
         <ul class="numBox">
-          {{lotteryList[0]}}
+          {{lotteryList}}
           <li v-for="(item, index) in lotteryList">
             <div>{{selectedDataToStr(item.playBoardTypeValue, item.selectedNum)}}</div>
             <span>{{`${item.type}${item.detial} ${item.bittingNumber}注 x ${2 / item.YJFmul}元 x ${item.betMul}倍 = ${item.price / item.YJFmul}元`}}</span>
@@ -108,43 +108,47 @@
     methods: {
       async lotteryOrderAdd() {
         let BettingData = []
-        for (let i in this.checkedList.selectedData) {
+        for (let i in this.lotteryList) {
+          console.log(this.lotteryList[i])
           BettingData.push({
-            lottery_code: this.lotteryList.area.id,
+            lottery_code: this.lotteryList[i].area.id,
             play_detail_code: "1-A1",
-            betting_number: this.checkedList.selectedData[i].label,
-            betting_count: this.checkedList.bittingNumber,
-            betting_money: this.mutiNumberValue * this.checkedList.bittingNumber,
-            betting_point: "18.90-7.50%",
+            betting_number: selectedDataToStr(this.lotteryList[i].playBoardTypeValue, this.lotteryList[i].selectedNum),
+            betting_count: this.lotteryList[i].bittingNumber,
+            betting_money: this.lotteryList[i].price,
+            betting_point: "7.50%",
             betting_model: 1,
-            betting_issuseNo: this.lotteryList.period,
+            betting_issuseNo: this.lotteryList[i].period,
             graduation_count: 1
           })
         }
+        console.log(BettingData)
         let params = {
           data: {
             BettingData: BettingData
           },
           source: 2
         }
-        // let content = this.checkedList.selectedData.map(v => {
-        //   return v.label
-        // })
+        let content = ''
+        this.lotteryList.forEach(v => {
+          content += `<div>${v.type}${v.detial}:  ${selectedDataToStr(v.playBoardTypeValue, v.selectedNum)}</div>`
+        })
+        console.log(JSON.stringify(params))
         this.$dialog.confirm({
           title: '投注确认',
           message: '<div>' +
-          '<div>' + this.lotteryList.area.title+ this.period + '期</div>' +
-          '<div>投注金额：<span style="color: red">' + this.mutiNumberValue * this.checkedList.bittingNumber + '元</span></div>' +
-          '<div>投注内容：' +  + '</div>' +
+          '<div>' + this.lotteryList[0].area.title + this.lotteryList[0].period + '期</div>' +
+          '<div>投注金额：<span style="color: red">' + this.allNumAndPrice.price + '元</span></div>' +
+          '<div>投注内容：' + content + '</div>' +
           '</div>'
         }).then(async () => {
-          // let res = await this.axios.post('v1/Lottery/Order/Add', params)
-          // if (res.data.code == 200) {
-          //   this.$dialog.alert({
-          //     message: res.data.message
-          //   });
-          //   this.resetSelectData()
-          // }
+          let res = await this.axios.post('v1/Lottery/Order/Add', params)
+          if (res.data.code == 200) {
+            this.$dialog.alert({
+              message: res.data.message
+            });
+            // this.resetSelectData()
+          }
         }).catch(() => {
 
         });
@@ -197,6 +201,7 @@
           this.araeSelected = i
         }
       })
+      console.log(this.lotteryList)
     }
   }
 </script>

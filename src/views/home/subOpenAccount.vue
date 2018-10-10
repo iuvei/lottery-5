@@ -29,15 +29,15 @@
         <ul class="list">
           <li>
             <label>时时彩</label>
-            <input type="text" placeholder="自身返点8.0, 可设置返点0.0-8.0">
+            <input type="number" placeholder="自身返点8.0, 可设置返点0.0-8.0">
           </li>
           <li>
             <label>快3</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
+            <input type="number" placeholder="自身返点7.5, 可设置0.0-7.5">
           </li>
           <li>
             <label>11选5</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
+            <input type="number" placeholder="自身返点7.5, 可设置0.0-7.5">
           </li>
           <li>
             <label>福彩3D</label>
@@ -45,7 +45,7 @@
           </li>
           <li>
             <label>排列3</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
+            <input type="number" placeholder="自身返点7.5, 可设置0.0-7.5">
           </li>
           <li>
             <label>北京快乐8</label>
@@ -53,11 +53,11 @@
           </li>
           <li>
             <label>PK10</label>
-            <input type="text" placeholder="自身返点8.0, 可设置0.0-8.0">
+            <input type="number" placeholder="自身返点8.0, 可设置0.0-8.0">
           </li>
           <li>
             <label>六合彩</label>
-            <input type="text" placeholder="自身返点10.0, 可设置0.0-10.0">
+            <input type="number" placeholder="自身返点10.0, 可设置0.0-10.0">
           </li>
           <li>
             <button>生成邀请码</button>
@@ -117,9 +117,16 @@
       Navbar
     },
     methods: {
+      async getMyAgent() {
+        let res = await this.axios.get('/v1/Agent/GetMy')
+        console.log(res.data.data)
+      },
       toPage (src) {
         this.$router.push(src);
       }
+    },
+    mounted() {
+      this.getMyAgent()
     }
   }
 </script>
