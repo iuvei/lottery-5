@@ -61,7 +61,9 @@
 					price: this.selectedInfo.price || 0,
 					playBoardTypeValue: this.playBoardTypeValue,
 					betMul: this.betMul,
-					YJFmul: this.YJFmul
+					YJFmul: this.YJFmul,
+          area: this.selectedInfo.area,
+          period: this.selectedInfo.period
 				}
 			}
 		},

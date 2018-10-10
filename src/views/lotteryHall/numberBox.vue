@@ -13,6 +13,7 @@
     <div class="content">
       <div class="cardContent">
         <ul class="numBox">
+          {{lotteryList[0]}}
           <li v-for="(item, index) in lotteryList">
             <div>{{selectedDataToStr(item.playBoardTypeValue, item.selectedNum)}}</div>
             <span>{{`${item.type}${item.detial} ${item.bittingNumber}注 x ${2 / item.YJFmul}元 x ${item.betMul}倍 = ${item.price / item.YJFmul}元`}}</span>
@@ -30,7 +31,7 @@
       <div class="left">
         <span>方案{{allNumAndPrice.num}}注，{{allNumAndPrice.price}}元</span>
       </div>
-      <div class="right">立即投注</div>
+      <div class="right" @click="lotteryOrderAdd">立即投注</div>
     </div>
   </div>
 </template>
@@ -105,6 +106,50 @@
       }
     },
     methods: {
+      async lotteryOrderAdd() {
+        let BettingData = []
+        for (let i in this.checkedList.selectedData) {
+          BettingData.push({
+            lottery_code: this.lotteryList.area.id,
+            play_detail_code: "1-A1",
+            betting_number: this.checkedList.selectedData[i].label,
+            betting_count: this.checkedList.bittingNumber,
+            betting_money: this.mutiNumberValue * this.checkedList.bittingNumber,
+            betting_point: "18.90-7.50%",
+            betting_model: 1,
+            betting_issuseNo: this.lotteryList.period,
+            graduation_count: 1
+          })
+        }
+        let params = {
+          data: {
+            BettingData: BettingData
+          },
+          source: 2
+        }
+        // let content = this.checkedList.selectedData.map(v => {
+        //   return v.label
+        // })
+        this.$dialog.confirm({
+          title: '投注确认',
+          message: '<div>' +
+          '<div>' + this.lotteryList.area.title+ this.period + '期</div>' +
+          '<div>投注金额：<span style="color: red">' + this.mutiNumberValue * this.checkedList.bittingNumber + '元</span></div>' +
+          '<div>投注内容：' +  + '</div>' +
+          '</div>'
+        }).then(async () => {
+          // let res = await this.axios.post('v1/Lottery/Order/Add', params)
+          // if (res.data.code == 200) {
+          //   this.$dialog.alert({
+          //     message: res.data.message
+          //   });
+          //   this.resetSelectData()
+          // }
+        }).catch(() => {
+
+        });
+
+      },
       clearNum() {
         this.$store.commit('resetLotteryList')
       },

@@ -168,7 +168,7 @@
       selectedNumberDataMethod(data) {
         let type = this.tagSelectedData[0]
         let details = this.tagSelectedData[2]
-        this.selectedInfo = playMethods(type, details, data)
+        this.selectedInfo = Object.assign(playMethods(type, details, data),{area:this.araeSelected},{period: this.period})
         // console.log(playMethods(type, details, data))
 //        selectedDataToStr(this.playBoardTypeValue, this.selectedInfo.selectedNum)
       },
