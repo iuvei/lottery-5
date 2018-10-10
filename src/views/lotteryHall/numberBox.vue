@@ -13,7 +13,6 @@
     <div class="content">
       <div class="cardContent">
         <ul class="numBox">
-          {{lotteryList}}
           <li v-for="(item, index) in lotteryList">
             <div>{{selectedDataToStr(item.playBoardTypeValue, item.selectedNum)}}</div>
             <span>{{`${item.type}${item.detial} ${item.bittingNumber}注 x ${2 / item.YJFmul}元 x ${item.betMul}倍 = ${item.price / item.YJFmul}元`}}</span>

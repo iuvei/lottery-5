@@ -157,7 +157,7 @@
         let type = this.tagSelectedData[0]
         let detial = this.tagSelectedData[2]
         this.selectedNumberData = data
-	      this.selectedInfo = playMethodsSyx5(type, detial, this.selectedNumberData)
+	      this.selectedInfo = Object.assign(playMethodsSyx5(type, detial, this.selectedNumberData),{area:this.araeSelected},{period: this.period})
       },
 			tagSelected(data) {
 				this.tagSelectedData = data
