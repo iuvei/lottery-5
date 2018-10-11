@@ -72,7 +72,7 @@
         // console.log(res.data.data)
       },
 			selectLotteryType(item) {
-        this.activeFlag = item
+        this.activeFlag = item || 'all'
 		    this.lotteryList = this.cache
 				if (item != 'all') {
 				  this.lotteryList = this.lotteryList.filter(v => {
