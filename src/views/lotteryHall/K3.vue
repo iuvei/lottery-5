@@ -160,25 +160,41 @@
           return
         }
         let BettingData = []
+        let betting_number = ''
         for (let i in this.checkedList.selectedData) {
-          BettingData.push({
-            lottery_code: this.$route.params.id,
-            play_detail_code: "1-A1",
-            betting_number: this.checkedList.selectedData[i].label,
-            betting_count: this.checkedList.bittingNumber,
-            betting_money: this.mutiNumberValue * this.checkedList.bittingNumber,
-            betting_point: "18.90-7.50%",
-            betting_model: 1,
-            betting_issuseNo: this.period,
-            graduation_count: 1
-          })
+          betting_number += this.checkedList.selectedData[i].label+' '
         }
+        BettingData.push({
+          lottery_code: this.$route.params.id,
+          play_detail_code: "1-A1",
+          betting_number: betting_number.trim(),
+          betting_count: this.checkedList.bittingNumber,
+          betting_money: this.mutiNumberValue * this.checkedList.bittingNumber,
+          betting_point: "18.90-7.50%",
+          betting_model: 1,
+          betting_issuseNo: this.period,
+          graduation_count: 1
+        })
+        // for (let i in this.checkedList.selectedData) {
+        //   BettingData.push({
+        //     lottery_code: this.$route.params.id,
+        //     play_detail_code: "1-A1",
+        //     betting_number: this.checkedList.selectedData[i].label,
+        //     betting_count: this.checkedList.bittingNumber,
+        //     betting_money: this.mutiNumberValue * this.checkedList.bittingNumber,
+        //     betting_point: "18.90-7.50%",
+        //     betting_model: 1,
+        //     betting_issuseNo: this.period,
+        //     graduation_count: 1
+        //   })
+        // }
         let params = {
           data: {
             BettingData: BettingData
           },
           source: 2
         }
+        console.log(JSON.stringify(params))
         let content = this.checkedList.selectedData.map(v => {
           return v.label
         })

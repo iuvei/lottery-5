@@ -20,10 +20,10 @@
           <th>下级人数</th>
         </tr>
         <tr v-for="(item, index) in member" :key="index">
-          <td>{{item.accountNum}}</td>
-          <td>{{item.style}}</td>
-          <td>{{item.loginTime}}</td>
-          <td>{{item.subNum}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.last_time}}</td>
+          <td>{{item.count}}</td>
         </tr>
         <tr v-show="member.length!=0">
           <td colspan="4">已显示全部内容</td>
@@ -35,28 +35,27 @@
 
 <script>
   import Navbar from '@/components/Navbar.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'memberManage',
     data () {
       return {
-        member: [
-          {
-            accountNum: '34132424',
-            style: '代理',
-            loginTime: '2018-09-07 18:28:23',
-            subNum: 3
-          }
-        ]
+        member: []
       }
+    },
+    computed: {
+      ...mapGetters([
+        'userInfo'
+      ])
     },
     components: {
       Navbar
     },
     methods: {
       async agentMember() {
-        let res = await this.axios.get('/v1/Agent/agentMember')
-        console.log(res.data.data)
+        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: 1})
+        this.member = res.data.data
       },
       toPage (src) {
         this.$router.push(src);
