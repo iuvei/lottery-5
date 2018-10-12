@@ -54,9 +54,16 @@
       Navbar
     },
     methods: {
+      async agentMember() {
+        let res = await this.axios.get('/v1/Agent/agentMember')
+        console.log(res.data.data)
+      },
       toPage (src) {
         this.$router.push(src);
       }
+    },
+    mounted() {
+      this.agentMember()
     }
   }
 </script>
