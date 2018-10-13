@@ -183,7 +183,17 @@
   }
   // 这里写返点的样式就可以
   .item-content {
-    color: #f33!important;
+    height: px2rem(100px);
+    line-height: px2rem(100px);
+    font-size: px2rem(30px);
+    padding-left: px2rem(40px);
+    border-bottom: px2rem(2px) solid #eee;
+    span {
+      display: inline-block;
+    }
+    .title {
+      width: px2rem(400px);
+    }
   }
 
 </style>
