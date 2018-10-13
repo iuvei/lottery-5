@@ -19,9 +19,9 @@
           <th>登录时间</th>
           <th>下级人数</th>
         </tr>
-        <tr v-for="(item, index) in member" :key="index">
+        <tr v-for="(item, index) in member" :key="index" @click="showActionsheet(item)">
           <td>{{item.username}}</td>
-          <td>{{item.type}}</td>
+          <td>{{item.type}}级代理</td>
           <td>{{item.last_time}}</td>
           <td>{{item.count}}</td>
         </tr>
@@ -30,6 +30,21 @@
         </tr>
       </table>
     </div>
+
+    <van-actionsheet
+      v-model="show"
+      :actions="actions"
+      cancel-text="取消"
+      @select="onSelect"
+      @cancel="onCancel"
+    />
+
+    <van-actionsheet v-model="showCatFD" title="返点详情">
+      <div class="item-content" v-for="(item, index) in catFDArr">
+        <span class="title">{{item.title}}</span>
+        <span class="num">{{item.num}}</span>
+      </div>
+    </van-actionsheet>
   </div>
 </template>
 
@@ -41,13 +56,42 @@
     name: 'memberManage',
     data () {
       return {
-        member: []
+        member: [],
+        show: false,
+        showCatFD: false,
+        actions: [
+          {
+            name: '',
+            disabled: true,
+          },
+          {
+            name: '查看返点'
+          },
+          {
+            name: '查看下级',
+          },
+        ],
+        currentTitleName: '',
+        catFDArr: [
+          {
+            title: '六合彩',
+            num: '9.0'
+          },
+          {
+            title: '快3',
+            num: '7.5'
+          },
+          {
+            title: '时时彩',
+            num: '5.0'
+          }
+        ]
       }
     },
     computed: {
       ...mapGetters([
         'userInfo'
-      ])
+      ]),
     },
     components: {
       Navbar
@@ -59,6 +103,25 @@
       },
       toPage (src) {
         this.$router.push(src);
+      },
+
+      onSelect(item) {
+        // 点击选项时默认不会关闭菜单，可以手动关闭
+        this.show = false;
+        console.log(item,'好')
+        if (item.name === '查看返点') {
+          this.showCatFD = true
+        }
+      },
+      onCancel() {},
+      showActionsheet(params) {
+        this.currentTitleName = params.username
+        this.actions[0].name = this.currentTitleName
+        if (params.count == 0) {
+          this.actions[2].name = '查看上级'
+        }
+        this.show = true
+        console.log(params,'当前点击的')
       }
     },
     mounted() {
@@ -117,6 +180,10 @@
         }
       }
     }
+  }
+  // 这里写返点的样式就可以
+  .item-content {
+    color: #f33!important;
   }
 
 </style>
