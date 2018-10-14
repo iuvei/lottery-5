@@ -24,7 +24,7 @@
           </li>
           <li>
             <span>昵称</span>
-            <input type="text" placeholder="请设置昵称">
+            <input type="text" placeholder="请设置昵称" v-model="nickname" @blur="setNickname">
             <van-icon name="arrow" />
           </li>
           <li>
@@ -112,6 +112,7 @@ export default {
   data () {
     return {
       infoStyle: 'personalData',
+      nickname: '',
       levels: [
         {
           level: 'VIP1',
@@ -147,9 +148,19 @@ export default {
     ])
   },
   methods: {
+    async setNickname() {
+      let res = await this.axios.post('/v1/User/SetNickname', {nickname:this.nickname})
+      this.$dialog.alert({
+        message: res.data.message
+      });
+    },
     toPage (src) {
       this.$router.push(src)
     }
+  },
+  mounted() {
+    console.log(this.userInfo.nickname)
+    this.nickname = this.userInfo.nickname
   }
 }
 </script>
