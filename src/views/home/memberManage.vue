@@ -59,6 +59,7 @@
         member: [],
         show: false,
         showCatFD: false,
+        type: 1,
         actions: [
           {
             name: '',
@@ -98,17 +99,28 @@
     },
     methods: {
       async agentMember() {
-        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: 1})
+        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
         this.member = res.data.data
       },
       toPage (src) {
         this.$router.push(src);
       },
 
-      onSelect(item) {
+      async onSelect(item) {
         // 点击选项时默认不会关闭菜单，可以手动关闭
         this.show = false;
         console.log(item,'好')
+        if (item.name === '查看下级') {
+          alert(1)
+          this.type += 1
+          let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
+          this.member = res.data.data
+        }
+        if (item.name === '查看上级') {
+          this.type -= 1
+          let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
+          this.member = res.data.data
+        }
         if (item.name === '查看返点') {
           this.showCatFD = true
         }

@@ -5,55 +5,19 @@
 <template>
   <div class="noteRecord">
     <Navbar>
-      <router-link slot="headleft" to="home">
+      <router-link slot="headleft" to="/noteRecord">
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle" class="btn-group">
-        <button :class="{'recordType': recordType==='noteRecord'}" @click="recordType='noteRecord'">投注记录</button><button
-        :class="{'recordType': recordType==='chaseNumRecord'}" @click="recordType='chaseNumRecord'">追号记录</button>
+        注单详情
       </span>
-      <span slot="headright" @click="show=true">
-        <span class="whichDay">{{this.actionsValue.name}}<i class="iconfont icon-arrow"></i></span>
+      <span slot="headright">
       </span>
     </Navbar>
 
     <div class="content">
-      <!-- 投注记录 -->
-      <ul class="isPrize" v-if="recordType==='noteRecord'">
-        <li :class="{'on': on===4}" @click="recordTab(4)">全部</li>
-        <li :class="{'on': on===2}" @click="recordTab(2)">已中奖</li>
-        <li :class="{'on': on===3}" @click="recordTab(3)">未中奖</li>
-        <li :class="{'on': on===1}" @click="recordTab(1)">等待开奖</li>
-      </ul>
-      <!-- 投注记录 end -->
 
-      <!-- 追号记录 -->
-      <ul class="isPend" v-if="recordType==='chaseNumRecord'">
-        <li :class="{'on': on===1}" @click="on=1">全部</li>
-        <li :class="{'on': on===2}" @click="on=2">未开始</li>
-        <li :class="{'on': on===3}" @click="on=3">进行中</li>
-        <li :class="{'on': on===4}" @click="on=4">已结束</li>
-      </ul>
-      <!-- 追号记录 end -->
-
-      <div class="record">
-        <div class="recordItem" v-for="item in resData" @click="recordInfo(item)">
-          <div class="fl"><p>{{item.title}}<span>￥{{item.money}}</span></p><span>{{item.createtime}}</span></div>
-          <div class="fr"><strong v-if="item.status == 2" class="InMoney fr">+{{item.prize}}</strong><span class="InMoney fr">{{orderstatus(item.status)}}</span></div>
-        </div>
-      </div>
     </div>
-
-    <!-- 弹出层 -->
-    <div class="popup">
-      <van-actionsheet
-        v-model="show"
-        cancel-text="取消"
-        :actions="actions"
-        @select="onSelect"
-      />
-    </div>
-    <!-- 弹出层 end -->
   </div>
 </template>
 
@@ -110,10 +74,6 @@
       async getUserMyOrderList() {
         let res = await this.axios.get(`/v1/User/MyOrderList?time=${this.actionsValue.value}`)
         this.resData = res.data.data
-      },
-      recordInfo(item) {
-        this.$router.push(`/recordInfo/${item.id}`)
-        console.log(item)
       },
       onSelect(data) {
         this.actionsValue = data
