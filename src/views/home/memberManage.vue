@@ -111,15 +111,12 @@
         this.show = false;
         console.log(item,'好')
         if (item.name === '查看下级') {
-          alert(1)
-          this.type += 1
-          let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
-          this.member = res.data.data
+          this.type ++
+          this.agentMember()
         }
         if (item.name === '查看上级') {
-          this.type -= 1
-          let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
-          this.member = res.data.data
+          this.type --
+          this.agentMember()
         }
         if (item.name === '查看返点') {
           this.showCatFD = true
