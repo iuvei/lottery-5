@@ -14,13 +14,25 @@ import axios from './utils/request'
 import './utils/flexible.js'
 
 import './permission'
+
+// 引入样式
+import 'vue-easytable/libs/themes-base/index.css'
+// 导入 table 和 分页组件
+import {VTable,VPagination} from 'vue-easytable'
+
+// 注册到全局
+Vue.component(VTable.name, VTable)
+Vue.component(VPagination.name, VPagination)
+
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 // require styles
 import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
-
+import VueCountdownTimer from 'vuejs-countdown-timer'
+Vue.use(VueCountdownTimer)
 Vue.prototype.axios = axios
 Vue.use(Vant)
 Vue.component('countDown', countDown)

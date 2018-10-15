@@ -47,7 +47,7 @@ export default new Router({
       meta: {needLogin: true},
 	  },
 	  {
-		  path: '/syx5/:id',
+		  path: '/syxw/:id',
 		  name: 'syx5',
 		  component: _import('lotteryHall/syx5'),
       meta: {needLogin: true},
@@ -266,6 +266,12 @@ export default new Router({
       path: '/agentReportForm',
       component: _import('home/agentReportForm'),
       name: 'agnetReportForm'
+    },
+    {
+      //  代理报表
+      path: '/rebateDes',
+      component: _import('home/rebateDes'),
+      name: 'rebateDes'
     },
     {
       //  下级报表

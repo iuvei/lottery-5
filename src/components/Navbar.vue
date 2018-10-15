@@ -34,6 +34,7 @@
     background: #dc3b40;
     display: flex;
     .head-title, .head-left, .head-right{
+      height: px2rem(100px);
       line-height: px2rem(100px);
       font-size: px2rem(40px);
     }

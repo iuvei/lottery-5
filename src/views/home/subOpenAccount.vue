@@ -9,7 +9,10 @@
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle" class="btn-group">
-        <button :class="{'subOpenAccount': openAccountMeth==='subOpenAccount'}" @click="openAccountMeth='subOpenAccount'">下级开户</button><button :class="{'subOpenAccount': openAccountMeth==='invitationCode'}" @click="openAccountMeth='invitationCode'">邀请码</button>
+        <button :class="{'subOpenAccount': openAccountMeth==='subOpenAccount'}"
+                @click="openAccountMeth='subOpenAccount'">下级开户</button><button
+        :class="{'subOpenAccount': openAccountMeth==='invitationCode'}"
+        @click="openAccountMeth='invitationCode'">邀请码</button>
       </span>
     </Navbar>
 
@@ -18,49 +21,33 @@
         <ul class="creatAccountTitle">
           <li>
             <label>开户类型</label>
-            <input type="radio" name="accountType" checked> 代理类型
-            <input type="radio" name="accountType"> 玩家类型
+            <input type="radio" name="accountType" value="1" v-model="type"> 代理类型
+            <input type="radio" name="accountType" value="2" v-model="type"> 玩家类型
           </li>
           <li>
-            请先为下级设置返点，<a href="javascript:;">点击查看返点赔率表</a>
+            请先为下级设置返点，<span @click="toPage('/rebateDes')">点击查看返点赔率表</span>
           </li>
         </ul>
 
         <ul class="list">
           <li>
             <label>时时彩</label>
-            <input type="text" placeholder="自身返点8.0, 可设置返点0.0-8.0">
+            <input type="number" v-model="AgentValue.ssc.value" :placeholder="`自身返点${myAgent.ssc}, 可设置返点0.0-8.0`">
           </li>
           <li>
             <label>快3</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
+            <input type="number" v-model="AgentValue.k3.value" :placeholder="`自身返点${myAgent.k3}, 可设置0.0-7.5`">
           </li>
           <li>
             <label>11选5</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
-          </li>
-          <li>
-            <label>福彩3D</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
-          </li>
-          <li>
-            <label>排列3</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
-          </li>
-          <li>
-            <label>北京快乐8</label>
-            <input type="text" placeholder="自身返点7.5, 可设置0.0-7.5">
+            <input type="number" v-model="AgentValue.syxw.value" :placeholder="`自身返点${myAgent.syx5}, 可设置0.0-7.5`">
           </li>
           <li>
             <label>PK10</label>
-            <input type="text" placeholder="自身返点8.0, 可设置0.0-8.0">
+            <input type="number" v-model="AgentValue.pk10.value" :placeholder="`自身返点${myAgent.pk10}, 可设置0.0-8.0`">
           </li>
           <li>
-            <label>六合彩</label>
-            <input type="text" placeholder="自身返点10.0, 可设置0.0-10.0">
-          </li>
-          <li>
-            <button>生成邀请码</button>
+            <button @click="ManageInvite">生成邀请码</button>
           </li>
         </ul>
       </div>
@@ -69,8 +56,8 @@
         <ul class="creatAccountTitle">
           <li>
             <label>开户类型</label>
-            <input type="radio" name="accountType" checked> 代理类型
-            <input type="radio" name="accountType"> 玩家类型
+            <input type="radio" name="accountType" value="1" v-model="type"> 代理类型
+            <input type="radio" name="accountType" value="2" v-model="type"> 玩家类型
           </li>
         </ul>
 
@@ -82,8 +69,8 @@
           </tr>
           <tr v-for="(item, index) in invitationCode" :key="index">
             <td>{{item.code}}</td>
-            <td>{{item.createTime}}</td>
-            <td>{{item.state}}</td>
+            <td>{{item.createtime}}</td>
+            <td>注册({{item.count}})</td>
           </tr>
           <tr v-show="invitationCode.length!=0">
             <td colspan="4">已显示全部内容</td>
@@ -99,16 +86,23 @@
 
   export default {
     name: 'subOpenAccount',
-    data () {
+    data() {
       return {
         // 开户方式
         openAccountMeth: 'subOpenAccount',
-
+        type: '1',
+        AgentValue: {
+          ssc: {label: '时时彩', value: ''},
+          k3: {label: '快3', value: ''},
+          syxw: {label: '11选5', value: ''},
+          pk10: {label: 'PK10', value: ''},
+        },
+        myAgent: '',
         invitationCode: [
           {
             code: '23432343',
-            createTime: '2018-07-08 15:39:34',
-            state: '注册(0)'
+            createtime: '2018-07-08 15:39:34',
+            count: '0'
           }
         ]
       }
@@ -117,9 +111,45 @@
       Navbar
     },
     methods: {
-      toPage (src) {
+      async getMyAgent() {
+        let res = await this.axios.get('/v1/Agent/GetMy')
+        this.myAgent = res.data.data
+      },
+      async ManageInvite() {
+        for (let i in this.AgentValue) {
+          if (this.AgentValue[i].value == '') {
+            this.$dialog.alert({
+              title: '提示',
+              message: `${this.AgentValue[i].label}不能为空`
+            })
+            return
+          }
+        }
+        let params= {
+          type: this.type,
+          ssc: this.AgentValue['ssc'].value,
+          k3: this.AgentValue['k3'].value,
+          syx5: this.AgentValue['syxw'].value,
+          pk10: this.AgentValue['pk10'].value,
+        }
+        let res = await this.axios.post('/v1/Agent/ManageInvite', params)
+        this.$dialog.alert({
+          title: '提示',
+          message: res.data.message
+        })
+        this.getManagelCode()
+      },
+      async getManagelCode() {
+        let res = await this.axios.get('/v1/Agent/ManagelCode')
+        this.invitationCode = res.data.data
+      },
+      toPage(src) {
         this.$router.push(src);
       }
+    },
+    mounted() {
+      this.getMyAgent()
+      this.getManagelCode()
     }
   }
 </script>
@@ -134,10 +164,16 @@
   }
 
   // 头部的按钮
+  .btn-group {
+    display: inline-block;
+    height: px2rem(100px);
+    line-height: px2rem(100px);
+  }
   .btn-group button {
     padding: 0;
     width: px2rem(208px);
     height: px2rem(64px);
+    line-height: px2rem(64px);
     background: #dc3b40;
     border: 1px solid #ffffff;
     font-size: px2rem(28px);
@@ -153,6 +189,7 @@
       color: #dc3b40;
     }
   }
+
   // 头部的按钮 end
 
   @include onetoppx('tr')
@@ -178,11 +215,11 @@
             border: none;
             background: transparent;
             outline: none;
-            &::-webkit-input-placeholder{
-              color:#cccccc;
+            &::-webkit-input-placeholder {
+              color: #cccccc;
             }
           }
-          a {
+          span {
             color: rgb(220, 59, 64);
           }
         }

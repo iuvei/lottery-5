@@ -63,7 +63,7 @@
 		},
 		methods: {
 		  async getAllLottery() {
-        let res = await this.axios.get('/v1/Lottery/lotteryHall')
+        let res = await this.axios.get('/v1/Lottery/LotteryHall')
         this.lotteryList = res.data.data
         this.cache = res.data.data
         this.lotteryTitle = [...new Set(res.data.data.map(v => {
@@ -72,7 +72,7 @@
         // console.log(res.data.data)
       },
 			selectLotteryType(item) {
-        this.activeFlag = item
+        this.activeFlag = item || 'all'
 		    this.lotteryList = this.cache
 				if (item != 'all') {
 				  this.lotteryList = this.lotteryList.filter(v => {

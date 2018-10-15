@@ -14,7 +14,7 @@
       </router-link>
     </div>
     <div class="hot-lottery">
-      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.ename}`)">
+      <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
         <div class="lottery-icon">
           <i v-if="item.type.includes('pk10')" style="color: #f22751" class="iconfont icon-pk"></i>
           <i v-if="item.type.includes('syxw')" style="color: #218ddd" class="iconfont icon-xuan"></i>

@@ -30,7 +30,7 @@
       <div class="left">
         <span>方案{{allNumAndPrice.num}}注，{{allNumAndPrice.price}}元</span>
       </div>
-      <div class="right">立即投注</div>
+      <div class="right" @click="lotteryOrderAdd">立即投注</div>
     </div>
   </div>
 </template>
@@ -105,6 +105,54 @@
       }
     },
     methods: {
+      async lotteryOrderAdd() {
+        let BettingData = []
+        for (let i in this.lotteryList) {
+          console.log(this.lotteryList[i])
+          BettingData.push({
+            lottery_code: this.lotteryList[i].area.id,
+            play_detail_code: "1-A1",
+            betting_number: selectedDataToStr(this.lotteryList[i].playBoardTypeValue, this.lotteryList[i].selectedNum),
+            betting_count: this.lotteryList[i].bittingNumber,
+            betting_money: this.lotteryList[i].price,
+            betting_point: "7.50%",
+            betting_model: 1,
+            betting_issuseNo: this.lotteryList[i].period,
+            graduation_count: 1
+          })
+        }
+        console.log(BettingData)
+        let params = {
+          data: {
+            BettingData: BettingData
+          },
+          source: 2
+        }
+        let content = ''
+        this.lotteryList.forEach(v => {
+          content += `<div>${v.type}${v.detial}:  ${selectedDataToStr(v.playBoardTypeValue, v.selectedNum)}</div>`
+        })
+        console.log(JSON.stringify(params))
+        this.$dialog.confirm({
+          title: '投注确认',
+          message: '<div>' +
+          '<div>' + this.lotteryList[0].area.title + this.lotteryList[0].period + '期</div>' +
+          '<div>投注金额：<span style="color: red">' + this.allNumAndPrice.price + '元</span></div>' +
+          '<div>投注内容：' + content + '</div>' +
+          '</div>'
+        }).then(async () => {
+          let res = await this.axios.post('v1/Lottery/Order/Add', params)
+          if (res.data.code == 200) {
+            this.$dialog.alert({
+              message: res.data.message
+            });
+            // this.resetSelectData()
+          }
+        }).catch(() => {
+
+        });
+
+      },
       clearNum() {
         this.$store.commit('resetLotteryList')
       },
@@ -152,6 +200,7 @@
           this.araeSelected = i
         }
       })
+      console.log(this.lotteryList)
     }
   }
 </script>

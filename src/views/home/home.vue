@@ -6,6 +6,7 @@
   <div class="lottery-hall">
     <!-- 用户信息 -->
     <div class="user-info">
+      <!--{{userInfo}}-->
       <p>
         <img :src="userInfo.avatar" @click="toPage('/userInfo')" >
       </p>
@@ -50,7 +51,7 @@
         <span>安全中心</span>
         <van-icon name="arrow" />
       </li>
-      <li @click="toPage('/agentCenter')">
+      <li @click="toPage('/agentCenter')" v-if="userInfo.isagent">
         <i class="iconfont icon-dailizhongxin"></i>
         <span>代理中心</span>
         <van-icon name="arrow" />

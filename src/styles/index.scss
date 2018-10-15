@@ -47,3 +47,21 @@ a {
     transform: scaleY(0.33);
   }
 }
+// 有赞底部框样式
+.van-actionsheet {
+  .van-hairline--bottom {
+    .van-actionsheet__item--disabled {
+      color: #0a5eff;
+
+    }
+  }
+}
+.van-actionsheet--withtitle {
+  .van-actionsheet__header {
+    div {
+      text-align: left;
+      font-weight: bold;
+      margin-left: px2rem(40px);
+    }
+  }
+}

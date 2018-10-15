@@ -52,7 +52,12 @@
     },
     methods: {
       async reg() {
-        if(this.username == '') {
+        if (this.code == ''){
+          Dialog.alert({
+            title: '提示',
+            message: '请输入邀请码'
+          })
+        } else if(this.username == '') {
           Dialog.alert({
             title: '提示',
             message: '请输入用户名'
@@ -64,10 +69,9 @@
           })
         } else {
           try {
-            let res = await this.axios.post('/v1/Regiter', {username: this.username, password: this.password, source: 1
+            let res = await this.axios.post('/v1/Regiter', {recCode:this.code, username: this.username, password: this.password, source: 1
             })
             let data = res.data
-            console.log(data)
             Dialog.alert({
               title: '标题',
               message: data.message
