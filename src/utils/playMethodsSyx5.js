@@ -1,4 +1,6 @@
 export default function playMethodsSyx5 (type, detial, selectedData) {
+  console.log('的开发贷款')
+  console.log(selectedData)
   let selectedNum = [] // 所选数
   let bittingNumber = 0 // 注数
   let price = '' // 金额
