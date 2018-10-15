@@ -5,55 +5,61 @@
 <template>
   <div class="noteRecord">
     <Navbar>
-      <router-link slot="headleft" to="home">
+      <router-link slot="headleft" to="/noteRecord">
         <van-icon name="arrow-left"/>
       </router-link>
       <span slot="headtitle" class="btn-group">
-        <button :class="{'recordType': recordType==='noteRecord'}" @click="recordType='noteRecord'">投注记录</button><button
-        :class="{'recordType': recordType==='chaseNumRecord'}" @click="recordType='chaseNumRecord'">追号记录</button>
+        注单详情
       </span>
-      <span slot="headright" @click="show=true">
-        <span class="whichDay">{{this.actionsValue.name}}<i class="iconfont icon-arrow"></i></span>
+      <span slot="headright">
       </span>
     </Navbar>
 
     <div class="content">
-      <!-- 投注记录 -->
-      <ul class="isPrize" v-if="recordType==='noteRecord'">
-        <li :class="{'on': on===4}" @click="recordTab(4)">全部</li>
-        <li :class="{'on': on===2}" @click="recordTab(2)">已中奖</li>
-        <li :class="{'on': on===3}" @click="recordTab(3)">未中奖</li>
-        <li :class="{'on': on===1}" @click="recordTab(1)">等待开奖</li>
-      </ul>
-      <!-- 投注记录 end -->
-
-      <!-- 追号记录 -->
-      <ul class="isPend" v-if="recordType==='chaseNumRecord'">
-        <li :class="{'on': on===1}" @click="on=1">全部</li>
-        <li :class="{'on': on===2}" @click="on=2">未开始</li>
-        <li :class="{'on': on===3}" @click="on=3">进行中</li>
-        <li :class="{'on': on===4}" @click="on=4">已结束</li>
-      </ul>
-      <!-- 追号记录 end -->
-
-      <div class="record">
-        <div class="recordItem" v-for="item in resData" @click="recordInfo(item)">
-          <div class="fl"><p>{{item.title}}<span>￥{{item.money}}</span></p><span>{{item.createtime}}</span></div>
-          <div class="fr"><strong v-if="item.status == 2" class="InMoney fr">+{{item.prize}}</strong><span class="InMoney fr">{{orderstatus(item.status)}}</span></div>
+      <div class="tzHead">
+        <i v-if="resData.sname.includes('pk10')" style="color: #f22751" class="fl iconfont icon-pk"></i>
+        <i v-if="resData.sname.includes('syxw')" style="color: #218ddd" class="fl iconfont icon-xuan"></i>
+        <i v-if="resData.sname.includes('ssc')" style="color: #f96e00" class="fl iconfont icon-shishicai"></i>
+        <i v-if="resData.sname.includes('k3')" style="color: #e41404" class="fl iconfont icon-kuai3"></i>
+        <div style="overflow: hidden">
+          <span class="fl">{{resData.title}}</span>
+          <span class="fr" style="color: red;">{{orderstatus(resData.status)}}</span>
         </div>
-      </div>
+        <span>第{{resData.periodno}}期</span></div>
+      <table class="table-detail">
+        <tr>
+          <td>投注时间</td>
+          <td>{{resData.createtime}}</td>
+        </tr>
+        <tr>
+          <td>投注单号</td>
+          <td>{{resData.orderno}}</td>
+        </tr>
+        <tr>
+          <td>投注金额</td>
+          <td>¥{{resData.money}}元</td>
+        </tr>
+        <tr v-if="resData.status == 2">
+          <td>派送奖金</td>
+          <td>¥{{resData.prize}}元</td>
+        </tr>
+        <tr v-if="resData.status == 2">
+          <td>开奖号码</td>
+          <td id="lotteryopen">9,0,3,8,2</td>
+        </tr>
+        <tr></tr>
+      </table>
+      <section class="section-detail">
+        <header>我的投注</header>
+        <ul>
+          <li></li>
+          <li>
+            <div>{{resData.betting_number}}</div>
+            <!--<span>一星,定位胆,复式</span> <span class="fr">奖金：19.60</span>-->
+          <li></li>
+        </ul>
+      </section>
     </div>
-
-    <!-- 弹出层 -->
-    <div class="popup">
-      <van-actionsheet
-        v-model="show"
-        cancel-text="取消"
-        :actions="actions"
-        @select="onSelect"
-      />
-    </div>
-    <!-- 弹出层 end -->
   </div>
 </template>
 
@@ -92,37 +98,27 @@
       orderstatus(code) {
         let map = {0: '已撤单', 1: '待开奖', 2: '已中奖', 3: '未中奖'}
         for (let i in map) {
-          if(i == code) {
+          if (i == code) {
             return map[i]
           }
         }
       },
-      recordTab(code) {
-        this.on = code
-        if (code == 4) {
-          this.getUserMyOrderList()
-        } else {
-          this.resData = this.resData.filter(v => {
-            v.status == code
-          })
+      orderIcon(code) {
+        let map = {k3: 'kuai3', ssc: 'shishicai', pk10: 'pk', syxw: 'xuan'}
+        for (let i in map) {
+          if (i == code) {
+            return map[i]
+          }
         }
       },
-      async getUserMyOrderList() {
-        let res = await this.axios.get(`/v1/User/MyOrderList?time=${this.actionsValue.value}`)
+      async getUserMyOrderDetails() {
+        let res = await this.axios.get(`/v1/User/MyOrderDetails?id=${this.$route.params.id}`)
         this.resData = res.data.data
+        console.log(this.resData)
       },
-      recordInfo(item) {
-        this.$router.push(`/recordInfo/${item.id}`)
-        console.log(item)
-      },
-      onSelect(data) {
-        this.actionsValue = data
-        this.getUserMyOrderList()
-        this.show = false
-      }
     },
     mounted() {
-      this.getUserMyOrderList()
+      this.getUserMyOrderDetails()
     }
   }
 </script>
@@ -155,8 +151,49 @@
   .fr {
     float: right;
   }
+
   .fl {
     float: left;
+  }
+
+  .tzHead {
+    position: relative;
+    overflow: hidden;
+    margin-top: px2rem(30px);
+    padding: px2rem(10px) px2rem(30px);
+    i {
+      display: inline-block;
+      font-size: px2rem(100px);
+      margin-right: px2rem(30px);
+    }
+    div span {
+      & {
+        margin-top: px2rem(10px);
+      }
+      font-size: px2rem(40px);
+    }
+    & > span {
+      display: inline-block;
+      color: #ccc;
+      margin-top: px2rem(20px);
+    }
+  }
+  .table-detail {
+    padding: px2rem(10px) px2rem(30px);
+    width: 100%;
+    tr {
+      height: 2.5em;
+      font-size: px2rem(30px);
+      line-height: 2.5em;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+  .section-detail {
+    padding: px2rem(10px) px2rem(30px);
+    font-size: px2rem(30px);
+    div {
+      margin-top: px2rem(30px);
+    }
   }
   // 哪天
   .whichDay {
@@ -196,7 +233,7 @@
       .recordItem {
         overflow: hidden;
         background: #fff;
-        .fl>span {
+        .fl > span {
           font-size: px2rem(30px);
           color: #989898;
         }

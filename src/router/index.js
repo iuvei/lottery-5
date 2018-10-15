@@ -238,6 +238,12 @@ export default new Router({
       name: 'noteRecord'
     },
     {
+      // 投注详情
+      path: '/recordInfo/:id',
+      component: _import('home/recordInfo'),
+      name: 'recordInfo'
+    },
+    {
       // 个人信息
       path: '/userInfo',
       component: _import('home/userInfo'),
