@@ -76,11 +76,23 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
 
+
+// 头部的按钮
+.btn-group {
+  display: inline-block;
+  height: px2rem(100px);
+  line-height: px2rem(100px);
+}
+
+// 头部的按钮 end
+
+@include onetoppx('tr')
 // 头部的按钮
 .btn-group button {
   padding: 0;
   width: px2rem(208px);
   height: px2rem(64px);
+  line-height: px2rem(64px);
   background: #dc3b40;
   border: 1px solid #ffffff;
   font-size: px2rem(28px);

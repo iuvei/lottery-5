@@ -155,7 +155,36 @@
     padding: 0;
     list-style: none;
   }
+  // 头部的按钮
+  .btn-group {
+    display: inline-block;
+    height: px2rem(100px);
+    line-height: px2rem(100px);
+  }
+  .btn-group button {
+    padding: 0;
+    width: px2rem(208px);
+    height: px2rem(64px);
+    line-height: px2rem(64px);
+    background: #dc3b40;
+    border: 1px solid #ffffff;
+    font-size: px2rem(28px);
+    color: #ffffff;
+    &:nth-child(1) {
+      border-radius: 3px 0 0 3px;
+    }
+    &:nth-child(2) {
+      border-radius: 0 3px 3px 0;
+    }
+    &.subOpenAccount {
+      background: #ffffff;
+      color: #dc3b40;
+    }
+  }
 
+  // 头部的按钮 end
+
+  @include onetoppx('tr')
   .content {
     margin-top: px2rem(100px);
     margin-bottom: px2rem(100px);
