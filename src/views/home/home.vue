@@ -6,9 +6,8 @@
   <div class="lottery-hall">
     <!-- 用户信息 -->
     <div class="user-info">
-      <!--{{userInfo}}-->
       <p>
-        <img :src="userInfo.avatar" @click="toPage('/userInfo')" >
+        <img :src="`http://${userInfo.avatar}`" @click="toPage('/userInfo')" >
       </p>
       <p>
         <span>帐&nbsp;号: {{userInfo.username}}</span>
