@@ -110,18 +110,18 @@
         // 点击选项时默认不会关闭菜单，可以手动关闭
         this.show = false;
         console.log(item,'好')
-        // if (item.name === '查看下级') {
-        //   this.type ++
-        //   this.agentMember()
-        // }
+        if (item.name === '查看下级') {
+          this.type ++
+          this.agentMember()
+        }
 
         // 加定时器解决bug
-        if (item.name === '查看下级') {
-          setTimeout(item => {
-            this.type ++
-            this.agentMember()
-          },500)
-        }
+        // if (item.name === '查看下级') {
+        //   setTimeout(item => {
+        //     this.type ++
+        //     this.agentMember()
+        //   },500)
+        // }
         if (item.name === '查看上级') {
           this.type --
           this.agentMember()

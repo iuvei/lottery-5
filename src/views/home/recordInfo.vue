@@ -39,11 +39,13 @@
           <td>投注金额</td>
           <td>¥{{resData.money}}元</td>
         </tr>
-        <tr v-if="resData.status == 2">
+        <!--<tr v-if="resData.status == 2">-->
+        <tr>
           <td>派送奖金</td>
           <td>¥{{resData.prize}}元</td>
         </tr>
-        <tr v-if="resData.status == 2">
+        <!--<tr v-if="resData.status == 2">-->
+        <tr>
           <td>开奖号码</td>
           <td id="lotteryopen">9,0,3,8,2</td>
         </tr>
