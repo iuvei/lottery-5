@@ -107,7 +107,7 @@
     @include onetoppx('.password');
     @include onebottompx('.password');
     .username, .password {
-      height: px2rem(80px);
+      height: px2rem(82px);
       .front-icon, .end-icon {
         display: inline-block;
         float: left;
@@ -117,7 +117,7 @@
       input {
         float: left;
         border: 0;
-        width: calc(100vw - 2.14rem);
+        width: calc(100vw - 2.2rem);
         margin-top: px2rem(16px);
         font-size: px2rem(40px);
         &::-webkit-input-placeholder{

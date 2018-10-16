@@ -173,7 +173,7 @@
         ],
         avatarData: [],
         avatarSelected: '',
-        avatarSelectShow: true,
+        avatarSelectShow: false,
       }
     },
     computed: {

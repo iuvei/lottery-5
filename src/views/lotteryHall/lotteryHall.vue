@@ -23,7 +23,7 @@
         <div class="lottery-name">{{item.title}}</div>
         <div class="lottery-number">{{item.per_explain}}</div>
       </div>
-      <div class="hot-lottery-item" @click="toAllLottery(item)">
+      <div class="hot-lottery-item" @click="toAllLottery(item)" style="margin-bottom: 20px">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
         <div class="lottery-name">更多</div>
       </div>
@@ -168,7 +168,7 @@
   }
 
   /*.hot-lottery-item:last-child::after {*/
-  /*border: 0;*/
+    /*border: 0;*/
   /*}*/
 
 
