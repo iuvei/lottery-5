@@ -206,11 +206,12 @@
         overflow: hidden;
         background: #fff;
         .fl>span {
-          font-size: px2rem(30px);
+          font-size: px2rem(26px);
           color: #989898;
         }
         p {
           font-size: px2rem(30px);
+          margin: px2rem(20px) 0;
           span {
             font-size: .8em;
             margin-left: .4em;

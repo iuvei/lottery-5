@@ -8,7 +8,7 @@
 
 
       <div class="act-item" v-for="(item,index) in activities" @click="toPage(`/upgrade/${index}`)" v-bind:key="item.id">
-        <a href="#"> 
+        <a href="#">
           //左侧图标
           <div class="num">
             <i>{{item.id}}</i>
@@ -61,5 +61,31 @@ export default {
 <style lang="scss" scoped>
 @import "../../styles/index";
 @import "./styles/main";
+  .act-item {
+    .num {
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      background-color: #fe8580;
+      float: left;
+      margin-left: .8rem;
+      margin-right: .5rem;
+      text-align: center;
+      i {
+        font-style: normal;
+        color: #fff;
+        text-align: center;
+        display: inline-block;
+        line-height: 2.3em;
+        width: 2.5em;
+        height: 2.5em;
+        border: 1px solid;
+        border-radius: 50%;
+        font-size: .8em;
+        /*margin-top: 1.5em;*/
+        padding: .1em;
+      }
+    }
+  }
 </style>
 

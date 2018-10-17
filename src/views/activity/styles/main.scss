@@ -23,6 +23,7 @@
     color:#333;
     margin:px2rem(26px) 0;
     overflow:hidden;
+    height: px2rem(140px);
     a{
       display:flex;
       width:100%;
@@ -31,13 +32,13 @@
       text-decoration:none;
       overflow:hidden;
       .num{
-        flex:2;
+        //flex:2;
         margin-left:px2rem(38px);
         margin-right:px2rem(23px);
-        width:px2rem(87px);
+        width:px2rem(260px);
         height:px2rem(87px);
         text-align:center;
-        line-height:5;
+        line-height:px2rem(87px);
         color:#333;
         i{
           padding:px2rem(3.4px);
@@ -46,6 +47,7 @@
       }
       .text{
         width:px2rem(469px);
+        height:px2rem(80px);
         flex:7;
         strong{
           display:block;
@@ -65,7 +67,7 @@
           text-overflow: ellipsis;
           line-height:1.5em;
           overflow: hidden;
-        
+
         }
       }
       .act-icon{
