@@ -56,6 +56,7 @@
     name: 'memberManage',
     data () {
       return {
+        currentId: '',
         member: [],
         show: false,
         showCatFD: false,
@@ -99,7 +100,7 @@
     },
     methods: {
       async agentMember() {
-        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
+        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.currentId, type: this.type})
         this.member = res.data.data
       },
       toPage (src) {
@@ -124,6 +125,7 @@
         // }
         if (item.name === '查看上级') {
           this.type --
+          this.currentId = item.uid
           this.agentMember()
         }
         if (item.name === '查看返点') {
@@ -139,6 +141,7 @@
         }
         this.show = true
         console.log(params,'当前点击的')
+        this.currentId = params.uid
       }
     },
     mounted() {
