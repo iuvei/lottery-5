@@ -3,11 +3,12 @@
   position:fixed;
   top:0;
   min-width:100%;
-  min-height:px2rem(100px);
+  height:px2rem(100px);
+  line-height:px2rem(100px);
   z-index:1000;
   p{
     margin:0;
-    padding:px2rem(20px);
+    //padding:px2rem(20px);
     color:#fff;
     font-size:px2rem(40px);
     text-align:center;
@@ -18,63 +19,4 @@
 // 活动列表开始
 @include onetoppx('.act-item');
 @include onebottompx('.act-item');
-.act-item{
-    background:#fff;
-    color:#333;
-    margin:px2rem(26px) 0;
-    overflow:hidden;
-    height: px2rem(140px);
-    a{
-      display:flex;
-      width:100%;
-      padding:px2rem(21px) 0;
-      background:transparent;
-      text-decoration:none;
-      overflow:hidden;
-      .num{
-        //flex:2;
-        margin-left:px2rem(38px);
-        margin-right:px2rem(23px);
-        width:px2rem(260px);
-        height:px2rem(87px);
-        text-align:center;
-        line-height:px2rem(87px);
-        color:#333;
-        i{
-          padding:px2rem(3.4px);
-          margin-top:px2rem(17px);
-        }
-      }
-      .text{
-        width:px2rem(469px);
-        height:px2rem(80px);
-        flex:7;
-        strong{
-          display:block;
-          font-size:px2rem(34px);
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          font-weight: 400;
-          line-height:1.5em;
-          color:#333;
-        }
-        p{
-          margin:0;
-          color:#686868;
-          font-size:px2rem(30px);
-          white-space: pre;
-          text-overflow: ellipsis;
-          line-height:1.5em;
-          overflow: hidden;
-
-        }
-      }
-      .act-icon{
-        flex:1;
-        margin-top:px2rem(27px);
-        margin-right:px2rem(38px);
-      }
-    }
-  }
   // 活动列表结束

@@ -211,7 +211,6 @@
         }
         p {
           font-size: px2rem(30px);
-          margin: px2rem(20px) 0;
           span {
             font-size: .8em;
             margin-left: .4em;
