@@ -12,12 +12,12 @@
 
     <div class="user-info">
       <div class="username">
-        <!--<i class="front-icon"></i>-->
+        <i class="iconfont icon-wode"></i>
         <input placeholder="请输入账号" v-model="username">
         <!--<i class="end-icon"></i>-->
       </div>
       <div class="password">
-        <!--<i class="front-icon"></i>-->
+        <i class="iconfont icon-Group"></i>
         <input placeholder="请输入密码" type="password" v-model="password">
         <!--<i class="end-icon"></i>-->
       </div>
@@ -116,7 +116,7 @@
       }
       input {
         /*float: left;*/
-        margin-left: px2rem(80px);
+        /*margin-left: px2rem(80px);*/
         border: 0;
         width: calc(100vw - 2.2rem);
         margin-top: px2rem(16px);
@@ -128,6 +128,12 @@
       .end-icon {
         float: right;
       }
+    }
+    .iconfont {
+      font-size: px2rem(40px);
+      margin-left: px2rem(20px);
+      margin-right: px2rem(20px);
+      color: #999;
     }
   }
 
