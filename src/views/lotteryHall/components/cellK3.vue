@@ -18,7 +18,7 @@ export default {
 
 <style scoped lang="scss">
 	@import "@/styles/index.scss";
-	
+
 	.chose-msg {
 		text-align: center;
 		font-size: px2rem(25px);
@@ -26,12 +26,12 @@ export default {
 		margin: px2rem(10px) auto;
 		color: #caebda;
 	}
-	
+
 	.chose-list {
 		width: px2rem(700px);
 		margin: 0 auto;
 		text-align: center;
-		
+
 		.chose-list-item {
 			padding: px2rem(16px);
 			vertical-align: top;

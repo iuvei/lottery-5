@@ -12,14 +12,14 @@
 
     <div class="user-info">
       <div class="username">
-        <i class="front-icon"></i>
+        <!--<i class="front-icon"></i>-->
         <input placeholder="请输入账号" v-model="username">
-        <i class="end-icon"></i>
+        <!--<i class="end-icon"></i>-->
       </div>
       <div class="password">
-        <i class="front-icon"></i>
+        <!--<i class="front-icon"></i>-->
         <input placeholder="请输入密码" type="password" v-model="password">
-        <i class="end-icon"></i>
+        <!--<i class="end-icon"></i>-->
       </div>
     </div>
     <div class="buttons">
@@ -115,7 +115,8 @@
         height: px2rem(80px);
       }
       input {
-        float: left;
+        /*float: left;*/
+        margin-left: px2rem(80px);
         border: 0;
         width: calc(100vw - 2.2rem);
         margin-top: px2rem(16px);

@@ -36,11 +36,14 @@
       </ul>
       <!-- 追号记录 end -->
 
-      <div class="record">
+      <div class="record" v-if="resData.length !== 0">
         <div class="recordItem" v-for="item in resData" @click="recordInfo(item)">
           <div class="fl"><p>{{item.title}}<span>￥{{item.money}}</span></p><span>{{item.createtime}}</span></div>
-          <div class="fr"><strong v-if="item.status == 2" class="InMoney fr">+{{item.prize}}</strong><span class="InMoney fr">{{orderstatus(item.status)}}</span></div>
+          <div class="fr"><strong v-if="item.status == 2" class="InMoney fr">+{{item.prize}}</strong><span class="InMoney fr" style="color: #f33">{{orderstatus(item.status)}}</span></div>
         </div>
+      </div>
+      <div class="fullPageMsg" v-else>
+        <p>暂无记录</p>
       </div>
     </div>
 
@@ -131,10 +134,16 @@
   @import "@/styles/index.scss";
 
   // 头部的按钮
+  .btn-group {
+    display: inline-block;
+    height: px2rem(100px);
+    line-height: px2rem(100px);
+  }
   .btn-group button {
     padding: 0;
     width: px2rem(208px);
     height: px2rem(64px);
+    line-height: px2rem(64px);
     background: #dc3b40;
     border: 1px solid #ffffff;
     font-size: px2rem(28px);
@@ -197,11 +206,12 @@
         overflow: hidden;
         background: #fff;
         .fl>span {
-          font-size: px2rem(30px);
+          font-size: px2rem(26px);
           color: #989898;
         }
         p {
           font-size: px2rem(30px);
+          margin: px2rem(20px) 0;
           span {
             font-size: .8em;
             margin-left: .4em;
@@ -234,5 +244,12 @@
   }
 
   // 弹出层
+  .fullPageMsg {
+    text-align: center;
+    color: #989898;
+    p {
+      font-size: px2rem(40px);
+    }
+  }
 </style>
 
