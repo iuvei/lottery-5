@@ -63,12 +63,13 @@
       <!-- 个人资料 end -->
 
       <!-- 等级头衔 -->
+      
       <div class="rankTitle" v-if="infoStyle==='rankTitle'">
         <div class="rankTitleHeader">
           <li>
-            <img src="./../../../static/images/cc75798d0ec20b32.jpg">
+            <img :src="`http://${userInfo.avatar}`">
             <p>
-              <span>cds0715<van-icon name="points"/> <i>测试组</i></span>
+              <span>{{userInfo.username}}<van-icon name="points"/> <i>测试组</i></span>
               <span>头衔: 测试组 <i>成长值分</i></span>
             </p>
           </li>

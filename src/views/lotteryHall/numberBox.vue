@@ -148,6 +148,7 @@
             });
             // this.resetSelectData()
           }
+          this.$store.commit('resetLotteryList')
         }).catch(() => {
 
         });
