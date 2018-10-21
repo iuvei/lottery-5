@@ -10,7 +10,7 @@
     <div class="nocice">
       <router-link to="">
         <van-icon style="color: #6c6c6c" name="info-o"/>
-        <span style="color: #6c6c6c">{{notice}}</span>
+        <span style="color: #6c6c6c">{{notice[0].title}}</span>
       </router-link>
     </div>
     <div class="hot-lottery">
@@ -52,7 +52,7 @@
     methods: {
       async getNotice() {
         let res = await this.axios.get('/v1/Notice')
-        this.notice = res.data.data.title
+        this.notice = res.data.data
       },
       async getLotteryList() {
         let res = await this.axios.get('/v1/Lottery/List')

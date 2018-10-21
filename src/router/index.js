@@ -321,6 +321,12 @@ export default new Router({
       component: _import('home/myMessage'),
       name: 'myMessage'
     },
+	  {
+		  // 我的消息
+		  path: '/myMessageContent/:id',
+		  component: _import('home/myMessageContent'),
+		  name: 'myMessageContent'
+	  },
     {
       // 绑定密保手机
       path: '/bindPhone',
