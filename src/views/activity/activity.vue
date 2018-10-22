@@ -13,7 +13,7 @@
       </div>
       <div class="text">
         <strong>{{item.top1}}</strong>
-        <p>{{item.bottom1}}</p>
+        <p style="margin: 12px 0!important;">{{item.bottom1}}</p>
       </div>
       <div class="act-icon">
         <i class="right-iconfont icon-youjiantou" style="color:#333"> </i>
@@ -60,7 +60,7 @@
   @import "./styles/main";
 
   .activity-content {
-    margin-bottom:  px2rem(130px);;
+    margin-bottom:  px2rem(60px);;
     .top {
       p {
         /*margin: px2rem(20px) 0;*/

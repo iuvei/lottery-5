@@ -83,6 +83,10 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
 
+.myMessage {
+  height: calc(100vh - 4.3em)!important;
+  background-color: #fff;
+}
 
 // 头部的按钮
 .btn-group {
@@ -144,7 +148,7 @@ export default {
       }
     }
     p {
-      margin-top: px2rem(200px);
+      margin-top: px2rem(100px)!important;
       text-align: center;
       color: #4c4c4c;
     }

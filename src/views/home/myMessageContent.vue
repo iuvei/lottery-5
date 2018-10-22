@@ -66,7 +66,10 @@
 
 <style lang="scss" scoped>
 	@import "@/styles/index.scss";
-
+  .myMessage {
+    height: calc(100vh - 4.3em)!important;
+    background-color: #fff;
+  }
 
 	// 头部的按钮
 	.btn-group {
