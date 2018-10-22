@@ -10,7 +10,7 @@
       </router-link>
       <span slot="headtitle" class="btn-group">下级报表</span>
       <span slot="headright" @click="show=true">
-        <span class="whichDay">今天<i class="iconfont icon-arrow"></i></span>
+        <span class="whichDay">{{actionsValue.name}}<i class="iconfont icon-arrow"></i></span>
       </span>
     </Navbar>
 
@@ -37,13 +37,12 @@
 
     <!-- 弹出层 -->
     <div class="popup">
-      <van-popup v-model="show" position="bottom">
-        <li>今天</li>
-        <li>昨天</li>
-        <li>本月</li>
-        <li>上月</li>
-        <li @click="show=false">取消</li>
-      </van-popup>
+      <van-actionsheet
+        v-model="show"
+        :actions="actions"
+        cancel-text="取消"
+        @select="onSelect(item)"
+      />
     </div>
     <!-- 弹出层 end -->
   </div>
@@ -64,7 +63,17 @@
             peopleNum: 10,
             profit: 1314.00
           }
-        ]
+        ],
+	      actions: [{
+          name: '今天'
+        }, {
+        	name: '昨天'
+        },{
+        	name: '本月'
+        },{
+		      name: '上月'
+	      }],
+	      actionsValue: {name: '今天'}
       }
     },
     components: {
@@ -73,6 +82,10 @@
     methods: {
       toPage (src) {
         this.$router.push(src);
+      },
+	    onSelect(item) {
+//      	this.actionsValue = item
+        this.show = false
       }
     }
   }
