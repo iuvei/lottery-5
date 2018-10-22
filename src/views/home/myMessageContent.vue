@@ -12,7 +12,7 @@
         公告内容
       </span>
 		</Navbar>
-		
+
 		<div class="content">
 			<!-- 公告 notice -->
 			<ul class="notice">
@@ -21,21 +21,21 @@
 					<span>{{getLocalTime(notices[contentIndex].createtime)}}</span>
 					<span style="text-align: center">{{notices[contentIndex].content}}</span>
 				</li>
-				<p v-if="notices.length">已显示全部公告</p>
+				<!--<p v-if="notices.length">已显示全部公告</p>-->
 				<p class="tips" v-if="!notices.length">
 					<van-icon name="points"/>
 					<span>暂无公告</span>
 				</p>
 			</ul>
 		</div>
-	
+
 	</div>
 </template>
 
 <script>
 	import Navbar from '@/components/Navbar.vue'
 	import { getLocalTime } from '../../utils/filter'
-	
+
 	export default {
 		name: 'myMessage',
 		components: {
@@ -66,17 +66,17 @@
 
 <style lang="scss" scoped>
 	@import "@/styles/index.scss";
-	
-	
+
+
 	// 头部的按钮
 	.btn-group {
 		display: inline-block;
 		height: px2rem(100px);
 		line-height: px2rem(100px);
 	}
-	
+
 	// 头部的按钮 end
-	
+
 	@include onetoppx('tr')
 	// 头部的按钮
 	.btn-group button {
@@ -100,7 +100,7 @@
 		}
 	}
 	// 头部的按钮 end
-	
+
 	@include onebottompx('.notice li');
 	@include onebottompx('.letter li');
 	.content {
@@ -108,17 +108,17 @@
 		margin-bottom: px2rem(100px);
 		overflow: hidden;
 		background: #efeef4;
-		
+
 		& ul {
 			background: #ffffff;
 		}
-		
+
 		ul.notice, ul.letter {
 			overflow: hidden;
 			font-size: px2rem(30px);
 			li {
 				padding: px2rem(18px) 0;
-				margin: 0 px2rem(36px);
+				margin: 0 px2rem(36px) px2rem(10px);
 				span {
 					display: block;
 					line-height: px2rem(50px);

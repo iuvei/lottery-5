@@ -7,12 +7,12 @@
       <swiper-slide><img style="width: 100vw;" src="./images/banner3.png" alt=""></swiper-slide>
       <swiper-slide><img style="width: 100vw;" src="./images/banner4.png" alt=""></swiper-slide>
     </swiper>
-    <div class="nocice">
-      <router-link to="">
+    <router-link to="/myMessage">
+      <div class="nocice">
         <van-icon style="color: #6c6c6c" name="info-o"/>
         <span style="color: #6c6c6c">{{notice[0].title}}</span>
-      </router-link>
-    </div>
+      </div>
+    </router-link>
     <div class="hot-lottery">
       <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
         <div class="lottery-icon">

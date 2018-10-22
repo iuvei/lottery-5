@@ -60,6 +60,7 @@
   @import "./styles/main";
 
   .activity-content {
+    margin-bottom:  px2rem(130px);;
     .top {
       p {
         /*margin: px2rem(20px) 0;*/
@@ -111,9 +112,76 @@
       width: px2rem(50px);
     }
   }
-  /*.act-item:nth-child(5) {*/
-    /*background-color: #090!important;*/
-  /*}*/
+  .act-item:nth-child(2) {
+    .num {
+      div {
+        background-color: #2ed57b!important;
+      }
+    }
+  }
+  .act-item:nth-child(3) {
+    .num {
+      div {
+        background-color: #2ec3d5!important;
+      }
+    }
+  }
+  .act-item:nth-child(4) {
+    .num {
+      div {
+        background-color: #2e85d5!important;
+      }
+    }
+  }
+  .act-item:nth-child(5) {
+    .num {
+      div {
+        background-color: #d52ebe!important;
+      }
+    }
+  }
+  .act-item:nth-child(6) {
+    .num {
+      div {
+        background-color: #d52e88!important;
+      }
+    }
+  }
+  .act-item:nth-child(7) {
+    .num {
+      div {
+        background-color: #d52e4a!important;
+      }
+    }
+  }
+  .act-item:nth-child(8) {
+    .num {
+      div {
+        background-color: #64d52e!important;
+      }
+    }
+  }
+  .act-item:nth-child(9) {
+    .num {
+      div {
+        background-color: #fe8580!important;
+      }
+    }
+  }
+  .act-item:nth-child(10) {
+    .num {
+      div {
+        background-color: #2ec3d5!important;
+      }
+    }
+  }
+  .act-item:nth-child(11) {
+    .num {
+      div {
+        background-color: #d52ebe!important;
+      }
+    }
+  }
 
 </style>
 

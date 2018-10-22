@@ -316,7 +316,7 @@ export default new Router({
       name: 'todayProfitLoss'
     },
     {
-      // 我的消息
+      // 我的消息公告
       path: '/myMessage',
       component: _import('home/myMessage'),
       name: 'myMessage'

@@ -144,7 +144,7 @@ export default {
       }
     }
     p {
-      margin-top: px2rem(100px);
+      margin-top: px2rem(200px);
       text-align: center;
       color: #4c4c4c;
     }
