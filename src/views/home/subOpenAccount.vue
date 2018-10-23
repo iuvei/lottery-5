@@ -21,8 +21,16 @@
         <ul class="creatAccountTitle">
           <li>
             <label>开户类型</label>
-            <input type="radio" name="accountType" value="1" v-model="type"> 代理类型
-            <input type="radio" name="accountType" value="2" v-model="type"> 玩家类型
+            <div class="female" style="display: inline-block">
+              <input type="radio" id="female" name="sex" value="1"  v-model="type" />
+              <label for="female">代理类型</label>
+            </div>
+            <div class="male" style="display: inline-block">
+              <input type="radio" id="male" name="sex" value="2"  v-model="type" />
+              <label for="male">玩家类型</label>
+            </div>
+            <!--<input type="radio" name="accountType" value="1" v-model="type"> 代理类型-->
+            <!--<input type="radio" name="accountType" value="2" v-model="type"> 玩家类型-->
           </li>
           <li>
             请先为下级设置返点，<span @click="toPage('/rebateDes')">点击查看返点赔率表</span>
@@ -245,6 +253,37 @@
               font-size: px2rem(36px);
             }
           }
+        }
+      }
+      .creatAccountTitle {
+        div {
+          display: inline-block;
+          label {
+            width: px2rem(180px) !important;
+          }
+        }
+        input[type="radio"] + label::before {
+          content: "\a0"; /*不换行空格*/
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 18px;
+          width: 1.2em;
+          height: 1.2em;
+          margin-right: .4em;
+          border-radius: 50%;
+          border: 1px solid #dc3b40;
+          text-indent: .15em;
+          line-height: 1;
+          box-sizing: border-box;
+        }
+        input[type="radio"]:checked + label::before {
+          background-color: #dc3b40;
+          background-clip: content-box;
+          padding: .2em;
+        }
+        input[type="radio"] {
+          position: absolute;
+          clip: rect(0, 0, 0, 0);
         }
       }
     }

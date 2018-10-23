@@ -60,7 +60,7 @@
   @import "./styles/main";
 
   .activity-content {
-    margin-bottom:  px2rem(60px);;
+    margin-bottom:  px2rem(130px);;
     .top {
       p {
         /*margin: px2rem(20px) 0;*/
