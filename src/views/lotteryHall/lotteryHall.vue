@@ -7,12 +7,12 @@
       <swiper-slide><img style="width: 100vw;" src="./images/banner3.png" alt=""></swiper-slide>
       <swiper-slide><img style="width: 100vw;" src="./images/banner4.png" alt=""></swiper-slide>
     </swiper>
-    <div class="nocice">
-      <router-link to="">
+    <router-link to="/myMessage">
+      <div class="nocice">
         <van-icon style="color: #6c6c6c" name="info-o"/>
-        <span style="color: #6c6c6c">{{notice}}</span>
-      </router-link>
-    </div>
+        <span style="color: #6c6c6c">{{notice[0].title}}</span>
+      </div>
+    </router-link>
     <div class="hot-lottery">
       <div class="hot-lottery-item" v-for="(item, index) in hotLottery" @click="toPage(`/${item.type}/${item.id}`)">
         <div class="lottery-icon">
@@ -23,7 +23,7 @@
         <div class="lottery-name">{{item.title}}</div>
         <div class="lottery-number">{{item.per_explain}}</div>
       </div>
-      <div class="hot-lottery-item" @click="toAllLottery(item)">
+      <div class="hot-lottery-item" @click="toAllLottery(item)" style="margin-bottom: 20px">
         <div class="lottery-icon"><i class="iconfont icon-gengduo" style="color: #fa7e00"></i></div>
         <div class="lottery-name">更多</div>
       </div>
@@ -52,7 +52,7 @@
     methods: {
       async getNotice() {
         let res = await this.axios.get('/v1/Notice')
-        this.notice = res.data.data.title
+        this.notice = res.data.data
       },
       async getLotteryList() {
         let res = await this.axios.get('/v1/Lottery/List')
@@ -168,7 +168,7 @@
   }
 
   /*.hot-lottery-item:last-child::after {*/
-  /*border: 0;*/
+    /*border: 0;*/
   /*}*/
 
 

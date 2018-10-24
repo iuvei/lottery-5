@@ -316,11 +316,17 @@ export default new Router({
       name: 'todayProfitLoss'
     },
     {
-      // 我的消息
+      // 我的消息公告
       path: '/myMessage',
       component: _import('home/myMessage'),
       name: 'myMessage'
     },
+	  {
+		  // 我的消息
+		  path: '/myMessageContent/:id',
+		  component: _import('home/myMessageContent'),
+		  name: 'myMessageContent'
+	  },
     {
       // 绑定密保手机
       path: '/bindPhone',

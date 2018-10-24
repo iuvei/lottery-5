@@ -46,8 +46,21 @@ export default {
   data () {
     return {
       on: 1,
-      show: false
+      show: false,
+      timer: 1
     }
+  },
+  created() {
+    this.getAllData()
+  },
+  methods: {
+    async getAllData() {
+      let params = {
+        time: this.timer
+      }
+      let res = await this.axios.get(`v1/User/MoneyLog`, {params})
+      console.log(res,'返回数据时空')
+    },
   }
 }
 </script>

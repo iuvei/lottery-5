@@ -112,7 +112,7 @@
 			font-size: .9em;
 			span {
 				color: #fff;
-				font-size: px2rem(8px);
+				font-size: px2rem(24px);
 			}
 			span:nth-child(1) {
 				display: block;

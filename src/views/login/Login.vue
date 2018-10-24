@@ -12,14 +12,14 @@
 
     <div class="user-info">
       <div class="username">
-        <i class="front-icon"></i>
+        <i class="iconfont icon-wode"></i>
         <input placeholder="请输入账号" v-model="username">
-        <i class="end-icon"></i>
+        <!--<i class="end-icon"></i>-->
       </div>
       <div class="password">
-        <i class="front-icon"></i>
+        <i class="iconfont icon-Group"></i>
         <input placeholder="请输入密码" type="password" v-model="password">
-        <i class="end-icon"></i>
+        <!--<i class="end-icon"></i>-->
       </div>
     </div>
     <div class="buttons">
@@ -107,7 +107,7 @@
     @include onetoppx('.password');
     @include onebottompx('.password');
     .username, .password {
-      height: px2rem(80px);
+      height: px2rem(82px);
       .front-icon, .end-icon {
         display: inline-block;
         float: left;
@@ -115,9 +115,10 @@
         height: px2rem(80px);
       }
       input {
-        float: left;
+        /*float: left;*/
+        /*margin-left: px2rem(80px);*/
         border: 0;
-        width: calc(100vw - 2.14rem);
+        width: calc(100vw - 2.2rem);
         margin-top: px2rem(16px);
         font-size: px2rem(40px);
         &::-webkit-input-placeholder{
@@ -127,6 +128,12 @@
       .end-icon {
         float: right;
       }
+    }
+    .iconfont {
+      font-size: px2rem(40px);
+      margin-left: px2rem(20px);
+      margin-right: px2rem(20px);
+      color: #999;
     }
   }
 

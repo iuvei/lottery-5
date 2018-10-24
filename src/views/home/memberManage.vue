@@ -56,6 +56,7 @@
     name: 'memberManage',
     data () {
       return {
+        currentId: '',
         member: [],
         show: false,
         showCatFD: false,
@@ -99,7 +100,7 @@
     },
     methods: {
       async agentMember() {
-        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.userInfo.id, type: this.type})
+        let res = await this.axios.post('/v1/Agent/agentMember', {uid: this.currentId, type: this.type})
         this.member = res.data.data
       },
       toPage (src) {
@@ -114,8 +115,17 @@
           this.type ++
           this.agentMember()
         }
+
+        // 加定时器解决bug
+        // if (item.name === '查看下级') {
+        //   setTimeout(item => {
+        //     this.type ++
+        //     this.agentMember()
+        //   },500)
+        // }
         if (item.name === '查看上级') {
           this.type --
+          this.currentId = item.uid
           this.agentMember()
         }
         if (item.name === '查看返点') {
@@ -131,6 +141,7 @@
         }
         this.show = true
         console.log(params,'当前点击的')
+        this.currentId = params.uid
       }
     },
     mounted() {
@@ -147,7 +158,36 @@
     padding: 0;
     list-style: none;
   }
+  // 头部的按钮
+  .btn-group {
+    display: inline-block;
+    height: px2rem(100px);
+    line-height: px2rem(100px);
+  }
+  .btn-group button {
+    padding: 0;
+    width: px2rem(208px);
+    height: px2rem(64px);
+    line-height: px2rem(64px);
+    background: #dc3b40;
+    border: 1px solid #ffffff;
+    font-size: px2rem(28px);
+    color: #ffffff;
+    &:nth-child(1) {
+      border-radius: 3px 0 0 3px;
+    }
+    &:nth-child(2) {
+      border-radius: 0 3px 3px 0;
+    }
+    &.subOpenAccount {
+      background: #ffffff;
+      color: #dc3b40;
+    }
+  }
 
+  // 头部的按钮 end
+
+  @include onetoppx('tr')
   .content {
     margin-top: px2rem(100px);
     margin-bottom: px2rem(100px);

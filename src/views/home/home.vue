@@ -128,7 +128,7 @@
       }
     }
     &:nth-child(2) {
-      margin-left: px2rem(20px);
+      margin-left: px2rem(20px)!important;
       span {
         display: block;
         margin: px2rem(22px) 0;

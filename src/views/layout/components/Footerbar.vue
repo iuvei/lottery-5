@@ -1,10 +1,22 @@
 <template>
   <div class="footerbar">
     <van-tabbar v-model="active">
-      <van-tabbar-item icon="shop" to="/lotteryHall">大厅</van-tabbar-item>
-      <van-tabbar-item icon="records" to="/activity">活动</van-tabbar-item>
-      <van-tabbar-item icon="chat" to="/find">发现</van-tabbar-item>
-      <van-tabbar-item icon="gold-coin" to="/home">我的</van-tabbar-item>
+      <van-tabbar-item to="/lotteryHall">
+        <i class="iconfont icon-shouye"></i>
+        <span>大厅</span>
+      </van-tabbar-item>
+      <van-tabbar-item to="/activity">
+        <i class="iconfont icon-gifs"></i>
+        <span>活动</span>
+      </van-tabbar-item>
+      <van-tabbar-item to="/find">
+        <i class="iconfont icon-faxian_"></i>
+        <span>发现</span>
+      </van-tabbar-item>
+      <van-tabbar-item to="/home">
+        <i class="iconfont icon-wode" style="font-size: 24px;"></i>
+        <span>我的</span>
+      </van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -32,5 +44,11 @@
   .van-tabbar-item--active {
     color: #e54042
   }
+  i {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 20px;
+  }
+
 
 </style>

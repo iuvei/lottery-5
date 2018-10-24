@@ -16,9 +16,9 @@
     <div class="content">
       <!-- 公告 notice -->
       <ul class="notice"  v-if="messageType==='notice'">
-        <li v-for="(item, index) in notices" :key="index">
-          <span>{{item.noticeTitle}}</span>
-          <span>{{item.noticeTime}}</span>
+        <li v-for="(item, index) in notices" :key="index" @click="toNoticeContent(index)">
+          <span>{{item.title}}</span>
+          <span>{{getLocalTime(item.createtime)}}</span>
         </li>
         <p v-if="notices.length">已显示全部公告</p>
         <p class="tips" v-if="!notices.length">
@@ -48,6 +48,7 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue'
+import { getLocalTime } from '../../utils/filter'
 
 export default {
   name: 'myMessage',
@@ -57,18 +58,24 @@ export default {
   data () {
     return {
       messageType: 'notice',
-      notices: [
-        {
-          noticeTitle: '支付宝入款帐号更换通知',
-          noticeTime: '2018-07-26 15:52:43'
-        },
-        {
-          noticeTitle: '银行入款最多送3000元彩金!笔笔送!',
-          noticeTime: '2018-11-28 13:29:35'
-        }
-      ],
+	    notices: [],
       letters: []
     }
+  },
+  methods: {
+	  async getNotice() {
+		  let res = await this.axios.get('/v1/Notice')
+		  this.notices = res.data.data
+	  },
+	  getLocalTime(ns) {
+	  	return getLocalTime(ns)
+    },
+	  toNoticeContent(index) {
+	  	this.$router.push(`/myMessageContent/${index}`)
+    }
+  },
+  mounted() {
+  	this.getNotice()
   }
 }
 </script>
@@ -76,11 +83,27 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/index.scss";
 
+.myMessage {
+  height: calc(100vh - 4.3em)!important;
+  background-color: #fff;
+}
+
+// 头部的按钮
+.btn-group {
+  display: inline-block;
+  height: px2rem(100px);
+  line-height: px2rem(100px);
+}
+
+// 头部的按钮 end
+
+@include onetoppx('tr')
 // 头部的按钮
 .btn-group button {
   padding: 0;
   width: px2rem(208px);
   height: px2rem(64px);
+  line-height: px2rem(64px);
   background: #dc3b40;
   border: 1px solid #ffffff;
   font-size: px2rem(28px);
@@ -125,7 +148,7 @@ export default {
       }
     }
     p {
-      margin-top: px2rem(100px);
+      margin-top: px2rem(100px)!important;
       text-align: center;
       color: #4c4c4c;
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="ssc clearfix">
-    <HeaderReg bgcolor="#000">
+    <HeaderReg bgcolor="#dc3b40">
       <router-link slot="headleft" to="/lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>

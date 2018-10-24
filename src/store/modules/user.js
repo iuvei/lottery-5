@@ -14,6 +14,10 @@ const user = {
       setUserInfo(data)
       console.log(data)
       state.userInfo = data
+    },
+    setUserAvatar: (state, data) => {
+      state.userInfo.avatar = data
+      setUserInfo(state.userInfo)
     }
   },
   actions: {

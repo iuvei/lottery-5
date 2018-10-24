@@ -1,6 +1,6 @@
 <template>
   <div class="k3 clearfix">
-    <HeaderReg bgcolor="#000">
+    <HeaderReg bgcolor="#dc3b40">
       <router-link slot="headleft" to="/lotteryHall">
         <van-icon name="arrow-left"/>
       </router-link>
@@ -576,6 +576,7 @@
     line-height: px2rem(70px);
     border-bottom: 1px solid #456166;
     background: #22563f;
+    font-size: px2rem(30px);
     & > span {
       flex: 2;
       text-align: center;
@@ -585,8 +586,9 @@
     & > div {
       flex: 8;
       & > input {
-        height: px2rem(40px);
-        line-height: px2rem(70px);
+        font-size: px2rem(36px);
+        height: px2rem(60px);
+        line-height: px2rem(60px);
         width: 5em;
         background-color: #cbeedc;
         color: #19593c;
@@ -596,6 +598,7 @@
         outline: none;
         margin: 0;
         padding: 0;
+        margin-bottom: px2rem(8px);
         vertical-align: middle;
         -webkit-transform: translateY(1px);
         transform: translateY(1px);

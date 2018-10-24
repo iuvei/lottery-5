@@ -76,9 +76,9 @@ ul, li {
 
 .content {
   margin-top: px2rem(100px);
-  margin-bottom: px2rem(100px);
+  /*margin-bottom: px2rem(100px);*/
   overflow: hidden;
-  background: #efeef4;
+  /*background: #efeef4;*/
 
   div {
     margin-bottom: px2rem(30px);
