@@ -7,7 +7,7 @@
       <span slot="headtitle" style="text-align: center">
         <span class="">
           <span class="playMeth">玩法</span>
-          <span @click="betTopDetailShow = !betTopDetailShow" class="click-wrapper">点击 <i
+          <span @click="betTopDetailShow = !betTopDetailShow" class="click-wrapper">{{betTopDetailSelected}}<i
             class="iconfont icon-sort-down"></i></span>
         </span>
         <div class="betTopDetail" v-show="betTopDetailShow">
@@ -283,25 +283,27 @@
 
   /* 玩法 */
   .playMeth {
-    position: absolute;
-    left: 40%;
-    margin-top: px2rem(24px);
+    /*position: absolute;*/
+    /*left: 40%;*/
+    display: inline-block;
+    vertical-align: middle;
+    /*margin-top: px2rem(24px);*/
     width: px2rem(24px);
-    line-height: 1em;
+    line-height: px2rem(24px);
     font-size: px2rem(24px);
   }
 
   /* 点击 */
   .click-wrapper {
-    position: absolute;
-    top: px2rem(20px);
-    left: 42%;
+    /*position: absolute;*/
+    /*top: px2rem(20px);*/
+    /*left: 42%;*/
     display: inline-block;
-    margin-left: px2rem(20px);
+    /*margin-left: px2rem(20px);*/
     padding: px2rem(8px);
     border-radius: 3px;
     border: 1px solid #ffffff;
-    line-height: 1em;
+    line-height: px2rem(32px);
     font-size: px2rem(32px);
     i {
       color: #f0c930;
