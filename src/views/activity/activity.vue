@@ -12,7 +12,7 @@
         <div>{{item.id}}</div>
       </div>
       <div class="text">
-        <strong>{{item.top1}}</strong>
+        <span class="title-tips">{{item.top1}}</span>
         <p style="margin: 12px 0!important;">{{item.bottom1}}</p>
       </div>
       <div class="act-icon">
@@ -106,6 +106,9 @@
       strong {
         font-size: px2rem(34px);
       }
+    }
+    .title-tips {
+      font-size: px2rem(32px);
     }
     .act-icon {
       display: inline-block;

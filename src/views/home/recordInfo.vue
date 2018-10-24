@@ -11,7 +11,8 @@
       <span slot="headtitle" class="btn-group">
         注单详情
       </span>
-      <span slot="headright">
+      <span slot="headright" style="position: relative;right: 10px;">
+        撤单
       </span>
     </Navbar>
 

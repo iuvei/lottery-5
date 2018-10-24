@@ -21,13 +21,24 @@
         <li :class="{'on': on===3}" @click="on=3">充值记录</li>
       </ul>
     </div>
+    <div class="main" v-show="on === 1">
+      <div class="content-item" v-for="(item,index) in allData" :key="index">
+        <van-row>
+          <van-col span="22">
+            <span class="title">{{item.notes}}</span>
+            <p class="titlep">{{item.createtime}}</p>
+          </van-col>
+          <van-col span="2"><span class="tips">{{item.money}}</span></van-col>
+        </van-row>
+      </div>
+    </div>
 
     <!-- 弹出层 -->
     <div class="popup">
       <van-popup v-model="show" position="bottom">
-        <li>今天</li>
-        <li>昨天</li>
-        <li>七天</li>
+        <li @click="getAllData(0)">今天</li>
+        <li @click="getAllData(1)">昨天</li>
+        <li @click="getAllData(2)">七天</li>
         <li @click="show=false">取消</li>
       </van-popup>
     </div>
@@ -47,19 +58,22 @@ export default {
     return {
       on: 1,
       show: false,
-      timer: 1
+      timer: 0,
+      allData: []
     }
   },
   created() {
-    this.getAllData()
+    this.getAllData(2)
   },
   methods: {
-    async getAllData() {
+    async getAllData(value) {
       let params = {
-        time: this.timer
+        time: value
       }
+      this.show = false
       let res = await this.axios.get(`v1/User/MoneyLog`, {params})
       console.log(res,'返回数据时空')
+      this.allData = res.data.data
     },
   }
 }
@@ -77,7 +91,7 @@ export default {
 @include onebottompx('.record-type');
 .content {
   margin-top: px2rem(100px);
-  margin-bottom: px2rem(100px);
+  margin-bottom: px2rem(20px);
   overflow: hidden;
   background: #efeef4;
 
@@ -94,6 +108,20 @@ export default {
         border-bottom: 2px solid #da393e;
       }
     }
+  }
+}
+.main {
+  padding: px2rem(20px);
+  .title {
+    font-size: px2rem(32px);
+  }
+  .titlep {
+    color: #ccc;
+    margin: px2rem(16px) 0!important;
+    padding: 0;
+  }
+  .tips {
+    color: #090;
   }
 }
 

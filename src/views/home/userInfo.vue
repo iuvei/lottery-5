@@ -53,17 +53,17 @@
             </select>
             <van-icon name="arrow"/>
           </li>
-          <li>
-            <span>生日</span>
-            <input type="date">
-            <van-icon name="arrow"/>
-          </li>
+          <!--<li>-->
+            <!--<span>生日</span>-->
+            <!--<input type="date">-->
+            <!--<van-icon name="arrow"/>-->
+          <!--</li>-->
         </ul>
       </div>
       <!-- 个人资料 end -->
 
       <!-- 等级头衔 -->
-      
+
       <div class="rankTitle" v-if="infoStyle==='rankTitle'">
         <div class="rankTitleHeader">
           <li>
@@ -359,6 +359,9 @@
             }
           }
         }
+      }
+      ul:nth-child(2) {
+        margin-bottom: 0;
       }
     }
     // 个人资料 end
