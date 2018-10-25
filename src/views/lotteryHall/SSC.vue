@@ -12,7 +12,7 @@
       <playSortMore @playBoardType="playBoardType" :tagToPlayMap="tagToPlayMap" v-show="PlaySortMore" @tagSelected="tagSelected" v-model="playBoardData"></playSortMore>
       </span>
       <span slot="headright">
-        <span @click="areaShow = !areaShow">{{araeSelected.title.slice(0,2)}}</span>
+        <span @click="areaShow = !areaShow">{{araeSelected.title?araeSelected.title.slice(0,2):''}}</span>
         <div class="area-list" v-show="areaShow">
           <span v-for="item in arae" @click="selectArea(item)">{{item.title}}</span>
         </div>

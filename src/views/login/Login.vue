@@ -38,6 +38,7 @@
   import { Dialog } from 'vant';
   import { Base64 } from 'js-base64';
   import {setToken} from "../../utils/auth";
+  import axios from 'axios'
 
   export default {
     name: 'Login',
@@ -47,38 +48,54 @@
     data() {
       return {
         username: '',
-        password: ''
+        password: '',
+        state: 0
       }
     },
     methods: {
+    	async computeRebase() {
+		    axios.all([getUserAccount(), getUserPermissions()])
+		    .then(axios.spread(function (k3, ssc, syxw, pk10) {
+			    console.log('4个请求都完成了')
+			    setSscRebase(ssc)
+			    setK3Rebase(k3)
+			    setSyxwRebase(syxw)
+			    setPk10Rebase(pk10)
+          this.state = 1
+		    }));
+      },
       async login() {
-        if(this.username == ''){
-          Dialog.alert({
-            title: '提示',
-            message: '请输入用户名'
-          })
-        } else if (this.password == '') {
-          Dialog.alert({
-            title: '提示',
-            message: '请输入用户名'
-          })
+    		if (this.state = 1) {
+			    if(this.username == ''){
+				    Dialog.alert({
+					    title: '提示',
+					    message: '请输入用户名'
+				    })
+			    } else if (this.password == '') {
+				    Dialog.alert({
+					    title: '提示',
+					    message: '请输入用户名'
+				    })
+			    } else {
+				    let res = await this.axios.post('/v1/Login', {
+					    username: this.username,
+					    password: this.password,
+					    timestamp: parseInt(new Date().getTime() / 1000)
+				    })
+				    let str = `${res.data.data.client.id} ${res.data.data.access_token}`
+				    setToken(Base64.encode(str))
+				    if(res.data.message == 'success') {
+					    this.$router.push('/lotteryHall')
+				    } else {
+					    Dialog.alert({
+						    title: '提示',
+						    message: res.data.message
+					    })
+				    }
+			    }
         } else {
-          let res = await this.axios.post('/v1/Login', {
-            username: this.username,
-            password: this.password,
-            timestamp: parseInt(new Date().getTime() / 1000)
-          })
-          let str = `${res.data.data.client.id} ${res.data.data.access_token}`
-          setToken(Base64.encode(str))
-          if(res.data.message == 'success') {
-            this.$router.push('/lotteryHall')
-          } else {
-            Dialog.alert({
-              title: '提示',
-              message: res.data.message
-            })
-          }
-        }
+			    alert('还没准备好，请稍后')
+		    }
       }
     }
   }

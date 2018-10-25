@@ -1,6 +1,12 @@
 const lottery = {
   state: {
-    lotteryList: []
+    lotteryList: [],//选号篮
+    lotteryRebate: {
+      k3: [],
+      ssc: [],
+      syxw: [],
+      pk10: [],
+    }
   },
   mutations: {
     resetLotteryList: (state) => {
@@ -11,6 +17,10 @@ const lottery = {
     },
     deleteLotteryListItem: (state,data) => {
       state.lotteryList.splice(data + 1,1)
+    },
+    
+    setLotteryRebate: (state, type, data) => {
+      state.lotteryRebate[type] = data
     }
   },
   actions: {

@@ -1,6 +1,47 @@
+import {tagToPlayMap} from '../views/lotteryHall/components/tagToPlayMap'
+
 let ActivePageIndex = 'ActivePageIndex'
 let Token = 'Token'
 let UserInfo = 'userInfo'
+let K3Rebase = 'K3Rebate'
+let SscRebase = 'SscRebate'
+let SyxwRebase = 'SyxwRebase'
+let Pk10Rebase = 'Pk10Rebase'
+
+export function setK3Rebase(data) {
+  return sessionStorage.setItem(K3Rebase, JSON.stringify(data))
+}
+export function getK3Rebase() {
+	return sessionStorage.getItem(K3Rebase)
+}
+
+export function setSscRebase(rebase) {
+  tagToPlayMap.forEach((v, i) => {
+    v.play.forEach((v1,i1) => {
+      console.log(i1)
+    })
+  })
+	return sessionStorage.setItem(SscRebase, JSON.stringify(tagToPlayMap))
+}
+export function getSscRebase() {
+	return sessionStorage.getItem(SscRebase)
+}
+
+export function setSyxwRebase(data) {
+	return sessionStorage.setItem(SyxwRebase, JSON.stringify(data))
+}
+export function getSyxwRebase() {
+	return sessionStorage.getItem(SyxwRebase)
+}
+
+export function setPk10Rebase(data) {
+	return sessionStorage.setItem(Pk10Rebase, JSON.stringify(data))
+}
+export function getPk10Rebase() {
+	return sessionStorage.getItem(Pk10Rebase)
+}
+
+
 
 export function setUserInfo(userInfo) {
   return sessionStorage.setItem(UserInfo, JSON.stringify(userInfo))

@@ -1,7 +1,7 @@
 export let tagToPlayMap = [
 	{tag: '一星', checked:true, play: [
 		{titleName: '定位胆', data: [
-			{value: 1, label: '复式', checked: true, playBoard: [
+			{value: 1, label: '复式',checked: true, playBoard: [
 				{type: 'number', titleName: '万位', numberData: [
 					{value: 1, label: 0, checked: false},
 					{value: 1, label: 1, checked: false},
