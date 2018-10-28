@@ -1,7 +1,7 @@
 export let tagToPlayMapPK10 = [
-  {tag: '定位胆', checked:true, play: [
-      {titleName: '标准', data: [
-          {value: 1, label: '定位胆', checked: true, playBoard: [
+  {tag: '定位胆', value:'A',checked:true, play: [
+      {titleName: '标准', value:'A1', data: [
+          {value: 'A11', label: '定位胆', checked: true, playBoard: [
               {type: 'number', titleName: '冠军', numberData: [
                   {value: 1, label: '01', checked: false},
                   {value: 2, label: '02', checked: false},
@@ -125,9 +125,9 @@ export let tagToPlayMapPK10 = [
             ]}
         ]}
     ]},
-  {tag: '猜前五', checked:false, play: [
-      {titleName: '直选', data: [
-          {value: 1, label: '复式', checked: true, playBoard: [
+  {tag: '猜前五', value:'B', checked:false, play: [
+      {titleName: '直选', value:'B1', data: [
+          {value: 'B11', label: '复式', checked: true, playBoard: [
               {type: 'number', titleName: '冠军', numberData: [
                   {value: 1, label: '01', checked: false},
                   {value: 2, label: '02', checked: false},
@@ -189,7 +189,7 @@ export let tagToPlayMapPK10 = [
                   {value: 10, label: '10', checked: false}
                 ]}
             ]},
-          {value: 1, label: '单式', checked: false, playBoard: [
+          {value: 'B12', label: '单式', checked: false, playBoard: [
               {type: 'input', titleName: '万位', numberData: [
                   {value: 1, label: 0, checked: false},
                   {value: 1, label: 1, checked: false},
@@ -205,9 +205,9 @@ export let tagToPlayMapPK10 = [
             ]}
         ]}
     ]},
-  {tag: '猜前四', checked:false, play: [
-      {titleName: '直选', data: [
-          {value: 1, label: '复式', checked: true, playBoard: [
+  {tag: '猜前四', value:'C', checked:false, play: [
+      {titleName: '直选', value: 'C1',data: [
+          {value: 'C11', label: '复式', checked: true, playBoard: [
               {type: 'number', titleName: '冠军', numberData: [
                   {value: 1, label: '01', checked: false},
                   {value: 2, label: '02', checked: false},
@@ -257,7 +257,7 @@ export let tagToPlayMapPK10 = [
                   {value: 10, label: '10', checked: false}
                 ]},
             ]},
-          {value: 1, label: '单式', checked: false, playBoard: [
+          {value: 'C12', label: '单式', checked: false, playBoard: [
               {type: 'input', titleName: '万位', numberData: [
                   {value: 1, label: 0, checked: false},
                   {value: 1, label: 1, checked: false},
@@ -273,9 +273,9 @@ export let tagToPlayMapPK10 = [
             ]}
         ]}
     ]},
-  {tag: '猜前三', checked:false, play: [
-      {titleName: '直选', data: [
-          {value: 1, label: '复式', checked: true, playBoard: [
+  {tag: '猜前三', value: 'D', checked:false, play: [
+      {titleName: '直选', value:'D1',data: [
+          {value: 'D11', label: '复式', checked: true, playBoard: [
               {type: 'number', titleName: '冠军', numberData: [
                   {value: 1, label: '01', checked: false},
                   {value: 2, label: '02', checked: false},
@@ -313,7 +313,7 @@ export let tagToPlayMapPK10 = [
                   {value: 10, label: '10', checked: false}
                 ]},
             ]},
-          {value: 1, label: '单式', checked: false, playBoard: [
+          {value: 'D12', label: '单式', checked: false, playBoard: [
               {type: 'input', titleName: '万位', numberData: [
                   {value: 1, label: 0, checked: false},
                   {value: 1, label: 1, checked: false},
@@ -329,9 +329,9 @@ export let tagToPlayMapPK10 = [
             ]}
         ]}
     ]},
-  {tag: '猜前二', checked:false, play: [
-      {titleName: '直选', data: [
-          {value: 1, label: '复式', checked: true, playBoard: [
+  {tag: '猜前二', value:'F',checked:false, play: [
+      {titleName: '直选',value:'F1', data: [
+          {value: 'F11', label: '复式', checked: true, playBoard: [
               {type: 'number', titleName: '冠军', numberData: [
                   {value: 1, label: '01', checked: false},
                   {value: 2, label: '02', checked: false},
@@ -357,7 +357,7 @@ export let tagToPlayMapPK10 = [
                   {value: 10, label: '10', checked: false}
                 ]},
             ]},
-          {value: 1, label: '单式', checked: false, playBoard: [
+          {value: 'F12', label: '单式', checked: false, playBoard: [
               {type: 'input', titleName: '万位', numberData: [
                   {value: 1, label: 0, checked: false},
                   {value: 1, label: 1, checked: false},
@@ -373,9 +373,9 @@ export let tagToPlayMapPK10 = [
             ]}
         ]}
     ]},
-  {tag: '猜冠军', checked:false, play: [
-      {titleName: '直选', data: [
-          {value: 1, label: '复式', checked: true, playBoard: [
+  {tag: '猜冠军', value: 'G',checked:false, play: [
+      {titleName: '直选',value:'G1', data: [
+          {value: 'G11', label: '复式', checked: true, playBoard: [
               {type: 'number', titleName: '冠军', numberData: [
                   {value: 1, label: '01', checked: false},
                   {value: 2, label: '02', checked: false},

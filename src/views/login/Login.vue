@@ -47,21 +47,25 @@
     },
     data() {
       return {
-        username: '',
-        password: '',
+        username: 'test',
+        password: '222222',
         state: 0
       }
     },
     methods: {
-    	async computeRebase() {
-		    axios.all([getUserAccount(), getUserPermissions()])
+    	getRebate(type) {
+		    return this.axios.get(`/v1/Lottery/GetRebate?type=${type}`);
+      },
+    	computeRebase() {
+		    axios.all([this.getRebate('k3'), this.getRebate('ssc'), this.getRebate('syx5'), this.getRebate('pk10')])
 		    .then(axios.spread(function (k3, ssc, syxw, pk10) {
 			    console.log('4个请求都完成了')
-			    setSscRebase(ssc)
-			    setK3Rebase(k3)
-			    setSyxwRebase(syxw)
-			    setPk10Rebase(pk10)
+//			    setSscRebase(ssc)
+//			    setK3Rebase(k3)
+//			    setSyxwRebase(syxw)
+//			    setPk10Rebase(pk10)
           this.state = 1
+//			    this.$router.push('/lotteryHall')
 		    }));
       },
       async login() {
@@ -85,7 +89,7 @@
 				    let str = `${res.data.data.client.id} ${res.data.data.access_token}`
 				    setToken(Base64.encode(str))
 				    if(res.data.message == 'success') {
-					    this.$router.push('/lotteryHall')
+				    	this.computeRebase()
 				    } else {
 					    Dialog.alert({
 						    title: '提示',
@@ -97,6 +101,9 @@
 			    alert('还没准备好，请稍后')
 		    }
       }
+    },
+    mounted() {
+//    	this.computeRebase()
     }
   }
 </script>
